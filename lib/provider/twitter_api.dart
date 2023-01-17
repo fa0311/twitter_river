@@ -7,5 +7,5 @@ final twitterRiverAPIProvider = StateProvider.family<TwitterRiverAPI, String>((r
 
 final getSessionProvider = FutureProvider<TwitterRiverAPI>((ref) async {
   final directory = await getApplicationDocumentsDirectory();
-  return ref.watch(twitterRiverAPIProvider("${directory.path}/.cookie/gawgaga"));
+  return ref.watch(twitterRiverAPIProvider("${directory.path}/.cookie/gwagawgdew"));
 });

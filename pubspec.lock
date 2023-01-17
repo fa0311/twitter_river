@@ -85,20 +85,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  dio:
+  diox:
     dependency: "direct main"
     description:
-      name: dio
+      name: diox
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.6"
-  dio_cookie_manager:
+    version: "5.0.0-dev.3"
+  diox_cookie_manager:
     dependency: "direct main"
     description:
-      name: dio_cookie_manager
+      name: diox_cookie_manager
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0-dev.1"
   fake_async:
     dependency: transitive
     description:

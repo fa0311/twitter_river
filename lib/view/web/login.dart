@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/constant/uris.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 
@@ -16,7 +18,7 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
   await cookieManager.deleteAllCookies();
   final session = await ref.read(getSessionProvider.future);
 
-  final ioCookies = await session.cookieManager.cookieJar.loadForRequest(TwitterUris.all);
+  final ioCookies = await session.cookieJar.loadForRequest(TwitterGraphQL.base);
   for (final ioCookie in ioCookies) {
     await cookieManager.setCookie(
       url: TwitterUris.all,
@@ -26,7 +28,6 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
       isHttpOnly: ioCookie.httpOnly,
     );
   }
-  session.getTimeLine();
 });
 
 final webViewKey = GlobalKey();
@@ -64,13 +65,16 @@ class TwitterRiverWebLogin extends ConsumerWidget {
               final url = await controller.getUrl();
               if (url == null) return;
               if (url.path == TwitterUris.home.path) {
-                final authToken = await cookieManager.getCookie(
-                  url: TwitterUris.all,
-                  name: TwitterAuth.authToken,
-                );
+                final authToken = await cookieManager.getCookie(url: TwitterUris.all, name: TwitterAuth.authToken);
                 logger.w(authToken);
                 if (authToken != null) {
                   final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterUris.all);
+                  /*
+                  for (final cookie in cookies) {
+                    print(cookie.name);
+                    print(cookie.value);
+                  }
+                  */
                   final ioCookies = [
                     for (final cookie in cookies)
                       io.Cookie(cookie.name, cookie.value)
@@ -78,7 +82,8 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                         ..httpOnly = cookie.isHttpOnly ?? false
                   ];
                   final session = await ref.read(getSessionProvider.future);
-                  session.cookieManager.cookieJar.saveFromResponse(TwitterUris.all, ioCookies);
+                  await session.cookieJar.deleteAll();
+                  await session.cookieJar.saveFromResponse(TwitterGraphQL.base, ioCookies);
                 }
               }
             },

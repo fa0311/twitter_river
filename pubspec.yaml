@@ -41,9 +41,9 @@ dependencies:
   logger: ^1.1.0
   package_info_plus: ^3.0.2
   flutter_inappwebview: ^5.7.2+3
-  dio: ^4.0.6
   cookie_jar: ^3.0.1
-  dio_cookie_manager: ^2.0.0
+  diox: ^5.0.0-dev.3
+  diox_cookie_manager: ^2.0.0 #
   path_provider: ^2.0.11
   flutter_localizations:
     sdk: flutter
