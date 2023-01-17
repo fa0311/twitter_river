@@ -16,24 +16,17 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
   await cookieManager.deleteAllCookies();
   final session = await ref.read(getSessionProvider.future);
 
-  final ioCookies = await session.cookieManager.cookieJar.loadForRequest(TwitterUris.twitter);
+  final ioCookies = await session.cookieManager.cookieJar.loadForRequest(TwitterUris.all);
   for (final ioCookie in ioCookies) {
-    print(ioCookie.name);
-    print(ioCookie.value);
     await cookieManager.setCookie(
-      url: TwitterUris.twitter,
+      url: TwitterUris.all,
       name: ioCookie.name,
       value: ioCookie.value,
-      /*
-      path: ioCookie.path ?? "/",
-      domain: ioCookie.domain,
-      expiresDate: ioCookie.expires == null ? null : ioCookie.expires!.microsecondsSinceEpoch,
-      maxAge: ioCookie.maxAge,
       isSecure: ioCookie.secure,
       isHttpOnly: ioCookie.httpOnly,
-      */
     );
   }
+  session.getTimeLine();
 });
 
 final webViewKey = GlobalKey();
@@ -72,33 +65,20 @@ class TwitterRiverWebLogin extends ConsumerWidget {
               if (url == null) return;
               if (url.path == TwitterUris.home.path) {
                 final authToken = await cookieManager.getCookie(
-                  url: TwitterUris.twitter,
+                  url: TwitterUris.all,
                   name: TwitterAuth.authToken,
                 );
                 logger.w(authToken);
                 if (authToken != null) {
-                  final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterUris.twitter);
-
-                  cookies.removeWhere((element) => !["ct0", "auth_token", "att"].contains(element.name));
-                  for (final cookie in cookies) {
-                    print(cookie.name);
-                    print(cookie.value);
-                    print(cookie.value);
-                  }
+                  final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterUris.all);
                   final ioCookies = [
-                    for (final cookie in cookies) io.Cookie(cookie.name, cookie.value)
-                    /*
-                        ..domain = cookie.domain
-                        ..expires = cookie.expiresDate == null ? null : DateTime.fromMillisecondsSinceEpoch(cookie.expiresDate!)
-                        ..maxAge = null
-                        ..path = cookie.path
+                    for (final cookie in cookies)
+                      io.Cookie(cookie.name, cookie.value)
                         ..secure = cookie.isSecure ?? false
                         ..httpOnly = cookie.isHttpOnly ?? false
-                        */
                   ];
-
                   final session = await ref.read(getSessionProvider.future);
-                  session.cookieManager.cookieJar.saveFromResponse(TwitterUris.twitter, ioCookies);
+                  session.cookieManager.cookieJar.saveFromResponse(TwitterUris.all, ioCookies);
                 }
               }
             },
