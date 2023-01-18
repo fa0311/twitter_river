@@ -9,7 +9,6 @@ import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/constant/uris.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 
@@ -18,7 +17,7 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
   await cookieManager.deleteAllCookies();
   final session = await ref.read(getSessionProvider.future);
 
-  final ioCookies = await session.cookieJar.loadForRequest(TwitterGraphQL.base);
+  final ioCookies = await session.cookieJar.loadForRequest(TwitterUris.api);
   for (final ioCookie in ioCookies) {
     await cookieManager.setCookie(
       url: TwitterUris.all,
@@ -69,12 +68,6 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                 logger.w(authToken);
                 if (authToken != null) {
                   final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterUris.all);
-                  /*
-                  for (final cookie in cookies) {
-                    print(cookie.name);
-                    print(cookie.value);
-                  }
-                  */
                   final ioCookies = [
                     for (final cookie in cookies)
                       io.Cookie(cookie.name, cookie.value)
@@ -83,7 +76,7 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                   ];
                   final session = await ref.read(getSessionProvider.future);
                   await session.cookieJar.deleteAll();
-                  await session.cookieJar.saveFromResponse(TwitterGraphQL.base, ioCookies);
+                  await session.cookieJar.saveFromResponse(TwitterUris.api, ioCookies);
                 }
               }
             },

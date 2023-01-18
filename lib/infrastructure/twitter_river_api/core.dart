@@ -5,6 +5,7 @@ import 'package:diox/diox.dart';
 import 'package:diox_cookie_manager/diox_cookie_manager.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
+import 'package:twitter_river/main.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -67,9 +68,10 @@ class TwitterRiverAPI {
     for (final entry in response.data["data"]["home"]["home_timeline_urt"]["instructions"][0]["entries"]) {
       try {
         result.add(entry["content"]["itemContent"]["tweet_results"]["result"]["legacy"]["full_text"]);
-      } catch (e) {}
+      } catch (e) {
+        logger.i(e);
+      }
     }
-    print(result);
     return result;
   }
 }
@@ -88,7 +90,6 @@ class HeaderAuth extends Interceptor {
       "x-twitter-auth-type": "OAuth2Session",
       "x-twitter-client-language": "ja",
     });
-    print(options.headers);
     return handler.next(options);
   }
 }
