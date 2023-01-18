@@ -1,8 +1,12 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:diox/diox.dart';
 import 'package:diox_cookie_manager/diox_cookie_manager.dart';
+
+// Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
@@ -28,12 +32,13 @@ class TwitterRiverAPI {
     ]);
   }
 
-  Future<TwitterResponse> getTimeLine() async {
-    final response = await dio.get(
+  Future<TwitterResponse> getTimeLine({String? cursor}) async {
+    final response = await dio.post(
       TwitterGraphQL.homeTimeline.path,
-      queryParameters: {
+      data: {
         "variables": jsonEncode({
           "count": 20,
+          if (cursor != null) "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
           "withCommunity": true,
@@ -73,14 +78,18 @@ class HeaderAuth extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    options.headers.addAll({
-      "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
-      "x-csrf-token": (await cookieJar.loadForRequest(TwitterGraphQL.base)).firstWhere((element) => element.name == TwitterAuth.ct0).value,
-      "x-twitter-active-user": "yes",
-      "x-twitter-auth-type": "OAuth2Session",
-      "x-twitter-client-language": "ja",
-    });
+    try {
+      options.headers.addAll({
+        "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+        "x-csrf-token": (await cookieJar.loadForRequest(TwitterGraphQL.base)).firstWhere((element) => element.name == TwitterAuth.ct0).value,
+        "x-twitter-active-user": "yes",
+        "x-twitter-auth-type": "OAuth2Session",
+        "x-twitter-client-language": "ja",
+      });
+    } catch (e) {
+      return handler.reject(DioError(requestOptions: options));
+    }
     return handler.next(options);
   }
 }

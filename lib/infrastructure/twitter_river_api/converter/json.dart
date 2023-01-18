@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 class SafetyIntegerConverter extends JsonConverter<int, Object> {
