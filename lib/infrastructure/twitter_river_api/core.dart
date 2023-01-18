@@ -5,6 +5,7 @@ import 'package:diox/diox.dart';
 import 'package:diox_cookie_manager/diox_cookie_manager.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/main.dart';
 
 class TwitterRiverAPI {
@@ -64,10 +65,10 @@ class TwitterRiverAPI {
       },
     );
     final result = <String>[];
-
-    for (final entry in response.data["data"]["home"]["home_timeline_urt"]["instructions"][0]["entries"]) {
+    final data = TwitterResponse.fromJson(response.data);
+    for (final entry in data.data.home.homeTimelineUrt.instructions[0].entries) {
       try {
-        result.add(entry["content"]["itemContent"]["tweet_results"]["result"]["legacy"]["full_text"]);
+        result.add(entry.content.itemContent!.tweetResults.result.legacy.fullText);
       } catch (e) {
         logger.i(e);
       }
