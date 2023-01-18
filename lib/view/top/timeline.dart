@@ -54,7 +54,17 @@ class TwitterRiverTimeline extends ConsumerWidget {
             ),
           );
         }
-        return Card(child: Text(itemList[i].content.itemContent!.tweetResults.result.legacy.fullText));
+        return Card(
+            child: Column(
+          children: [
+            Text(
+              itemList[i].content.itemContent!.tweetResults.result.core.userResults.result.legacy.name,
+            ),
+            Text(
+              itemList[i].content.itemContent!.tweetResults.result.legacy.fullText,
+            ),
+          ],
+        ));
       },
       itemCount: itemList.length + 1,
     );

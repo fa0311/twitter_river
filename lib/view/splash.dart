@@ -20,7 +20,8 @@ final splashProvider = FutureProvider<SplashData>((ref) async {
   final session = await ref.watch(loginSessionProvider.future);
   try {
     await session.getTimeLine(cursor: null);
-  } catch (e) {
+  } catch (e, trace) {
+    logger.w(e, e, trace);
     return SplashData.login;
   }
 

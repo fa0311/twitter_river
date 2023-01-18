@@ -1825,7 +1825,7 @@ mixin _$TweetResult {
   @JsonKey(name: 'rest_id')
   dynamic get restId => throw _privateConstructorUsedError;
   @JsonKey(name: 'core')
-  dynamic get core => throw _privateConstructorUsedError;
+  Core get core => throw _privateConstructorUsedError;
   @JsonKey(name: 'unmention_data')
   dynamic get unmentionData => throw _privateConstructorUsedError;
   @JsonKey(name: 'edit_control')
@@ -1858,7 +1858,7 @@ abstract class $TweetResultCopyWith<$Res> {
       @JsonKey(name: 'rest_id')
           dynamic restId,
       @JsonKey(name: 'core')
-          dynamic core,
+          Core core,
       @JsonKey(name: 'unmention_data')
           dynamic unmentionData,
       @JsonKey(name: 'edit_control')
@@ -1873,6 +1873,7 @@ abstract class $TweetResultCopyWith<$Res> {
       @JsonKey(name: 'views')
           dynamic views});
 
+  $CoreCopyWith<$Res> get core;
   $LegacyCopyWith<$Res> get legacy;
 }
 
@@ -1891,7 +1892,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
   $Res call({
     Object? typename = freezed,
     Object? restId = freezed,
-    Object? core = freezed,
+    Object? core = null,
     Object? unmentionData = freezed,
     Object? editControl = freezed,
     Object? editPerspective = freezed,
@@ -1908,10 +1909,10 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      core: freezed == core
+      core: null == core
           ? _value.core
           : core // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Core,
       unmentionData: freezed == unmentionData
           ? _value.unmentionData
           : unmentionData // ignore: cast_nullable_to_non_nullable
@@ -1941,6 +1942,14 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
 
   @override
   @pragma('vm:prefer-inline')
+  $CoreCopyWith<$Res> get core {
+    return $CoreCopyWith<$Res>(_value.core, (value) {
+      return _then(_value.copyWith(core: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $LegacyCopyWith<$Res> get legacy {
     return $LegacyCopyWith<$Res>(_value.legacy, (value) {
       return _then(_value.copyWith(legacy: value) as $Val);
@@ -1962,7 +1971,7 @@ abstract class _$$_TweetResultCopyWith<$Res>
       @JsonKey(name: 'rest_id')
           dynamic restId,
       @JsonKey(name: 'core')
-          dynamic core,
+          Core core,
       @JsonKey(name: 'unmention_data')
           dynamic unmentionData,
       @JsonKey(name: 'edit_control')
@@ -1977,6 +1986,8 @@ abstract class _$$_TweetResultCopyWith<$Res>
       @JsonKey(name: 'views')
           dynamic views});
 
+  @override
+  $CoreCopyWith<$Res> get core;
   @override
   $LegacyCopyWith<$Res> get legacy;
 }
@@ -1994,7 +2005,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
   $Res call({
     Object? typename = freezed,
     Object? restId = freezed,
-    Object? core = freezed,
+    Object? core = null,
     Object? unmentionData = freezed,
     Object? editControl = freezed,
     Object? editPerspective = freezed,
@@ -2011,10 +2022,10 @@ class __$$_TweetResultCopyWithImpl<$Res>
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      core: freezed == core
+      core: null == core
           ? _value.core
           : core // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Core,
       unmentionData: freezed == unmentionData
           ? _value.unmentionData
           : unmentionData // ignore: cast_nullable_to_non_nullable
@@ -2078,7 +2089,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
   final dynamic restId;
   @override
   @JsonKey(name: 'core')
-  final dynamic core;
+  final Core core;
   @override
   @JsonKey(name: 'unmention_data')
   final dynamic unmentionData;
@@ -2127,7 +2138,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
             other is _$_TweetResult &&
             const DeepCollectionEquality().equals(other.typename, typename) &&
             const DeepCollectionEquality().equals(other.restId, restId) &&
-            const DeepCollectionEquality().equals(other.core, core) &&
+            (identical(other.core, core) || other.core == core) &&
             const DeepCollectionEquality()
                 .equals(other.unmentionData, unmentionData) &&
             const DeepCollectionEquality()
@@ -2146,7 +2157,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
       runtimeType,
       const DeepCollectionEquality().hash(typename),
       const DeepCollectionEquality().hash(restId),
-      const DeepCollectionEquality().hash(core),
+      core,
       const DeepCollectionEquality().hash(unmentionData),
       const DeepCollectionEquality().hash(editControl),
       const DeepCollectionEquality().hash(editPerspective),
@@ -2175,7 +2186,7 @@ abstract class _TweetResult implements TweetResult {
       @JsonKey(name: 'rest_id')
           required final dynamic restId,
       @JsonKey(name: 'core')
-          required final dynamic core,
+          required final Core core,
       @JsonKey(name: 'unmention_data')
           required final dynamic unmentionData,
       @JsonKey(name: 'edit_control')
@@ -2201,7 +2212,7 @@ abstract class _TweetResult implements TweetResult {
   dynamic get restId;
   @override
   @JsonKey(name: 'core')
-  dynamic get core;
+  Core get core;
   @override
   @JsonKey(name: 'unmention_data')
   dynamic get unmentionData;
@@ -2224,6 +2235,2126 @@ abstract class _TweetResult implements TweetResult {
   @override
   @JsonKey(ignore: true)
   _$$_TweetResultCopyWith<_$_TweetResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Core _$CoreFromJson(Map<String, dynamic> json) {
+  return _Core.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Core {
+  @JsonKey(name: 'user_results')
+  UserResults get userResults => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CoreCopyWith<Core> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CoreCopyWith<$Res> {
+  factory $CoreCopyWith(Core value, $Res Function(Core) then) =
+      _$CoreCopyWithImpl<$Res, Core>;
+  @useResult
+  $Res call({@JsonKey(name: 'user_results') UserResults userResults});
+
+  $UserResultsCopyWith<$Res> get userResults;
+}
+
+/// @nodoc
+class _$CoreCopyWithImpl<$Res, $Val extends Core>
+    implements $CoreCopyWith<$Res> {
+  _$CoreCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userResults = null,
+  }) {
+    return _then(_value.copyWith(
+      userResults: null == userResults
+          ? _value.userResults
+          : userResults // ignore: cast_nullable_to_non_nullable
+              as UserResults,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserResultsCopyWith<$Res> get userResults {
+    return $UserResultsCopyWith<$Res>(_value.userResults, (value) {
+      return _then(_value.copyWith(userResults: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_CoreCopyWith<$Res> implements $CoreCopyWith<$Res> {
+  factory _$$_CoreCopyWith(_$_Core value, $Res Function(_$_Core) then) =
+      __$$_CoreCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'user_results') UserResults userResults});
+
+  @override
+  $UserResultsCopyWith<$Res> get userResults;
+}
+
+/// @nodoc
+class __$$_CoreCopyWithImpl<$Res> extends _$CoreCopyWithImpl<$Res, _$_Core>
+    implements _$$_CoreCopyWith<$Res> {
+  __$$_CoreCopyWithImpl(_$_Core _value, $Res Function(_$_Core) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userResults = null,
+  }) {
+    return _then(_$_Core(
+      userResults: null == userResults
+          ? _value.userResults
+          : userResults // ignore: cast_nullable_to_non_nullable
+              as UserResults,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Core with DiagnosticableTreeMixin implements _Core {
+  const _$_Core({@JsonKey(name: 'user_results') required this.userResults});
+
+  factory _$_Core.fromJson(Map<String, dynamic> json) => _$$_CoreFromJson(json);
+
+  @override
+  @JsonKey(name: 'user_results')
+  final UserResults userResults;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Core(userResults: $userResults)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Core'))
+      ..add(DiagnosticsProperty('userResults', userResults));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Core &&
+            (identical(other.userResults, userResults) ||
+                other.userResults == userResults));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, userResults);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CoreCopyWith<_$_Core> get copyWith =>
+      __$$_CoreCopyWithImpl<_$_Core>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoreToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Core implements Core {
+  const factory _Core(
+      {@JsonKey(name: 'user_results')
+          required final UserResults userResults}) = _$_Core;
+
+  factory _Core.fromJson(Map<String, dynamic> json) = _$_Core.fromJson;
+
+  @override
+  @JsonKey(name: 'user_results')
+  UserResults get userResults;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CoreCopyWith<_$_Core> get copyWith => throw _privateConstructorUsedError;
+}
+
+UserResults _$UserResultsFromJson(Map<String, dynamic> json) {
+  return _UserResults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserResults {
+  @JsonKey(name: 'result')
+  Result get result => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserResultsCopyWith<UserResults> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserResultsCopyWith<$Res> {
+  factory $UserResultsCopyWith(
+          UserResults value, $Res Function(UserResults) then) =
+      _$UserResultsCopyWithImpl<$Res, UserResults>;
+  @useResult
+  $Res call({@JsonKey(name: 'result') Result result});
+
+  $ResultCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class _$UserResultsCopyWithImpl<$Res, $Val extends UserResults>
+    implements $UserResultsCopyWith<$Res> {
+  _$UserResultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_value.copyWith(
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Result,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultCopyWith<$Res> get result {
+    return $ResultCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserResultsCopyWith<$Res>
+    implements $UserResultsCopyWith<$Res> {
+  factory _$$_UserResultsCopyWith(
+          _$_UserResults value, $Res Function(_$_UserResults) then) =
+      __$$_UserResultsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'result') Result result});
+
+  @override
+  $ResultCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$$_UserResultsCopyWithImpl<$Res>
+    extends _$UserResultsCopyWithImpl<$Res, _$_UserResults>
+    implements _$$_UserResultsCopyWith<$Res> {
+  __$$_UserResultsCopyWithImpl(
+      _$_UserResults _value, $Res Function(_$_UserResults) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$_UserResults(
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Result,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_UserResults with DiagnosticableTreeMixin implements _UserResults {
+  const _$_UserResults({@JsonKey(name: 'result') required this.result});
+
+  factory _$_UserResults.fromJson(Map<String, dynamic> json) =>
+      _$$_UserResultsFromJson(json);
+
+  @override
+  @JsonKey(name: 'result')
+  final Result result;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'UserResults(result: $result)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserResults'))
+      ..add(DiagnosticsProperty('result', result));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserResults &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserResultsCopyWith<_$_UserResults> get copyWith =>
+      __$$_UserResultsCopyWithImpl<_$_UserResults>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserResultsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserResults implements UserResults {
+  const factory _UserResults(
+      {@JsonKey(name: 'result') required final Result result}) = _$_UserResults;
+
+  factory _UserResults.fromJson(Map<String, dynamic> json) =
+      _$_UserResults.fromJson;
+
+  @override
+  @JsonKey(name: 'result')
+  Result get result;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserResultsCopyWith<_$_UserResults> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Result _$ResultFromJson(Map<String, dynamic> json) {
+  return _Result.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Result {
+  @JsonKey(name: 'affiliates_highlighted_label')
+  dynamic get affiliatesHighlightedLabel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_graduated_access')
+  bool get hasGraduatedAccess => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_nft_avatar')
+  bool get hasNftAvatar => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id')
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_blue_verified')
+  bool get isBlueVerified => throw _privateConstructorUsedError;
+  @JsonKey(name: 'legacy')
+  UserLegacy get legacy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rest_id')
+  String get restId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'super_follow_eligible')
+  bool get superFollowEligible => throw _privateConstructorUsedError;
+  @JsonKey(name: 'super_followed_by')
+  bool get superFollowedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'super_following')
+  bool get superFollowing => throw _privateConstructorUsedError;
+  @JsonKey(name: '__typename')
+  String get typename => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResultCopyWith<$Res> {
+  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
+      _$ResultCopyWithImpl<$Res, Result>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'affiliates_highlighted_label')
+          dynamic affiliatesHighlightedLabel,
+      @JsonKey(name: 'has_graduated_access')
+          bool hasGraduatedAccess,
+      @JsonKey(name: 'has_nft_avatar')
+          bool hasNftAvatar,
+      @JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'is_blue_verified')
+          bool isBlueVerified,
+      @JsonKey(name: 'legacy')
+          UserLegacy legacy,
+      @JsonKey(name: 'rest_id')
+          String restId,
+      @JsonKey(name: 'super_follow_eligible')
+          bool superFollowEligible,
+      @JsonKey(name: 'super_followed_by')
+          bool superFollowedBy,
+      @JsonKey(name: 'super_following')
+          bool superFollowing,
+      @JsonKey(name: '__typename')
+          String typename});
+
+  $UserLegacyCopyWith<$Res> get legacy;
+}
+
+/// @nodoc
+class _$ResultCopyWithImpl<$Res, $Val extends Result>
+    implements $ResultCopyWith<$Res> {
+  _$ResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? affiliatesHighlightedLabel = freezed,
+    Object? hasGraduatedAccess = null,
+    Object? hasNftAvatar = null,
+    Object? id = null,
+    Object? isBlueVerified = null,
+    Object? legacy = null,
+    Object? restId = null,
+    Object? superFollowEligible = null,
+    Object? superFollowedBy = null,
+    Object? superFollowing = null,
+    Object? typename = null,
+  }) {
+    return _then(_value.copyWith(
+      affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
+          ? _value.affiliatesHighlightedLabel
+          : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      hasGraduatedAccess: null == hasGraduatedAccess
+          ? _value.hasGraduatedAccess
+          : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasNftAvatar: null == hasNftAvatar
+          ? _value.hasNftAvatar
+          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlueVerified: null == isBlueVerified
+          ? _value.isBlueVerified
+          : isBlueVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      legacy: null == legacy
+          ? _value.legacy
+          : legacy // ignore: cast_nullable_to_non_nullable
+              as UserLegacy,
+      restId: null == restId
+          ? _value.restId
+          : restId // ignore: cast_nullable_to_non_nullable
+              as String,
+      superFollowEligible: null == superFollowEligible
+          ? _value.superFollowEligible
+          : superFollowEligible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      superFollowedBy: null == superFollowedBy
+          ? _value.superFollowedBy
+          : superFollowedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      superFollowing: null == superFollowing
+          ? _value.superFollowing
+          : superFollowing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserLegacyCopyWith<$Res> get legacy {
+    return $UserLegacyCopyWith<$Res>(_value.legacy, (value) {
+      return _then(_value.copyWith(legacy: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
+  factory _$$_ResultCopyWith(_$_Result value, $Res Function(_$_Result) then) =
+      __$$_ResultCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'affiliates_highlighted_label')
+          dynamic affiliatesHighlightedLabel,
+      @JsonKey(name: 'has_graduated_access')
+          bool hasGraduatedAccess,
+      @JsonKey(name: 'has_nft_avatar')
+          bool hasNftAvatar,
+      @JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'is_blue_verified')
+          bool isBlueVerified,
+      @JsonKey(name: 'legacy')
+          UserLegacy legacy,
+      @JsonKey(name: 'rest_id')
+          String restId,
+      @JsonKey(name: 'super_follow_eligible')
+          bool superFollowEligible,
+      @JsonKey(name: 'super_followed_by')
+          bool superFollowedBy,
+      @JsonKey(name: 'super_following')
+          bool superFollowing,
+      @JsonKey(name: '__typename')
+          String typename});
+
+  @override
+  $UserLegacyCopyWith<$Res> get legacy;
+}
+
+/// @nodoc
+class __$$_ResultCopyWithImpl<$Res>
+    extends _$ResultCopyWithImpl<$Res, _$_Result>
+    implements _$$_ResultCopyWith<$Res> {
+  __$$_ResultCopyWithImpl(_$_Result _value, $Res Function(_$_Result) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? affiliatesHighlightedLabel = freezed,
+    Object? hasGraduatedAccess = null,
+    Object? hasNftAvatar = null,
+    Object? id = null,
+    Object? isBlueVerified = null,
+    Object? legacy = null,
+    Object? restId = null,
+    Object? superFollowEligible = null,
+    Object? superFollowedBy = null,
+    Object? superFollowing = null,
+    Object? typename = null,
+  }) {
+    return _then(_$_Result(
+      affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
+          ? _value.affiliatesHighlightedLabel
+          : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      hasGraduatedAccess: null == hasGraduatedAccess
+          ? _value.hasGraduatedAccess
+          : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasNftAvatar: null == hasNftAvatar
+          ? _value.hasNftAvatar
+          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlueVerified: null == isBlueVerified
+          ? _value.isBlueVerified
+          : isBlueVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      legacy: null == legacy
+          ? _value.legacy
+          : legacy // ignore: cast_nullable_to_non_nullable
+              as UserLegacy,
+      restId: null == restId
+          ? _value.restId
+          : restId // ignore: cast_nullable_to_non_nullable
+              as String,
+      superFollowEligible: null == superFollowEligible
+          ? _value.superFollowEligible
+          : superFollowEligible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      superFollowedBy: null == superFollowedBy
+          ? _value.superFollowedBy
+          : superFollowedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      superFollowing: null == superFollowing
+          ? _value.superFollowing
+          : superFollowing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Result with DiagnosticableTreeMixin implements _Result {
+  const _$_Result(
+      {@JsonKey(name: 'affiliates_highlighted_label')
+          required this.affiliatesHighlightedLabel,
+      @JsonKey(name: 'has_graduated_access')
+          required this.hasGraduatedAccess,
+      @JsonKey(name: 'has_nft_avatar')
+          required this.hasNftAvatar,
+      @JsonKey(name: 'id')
+          required this.id,
+      @JsonKey(name: 'is_blue_verified')
+          required this.isBlueVerified,
+      @JsonKey(name: 'legacy')
+          required this.legacy,
+      @JsonKey(name: 'rest_id')
+          required this.restId,
+      @JsonKey(name: 'super_follow_eligible')
+          required this.superFollowEligible,
+      @JsonKey(name: 'super_followed_by')
+          required this.superFollowedBy,
+      @JsonKey(name: 'super_following')
+          required this.superFollowing,
+      @JsonKey(name: '__typename')
+          required this.typename});
+
+  factory _$_Result.fromJson(Map<String, dynamic> json) =>
+      _$$_ResultFromJson(json);
+
+  @override
+  @JsonKey(name: 'affiliates_highlighted_label')
+  final dynamic affiliatesHighlightedLabel;
+  @override
+  @JsonKey(name: 'has_graduated_access')
+  final bool hasGraduatedAccess;
+  @override
+  @JsonKey(name: 'has_nft_avatar')
+  final bool hasNftAvatar;
+  @override
+  @JsonKey(name: 'id')
+  final String id;
+  @override
+  @JsonKey(name: 'is_blue_verified')
+  final bool isBlueVerified;
+  @override
+  @JsonKey(name: 'legacy')
+  final UserLegacy legacy;
+  @override
+  @JsonKey(name: 'rest_id')
+  final String restId;
+  @override
+  @JsonKey(name: 'super_follow_eligible')
+  final bool superFollowEligible;
+  @override
+  @JsonKey(name: 'super_followed_by')
+  final bool superFollowedBy;
+  @override
+  @JsonKey(name: 'super_following')
+  final bool superFollowing;
+  @override
+  @JsonKey(name: '__typename')
+  final String typename;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Result(affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing, typename: $typename)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Result'))
+      ..add(DiagnosticsProperty(
+          'affiliatesHighlightedLabel', affiliatesHighlightedLabel))
+      ..add(DiagnosticsProperty('hasGraduatedAccess', hasGraduatedAccess))
+      ..add(DiagnosticsProperty('hasNftAvatar', hasNftAvatar))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('isBlueVerified', isBlueVerified))
+      ..add(DiagnosticsProperty('legacy', legacy))
+      ..add(DiagnosticsProperty('restId', restId))
+      ..add(DiagnosticsProperty('superFollowEligible', superFollowEligible))
+      ..add(DiagnosticsProperty('superFollowedBy', superFollowedBy))
+      ..add(DiagnosticsProperty('superFollowing', superFollowing))
+      ..add(DiagnosticsProperty('typename', typename));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Result &&
+            const DeepCollectionEquality().equals(
+                other.affiliatesHighlightedLabel, affiliatesHighlightedLabel) &&
+            (identical(other.hasGraduatedAccess, hasGraduatedAccess) ||
+                other.hasGraduatedAccess == hasGraduatedAccess) &&
+            (identical(other.hasNftAvatar, hasNftAvatar) ||
+                other.hasNftAvatar == hasNftAvatar) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isBlueVerified, isBlueVerified) ||
+                other.isBlueVerified == isBlueVerified) &&
+            (identical(other.legacy, legacy) || other.legacy == legacy) &&
+            (identical(other.restId, restId) || other.restId == restId) &&
+            (identical(other.superFollowEligible, superFollowEligible) ||
+                other.superFollowEligible == superFollowEligible) &&
+            (identical(other.superFollowedBy, superFollowedBy) ||
+                other.superFollowedBy == superFollowedBy) &&
+            (identical(other.superFollowing, superFollowing) ||
+                other.superFollowing == superFollowing) &&
+            (identical(other.typename, typename) ||
+                other.typename == typename));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(affiliatesHighlightedLabel),
+      hasGraduatedAccess,
+      hasNftAvatar,
+      id,
+      isBlueVerified,
+      legacy,
+      restId,
+      superFollowEligible,
+      superFollowedBy,
+      superFollowing,
+      typename);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ResultCopyWith<_$_Result> get copyWith =>
+      __$$_ResultCopyWithImpl<_$_Result>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ResultToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Result implements Result {
+  const factory _Result(
+      {@JsonKey(name: 'affiliates_highlighted_label')
+          required final dynamic affiliatesHighlightedLabel,
+      @JsonKey(name: 'has_graduated_access')
+          required final bool hasGraduatedAccess,
+      @JsonKey(name: 'has_nft_avatar')
+          required final bool hasNftAvatar,
+      @JsonKey(name: 'id')
+          required final String id,
+      @JsonKey(name: 'is_blue_verified')
+          required final bool isBlueVerified,
+      @JsonKey(name: 'legacy')
+          required final UserLegacy legacy,
+      @JsonKey(name: 'rest_id')
+          required final String restId,
+      @JsonKey(name: 'super_follow_eligible')
+          required final bool superFollowEligible,
+      @JsonKey(name: 'super_followed_by')
+          required final bool superFollowedBy,
+      @JsonKey(name: 'super_following')
+          required final bool superFollowing,
+      @JsonKey(name: '__typename')
+          required final String typename}) = _$_Result;
+
+  factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
+
+  @override
+  @JsonKey(name: 'affiliates_highlighted_label')
+  dynamic get affiliatesHighlightedLabel;
+  @override
+  @JsonKey(name: 'has_graduated_access')
+  bool get hasGraduatedAccess;
+  @override
+  @JsonKey(name: 'has_nft_avatar')
+  bool get hasNftAvatar;
+  @override
+  @JsonKey(name: 'id')
+  String get id;
+  @override
+  @JsonKey(name: 'is_blue_verified')
+  bool get isBlueVerified;
+  @override
+  @JsonKey(name: 'legacy')
+  UserLegacy get legacy;
+  @override
+  @JsonKey(name: 'rest_id')
+  String get restId;
+  @override
+  @JsonKey(name: 'super_follow_eligible')
+  bool get superFollowEligible;
+  @override
+  @JsonKey(name: 'super_followed_by')
+  bool get superFollowedBy;
+  @override
+  @JsonKey(name: 'super_following')
+  bool get superFollowing;
+  @override
+  @JsonKey(name: '__typename')
+  String get typename;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ResultCopyWith<_$_Result> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserLegacy _$UserLegacyFromJson(Map<String, dynamic> json) {
+  return _UserLegacy.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserLegacy {
+  @JsonKey(name: 'blocked_by')
+  bool get blockedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'blocking')
+  dynamic get blocking => throw _privateConstructorUsedError;
+  @JsonKey(name: 'can_dm')
+  bool get canDm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'can_media_tag')
+  bool get canMediaTag => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'default_profile')
+  bool get defaultProfile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'default_profile_image')
+  bool get defaultProfileImage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
+  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'entities')
+  dynamic get entities => throw _privateConstructorUsedError;
+  @JsonKey(name: 'fast_followers_count')
+  int get fastFollowersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'favourites_count')
+  int get favouritesCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'follow_request_sent')
+  bool get followRequestSent => throw _privateConstructorUsedError;
+  @JsonKey(name: 'followed_by')
+  bool get followedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'followers_count')
+  int get followersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'following')
+  bool get following => throw _privateConstructorUsedError;
+  @JsonKey(name: 'friends_count')
+  int get friendsCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_custom_timelines')
+  bool get hasCustomTimelines => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_translator')
+  bool get isTranslator => throw _privateConstructorUsedError;
+  @JsonKey(name: 'listed_count')
+  int get listedCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'location')
+  String get location => throw _privateConstructorUsedError;
+  @JsonKey(name: 'media_count')
+  int get mediaCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'muting')
+  bool get muting => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'normal_followers_count')
+  int get normalFollowersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'notifications')
+  bool get notifications => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pinned_tweet_ids_str')
+  List<String> get pinnedTweetIdsStr => throw _privateConstructorUsedError;
+  @JsonKey(name: 'possibly_sensitive')
+  bool get possiblySensitive => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_banner_extensions')
+  dynamic get profileBannerExtensions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_banner_url')
+  String get profileBannerUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_image_extensions')
+  dynamic get profileImageExtensions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_image_url_https')
+  String get profileImageUrlHttps => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_interstitial_type')
+  String get profileInterstitialType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'protected')
+  bool get protected => throw _privateConstructorUsedError;
+  @JsonKey(name: 'screen_name')
+  String get screenName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'statuses_count')
+  int get statusesCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'translator_type')
+  String get translatorType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'url')
+  String? get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'verified')
+  bool get verified => throw _privateConstructorUsedError;
+  @JsonKey(name: 'want_retweets')
+  bool get wantRetweets => throw _privateConstructorUsedError;
+  @JsonKey(name: 'withheld_in_countries')
+  List<dynamic> get withheldInCountries => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserLegacyCopyWith<UserLegacy> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserLegacyCopyWith<$Res> {
+  factory $UserLegacyCopyWith(
+          UserLegacy value, $Res Function(UserLegacy) then) =
+      _$UserLegacyCopyWithImpl<$Res, UserLegacy>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'blocked_by')
+          bool blockedBy,
+      @JsonKey(name: 'blocking')
+          dynamic blocking,
+      @JsonKey(name: 'can_dm')
+          bool canDm,
+      @JsonKey(name: 'can_media_tag')
+          bool canMediaTag,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'default_profile')
+          bool defaultProfile,
+      @JsonKey(name: 'default_profile_image')
+          bool defaultProfileImage,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'entities')
+          dynamic entities,
+      @JsonKey(name: 'fast_followers_count')
+          int fastFollowersCount,
+      @JsonKey(name: 'favourites_count')
+          int favouritesCount,
+      @JsonKey(name: 'follow_request_sent')
+          bool followRequestSent,
+      @JsonKey(name: 'followed_by')
+          bool followedBy,
+      @JsonKey(name: 'followers_count')
+          int followersCount,
+      @JsonKey(name: 'following')
+          bool following,
+      @JsonKey(name: 'friends_count')
+          int friendsCount,
+      @JsonKey(name: 'has_custom_timelines')
+          bool hasCustomTimelines,
+      @JsonKey(name: 'is_translator')
+          bool isTranslator,
+      @JsonKey(name: 'listed_count')
+          int listedCount,
+      @JsonKey(name: 'location')
+          String location,
+      @JsonKey(name: 'media_count')
+          int mediaCount,
+      @JsonKey(name: 'muting')
+          bool muting,
+      @JsonKey(name: 'name')
+          String name,
+      @JsonKey(name: 'normal_followers_count')
+          int normalFollowersCount,
+      @JsonKey(name: 'notifications')
+          bool notifications,
+      @JsonKey(name: 'pinned_tweet_ids_str')
+          List<String> pinnedTweetIdsStr,
+      @JsonKey(name: 'possibly_sensitive')
+          bool possiblySensitive,
+      @JsonKey(name: 'profile_banner_extensions')
+          dynamic profileBannerExtensions,
+      @JsonKey(name: 'profile_banner_url')
+          String profileBannerUrl,
+      @JsonKey(name: 'profile_image_extensions')
+          dynamic profileImageExtensions,
+      @JsonKey(name: 'profile_image_url_https')
+          String profileImageUrlHttps,
+      @JsonKey(name: 'profile_interstitial_type')
+          String profileInterstitialType,
+      @JsonKey(name: 'protected')
+          bool protected,
+      @JsonKey(name: 'screen_name')
+          String screenName,
+      @JsonKey(name: 'statuses_count')
+          int statusesCount,
+      @JsonKey(name: 'translator_type')
+          String translatorType,
+      @JsonKey(name: 'url')
+          String? url,
+      @JsonKey(name: 'verified')
+          bool verified,
+      @JsonKey(name: 'want_retweets')
+          bool wantRetweets,
+      @JsonKey(name: 'withheld_in_countries')
+          List<dynamic> withheldInCountries});
+}
+
+/// @nodoc
+class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
+    implements $UserLegacyCopyWith<$Res> {
+  _$UserLegacyCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockedBy = null,
+    Object? blocking = freezed,
+    Object? canDm = null,
+    Object? canMediaTag = null,
+    Object? createdAt = null,
+    Object? defaultProfile = null,
+    Object? defaultProfileImage = null,
+    Object? description = null,
+    Object? entities = freezed,
+    Object? fastFollowersCount = null,
+    Object? favouritesCount = null,
+    Object? followRequestSent = null,
+    Object? followedBy = null,
+    Object? followersCount = null,
+    Object? following = null,
+    Object? friendsCount = null,
+    Object? hasCustomTimelines = null,
+    Object? isTranslator = null,
+    Object? listedCount = null,
+    Object? location = null,
+    Object? mediaCount = null,
+    Object? muting = null,
+    Object? name = null,
+    Object? normalFollowersCount = null,
+    Object? notifications = null,
+    Object? pinnedTweetIdsStr = null,
+    Object? possiblySensitive = null,
+    Object? profileBannerExtensions = freezed,
+    Object? profileBannerUrl = null,
+    Object? profileImageExtensions = freezed,
+    Object? profileImageUrlHttps = null,
+    Object? profileInterstitialType = null,
+    Object? protected = null,
+    Object? screenName = null,
+    Object? statusesCount = null,
+    Object? translatorType = null,
+    Object? url = freezed,
+    Object? verified = null,
+    Object? wantRetweets = null,
+    Object? withheldInCountries = null,
+  }) {
+    return _then(_value.copyWith(
+      blockedBy: null == blockedBy
+          ? _value.blockedBy
+          : blockedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      blocking: freezed == blocking
+          ? _value.blocking
+          : blocking // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      canDm: null == canDm
+          ? _value.canDm
+          : canDm // ignore: cast_nullable_to_non_nullable
+              as bool,
+      canMediaTag: null == canMediaTag
+          ? _value.canMediaTag
+          : canMediaTag // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultProfile: null == defaultProfile
+          ? _value.defaultProfile
+          : defaultProfile // ignore: cast_nullable_to_non_nullable
+              as bool,
+      defaultProfileImage: null == defaultProfileImage
+          ? _value.defaultProfileImage
+          : defaultProfileImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      entities: freezed == entities
+          ? _value.entities
+          : entities // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      fastFollowersCount: null == fastFollowersCount
+          ? _value.fastFollowersCount
+          : fastFollowersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      favouritesCount: null == favouritesCount
+          ? _value.favouritesCount
+          : favouritesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followRequestSent: null == followRequestSent
+          ? _value.followRequestSent
+          : followRequestSent // ignore: cast_nullable_to_non_nullable
+              as bool,
+      followedBy: null == followedBy
+          ? _value.followedBy
+          : followedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as bool,
+      friendsCount: null == friendsCount
+          ? _value.friendsCount
+          : friendsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasCustomTimelines: null == hasCustomTimelines
+          ? _value.hasCustomTimelines
+          : hasCustomTimelines // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTranslator: null == isTranslator
+          ? _value.isTranslator
+          : isTranslator // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listedCount: null == listedCount
+          ? _value.listedCount
+          : listedCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      mediaCount: null == mediaCount
+          ? _value.mediaCount
+          : mediaCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muting: null == muting
+          ? _value.muting
+          : muting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      normalFollowersCount: null == normalFollowersCount
+          ? _value.normalFollowersCount
+          : normalFollowersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      notifications: null == notifications
+          ? _value.notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pinnedTweetIdsStr: null == pinnedTweetIdsStr
+          ? _value.pinnedTweetIdsStr
+          : pinnedTweetIdsStr // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      possiblySensitive: null == possiblySensitive
+          ? _value.possiblySensitive
+          : possiblySensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      profileBannerExtensions: freezed == profileBannerExtensions
+          ? _value.profileBannerExtensions
+          : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      profileBannerUrl: null == profileBannerUrl
+          ? _value.profileBannerUrl
+          : profileBannerUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileImageExtensions: freezed == profileImageExtensions
+          ? _value.profileImageExtensions
+          : profileImageExtensions // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      profileImageUrlHttps: null == profileImageUrlHttps
+          ? _value.profileImageUrlHttps
+          : profileImageUrlHttps // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileInterstitialType: null == profileInterstitialType
+          ? _value.profileInterstitialType
+          : profileInterstitialType // ignore: cast_nullable_to_non_nullable
+              as String,
+      protected: null == protected
+          ? _value.protected
+          : protected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusesCount: null == statusesCount
+          ? _value.statusesCount
+          : statusesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      translatorType: null == translatorType
+          ? _value.translatorType
+          : translatorType // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verified: null == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wantRetweets: null == wantRetweets
+          ? _value.wantRetweets
+          : wantRetweets // ignore: cast_nullable_to_non_nullable
+              as bool,
+      withheldInCountries: null == withheldInCountries
+          ? _value.withheldInCountries
+          : withheldInCountries // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserLegacyCopyWith<$Res>
+    implements $UserLegacyCopyWith<$Res> {
+  factory _$$_UserLegacyCopyWith(
+          _$_UserLegacy value, $Res Function(_$_UserLegacy) then) =
+      __$$_UserLegacyCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'blocked_by')
+          bool blockedBy,
+      @JsonKey(name: 'blocking')
+          dynamic blocking,
+      @JsonKey(name: 'can_dm')
+          bool canDm,
+      @JsonKey(name: 'can_media_tag')
+          bool canMediaTag,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'default_profile')
+          bool defaultProfile,
+      @JsonKey(name: 'default_profile_image')
+          bool defaultProfileImage,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'entities')
+          dynamic entities,
+      @JsonKey(name: 'fast_followers_count')
+          int fastFollowersCount,
+      @JsonKey(name: 'favourites_count')
+          int favouritesCount,
+      @JsonKey(name: 'follow_request_sent')
+          bool followRequestSent,
+      @JsonKey(name: 'followed_by')
+          bool followedBy,
+      @JsonKey(name: 'followers_count')
+          int followersCount,
+      @JsonKey(name: 'following')
+          bool following,
+      @JsonKey(name: 'friends_count')
+          int friendsCount,
+      @JsonKey(name: 'has_custom_timelines')
+          bool hasCustomTimelines,
+      @JsonKey(name: 'is_translator')
+          bool isTranslator,
+      @JsonKey(name: 'listed_count')
+          int listedCount,
+      @JsonKey(name: 'location')
+          String location,
+      @JsonKey(name: 'media_count')
+          int mediaCount,
+      @JsonKey(name: 'muting')
+          bool muting,
+      @JsonKey(name: 'name')
+          String name,
+      @JsonKey(name: 'normal_followers_count')
+          int normalFollowersCount,
+      @JsonKey(name: 'notifications')
+          bool notifications,
+      @JsonKey(name: 'pinned_tweet_ids_str')
+          List<String> pinnedTweetIdsStr,
+      @JsonKey(name: 'possibly_sensitive')
+          bool possiblySensitive,
+      @JsonKey(name: 'profile_banner_extensions')
+          dynamic profileBannerExtensions,
+      @JsonKey(name: 'profile_banner_url')
+          String profileBannerUrl,
+      @JsonKey(name: 'profile_image_extensions')
+          dynamic profileImageExtensions,
+      @JsonKey(name: 'profile_image_url_https')
+          String profileImageUrlHttps,
+      @JsonKey(name: 'profile_interstitial_type')
+          String profileInterstitialType,
+      @JsonKey(name: 'protected')
+          bool protected,
+      @JsonKey(name: 'screen_name')
+          String screenName,
+      @JsonKey(name: 'statuses_count')
+          int statusesCount,
+      @JsonKey(name: 'translator_type')
+          String translatorType,
+      @JsonKey(name: 'url')
+          String? url,
+      @JsonKey(name: 'verified')
+          bool verified,
+      @JsonKey(name: 'want_retweets')
+          bool wantRetweets,
+      @JsonKey(name: 'withheld_in_countries')
+          List<dynamic> withheldInCountries});
+}
+
+/// @nodoc
+class __$$_UserLegacyCopyWithImpl<$Res>
+    extends _$UserLegacyCopyWithImpl<$Res, _$_UserLegacy>
+    implements _$$_UserLegacyCopyWith<$Res> {
+  __$$_UserLegacyCopyWithImpl(
+      _$_UserLegacy _value, $Res Function(_$_UserLegacy) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockedBy = null,
+    Object? blocking = freezed,
+    Object? canDm = null,
+    Object? canMediaTag = null,
+    Object? createdAt = null,
+    Object? defaultProfile = null,
+    Object? defaultProfileImage = null,
+    Object? description = null,
+    Object? entities = freezed,
+    Object? fastFollowersCount = null,
+    Object? favouritesCount = null,
+    Object? followRequestSent = null,
+    Object? followedBy = null,
+    Object? followersCount = null,
+    Object? following = null,
+    Object? friendsCount = null,
+    Object? hasCustomTimelines = null,
+    Object? isTranslator = null,
+    Object? listedCount = null,
+    Object? location = null,
+    Object? mediaCount = null,
+    Object? muting = null,
+    Object? name = null,
+    Object? normalFollowersCount = null,
+    Object? notifications = null,
+    Object? pinnedTweetIdsStr = null,
+    Object? possiblySensitive = null,
+    Object? profileBannerExtensions = freezed,
+    Object? profileBannerUrl = null,
+    Object? profileImageExtensions = freezed,
+    Object? profileImageUrlHttps = null,
+    Object? profileInterstitialType = null,
+    Object? protected = null,
+    Object? screenName = null,
+    Object? statusesCount = null,
+    Object? translatorType = null,
+    Object? url = freezed,
+    Object? verified = null,
+    Object? wantRetweets = null,
+    Object? withheldInCountries = null,
+  }) {
+    return _then(_$_UserLegacy(
+      blockedBy: null == blockedBy
+          ? _value.blockedBy
+          : blockedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      blocking: freezed == blocking
+          ? _value.blocking
+          : blocking // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      canDm: null == canDm
+          ? _value.canDm
+          : canDm // ignore: cast_nullable_to_non_nullable
+              as bool,
+      canMediaTag: null == canMediaTag
+          ? _value.canMediaTag
+          : canMediaTag // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultProfile: null == defaultProfile
+          ? _value.defaultProfile
+          : defaultProfile // ignore: cast_nullable_to_non_nullable
+              as bool,
+      defaultProfileImage: null == defaultProfileImage
+          ? _value.defaultProfileImage
+          : defaultProfileImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      entities: freezed == entities
+          ? _value.entities
+          : entities // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      fastFollowersCount: null == fastFollowersCount
+          ? _value.fastFollowersCount
+          : fastFollowersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      favouritesCount: null == favouritesCount
+          ? _value.favouritesCount
+          : favouritesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followRequestSent: null == followRequestSent
+          ? _value.followRequestSent
+          : followRequestSent // ignore: cast_nullable_to_non_nullable
+              as bool,
+      followedBy: null == followedBy
+          ? _value.followedBy
+          : followedBy // ignore: cast_nullable_to_non_nullable
+              as bool,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as bool,
+      friendsCount: null == friendsCount
+          ? _value.friendsCount
+          : friendsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasCustomTimelines: null == hasCustomTimelines
+          ? _value.hasCustomTimelines
+          : hasCustomTimelines // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTranslator: null == isTranslator
+          ? _value.isTranslator
+          : isTranslator // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listedCount: null == listedCount
+          ? _value.listedCount
+          : listedCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      mediaCount: null == mediaCount
+          ? _value.mediaCount
+          : mediaCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muting: null == muting
+          ? _value.muting
+          : muting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      normalFollowersCount: null == normalFollowersCount
+          ? _value.normalFollowersCount
+          : normalFollowersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      notifications: null == notifications
+          ? _value.notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pinnedTweetIdsStr: null == pinnedTweetIdsStr
+          ? _value._pinnedTweetIdsStr
+          : pinnedTweetIdsStr // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      possiblySensitive: null == possiblySensitive
+          ? _value.possiblySensitive
+          : possiblySensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      profileBannerExtensions: freezed == profileBannerExtensions
+          ? _value.profileBannerExtensions
+          : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      profileBannerUrl: null == profileBannerUrl
+          ? _value.profileBannerUrl
+          : profileBannerUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileImageExtensions: freezed == profileImageExtensions
+          ? _value.profileImageExtensions
+          : profileImageExtensions // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      profileImageUrlHttps: null == profileImageUrlHttps
+          ? _value.profileImageUrlHttps
+          : profileImageUrlHttps // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileInterstitialType: null == profileInterstitialType
+          ? _value.profileInterstitialType
+          : profileInterstitialType // ignore: cast_nullable_to_non_nullable
+              as String,
+      protected: null == protected
+          ? _value.protected
+          : protected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusesCount: null == statusesCount
+          ? _value.statusesCount
+          : statusesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      translatorType: null == translatorType
+          ? _value.translatorType
+          : translatorType // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verified: null == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wantRetweets: null == wantRetweets
+          ? _value.wantRetweets
+          : wantRetweets // ignore: cast_nullable_to_non_nullable
+              as bool,
+      withheldInCountries: null == withheldInCountries
+          ? _value._withheldInCountries
+          : withheldInCountries // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_UserLegacy with DiagnosticableTreeMixin implements _UserLegacy {
+  const _$_UserLegacy(
+      {@JsonKey(name: 'blocked_by')
+          required this.blockedBy,
+      @JsonKey(name: 'blocking')
+          required this.blocking,
+      @JsonKey(name: 'can_dm')
+          required this.canDm,
+      @JsonKey(name: 'can_media_tag')
+          required this.canMediaTag,
+      @JsonKey(name: 'created_at')
+          required this.createdAt,
+      @JsonKey(name: 'default_profile')
+          required this.defaultProfile,
+      @JsonKey(name: 'default_profile_image')
+          required this.defaultProfileImage,
+      @JsonKey(name: 'description')
+          required this.description,
+      @JsonKey(name: 'entities')
+          required this.entities,
+      @JsonKey(name: 'fast_followers_count')
+          required this.fastFollowersCount,
+      @JsonKey(name: 'favourites_count')
+          required this.favouritesCount,
+      @JsonKey(name: 'follow_request_sent')
+          required this.followRequestSent,
+      @JsonKey(name: 'followed_by')
+          required this.followedBy,
+      @JsonKey(name: 'followers_count')
+          required this.followersCount,
+      @JsonKey(name: 'following')
+          required this.following,
+      @JsonKey(name: 'friends_count')
+          required this.friendsCount,
+      @JsonKey(name: 'has_custom_timelines')
+          required this.hasCustomTimelines,
+      @JsonKey(name: 'is_translator')
+          required this.isTranslator,
+      @JsonKey(name: 'listed_count')
+          required this.listedCount,
+      @JsonKey(name: 'location')
+          required this.location,
+      @JsonKey(name: 'media_count')
+          required this.mediaCount,
+      @JsonKey(name: 'muting')
+          required this.muting,
+      @JsonKey(name: 'name')
+          required this.name,
+      @JsonKey(name: 'normal_followers_count')
+          required this.normalFollowersCount,
+      @JsonKey(name: 'notifications')
+          required this.notifications,
+      @JsonKey(name: 'pinned_tweet_ids_str')
+          required final List<String> pinnedTweetIdsStr,
+      @JsonKey(name: 'possibly_sensitive')
+          required this.possiblySensitive,
+      @JsonKey(name: 'profile_banner_extensions')
+          required this.profileBannerExtensions,
+      @JsonKey(name: 'profile_banner_url')
+          required this.profileBannerUrl,
+      @JsonKey(name: 'profile_image_extensions')
+          required this.profileImageExtensions,
+      @JsonKey(name: 'profile_image_url_https')
+          required this.profileImageUrlHttps,
+      @JsonKey(name: 'profile_interstitial_type')
+          required this.profileInterstitialType,
+      @JsonKey(name: 'protected')
+          required this.protected,
+      @JsonKey(name: 'screen_name')
+          required this.screenName,
+      @JsonKey(name: 'statuses_count')
+          required this.statusesCount,
+      @JsonKey(name: 'translator_type')
+          required this.translatorType,
+      @JsonKey(name: 'url')
+          required this.url,
+      @JsonKey(name: 'verified')
+          required this.verified,
+      @JsonKey(name: 'want_retweets')
+          required this.wantRetweets,
+      @JsonKey(name: 'withheld_in_countries')
+          required final List<dynamic> withheldInCountries})
+      : _pinnedTweetIdsStr = pinnedTweetIdsStr,
+        _withheldInCountries = withheldInCountries;
+
+  factory _$_UserLegacy.fromJson(Map<String, dynamic> json) =>
+      _$$_UserLegacyFromJson(json);
+
+  @override
+  @JsonKey(name: 'blocked_by')
+  final bool blockedBy;
+  @override
+  @JsonKey(name: 'blocking')
+  final dynamic blocking;
+  @override
+  @JsonKey(name: 'can_dm')
+  final bool canDm;
+  @override
+  @JsonKey(name: 'can_media_tag')
+  final bool canMediaTag;
+  @override
+  @JsonKey(name: 'created_at')
+  final String createdAt;
+  @override
+  @JsonKey(name: 'default_profile')
+  final bool defaultProfile;
+  @override
+  @JsonKey(name: 'default_profile_image')
+  final bool defaultProfileImage;
+  @override
+  @JsonKey(name: 'description')
+  final String description;
+  @override
+  @JsonKey(name: 'entities')
+  final dynamic entities;
+  @override
+  @JsonKey(name: 'fast_followers_count')
+  final int fastFollowersCount;
+  @override
+  @JsonKey(name: 'favourites_count')
+  final int favouritesCount;
+  @override
+  @JsonKey(name: 'follow_request_sent')
+  final bool followRequestSent;
+  @override
+  @JsonKey(name: 'followed_by')
+  final bool followedBy;
+  @override
+  @JsonKey(name: 'followers_count')
+  final int followersCount;
+  @override
+  @JsonKey(name: 'following')
+  final bool following;
+  @override
+  @JsonKey(name: 'friends_count')
+  final int friendsCount;
+  @override
+  @JsonKey(name: 'has_custom_timelines')
+  final bool hasCustomTimelines;
+  @override
+  @JsonKey(name: 'is_translator')
+  final bool isTranslator;
+  @override
+  @JsonKey(name: 'listed_count')
+  final int listedCount;
+  @override
+  @JsonKey(name: 'location')
+  final String location;
+  @override
+  @JsonKey(name: 'media_count')
+  final int mediaCount;
+  @override
+  @JsonKey(name: 'muting')
+  final bool muting;
+  @override
+  @JsonKey(name: 'name')
+  final String name;
+  @override
+  @JsonKey(name: 'normal_followers_count')
+  final int normalFollowersCount;
+  @override
+  @JsonKey(name: 'notifications')
+  final bool notifications;
+  final List<String> _pinnedTweetIdsStr;
+  @override
+  @JsonKey(name: 'pinned_tweet_ids_str')
+  List<String> get pinnedTweetIdsStr {
+    if (_pinnedTweetIdsStr is EqualUnmodifiableListView)
+      return _pinnedTweetIdsStr;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pinnedTweetIdsStr);
+  }
+
+  @override
+  @JsonKey(name: 'possibly_sensitive')
+  final bool possiblySensitive;
+  @override
+  @JsonKey(name: 'profile_banner_extensions')
+  final dynamic profileBannerExtensions;
+  @override
+  @JsonKey(name: 'profile_banner_url')
+  final String profileBannerUrl;
+  @override
+  @JsonKey(name: 'profile_image_extensions')
+  final dynamic profileImageExtensions;
+  @override
+  @JsonKey(name: 'profile_image_url_https')
+  final String profileImageUrlHttps;
+  @override
+  @JsonKey(name: 'profile_interstitial_type')
+  final String profileInterstitialType;
+  @override
+  @JsonKey(name: 'protected')
+  final bool protected;
+  @override
+  @JsonKey(name: 'screen_name')
+  final String screenName;
+  @override
+  @JsonKey(name: 'statuses_count')
+  final int statusesCount;
+  @override
+  @JsonKey(name: 'translator_type')
+  final String translatorType;
+  @override
+  @JsonKey(name: 'url')
+  final String? url;
+  @override
+  @JsonKey(name: 'verified')
+  final bool verified;
+  @override
+  @JsonKey(name: 'want_retweets')
+  final bool wantRetweets;
+  final List<dynamic> _withheldInCountries;
+  @override
+  @JsonKey(name: 'withheld_in_countries')
+  List<dynamic> get withheldInCountries {
+    if (_withheldInCountries is EqualUnmodifiableListView)
+      return _withheldInCountries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_withheldInCountries);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'UserLegacy(blockedBy: $blockedBy, blocking: $blocking, canDm: $canDm, canMediaTag: $canMediaTag, createdAt: $createdAt, defaultProfile: $defaultProfile, defaultProfileImage: $defaultProfileImage, description: $description, entities: $entities, fastFollowersCount: $fastFollowersCount, favouritesCount: $favouritesCount, followRequestSent: $followRequestSent, followedBy: $followedBy, followersCount: $followersCount, following: $following, friendsCount: $friendsCount, hasCustomTimelines: $hasCustomTimelines, isTranslator: $isTranslator, listedCount: $listedCount, location: $location, mediaCount: $mediaCount, muting: $muting, name: $name, normalFollowersCount: $normalFollowersCount, notifications: $notifications, pinnedTweetIdsStr: $pinnedTweetIdsStr, possiblySensitive: $possiblySensitive, profileBannerExtensions: $profileBannerExtensions, profileBannerUrl: $profileBannerUrl, profileImageExtensions: $profileImageExtensions, profileImageUrlHttps: $profileImageUrlHttps, profileInterstitialType: $profileInterstitialType, protected: $protected, screenName: $screenName, statusesCount: $statusesCount, translatorType: $translatorType, url: $url, verified: $verified, wantRetweets: $wantRetweets, withheldInCountries: $withheldInCountries)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserLegacy'))
+      ..add(DiagnosticsProperty('blockedBy', blockedBy))
+      ..add(DiagnosticsProperty('blocking', blocking))
+      ..add(DiagnosticsProperty('canDm', canDm))
+      ..add(DiagnosticsProperty('canMediaTag', canMediaTag))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('defaultProfile', defaultProfile))
+      ..add(DiagnosticsProperty('defaultProfileImage', defaultProfileImage))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('entities', entities))
+      ..add(DiagnosticsProperty('fastFollowersCount', fastFollowersCount))
+      ..add(DiagnosticsProperty('favouritesCount', favouritesCount))
+      ..add(DiagnosticsProperty('followRequestSent', followRequestSent))
+      ..add(DiagnosticsProperty('followedBy', followedBy))
+      ..add(DiagnosticsProperty('followersCount', followersCount))
+      ..add(DiagnosticsProperty('following', following))
+      ..add(DiagnosticsProperty('friendsCount', friendsCount))
+      ..add(DiagnosticsProperty('hasCustomTimelines', hasCustomTimelines))
+      ..add(DiagnosticsProperty('isTranslator', isTranslator))
+      ..add(DiagnosticsProperty('listedCount', listedCount))
+      ..add(DiagnosticsProperty('location', location))
+      ..add(DiagnosticsProperty('mediaCount', mediaCount))
+      ..add(DiagnosticsProperty('muting', muting))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('normalFollowersCount', normalFollowersCount))
+      ..add(DiagnosticsProperty('notifications', notifications))
+      ..add(DiagnosticsProperty('pinnedTweetIdsStr', pinnedTweetIdsStr))
+      ..add(DiagnosticsProperty('possiblySensitive', possiblySensitive))
+      ..add(DiagnosticsProperty(
+          'profileBannerExtensions', profileBannerExtensions))
+      ..add(DiagnosticsProperty('profileBannerUrl', profileBannerUrl))
+      ..add(
+          DiagnosticsProperty('profileImageExtensions', profileImageExtensions))
+      ..add(DiagnosticsProperty('profileImageUrlHttps', profileImageUrlHttps))
+      ..add(DiagnosticsProperty(
+          'profileInterstitialType', profileInterstitialType))
+      ..add(DiagnosticsProperty('protected', protected))
+      ..add(DiagnosticsProperty('screenName', screenName))
+      ..add(DiagnosticsProperty('statusesCount', statusesCount))
+      ..add(DiagnosticsProperty('translatorType', translatorType))
+      ..add(DiagnosticsProperty('url', url))
+      ..add(DiagnosticsProperty('verified', verified))
+      ..add(DiagnosticsProperty('wantRetweets', wantRetweets))
+      ..add(DiagnosticsProperty('withheldInCountries', withheldInCountries));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserLegacy &&
+            (identical(other.blockedBy, blockedBy) ||
+                other.blockedBy == blockedBy) &&
+            const DeepCollectionEquality().equals(other.blocking, blocking) &&
+            (identical(other.canDm, canDm) || other.canDm == canDm) &&
+            (identical(other.canMediaTag, canMediaTag) ||
+                other.canMediaTag == canMediaTag) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.defaultProfile, defaultProfile) ||
+                other.defaultProfile == defaultProfile) &&
+            (identical(other.defaultProfileImage, defaultProfileImage) ||
+                other.defaultProfileImage == defaultProfileImage) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other.entities, entities) &&
+            (identical(other.fastFollowersCount, fastFollowersCount) ||
+                other.fastFollowersCount == fastFollowersCount) &&
+            (identical(other.favouritesCount, favouritesCount) ||
+                other.favouritesCount == favouritesCount) &&
+            (identical(other.followRequestSent, followRequestSent) ||
+                other.followRequestSent == followRequestSent) &&
+            (identical(other.followedBy, followedBy) ||
+                other.followedBy == followedBy) &&
+            (identical(other.followersCount, followersCount) ||
+                other.followersCount == followersCount) &&
+            (identical(other.following, following) ||
+                other.following == following) &&
+            (identical(other.friendsCount, friendsCount) ||
+                other.friendsCount == friendsCount) &&
+            (identical(other.hasCustomTimelines, hasCustomTimelines) ||
+                other.hasCustomTimelines == hasCustomTimelines) &&
+            (identical(other.isTranslator, isTranslator) ||
+                other.isTranslator == isTranslator) &&
+            (identical(other.listedCount, listedCount) ||
+                other.listedCount == listedCount) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.mediaCount, mediaCount) ||
+                other.mediaCount == mediaCount) &&
+            (identical(other.muting, muting) || other.muting == muting) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.normalFollowersCount, normalFollowersCount) ||
+                other.normalFollowersCount == normalFollowersCount) &&
+            (identical(other.notifications, notifications) ||
+                other.notifications == notifications) &&
+            const DeepCollectionEquality()
+                .equals(other._pinnedTweetIdsStr, _pinnedTweetIdsStr) &&
+            (identical(other.possiblySensitive, possiblySensitive) ||
+                other.possiblySensitive == possiblySensitive) &&
+            const DeepCollectionEquality().equals(
+                other.profileBannerExtensions, profileBannerExtensions) &&
+            (identical(other.profileBannerUrl, profileBannerUrl) ||
+                other.profileBannerUrl == profileBannerUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.profileImageExtensions, profileImageExtensions) &&
+            (identical(other.profileImageUrlHttps, profileImageUrlHttps) ||
+                other.profileImageUrlHttps == profileImageUrlHttps) &&
+            (identical(
+                    other.profileInterstitialType, profileInterstitialType) ||
+                other.profileInterstitialType == profileInterstitialType) &&
+            (identical(other.protected, protected) ||
+                other.protected == protected) &&
+            (identical(other.screenName, screenName) ||
+                other.screenName == screenName) &&
+            (identical(other.statusesCount, statusesCount) ||
+                other.statusesCount == statusesCount) &&
+            (identical(other.translatorType, translatorType) ||
+                other.translatorType == translatorType) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.verified, verified) ||
+                other.verified == verified) &&
+            (identical(other.wantRetweets, wantRetweets) ||
+                other.wantRetweets == wantRetweets) &&
+            const DeepCollectionEquality()
+                .equals(other._withheldInCountries, _withheldInCountries));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        blockedBy,
+        const DeepCollectionEquality().hash(blocking),
+        canDm,
+        canMediaTag,
+        createdAt,
+        defaultProfile,
+        defaultProfileImage,
+        description,
+        const DeepCollectionEquality().hash(entities),
+        fastFollowersCount,
+        favouritesCount,
+        followRequestSent,
+        followedBy,
+        followersCount,
+        following,
+        friendsCount,
+        hasCustomTimelines,
+        isTranslator,
+        listedCount,
+        location,
+        mediaCount,
+        muting,
+        name,
+        normalFollowersCount,
+        notifications,
+        const DeepCollectionEquality().hash(_pinnedTweetIdsStr),
+        possiblySensitive,
+        const DeepCollectionEquality().hash(profileBannerExtensions),
+        profileBannerUrl,
+        const DeepCollectionEquality().hash(profileImageExtensions),
+        profileImageUrlHttps,
+        profileInterstitialType,
+        protected,
+        screenName,
+        statusesCount,
+        translatorType,
+        url,
+        verified,
+        wantRetweets,
+        const DeepCollectionEquality().hash(_withheldInCountries)
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserLegacyCopyWith<_$_UserLegacy> get copyWith =>
+      __$$_UserLegacyCopyWithImpl<_$_UserLegacy>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserLegacyToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserLegacy implements UserLegacy {
+  const factory _UserLegacy(
+      {@JsonKey(name: 'blocked_by')
+          required final bool blockedBy,
+      @JsonKey(name: 'blocking')
+          required final dynamic blocking,
+      @JsonKey(name: 'can_dm')
+          required final bool canDm,
+      @JsonKey(name: 'can_media_tag')
+          required final bool canMediaTag,
+      @JsonKey(name: 'created_at')
+          required final String createdAt,
+      @JsonKey(name: 'default_profile')
+          required final bool defaultProfile,
+      @JsonKey(name: 'default_profile_image')
+          required final bool defaultProfileImage,
+      @JsonKey(name: 'description')
+          required final String description,
+      @JsonKey(name: 'entities')
+          required final dynamic entities,
+      @JsonKey(name: 'fast_followers_count')
+          required final int fastFollowersCount,
+      @JsonKey(name: 'favourites_count')
+          required final int favouritesCount,
+      @JsonKey(name: 'follow_request_sent')
+          required final bool followRequestSent,
+      @JsonKey(name: 'followed_by')
+          required final bool followedBy,
+      @JsonKey(name: 'followers_count')
+          required final int followersCount,
+      @JsonKey(name: 'following')
+          required final bool following,
+      @JsonKey(name: 'friends_count')
+          required final int friendsCount,
+      @JsonKey(name: 'has_custom_timelines')
+          required final bool hasCustomTimelines,
+      @JsonKey(name: 'is_translator')
+          required final bool isTranslator,
+      @JsonKey(name: 'listed_count')
+          required final int listedCount,
+      @JsonKey(name: 'location')
+          required final String location,
+      @JsonKey(name: 'media_count')
+          required final int mediaCount,
+      @JsonKey(name: 'muting')
+          required final bool muting,
+      @JsonKey(name: 'name')
+          required final String name,
+      @JsonKey(name: 'normal_followers_count')
+          required final int normalFollowersCount,
+      @JsonKey(name: 'notifications')
+          required final bool notifications,
+      @JsonKey(name: 'pinned_tweet_ids_str')
+          required final List<String> pinnedTweetIdsStr,
+      @JsonKey(name: 'possibly_sensitive')
+          required final bool possiblySensitive,
+      @JsonKey(name: 'profile_banner_extensions')
+          required final dynamic profileBannerExtensions,
+      @JsonKey(name: 'profile_banner_url')
+          required final String profileBannerUrl,
+      @JsonKey(name: 'profile_image_extensions')
+          required final dynamic profileImageExtensions,
+      @JsonKey(name: 'profile_image_url_https')
+          required final String profileImageUrlHttps,
+      @JsonKey(name: 'profile_interstitial_type')
+          required final String profileInterstitialType,
+      @JsonKey(name: 'protected')
+          required final bool protected,
+      @JsonKey(name: 'screen_name')
+          required final String screenName,
+      @JsonKey(name: 'statuses_count')
+          required final int statusesCount,
+      @JsonKey(name: 'translator_type')
+          required final String translatorType,
+      @JsonKey(name: 'url')
+          required final String? url,
+      @JsonKey(name: 'verified')
+          required final bool verified,
+      @JsonKey(name: 'want_retweets')
+          required final bool wantRetweets,
+      @JsonKey(name: 'withheld_in_countries')
+          required final List<dynamic> withheldInCountries}) = _$_UserLegacy;
+
+  factory _UserLegacy.fromJson(Map<String, dynamic> json) =
+      _$_UserLegacy.fromJson;
+
+  @override
+  @JsonKey(name: 'blocked_by')
+  bool get blockedBy;
+  @override
+  @JsonKey(name: 'blocking')
+  dynamic get blocking;
+  @override
+  @JsonKey(name: 'can_dm')
+  bool get canDm;
+  @override
+  @JsonKey(name: 'can_media_tag')
+  bool get canMediaTag;
+  @override
+  @JsonKey(name: 'created_at')
+  String get createdAt;
+  @override
+  @JsonKey(name: 'default_profile')
+  bool get defaultProfile;
+  @override
+  @JsonKey(name: 'default_profile_image')
+  bool get defaultProfileImage;
+  @override
+  @JsonKey(name: 'description')
+  String get description;
+  @override
+  @JsonKey(name: 'entities')
+  dynamic get entities;
+  @override
+  @JsonKey(name: 'fast_followers_count')
+  int get fastFollowersCount;
+  @override
+  @JsonKey(name: 'favourites_count')
+  int get favouritesCount;
+  @override
+  @JsonKey(name: 'follow_request_sent')
+  bool get followRequestSent;
+  @override
+  @JsonKey(name: 'followed_by')
+  bool get followedBy;
+  @override
+  @JsonKey(name: 'followers_count')
+  int get followersCount;
+  @override
+  @JsonKey(name: 'following')
+  bool get following;
+  @override
+  @JsonKey(name: 'friends_count')
+  int get friendsCount;
+  @override
+  @JsonKey(name: 'has_custom_timelines')
+  bool get hasCustomTimelines;
+  @override
+  @JsonKey(name: 'is_translator')
+  bool get isTranslator;
+  @override
+  @JsonKey(name: 'listed_count')
+  int get listedCount;
+  @override
+  @JsonKey(name: 'location')
+  String get location;
+  @override
+  @JsonKey(name: 'media_count')
+  int get mediaCount;
+  @override
+  @JsonKey(name: 'muting')
+  bool get muting;
+  @override
+  @JsonKey(name: 'name')
+  String get name;
+  @override
+  @JsonKey(name: 'normal_followers_count')
+  int get normalFollowersCount;
+  @override
+  @JsonKey(name: 'notifications')
+  bool get notifications;
+  @override
+  @JsonKey(name: 'pinned_tweet_ids_str')
+  List<String> get pinnedTweetIdsStr;
+  @override
+  @JsonKey(name: 'possibly_sensitive')
+  bool get possiblySensitive;
+  @override
+  @JsonKey(name: 'profile_banner_extensions')
+  dynamic get profileBannerExtensions;
+  @override
+  @JsonKey(name: 'profile_banner_url')
+  String get profileBannerUrl;
+  @override
+  @JsonKey(name: 'profile_image_extensions')
+  dynamic get profileImageExtensions;
+  @override
+  @JsonKey(name: 'profile_image_url_https')
+  String get profileImageUrlHttps;
+  @override
+  @JsonKey(name: 'profile_interstitial_type')
+  String get profileInterstitialType;
+  @override
+  @JsonKey(name: 'protected')
+  bool get protected;
+  @override
+  @JsonKey(name: 'screen_name')
+  String get screenName;
+  @override
+  @JsonKey(name: 'statuses_count')
+  int get statusesCount;
+  @override
+  @JsonKey(name: 'translator_type')
+  String get translatorType;
+  @override
+  @JsonKey(name: 'url')
+  String? get url;
+  @override
+  @JsonKey(name: 'verified')
+  bool get verified;
+  @override
+  @JsonKey(name: 'want_retweets')
+  bool get wantRetweets;
+  @override
+  @JsonKey(name: 'withheld_in_countries')
+  List<dynamic> get withheldInCountries;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserLegacyCopyWith<_$_UserLegacy> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

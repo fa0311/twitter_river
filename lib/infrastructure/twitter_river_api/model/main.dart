@@ -130,7 +130,7 @@ class TweetResult with _$TweetResult {
   const factory TweetResult({
     @JsonKey(name: '__typename') required dynamic typename,
     @JsonKey(name: 'rest_id') required dynamic restId,
-    @JsonKey(name: 'core') required dynamic core,
+    @JsonKey(name: 'core') required Core core,
     @JsonKey(name: 'unmention_data') required dynamic unmentionData,
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
@@ -140,6 +140,91 @@ class TweetResult with _$TweetResult {
   }) = _TweetResult;
 
   factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(json);
+}
+
+@freezed
+class Core with _$Core {
+  const factory Core({
+    @JsonKey(name: 'user_results') required UserResults userResults,
+  }) = _Core;
+
+  factory Core.fromJson(Map<String, dynamic> json) => _$CoreFromJson(json);
+}
+
+@freezed
+class UserResults with _$UserResults {
+  const factory UserResults({
+    @JsonKey(name: 'result') required Result result,
+  }) = _UserResults;
+
+  factory UserResults.fromJson(Map<String, dynamic> json) => _$UserResultsFromJson(json);
+}
+
+@freezed
+class Result with _$Result {
+  const factory Result({
+    @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
+    @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
+    @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
+    @JsonKey(name: 'id') required String id,
+    @JsonKey(name: 'is_blue_verified') required bool isBlueVerified,
+    @JsonKey(name: 'legacy') required UserLegacy legacy,
+    @JsonKey(name: 'rest_id') required String restId,
+    @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
+    @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
+    @JsonKey(name: 'super_following') required bool superFollowing,
+    @JsonKey(name: '__typename') required String typename,
+  }) = _Result;
+
+  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
+}
+
+@freezed
+class UserLegacy with _$UserLegacy {
+  const factory UserLegacy({
+    @JsonKey(name: 'blocked_by') required bool blockedBy,
+    @JsonKey(name: 'blocking') required dynamic blocking,
+    @JsonKey(name: 'can_dm') required bool canDm,
+    @JsonKey(name: 'can_media_tag') required bool canMediaTag,
+    @JsonKey(name: 'created_at') required String createdAt,
+    @JsonKey(name: 'default_profile') required bool defaultProfile,
+    @JsonKey(name: 'default_profile_image') required bool defaultProfileImage,
+    @JsonKey(name: 'description') required String description,
+    @JsonKey(name: 'entities') required dynamic entities,
+    @JsonKey(name: 'fast_followers_count') required int fastFollowersCount,
+    @JsonKey(name: 'favourites_count') required int favouritesCount,
+    @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
+    @JsonKey(name: 'followed_by') required bool followedBy,
+    @JsonKey(name: 'followers_count') required int followersCount,
+    @JsonKey(name: 'following') required bool following,
+    @JsonKey(name: 'friends_count') required int friendsCount,
+    @JsonKey(name: 'has_custom_timelines') required bool hasCustomTimelines,
+    @JsonKey(name: 'is_translator') required bool isTranslator,
+    @JsonKey(name: 'listed_count') required int listedCount,
+    @JsonKey(name: 'location') required String location,
+    @JsonKey(name: 'media_count') required int mediaCount,
+    @JsonKey(name: 'muting') required bool muting,
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'normal_followers_count') required int normalFollowersCount,
+    @JsonKey(name: 'notifications') required bool notifications,
+    @JsonKey(name: 'pinned_tweet_ids_str') required List<String> pinnedTweetIdsStr,
+    @JsonKey(name: 'possibly_sensitive') required bool possiblySensitive,
+    @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
+    @JsonKey(name: 'profile_banner_url') required String profileBannerUrl,
+    @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
+    @JsonKey(name: 'profile_image_url_https') required String profileImageUrlHttps,
+    @JsonKey(name: 'profile_interstitial_type') required String profileInterstitialType,
+    @JsonKey(name: 'protected') required bool protected,
+    @JsonKey(name: 'screen_name') required String screenName,
+    @JsonKey(name: 'statuses_count') required int statusesCount,
+    @JsonKey(name: 'translator_type') required String translatorType,
+    @JsonKey(name: 'url') required String? url,
+    @JsonKey(name: 'verified') required bool verified,
+    @JsonKey(name: 'want_retweets') required bool wantRetweets,
+    @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
+  }) = _UserLegacy;
+
+  factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(json);
 }
 
 @freezed
