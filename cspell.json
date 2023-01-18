@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    /* API */
+    "downvote",
+    "longform",
+    "notetweets",
+    "tweetypie",
+    "unmention",
+    "rweb",
+    "misinfo",
+    "favorited",
+    /* Flutter */
+    "unfocus",
+    /* Dart */
+    "pubspec",
+    "sublist",
+    /* Library */
+    "Cupertino",
+    "diox",
+    "riverpod",
+    "inappwebview",
+    /* Name */
+    "yuki"
+  ],
+  "ignorePaths": [
+    /* Flutter */
+    "android/**",
+    "build/**",
+    "ios/**",
+    "windows/**",
+    "pubspec.yaml",
+    /*Freezed*/
+    "*.freezed.dart",
+    "*.g.dart",
+    /* l10n */
+    "lib/l10n/**"
+  ]
+}
