@@ -1,21 +1,30 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/json.dart';
 
 part 'main.freezed.dart';
 part 'main.g.dart';
 
 @freezed
-abstract class TwitterResponse with _$TwitterResponse {
+class TwitterResponse with _$TwitterResponse {
+  const TwitterResponse._();
   const factory TwitterResponse({
     @JsonKey(name: 'data') required TwitterData data,
   }) = _TwitterResponse;
+
+  Instruction get instruction => data.home.homeTimelineUrt.instructions[0];
+  List<Instruction> get instructions => data.home.homeTimelineUrt.instructions;
 
   factory TwitterResponse.fromJson(Map<String, dynamic> json) => _$TwitterResponseFromJson(json);
 }
 
 @freezed
-abstract class TwitterData with _$TwitterData {
+class TwitterData with _$TwitterData {
   const factory TwitterData({
     @JsonKey(name: 'home') required TwitterHome home,
   }) = _TwitterData;
@@ -24,7 +33,7 @@ abstract class TwitterData with _$TwitterData {
 }
 
 @freezed
-abstract class TwitterHome with _$TwitterHome {
+class TwitterHome with _$TwitterHome {
   const factory TwitterHome({
     @JsonKey(name: 'home_timeline_urt') required HomeTimelineUrt homeTimelineUrt,
   }) = _TwitterHome;
@@ -33,7 +42,7 @@ abstract class TwitterHome with _$TwitterHome {
 }
 
 @freezed
-abstract class HomeTimelineUrt with _$HomeTimelineUrt {
+class HomeTimelineUrt with _$HomeTimelineUrt {
   const factory HomeTimelineUrt({
     @JsonKey(name: 'instructions') required List<Instruction> instructions,
     @JsonKey(name: 'responseObjects') required Object? responseObjects,
@@ -43,26 +52,34 @@ abstract class HomeTimelineUrt with _$HomeTimelineUrt {
 }
 
 @freezed
-abstract class Instruction implements _$Instruction {
+class Instruction with _$Instruction {
   const Instruction._();
   const factory Instruction({
     @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'entries') required List<Entry> entries,
   }) = _Instruction;
 
-  Entry? getContent({required String entryType, String? cursorType}) {
-    for (final entry in entries) {
-      if (cursorType != null && entry.content.cursorType != cursorType) continue;
-      if (entry.content.entryType == entryType) return entry;
-    }
-    return null;
+  List<Entry> getContents({required String entryType, String? cursorType}) {
+    return entries.where((element) {
+      if (cursorType != null && element.content.cursorType != cursorType) return false;
+      if (element.content.entryType == entryType) return true;
+      return false;
+    }).toList();
+  }
+
+  Entry getContent({required String entryType, String? cursorType}) {
+    return entries.firstWhere((element) {
+      if (cursorType != null && element.content.cursorType != cursorType) return false;
+      if (element.content.entryType == entryType) return true;
+      return false;
+    });
   }
 
   factory Instruction.fromJson(Map<String, dynamic> json) => _$InstructionFromJson(json);
 }
 
 @freezed
-abstract class Entry with _$Entry {
+class Entry with _$Entry {
   const factory Entry({
     @JsonKey(name: 'entryId') required String entryId,
     @JsonKey(name: 'sortIndex') required String sortIndex,
@@ -73,7 +90,7 @@ abstract class Entry with _$Entry {
 }
 
 @freezed
-abstract class Content with _$Content {
+class Content with _$Content {
   const factory Content({
     @JsonKey(name: 'entryType') required String entryType,
     @JsonKey(name: '__typename') required String typename,
@@ -81,13 +98,14 @@ abstract class Content with _$Content {
     @JsonKey(name: 'feedbackInfo') required dynamic feedbackInfo,
     @JsonKey(name: 'clientEventInfo') required dynamic clientEventInfo,
     @JsonKey(name: 'cursorType') String? cursorType,
+    @JsonKey(name: 'value') String? value,
   }) = _Content;
 
   factory Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
 }
 
 @freezed
-abstract class ItemContent with _$ItemContent {
+class ItemContent with _$ItemContent {
   const factory ItemContent({
     @JsonKey(name: 'itemType') required String itemType,
     @JsonKey(name: '__typename') required String typename,
@@ -99,7 +117,7 @@ abstract class ItemContent with _$ItemContent {
 }
 
 @freezed
-abstract class TweetResults with _$TweetResults {
+class TweetResults with _$TweetResults {
   const factory TweetResults({
     @JsonKey(name: 'result') required TweetResult result,
   }) = _TweetResults;
@@ -108,7 +126,7 @@ abstract class TweetResults with _$TweetResults {
 }
 
 @freezed
-abstract class TweetResult with _$TweetResult {
+class TweetResult with _$TweetResult {
   const factory TweetResult({
     @JsonKey(name: '__typename') required dynamic typename,
     @JsonKey(name: 'rest_id') required dynamic restId,
@@ -116,7 +134,7 @@ abstract class TweetResult with _$TweetResult {
     @JsonKey(name: 'unmention_data') required dynamic unmentionData,
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
-    @JsonKey(name: 'is_translatable') required bool isTranslatable,
+    @SafetyIntegerConverter() @JsonKey(name: 'is_translatable') required bool isTranslatable,
     @JsonKey(name: 'legacy') required Legacy legacy,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
@@ -125,7 +143,7 @@ abstract class TweetResult with _$TweetResult {
 }
 
 @freezed
-abstract class Legacy with _$Legacy {
+class Legacy with _$Legacy {
   const factory Legacy({
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'conversation_id_str') required String conversationIdStr,

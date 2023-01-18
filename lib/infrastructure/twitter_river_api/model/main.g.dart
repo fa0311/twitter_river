@@ -86,6 +86,7 @@ _$_Content _$$_ContentFromJson(Map<String, dynamic> json) => _$_Content(
       feedbackInfo: json['feedbackInfo'],
       clientEventInfo: json['clientEventInfo'],
       cursorType: json['cursorType'] as String?,
+      value: json['value'] as String?,
     );
 
 Map<String, dynamic> _$$_ContentToJson(_$_Content instance) =>
@@ -96,6 +97,7 @@ Map<String, dynamic> _$$_ContentToJson(_$_Content instance) =>
       'feedbackInfo': instance.feedbackInfo,
       'clientEventInfo': instance.clientEventInfo,
       'cursorType': instance.cursorType,
+      'value': instance.value,
     };
 
 _$_ItemContent _$$_ItemContentFromJson(Map<String, dynamic> json) =>
