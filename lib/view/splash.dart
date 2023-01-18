@@ -8,7 +8,13 @@ import 'package:twitter_river/view/web/login.dart';
 
 final timeLineInitProvider = FutureProvider<List<String>>((ref) async {
   final session = await ref.read(getSessionProvider.future);
-  return await session.getTimeLine();
+  final response = await session.getTimeLine();
+  final instruction = response.data.home.homeTimelineUrt.instructions[0];
+  final nextCursor = instruction.getContent(entryType: 'TimelineTimelineCursor', cursorType: 'Bottom');
+  print(nextCursor);
+  return [
+    for (final entry in instruction.entries.where((entry) => entry.content.itemContent != null)) entry.content.itemContent!.tweetResults.result.legacy.fullText
+  ];
 });
 
 class TwitterRiverSplash extends ConsumerWidget {

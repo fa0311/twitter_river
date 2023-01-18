@@ -43,11 +43,20 @@ abstract class HomeTimelineUrt with _$HomeTimelineUrt {
 }
 
 @freezed
-abstract class Instruction with _$Instruction {
+abstract class Instruction implements _$Instruction {
+  const Instruction._();
   const factory Instruction({
     @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'entries') required List<Entry> entries,
   }) = _Instruction;
+
+  Entry? getContent({required String entryType, String? cursorType}) {
+    for (final entry in entries) {
+      if (cursorType != null && entry.content.cursorType != cursorType) continue;
+      if (entry.content.entryType == entryType) return entry;
+    }
+    return null;
+  }
 
   factory Instruction.fromJson(Map<String, dynamic> json) => _$InstructionFromJson(json);
 }
@@ -66,11 +75,12 @@ abstract class Entry with _$Entry {
 @freezed
 abstract class Content with _$Content {
   const factory Content({
-    @JsonKey(name: 'entryType') required String entryId,
+    @JsonKey(name: 'entryType') required String entryType,
     @JsonKey(name: '__typename') required String typename,
     @JsonKey(name: 'itemContent') required ItemContent? itemContent,
     @JsonKey(name: 'feedbackInfo') required dynamic feedbackInfo,
     @JsonKey(name: 'clientEventInfo') required dynamic clientEventInfo,
+    @JsonKey(name: 'cursorType') String? cursorType,
   }) = _Content;
 
   factory Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
@@ -91,15 +101,15 @@ abstract class ItemContent with _$ItemContent {
 @freezed
 abstract class TweetResults with _$TweetResults {
   const factory TweetResults({
-    @JsonKey(name: 'result') required Result result,
+    @JsonKey(name: 'result') required TweetResult result,
   }) = _TweetResults;
 
   factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(json);
 }
 
 @freezed
-abstract class Result with _$Result {
-  const factory Result({
+abstract class TweetResult with _$TweetResult {
+  const factory TweetResult({
     @JsonKey(name: '__typename') required dynamic typename,
     @JsonKey(name: 'rest_id') required dynamic restId,
     @JsonKey(name: 'core') required dynamic core,
@@ -109,9 +119,9 @@ abstract class Result with _$Result {
     @JsonKey(name: 'is_translatable') required bool isTranslatable,
     @JsonKey(name: 'legacy') required Legacy legacy,
     @JsonKey(name: 'views') required dynamic views,
-  }) = _Result;
+  }) = _TweetResult;
 
-  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
+  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(json);
 }
 
 @freezed

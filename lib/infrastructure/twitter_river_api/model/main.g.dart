@@ -78,22 +78,24 @@ Map<String, dynamic> _$$_EntryToJson(_$_Entry instance) => <String, dynamic>{
     };
 
 _$_Content _$$_ContentFromJson(Map<String, dynamic> json) => _$_Content(
-      entryId: json['entryType'] as String,
+      entryType: json['entryType'] as String,
       typename: json['__typename'] as String,
       itemContent: json['itemContent'] == null
           ? null
           : ItemContent.fromJson(json['itemContent'] as Map<String, dynamic>),
       feedbackInfo: json['feedbackInfo'],
       clientEventInfo: json['clientEventInfo'],
+      cursorType: json['cursorType'] as String?,
     );
 
 Map<String, dynamic> _$$_ContentToJson(_$_Content instance) =>
     <String, dynamic>{
-      'entryType': instance.entryId,
+      'entryType': instance.entryType,
       '__typename': instance.typename,
       'itemContent': instance.itemContent,
       'feedbackInfo': instance.feedbackInfo,
       'clientEventInfo': instance.clientEventInfo,
+      'cursorType': instance.cursorType,
     };
 
 _$_ItemContent _$$_ItemContentFromJson(Map<String, dynamic> json) =>
@@ -115,7 +117,7 @@ Map<String, dynamic> _$$_ItemContentToJson(_$_ItemContent instance) =>
 
 _$_TweetResults _$$_TweetResultsFromJson(Map<String, dynamic> json) =>
     _$_TweetResults(
-      result: Result.fromJson(json['result'] as Map<String, dynamic>),
+      result: TweetResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
@@ -123,7 +125,8 @@ Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
       'result': instance.result,
     };
 
-_$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
+_$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
+    _$_TweetResult(
       typename: json['__typename'],
       restId: json['rest_id'],
       core: json['core'],
@@ -135,7 +138,8 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       views: json['views'],
     );
 
-Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
+    <String, dynamic>{
       '__typename': instance.typename,
       'rest_id': instance.restId,
       'core': instance.core,

@@ -6,7 +6,6 @@ import 'package:diox_cookie_manager/diox_cookie_manager.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
-import 'package:twitter_river/main.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -29,7 +28,7 @@ class TwitterRiverAPI {
     ]);
   }
 
-  getTimeLine() async {
+  Future<TwitterResponse> getTimeLine() async {
     final response = await dio.get(
       TwitterGraphQL.homeTimeline.path,
       queryParameters: {
@@ -64,16 +63,7 @@ class TwitterRiverAPI {
         }),
       },
     );
-    final result = <String>[];
-    final data = TwitterResponse.fromJson(response.data);
-    for (final entry in data.data.home.homeTimelineUrt.instructions[0].entries) {
-      try {
-        result.add(entry.content.itemContent!.tweetResults.result.legacy.fullText);
-      } catch (e) {
-        logger.i(e);
-      }
-    }
-    return result;
+    return TwitterResponse.fromJson(response.data);
   }
 }
 

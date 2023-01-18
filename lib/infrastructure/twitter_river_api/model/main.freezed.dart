@@ -794,11 +794,12 @@ class __$$_InstructionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Instruction with DiagnosticableTreeMixin implements _Instruction {
+class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
   const _$_Instruction(
       {@JsonKey(name: 'type') required this.type,
       @JsonKey(name: 'entries') required final List<Entry> entries})
-      : _entries = entries;
+      : _entries = entries,
+        super._();
 
   factory _$_Instruction.fromJson(Map<String, dynamic> json) =>
       _$$_InstructionFromJson(json);
@@ -857,11 +858,12 @@ class _$_Instruction with DiagnosticableTreeMixin implements _Instruction {
   }
 }
 
-abstract class _Instruction implements Instruction {
+abstract class _Instruction extends Instruction {
   const factory _Instruction(
           {@JsonKey(name: 'type') required final String type,
           @JsonKey(name: 'entries') required final List<Entry> entries}) =
       _$_Instruction;
+  const _Instruction._() : super._();
 
   factory _Instruction.fromJson(Map<String, dynamic> json) =
       _$_Instruction.fromJson;
@@ -1091,7 +1093,7 @@ Content _$ContentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Content {
   @JsonKey(name: 'entryType')
-  String get entryId => throw _privateConstructorUsedError;
+  String get entryType => throw _privateConstructorUsedError;
   @JsonKey(name: '__typename')
   String get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemContent')
@@ -1100,6 +1102,8 @@ mixin _$Content {
   dynamic get feedbackInfo => throw _privateConstructorUsedError;
   @JsonKey(name: 'clientEventInfo')
   dynamic get clientEventInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'cursorType')
+  String? get cursorType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1112,11 +1116,12 @@ abstract class $ContentCopyWith<$Res> {
       _$ContentCopyWithImpl<$Res, Content>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'entryType') String entryId,
+      {@JsonKey(name: 'entryType') String entryType,
       @JsonKey(name: '__typename') String typename,
       @JsonKey(name: 'itemContent') ItemContent? itemContent,
       @JsonKey(name: 'feedbackInfo') dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo});
+      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo,
+      @JsonKey(name: 'cursorType') String? cursorType});
 
   $ItemContentCopyWith<$Res>? get itemContent;
 }
@@ -1134,16 +1139,17 @@ class _$ContentCopyWithImpl<$Res, $Val extends Content>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entryId = null,
+    Object? entryType = null,
     Object? typename = null,
     Object? itemContent = freezed,
     Object? feedbackInfo = freezed,
     Object? clientEventInfo = freezed,
+    Object? cursorType = freezed,
   }) {
     return _then(_value.copyWith(
-      entryId: null == entryId
-          ? _value.entryId
-          : entryId // ignore: cast_nullable_to_non_nullable
+      entryType: null == entryType
+          ? _value.entryType
+          : entryType // ignore: cast_nullable_to_non_nullable
               as String,
       typename: null == typename
           ? _value.typename
@@ -1161,6 +1167,10 @@ class _$ContentCopyWithImpl<$Res, $Val extends Content>
           ? _value.clientEventInfo
           : clientEventInfo // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      cursorType: freezed == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -1185,11 +1195,12 @@ abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'entryType') String entryId,
+      {@JsonKey(name: 'entryType') String entryType,
       @JsonKey(name: '__typename') String typename,
       @JsonKey(name: 'itemContent') ItemContent? itemContent,
       @JsonKey(name: 'feedbackInfo') dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo});
+      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo,
+      @JsonKey(name: 'cursorType') String? cursorType});
 
   @override
   $ItemContentCopyWith<$Res>? get itemContent;
@@ -1205,16 +1216,17 @@ class __$$_ContentCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entryId = null,
+    Object? entryType = null,
     Object? typename = null,
     Object? itemContent = freezed,
     Object? feedbackInfo = freezed,
     Object? clientEventInfo = freezed,
+    Object? cursorType = freezed,
   }) {
     return _then(_$_Content(
-      entryId: null == entryId
-          ? _value.entryId
-          : entryId // ignore: cast_nullable_to_non_nullable
+      entryType: null == entryType
+          ? _value.entryType
+          : entryType // ignore: cast_nullable_to_non_nullable
               as String,
       typename: null == typename
           ? _value.typename
@@ -1232,6 +1244,10 @@ class __$$_ContentCopyWithImpl<$Res>
           ? _value.clientEventInfo
           : clientEventInfo // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      cursorType: freezed == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1240,18 +1256,19 @@ class __$$_ContentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Content with DiagnosticableTreeMixin implements _Content {
   const _$_Content(
-      {@JsonKey(name: 'entryType') required this.entryId,
+      {@JsonKey(name: 'entryType') required this.entryType,
       @JsonKey(name: '__typename') required this.typename,
       @JsonKey(name: 'itemContent') required this.itemContent,
       @JsonKey(name: 'feedbackInfo') required this.feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') required this.clientEventInfo});
+      @JsonKey(name: 'clientEventInfo') required this.clientEventInfo,
+      @JsonKey(name: 'cursorType') this.cursorType});
 
   factory _$_Content.fromJson(Map<String, dynamic> json) =>
       _$$_ContentFromJson(json);
 
   @override
   @JsonKey(name: 'entryType')
-  final String entryId;
+  final String entryType;
   @override
   @JsonKey(name: '__typename')
   final String typename;
@@ -1264,10 +1281,13 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
   @override
   @JsonKey(name: 'clientEventInfo')
   final dynamic clientEventInfo;
+  @override
+  @JsonKey(name: 'cursorType')
+  final String? cursorType;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Content(entryId: $entryId, typename: $typename, itemContent: $itemContent, feedbackInfo: $feedbackInfo, clientEventInfo: $clientEventInfo)';
+    return 'Content(entryType: $entryType, typename: $typename, itemContent: $itemContent, feedbackInfo: $feedbackInfo, clientEventInfo: $clientEventInfo, cursorType: $cursorType)';
   }
 
   @override
@@ -1275,11 +1295,12 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Content'))
-      ..add(DiagnosticsProperty('entryId', entryId))
+      ..add(DiagnosticsProperty('entryType', entryType))
       ..add(DiagnosticsProperty('typename', typename))
       ..add(DiagnosticsProperty('itemContent', itemContent))
       ..add(DiagnosticsProperty('feedbackInfo', feedbackInfo))
-      ..add(DiagnosticsProperty('clientEventInfo', clientEventInfo));
+      ..add(DiagnosticsProperty('clientEventInfo', clientEventInfo))
+      ..add(DiagnosticsProperty('cursorType', cursorType));
   }
 
   @override
@@ -1287,7 +1308,8 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Content &&
-            (identical(other.entryId, entryId) || other.entryId == entryId) &&
+            (identical(other.entryType, entryType) ||
+                other.entryType == entryType) &&
             (identical(other.typename, typename) ||
                 other.typename == typename) &&
             (identical(other.itemContent, itemContent) ||
@@ -1295,18 +1317,21 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
             const DeepCollectionEquality()
                 .equals(other.feedbackInfo, feedbackInfo) &&
             const DeepCollectionEquality()
-                .equals(other.clientEventInfo, clientEventInfo));
+                .equals(other.clientEventInfo, clientEventInfo) &&
+            (identical(other.cursorType, cursorType) ||
+                other.cursorType == cursorType));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      entryId,
+      entryType,
       typename,
       itemContent,
       const DeepCollectionEquality().hash(feedbackInfo),
-      const DeepCollectionEquality().hash(clientEventInfo));
+      const DeepCollectionEquality().hash(clientEventInfo),
+      cursorType);
 
   @JsonKey(ignore: true)
   @override
@@ -1324,22 +1349,18 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
 
 abstract class _Content implements Content {
   const factory _Content(
-      {@JsonKey(name: 'entryType')
-          required final String entryId,
-      @JsonKey(name: '__typename')
-          required final String typename,
-      @JsonKey(name: 'itemContent')
-          required final ItemContent? itemContent,
-      @JsonKey(name: 'feedbackInfo')
-          required final dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo')
-          required final dynamic clientEventInfo}) = _$_Content;
+      {@JsonKey(name: 'entryType') required final String entryType,
+      @JsonKey(name: '__typename') required final String typename,
+      @JsonKey(name: 'itemContent') required final ItemContent? itemContent,
+      @JsonKey(name: 'feedbackInfo') required final dynamic feedbackInfo,
+      @JsonKey(name: 'clientEventInfo') required final dynamic clientEventInfo,
+      @JsonKey(name: 'cursorType') final String? cursorType}) = _$_Content;
 
   factory _Content.fromJson(Map<String, dynamic> json) = _$_Content.fromJson;
 
   @override
   @JsonKey(name: 'entryType')
-  String get entryId;
+  String get entryType;
   @override
   @JsonKey(name: '__typename')
   String get typename;
@@ -1352,6 +1373,9 @@ abstract class _Content implements Content {
   @override
   @JsonKey(name: 'clientEventInfo')
   dynamic get clientEventInfo;
+  @override
+  @JsonKey(name: 'cursorType')
+  String? get cursorType;
   @override
   @JsonKey(ignore: true)
   _$$_ContentCopyWith<_$_Content> get copyWith =>
@@ -1610,7 +1634,7 @@ TweetResults _$TweetResultsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetResults {
   @JsonKey(name: 'result')
-  Result get result => throw _privateConstructorUsedError;
+  TweetResult get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1624,9 +1648,9 @@ abstract class $TweetResultsCopyWith<$Res> {
           TweetResults value, $Res Function(TweetResults) then) =
       _$TweetResultsCopyWithImpl<$Res, TweetResults>;
   @useResult
-  $Res call({@JsonKey(name: 'result') Result result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
-  $ResultCopyWith<$Res> get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -1648,14 +1672,14 @@ class _$TweetResultsCopyWithImpl<$Res, $Val extends TweetResults>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as Result,
+              as TweetResult,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ResultCopyWith<$Res> get result {
-    return $ResultCopyWith<$Res>(_value.result, (value) {
+  $TweetResultCopyWith<$Res> get result {
+    return $TweetResultCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value) as $Val);
     });
   }
@@ -1669,10 +1693,10 @@ abstract class _$$_TweetResultsCopyWith<$Res>
       __$$_TweetResultsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'result') Result result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
   @override
-  $ResultCopyWith<$Res> get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -1692,7 +1716,7 @@ class __$$_TweetResultsCopyWithImpl<$Res>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as Result,
+              as TweetResult,
     ));
   }
 }
@@ -1707,7 +1731,7 @@ class _$_TweetResults with DiagnosticableTreeMixin implements _TweetResults {
 
   @override
   @JsonKey(name: 'result')
-  final Result result;
+  final TweetResult result;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1750,7 +1774,7 @@ class _$_TweetResults with DiagnosticableTreeMixin implements _TweetResults {
 
 abstract class _TweetResults implements TweetResults {
   const factory _TweetResults(
-          {@JsonKey(name: 'result') required final Result result}) =
+          {@JsonKey(name: 'result') required final TweetResult result}) =
       _$_TweetResults;
 
   factory _TweetResults.fromJson(Map<String, dynamic> json) =
@@ -1758,19 +1782,19 @@ abstract class _TweetResults implements TweetResults {
 
   @override
   @JsonKey(name: 'result')
-  Result get result;
+  TweetResult get result;
   @override
   @JsonKey(ignore: true)
   _$$_TweetResultsCopyWith<_$_TweetResults> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-Result _$ResultFromJson(Map<String, dynamic> json) {
-  return _Result.fromJson(json);
+TweetResult _$TweetResultFromJson(Map<String, dynamic> json) {
+  return _TweetResult.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Result {
+mixin _$TweetResult {
   @JsonKey(name: '__typename')
   dynamic get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'rest_id')
@@ -1792,13 +1816,15 @@ mixin _$Result {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
+  $TweetResultCopyWith<TweetResult> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ResultCopyWith<$Res> {
-  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
-      _$ResultCopyWithImpl<$Res, Result>;
+abstract class $TweetResultCopyWith<$Res> {
+  factory $TweetResultCopyWith(
+          TweetResult value, $Res Function(TweetResult) then) =
+      _$TweetResultCopyWithImpl<$Res, TweetResult>;
   @useResult
   $Res call(
       {@JsonKey(name: '__typename') dynamic typename,
@@ -1815,9 +1841,9 @@ abstract class $ResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ResultCopyWithImpl<$Res, $Val extends Result>
-    implements $ResultCopyWith<$Res> {
-  _$ResultCopyWithImpl(this._value, this._then);
+class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
+    implements $TweetResultCopyWith<$Res> {
+  _$TweetResultCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1887,9 +1913,11 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
 }
 
 /// @nodoc
-abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
-  factory _$$_ResultCopyWith(_$_Result value, $Res Function(_$_Result) then) =
-      __$$_ResultCopyWithImpl<$Res>;
+abstract class _$$_TweetResultCopyWith<$Res>
+    implements $TweetResultCopyWith<$Res> {
+  factory _$$_TweetResultCopyWith(
+          _$_TweetResult value, $Res Function(_$_TweetResult) then) =
+      __$$_TweetResultCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1908,10 +1936,11 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ResultCopyWithImpl<$Res>
-    extends _$ResultCopyWithImpl<$Res, _$_Result>
-    implements _$$_ResultCopyWith<$Res> {
-  __$$_ResultCopyWithImpl(_$_Result _value, $Res Function(_$_Result) _then)
+class __$$_TweetResultCopyWithImpl<$Res>
+    extends _$TweetResultCopyWithImpl<$Res, _$_TweetResult>
+    implements _$$_TweetResultCopyWith<$Res> {
+  __$$_TweetResultCopyWithImpl(
+      _$_TweetResult _value, $Res Function(_$_TweetResult) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1927,7 +1956,7 @@ class __$$_ResultCopyWithImpl<$Res>
     Object? legacy = null,
     Object? views = freezed,
   }) {
-    return _then(_$_Result(
+    return _then(_$_TweetResult(
       typename: freezed == typename
           ? _value.typename
           : typename // ignore: cast_nullable_to_non_nullable
@@ -1970,8 +1999,8 @@ class __$$_ResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Result with DiagnosticableTreeMixin implements _Result {
-  const _$_Result(
+class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
+  const _$_TweetResult(
       {@JsonKey(name: '__typename') required this.typename,
       @JsonKey(name: 'rest_id') required this.restId,
       @JsonKey(name: 'core') required this.core,
@@ -1982,8 +2011,8 @@ class _$_Result with DiagnosticableTreeMixin implements _Result {
       @JsonKey(name: 'legacy') required this.legacy,
       @JsonKey(name: 'views') required this.views});
 
-  factory _$_Result.fromJson(Map<String, dynamic> json) =>
-      _$$_ResultFromJson(json);
+  factory _$_TweetResult.fromJson(Map<String, dynamic> json) =>
+      _$$_TweetResultFromJson(json);
 
   @override
   @JsonKey(name: '__typename')
@@ -2015,14 +2044,14 @@ class _$_Result with DiagnosticableTreeMixin implements _Result {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Result(typename: $typename, restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
+    return 'TweetResult(typename: $typename, restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Result'))
+      ..add(DiagnosticsProperty('type', 'TweetResult'))
       ..add(DiagnosticsProperty('typename', typename))
       ..add(DiagnosticsProperty('restId', restId))
       ..add(DiagnosticsProperty('core', core))
@@ -2038,7 +2067,7 @@ class _$_Result with DiagnosticableTreeMixin implements _Result {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Result &&
+            other is _$_TweetResult &&
             const DeepCollectionEquality().equals(other.typename, typename) &&
             const DeepCollectionEquality().equals(other.restId, restId) &&
             const DeepCollectionEquality().equals(other.core, core) &&
@@ -2071,19 +2100,19 @@ class _$_Result with DiagnosticableTreeMixin implements _Result {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResultCopyWith<_$_Result> get copyWith =>
-      __$$_ResultCopyWithImpl<_$_Result>(this, _$identity);
+  _$$_TweetResultCopyWith<_$_TweetResult> get copyWith =>
+      __$$_TweetResultCopyWithImpl<_$_TweetResult>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResultToJson(
+    return _$$_TweetResultToJson(
       this,
     );
   }
 }
 
-abstract class _Result implements Result {
-  const factory _Result(
+abstract class _TweetResult implements TweetResult {
+  const factory _TweetResult(
       {@JsonKey(name: '__typename') required final dynamic typename,
       @JsonKey(name: 'rest_id') required final dynamic restId,
       @JsonKey(name: 'core') required final dynamic core,
@@ -2092,9 +2121,10 @@ abstract class _Result implements Result {
       @JsonKey(name: 'edit_perspective') required final dynamic editPerspective,
       @JsonKey(name: 'is_translatable') required final bool isTranslatable,
       @JsonKey(name: 'legacy') required final Legacy legacy,
-      @JsonKey(name: 'views') required final dynamic views}) = _$_Result;
+      @JsonKey(name: 'views') required final dynamic views}) = _$_TweetResult;
 
-  factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
+  factory _TweetResult.fromJson(Map<String, dynamic> json) =
+      _$_TweetResult.fromJson;
 
   @override
   @JsonKey(name: '__typename')
@@ -2125,7 +2155,7 @@ abstract class _Result implements Result {
   dynamic get views;
   @override
   @JsonKey(ignore: true)
-  _$$_ResultCopyWith<_$_Result> get copyWith =>
+  _$$_TweetResultCopyWith<_$_TweetResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
