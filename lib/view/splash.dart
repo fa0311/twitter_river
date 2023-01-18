@@ -1,20 +1,30 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_river/component/loading.dart';
-import 'package:twitter_river/component/scroll.dart';
+
+// Project imports:
 import 'package:twitter_river/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/view/top/home.dart';
 import 'package:twitter_river/view/web/login.dart';
 
-final timeLineInitProvider = FutureProvider<List<String>>((ref) async {
-  final session = await ref.read(getSessionProvider.future);
-  final response = await session.getTimeLine();
-  final instruction = response.data.home.homeTimelineUrt.instructions[0];
-  final nextCursor = instruction.getContent(entryType: 'TimelineTimelineCursor', cursorType: 'Bottom');
-  print(nextCursor);
-  return [
-    for (final entry in instruction.entries.where((entry) => entry.content.itemContent != null)) entry.content.itemContent!.tweetResults.result.legacy.fullText
-  ];
+enum SplashData {
+  top,
+  login,
+  userPolicy;
+}
+
+final splashProvider = FutureProvider<SplashData>((ref) async {
+  final session = await ref.watch(loginSessionProvider.future);
+  try {
+    await session.getTimeLine(cursor: null);
+  } catch (e) {
+    return SplashData.login;
+  }
+
+  return SplashData.top;
 });
 
 class TwitterRiverSplash extends ConsumerWidget {
@@ -22,24 +32,32 @@ class TwitterRiverSplash extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final init = ref.watch(timeLineInitProvider);
-    return Scaffold(
-      appBar: AppBar(),
-      body: init.when(
-          loading: () => const Loading(),
-          error: (e, trace) {
-            logger.w(e, e, trace);
-            return ScrollWidget(
-              onRefresh: () => ref.refresh((webViewInitProvider.future)),
-              child: Container(),
-            );
-          },
-          data: (data) {
-            return Column(children: [
-              for (final text in data) ...[Text(text), const Text("======================")]
-            ]);
-          }),
+    final data = ref.watch(splashProvider);
+
+    return data.when(
+      loading: () => const Scaffold(
+        body: Center(
+          child: SizedBox(
+            width: 100,
+            height: 100,
+            child: CircularProgressIndicator(strokeWidth: 8),
+          ),
+        ),
+      ),
+      error: (e, trace) {
+        logger.w(e, e, trace);
+        return Container();
+      },
+      data: (SplashData data) {
+        switch (data) {
+          case SplashData.top:
+            return const TwitterRiverHome();
+          case SplashData.login:
+            return const TwitterRiverWebLogin();
+          case SplashData.userPolicy:
+            return Container();
+        }
+      },
     );
-    return const TwitterRiverWebLogin();
   }
 }
