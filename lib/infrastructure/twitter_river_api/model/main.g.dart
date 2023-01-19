@@ -6,51 +6,6 @@ part of 'main.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TwitterResponse _$$_TwitterResponseFromJson(Map<String, dynamic> json) =>
-    _$_TwitterResponse(
-      data: TwitterData.fromJson(json['data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterResponseToJson(_$_TwitterResponse instance) =>
-    <String, dynamic>{
-      'data': instance.data,
-    };
-
-_$_TwitterData _$$_TwitterDataFromJson(Map<String, dynamic> json) =>
-    _$_TwitterData(
-      home: TwitterHome.fromJson(json['home'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterDataToJson(_$_TwitterData instance) =>
-    <String, dynamic>{
-      'home': instance.home,
-    };
-
-_$_TwitterHome _$$_TwitterHomeFromJson(Map<String, dynamic> json) =>
-    _$_TwitterHome(
-      homeTimelineUrt: HomeTimelineUrt.fromJson(
-          json['home_timeline_urt'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterHomeToJson(_$_TwitterHome instance) =>
-    <String, dynamic>{
-      'home_timeline_urt': instance.homeTimelineUrt,
-    };
-
-_$_HomeTimelineUrt _$$_HomeTimelineUrtFromJson(Map<String, dynamic> json) =>
-    _$_HomeTimelineUrt(
-      instructions: (json['instructions'] as List<dynamic>)
-          .map((e) => Instruction.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      responseObjects: json['responseObjects'],
-    );
-
-Map<String, dynamic> _$$_HomeTimelineUrtToJson(_$_HomeTimelineUrt instance) =>
-    <String, dynamic>{
-      'instructions': instance.instructions,
-      'responseObjects': instance.responseObjects,
-    };
-
 _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
     _$_Instruction(
       type: json['type'] as String,
@@ -137,7 +92,7 @@ _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
       editControl: json['edit_control'],
       editPerspective: json['edit_perspective'],
       isTranslatable: json['is_translatable'] as bool? ?? false,
-      legacy: Legacy.fromJson(json['legacy'] as Map<String, dynamic>),
+      legacy: TweetLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
       views: json['views'],
     );
 
@@ -291,7 +246,8 @@ Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
       'withheld_in_countries': instance.withheldInCountries,
     };
 
-_$_Legacy _$$_LegacyFromJson(Map<String, dynamic> json) => _$_Legacy(
+_$_TweetLegacy _$$_TweetLegacyFromJson(Map<String, dynamic> json) =>
+    _$_TweetLegacy(
       createdAt: json['created_at'] as String,
       conversationIdStr: json['conversation_id_str'] as String,
       core: (json['display_text_range'] as List<dynamic>)
@@ -317,7 +273,8 @@ _$_Legacy _$$_LegacyFromJson(Map<String, dynamic> json) => _$_Legacy(
       retweetedStatusResult: json['retweeted_status_result'],
     );
 
-Map<String, dynamic> _$$_LegacyToJson(_$_Legacy instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TweetLegacyToJson(_$_TweetLegacy instance) =>
+    <String, dynamic>{
       'created_at': instance.createdAt,
       'conversation_id_str': instance.conversationIdStr,
       'display_text_range': instance.core,

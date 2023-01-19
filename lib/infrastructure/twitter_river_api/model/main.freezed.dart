@@ -14,687 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TwitterResponse _$TwitterResponseFromJson(Map<String, dynamic> json) {
-  return _TwitterResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TwitterResponse {
-  @JsonKey(name: 'data')
-  TwitterData get data => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TwitterResponseCopyWith<TwitterResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TwitterResponseCopyWith<$Res> {
-  factory $TwitterResponseCopyWith(
-          TwitterResponse value, $Res Function(TwitterResponse) then) =
-      _$TwitterResponseCopyWithImpl<$Res, TwitterResponse>;
-  @useResult
-  $Res call({@JsonKey(name: 'data') TwitterData data});
-
-  $TwitterDataCopyWith<$Res> get data;
-}
-
-/// @nodoc
-class _$TwitterResponseCopyWithImpl<$Res, $Val extends TwitterResponse>
-    implements $TwitterResponseCopyWith<$Res> {
-  _$TwitterResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as TwitterData,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TwitterDataCopyWith<$Res> get data {
-    return $TwitterDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_TwitterResponseCopyWith<$Res>
-    implements $TwitterResponseCopyWith<$Res> {
-  factory _$$_TwitterResponseCopyWith(
-          _$_TwitterResponse value, $Res Function(_$_TwitterResponse) then) =
-      __$$_TwitterResponseCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: 'data') TwitterData data});
-
-  @override
-  $TwitterDataCopyWith<$Res> get data;
-}
-
-/// @nodoc
-class __$$_TwitterResponseCopyWithImpl<$Res>
-    extends _$TwitterResponseCopyWithImpl<$Res, _$_TwitterResponse>
-    implements _$$_TwitterResponseCopyWith<$Res> {
-  __$$_TwitterResponseCopyWithImpl(
-      _$_TwitterResponse _value, $Res Function(_$_TwitterResponse) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$_TwitterResponse(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as TwitterData,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_TwitterResponse extends _TwitterResponse with DiagnosticableTreeMixin {
-  const _$_TwitterResponse({@JsonKey(name: 'data') required this.data})
-      : super._();
-
-  factory _$_TwitterResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_TwitterResponseFromJson(json);
-
-  @override
-  @JsonKey(name: 'data')
-  final TwitterData data;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TwitterResponse(data: $data)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TwitterResponse'))
-      ..add(DiagnosticsProperty('data', data));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TwitterResponse &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_TwitterResponseCopyWith<_$_TwitterResponse> get copyWith =>
-      __$$_TwitterResponseCopyWithImpl<_$_TwitterResponse>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TwitterResponseToJson(
-      this,
-    );
-  }
-}
-
-abstract class _TwitterResponse extends TwitterResponse {
-  const factory _TwitterResponse(
-          {@JsonKey(name: 'data') required final TwitterData data}) =
-      _$_TwitterResponse;
-  const _TwitterResponse._() : super._();
-
-  factory _TwitterResponse.fromJson(Map<String, dynamic> json) =
-      _$_TwitterResponse.fromJson;
-
-  @override
-  @JsonKey(name: 'data')
-  TwitterData get data;
-  @override
-  @JsonKey(ignore: true)
-  _$$_TwitterResponseCopyWith<_$_TwitterResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-TwitterData _$TwitterDataFromJson(Map<String, dynamic> json) {
-  return _TwitterData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TwitterData {
-  @JsonKey(name: 'home')
-  TwitterHome get home => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TwitterDataCopyWith<TwitterData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TwitterDataCopyWith<$Res> {
-  factory $TwitterDataCopyWith(
-          TwitterData value, $Res Function(TwitterData) then) =
-      _$TwitterDataCopyWithImpl<$Res, TwitterData>;
-  @useResult
-  $Res call({@JsonKey(name: 'home') TwitterHome home});
-
-  $TwitterHomeCopyWith<$Res> get home;
-}
-
-/// @nodoc
-class _$TwitterDataCopyWithImpl<$Res, $Val extends TwitterData>
-    implements $TwitterDataCopyWith<$Res> {
-  _$TwitterDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? home = null,
-  }) {
-    return _then(_value.copyWith(
-      home: null == home
-          ? _value.home
-          : home // ignore: cast_nullable_to_non_nullable
-              as TwitterHome,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TwitterHomeCopyWith<$Res> get home {
-    return $TwitterHomeCopyWith<$Res>(_value.home, (value) {
-      return _then(_value.copyWith(home: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_TwitterDataCopyWith<$Res>
-    implements $TwitterDataCopyWith<$Res> {
-  factory _$$_TwitterDataCopyWith(
-          _$_TwitterData value, $Res Function(_$_TwitterData) then) =
-      __$$_TwitterDataCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: 'home') TwitterHome home});
-
-  @override
-  $TwitterHomeCopyWith<$Res> get home;
-}
-
-/// @nodoc
-class __$$_TwitterDataCopyWithImpl<$Res>
-    extends _$TwitterDataCopyWithImpl<$Res, _$_TwitterData>
-    implements _$$_TwitterDataCopyWith<$Res> {
-  __$$_TwitterDataCopyWithImpl(
-      _$_TwitterData _value, $Res Function(_$_TwitterData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? home = null,
-  }) {
-    return _then(_$_TwitterData(
-      home: null == home
-          ? _value.home
-          : home // ignore: cast_nullable_to_non_nullable
-              as TwitterHome,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_TwitterData with DiagnosticableTreeMixin implements _TwitterData {
-  const _$_TwitterData({@JsonKey(name: 'home') required this.home});
-
-  factory _$_TwitterData.fromJson(Map<String, dynamic> json) =>
-      _$$_TwitterDataFromJson(json);
-
-  @override
-  @JsonKey(name: 'home')
-  final TwitterHome home;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TwitterData(home: $home)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TwitterData'))
-      ..add(DiagnosticsProperty('home', home));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TwitterData &&
-            (identical(other.home, home) || other.home == home));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, home);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_TwitterDataCopyWith<_$_TwitterData> get copyWith =>
-      __$$_TwitterDataCopyWithImpl<_$_TwitterData>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TwitterDataToJson(
-      this,
-    );
-  }
-}
-
-abstract class _TwitterData implements TwitterData {
-  const factory _TwitterData(
-          {@JsonKey(name: 'home') required final TwitterHome home}) =
-      _$_TwitterData;
-
-  factory _TwitterData.fromJson(Map<String, dynamic> json) =
-      _$_TwitterData.fromJson;
-
-  @override
-  @JsonKey(name: 'home')
-  TwitterHome get home;
-  @override
-  @JsonKey(ignore: true)
-  _$$_TwitterDataCopyWith<_$_TwitterData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-TwitterHome _$TwitterHomeFromJson(Map<String, dynamic> json) {
-  return _TwitterHome.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TwitterHome {
-  @JsonKey(name: 'home_timeline_urt')
-  HomeTimelineUrt get homeTimelineUrt => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TwitterHomeCopyWith<TwitterHome> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TwitterHomeCopyWith<$Res> {
-  factory $TwitterHomeCopyWith(
-          TwitterHome value, $Res Function(TwitterHome) then) =
-      _$TwitterHomeCopyWithImpl<$Res, TwitterHome>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'home_timeline_urt') HomeTimelineUrt homeTimelineUrt});
-
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt;
-}
-
-/// @nodoc
-class _$TwitterHomeCopyWithImpl<$Res, $Val extends TwitterHome>
-    implements $TwitterHomeCopyWith<$Res> {
-  _$TwitterHomeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? homeTimelineUrt = null,
-  }) {
-    return _then(_value.copyWith(
-      homeTimelineUrt: null == homeTimelineUrt
-          ? _value.homeTimelineUrt
-          : homeTimelineUrt // ignore: cast_nullable_to_non_nullable
-              as HomeTimelineUrt,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt {
-    return $HomeTimelineUrtCopyWith<$Res>(_value.homeTimelineUrt, (value) {
-      return _then(_value.copyWith(homeTimelineUrt: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_TwitterHomeCopyWith<$Res>
-    implements $TwitterHomeCopyWith<$Res> {
-  factory _$$_TwitterHomeCopyWith(
-          _$_TwitterHome value, $Res Function(_$_TwitterHome) then) =
-      __$$_TwitterHomeCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'home_timeline_urt') HomeTimelineUrt homeTimelineUrt});
-
-  @override
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt;
-}
-
-/// @nodoc
-class __$$_TwitterHomeCopyWithImpl<$Res>
-    extends _$TwitterHomeCopyWithImpl<$Res, _$_TwitterHome>
-    implements _$$_TwitterHomeCopyWith<$Res> {
-  __$$_TwitterHomeCopyWithImpl(
-      _$_TwitterHome _value, $Res Function(_$_TwitterHome) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? homeTimelineUrt = null,
-  }) {
-    return _then(_$_TwitterHome(
-      homeTimelineUrt: null == homeTimelineUrt
-          ? _value.homeTimelineUrt
-          : homeTimelineUrt // ignore: cast_nullable_to_non_nullable
-              as HomeTimelineUrt,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_TwitterHome with DiagnosticableTreeMixin implements _TwitterHome {
-  const _$_TwitterHome(
-      {@JsonKey(name: 'home_timeline_urt') required this.homeTimelineUrt});
-
-  factory _$_TwitterHome.fromJson(Map<String, dynamic> json) =>
-      _$$_TwitterHomeFromJson(json);
-
-  @override
-  @JsonKey(name: 'home_timeline_urt')
-  final HomeTimelineUrt homeTimelineUrt;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TwitterHome(homeTimelineUrt: $homeTimelineUrt)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TwitterHome'))
-      ..add(DiagnosticsProperty('homeTimelineUrt', homeTimelineUrt));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TwitterHome &&
-            (identical(other.homeTimelineUrt, homeTimelineUrt) ||
-                other.homeTimelineUrt == homeTimelineUrt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, homeTimelineUrt);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_TwitterHomeCopyWith<_$_TwitterHome> get copyWith =>
-      __$$_TwitterHomeCopyWithImpl<_$_TwitterHome>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TwitterHomeToJson(
-      this,
-    );
-  }
-}
-
-abstract class _TwitterHome implements TwitterHome {
-  const factory _TwitterHome(
-      {@JsonKey(name: 'home_timeline_urt')
-          required final HomeTimelineUrt homeTimelineUrt}) = _$_TwitterHome;
-
-  factory _TwitterHome.fromJson(Map<String, dynamic> json) =
-      _$_TwitterHome.fromJson;
-
-  @override
-  @JsonKey(name: 'home_timeline_urt')
-  HomeTimelineUrt get homeTimelineUrt;
-  @override
-  @JsonKey(ignore: true)
-  _$$_TwitterHomeCopyWith<_$_TwitterHome> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-HomeTimelineUrt _$HomeTimelineUrtFromJson(Map<String, dynamic> json) {
-  return _HomeTimelineUrt.fromJson(json);
-}
-
-/// @nodoc
-mixin _$HomeTimelineUrt {
-  @JsonKey(name: 'instructions')
-  List<Instruction> get instructions => throw _privateConstructorUsedError;
-  @JsonKey(name: 'responseObjects')
-  Object? get responseObjects => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $HomeTimelineUrtCopyWith<HomeTimelineUrt> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeTimelineUrtCopyWith<$Res> {
-  factory $HomeTimelineUrtCopyWith(
-          HomeTimelineUrt value, $Res Function(HomeTimelineUrt) then) =
-      _$HomeTimelineUrtCopyWithImpl<$Res, HomeTimelineUrt>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'instructions') List<Instruction> instructions,
-      @JsonKey(name: 'responseObjects') Object? responseObjects});
-}
-
-/// @nodoc
-class _$HomeTimelineUrtCopyWithImpl<$Res, $Val extends HomeTimelineUrt>
-    implements $HomeTimelineUrtCopyWith<$Res> {
-  _$HomeTimelineUrtCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? instructions = null,
-    Object? responseObjects = freezed,
-  }) {
-    return _then(_value.copyWith(
-      instructions: null == instructions
-          ? _value.instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as List<Instruction>,
-      responseObjects:
-          freezed == responseObjects ? _value.responseObjects : responseObjects,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_HomeTimelineUrtCopyWith<$Res>
-    implements $HomeTimelineUrtCopyWith<$Res> {
-  factory _$$_HomeTimelineUrtCopyWith(
-          _$_HomeTimelineUrt value, $Res Function(_$_HomeTimelineUrt) then) =
-      __$$_HomeTimelineUrtCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'instructions') List<Instruction> instructions,
-      @JsonKey(name: 'responseObjects') Object? responseObjects});
-}
-
-/// @nodoc
-class __$$_HomeTimelineUrtCopyWithImpl<$Res>
-    extends _$HomeTimelineUrtCopyWithImpl<$Res, _$_HomeTimelineUrt>
-    implements _$$_HomeTimelineUrtCopyWith<$Res> {
-  __$$_HomeTimelineUrtCopyWithImpl(
-      _$_HomeTimelineUrt _value, $Res Function(_$_HomeTimelineUrt) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? instructions = null,
-    Object? responseObjects = freezed,
-  }) {
-    return _then(_$_HomeTimelineUrt(
-      instructions: null == instructions
-          ? _value._instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as List<Instruction>,
-      responseObjects:
-          freezed == responseObjects ? _value.responseObjects : responseObjects,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_HomeTimelineUrt
-    with DiagnosticableTreeMixin
-    implements _HomeTimelineUrt {
-  const _$_HomeTimelineUrt(
-      {@JsonKey(name: 'instructions')
-          required final List<Instruction> instructions,
-      @JsonKey(name: 'responseObjects')
-          required this.responseObjects})
-      : _instructions = instructions;
-
-  factory _$_HomeTimelineUrt.fromJson(Map<String, dynamic> json) =>
-      _$$_HomeTimelineUrtFromJson(json);
-
-  final List<Instruction> _instructions;
-  @override
-  @JsonKey(name: 'instructions')
-  List<Instruction> get instructions {
-    if (_instructions is EqualUnmodifiableListView) return _instructions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_instructions);
-  }
-
-  @override
-  @JsonKey(name: 'responseObjects')
-  final Object? responseObjects;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeTimelineUrt(instructions: $instructions, responseObjects: $responseObjects)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'HomeTimelineUrt'))
-      ..add(DiagnosticsProperty('instructions', instructions))
-      ..add(DiagnosticsProperty('responseObjects', responseObjects));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_HomeTimelineUrt &&
-            const DeepCollectionEquality()
-                .equals(other._instructions, _instructions) &&
-            const DeepCollectionEquality()
-                .equals(other.responseObjects, responseObjects));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_instructions),
-      const DeepCollectionEquality().hash(responseObjects));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_HomeTimelineUrtCopyWith<_$_HomeTimelineUrt> get copyWith =>
-      __$$_HomeTimelineUrtCopyWithImpl<_$_HomeTimelineUrt>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_HomeTimelineUrtToJson(
-      this,
-    );
-  }
-}
-
-abstract class _HomeTimelineUrt implements HomeTimelineUrt {
-  const factory _HomeTimelineUrt(
-      {@JsonKey(name: 'instructions')
-          required final List<Instruction> instructions,
-      @JsonKey(name: 'responseObjects')
-          required final Object? responseObjects}) = _$_HomeTimelineUrt;
-
-  factory _HomeTimelineUrt.fromJson(Map<String, dynamic> json) =
-      _$_HomeTimelineUrt.fromJson;
-
-  @override
-  @JsonKey(name: 'instructions')
-  List<Instruction> get instructions;
-  @override
-  @JsonKey(name: 'responseObjects')
-  Object? get responseObjects;
-  @override
-  @JsonKey(ignore: true)
-  _$$_HomeTimelineUrtCopyWith<_$_HomeTimelineUrt> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 Instruction _$InstructionFromJson(Map<String, dynamic> json) {
   return _Instruction.fromJson(json);
 }
@@ -794,7 +113,7 @@ class __$$_InstructionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
+class _$_Instruction extends _Instruction {
   const _$_Instruction(
       {@JsonKey(name: 'type')
           required this.type,
@@ -819,17 +138,8 @@ class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Instruction(type: $type, entries: $entries)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Instruction'))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('entries', entries));
   }
 
   @override
@@ -1003,7 +313,7 @@ class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Entry with DiagnosticableTreeMixin implements _Entry {
+class _$_Entry implements _Entry {
   const _$_Entry(
       {@JsonKey(name: 'entryId') required this.entryId,
       @JsonKey(name: 'sortIndex') required this.sortIndex,
@@ -1023,18 +333,8 @@ class _$_Entry with DiagnosticableTreeMixin implements _Entry {
   final Content content;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Entry(entryId: $entryId, sortIndex: $sortIndex, content: $content)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Entry'))
-      ..add(DiagnosticsProperty('entryId', entryId))
-      ..add(DiagnosticsProperty('sortIndex', sortIndex))
-      ..add(DiagnosticsProperty('content', content));
   }
 
   @override
@@ -1271,7 +571,7 @@ class __$$_ContentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Content with DiagnosticableTreeMixin implements _Content {
+class _$_Content implements _Content {
   const _$_Content(
       {@JsonKey(name: 'entryType') required this.entryType,
       @JsonKey(name: '__typename') required this.typename,
@@ -1307,22 +607,8 @@ class _$_Content with DiagnosticableTreeMixin implements _Content {
   final String? value;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Content(entryType: $entryType, typename: $typename, itemContent: $itemContent, feedbackInfo: $feedbackInfo, clientEventInfo: $clientEventInfo, cursorType: $cursorType, value: $value)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Content'))
-      ..add(DiagnosticsProperty('entryType', entryType))
-      ..add(DiagnosticsProperty('typename', typename))
-      ..add(DiagnosticsProperty('itemContent', itemContent))
-      ..add(DiagnosticsProperty('feedbackInfo', feedbackInfo))
-      ..add(DiagnosticsProperty('clientEventInfo', clientEventInfo))
-      ..add(DiagnosticsProperty('cursorType', cursorType))
-      ..add(DiagnosticsProperty('value', value));
   }
 
   @override
@@ -1550,7 +836,7 @@ class __$$_ItemContentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ItemContent with DiagnosticableTreeMixin implements _ItemContent {
+class _$_ItemContent implements _ItemContent {
   const _$_ItemContent(
       {@JsonKey(name: 'itemType') required this.itemType,
       @JsonKey(name: '__typename') required this.typename,
@@ -1574,19 +860,8 @@ class _$_ItemContent with DiagnosticableTreeMixin implements _ItemContent {
   final String tweetDisplayType;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ItemContent(itemType: $itemType, typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ItemContent'))
-      ..add(DiagnosticsProperty('itemType', itemType))
-      ..add(DiagnosticsProperty('typename', typename))
-      ..add(DiagnosticsProperty('tweetResults', tweetResults))
-      ..add(DiagnosticsProperty('tweetDisplayType', tweetDisplayType));
   }
 
   @override
@@ -1751,7 +1026,7 @@ class __$$_TweetResultsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetResults with DiagnosticableTreeMixin implements _TweetResults {
+class _$_TweetResults implements _TweetResults {
   const _$_TweetResults({@JsonKey(name: 'result') required this.result});
 
   factory _$_TweetResults.fromJson(Map<String, dynamic> json) =>
@@ -1762,16 +1037,8 @@ class _$_TweetResults with DiagnosticableTreeMixin implements _TweetResults {
   final TweetResult result;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TweetResults(result: $result)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TweetResults'))
-      ..add(DiagnosticsProperty('result', result));
   }
 
   @override
@@ -1838,7 +1105,7 @@ mixin _$TweetResult {
   @JsonKey(name: 'is_translatable', defaultValue: false)
   bool get isTranslatable => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
-  Legacy get legacy => throw _privateConstructorUsedError;
+  TweetLegacy get legacy => throw _privateConstructorUsedError;
   @JsonKey(name: 'views')
   dynamic get views => throw _privateConstructorUsedError;
 
@@ -1870,12 +1137,12 @@ abstract class $TweetResultCopyWith<$Res> {
       @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
       @JsonKey(name: 'legacy')
-          Legacy legacy,
+          TweetLegacy legacy,
       @JsonKey(name: 'views')
           dynamic views});
 
   $CoreCopyWith<$Res> get core;
-  $LegacyCopyWith<$Res> get legacy;
+  $TweetLegacyCopyWith<$Res> get legacy;
 }
 
 /// @nodoc
@@ -1933,7 +1200,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
-              as Legacy,
+              as TweetLegacy,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -1951,8 +1218,8 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
 
   @override
   @pragma('vm:prefer-inline')
-  $LegacyCopyWith<$Res> get legacy {
-    return $LegacyCopyWith<$Res>(_value.legacy, (value) {
+  $TweetLegacyCopyWith<$Res> get legacy {
+    return $TweetLegacyCopyWith<$Res>(_value.legacy, (value) {
       return _then(_value.copyWith(legacy: value) as $Val);
     });
   }
@@ -1982,14 +1249,14 @@ abstract class _$$_TweetResultCopyWith<$Res>
       @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
       @JsonKey(name: 'legacy')
-          Legacy legacy,
+          TweetLegacy legacy,
       @JsonKey(name: 'views')
           dynamic views});
 
   @override
   $CoreCopyWith<$Res> get core;
   @override
-  $LegacyCopyWith<$Res> get legacy;
+  $TweetLegacyCopyWith<$Res> get legacy;
 }
 
 /// @nodoc
@@ -2045,7 +1312,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
-              as Legacy,
+              as TweetLegacy,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -2056,7 +1323,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
+class _$_TweetResult implements _TweetResult {
   const _$_TweetResult(
       {@JsonKey(name: '__typename')
           required this.typename,
@@ -2103,30 +1370,14 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
   final bool isTranslatable;
   @override
   @JsonKey(name: 'legacy')
-  final Legacy legacy;
+  final TweetLegacy legacy;
   @override
   @JsonKey(name: 'views')
   final dynamic views;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TweetResult(typename: $typename, restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TweetResult'))
-      ..add(DiagnosticsProperty('typename', typename))
-      ..add(DiagnosticsProperty('restId', restId))
-      ..add(DiagnosticsProperty('core', core))
-      ..add(DiagnosticsProperty('unmentionData', unmentionData))
-      ..add(DiagnosticsProperty('editControl', editControl))
-      ..add(DiagnosticsProperty('editPerspective', editPerspective))
-      ..add(DiagnosticsProperty('isTranslatable', isTranslatable))
-      ..add(DiagnosticsProperty('legacy', legacy))
-      ..add(DiagnosticsProperty('views', views));
   }
 
   @override
@@ -2194,7 +1445,7 @@ abstract class _TweetResult implements TweetResult {
       @JsonKey(name: 'is_translatable', defaultValue: false)
           required final bool isTranslatable,
       @JsonKey(name: 'legacy')
-          required final Legacy legacy,
+          required final TweetLegacy legacy,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
 
@@ -2224,7 +1475,7 @@ abstract class _TweetResult implements TweetResult {
   bool get isTranslatable;
   @override
   @JsonKey(name: 'legacy')
-  Legacy get legacy;
+  TweetLegacy get legacy;
   @override
   @JsonKey(name: 'views')
   dynamic get views;
@@ -2324,7 +1575,7 @@ class __$$_CoreCopyWithImpl<$Res> extends _$CoreCopyWithImpl<$Res, _$_Core>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Core with DiagnosticableTreeMixin implements _Core {
+class _$_Core implements _Core {
   const _$_Core({@JsonKey(name: 'user_results') required this.userResults});
 
   factory _$_Core.fromJson(Map<String, dynamic> json) => _$$_CoreFromJson(json);
@@ -2334,16 +1585,8 @@ class _$_Core with DiagnosticableTreeMixin implements _Core {
   final UserResults userResults;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Core(userResults: $userResults)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Core'))
-      ..add(DiagnosticsProperty('userResults', userResults));
   }
 
   @override
@@ -2484,7 +1727,7 @@ class __$$_UserResultsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserResults with DiagnosticableTreeMixin implements _UserResults {
+class _$_UserResults implements _UserResults {
   const _$_UserResults({@JsonKey(name: 'result') required this.result});
 
   factory _$_UserResults.fromJson(Map<String, dynamic> json) =>
@@ -2495,16 +1738,8 @@ class _$_UserResults with DiagnosticableTreeMixin implements _UserResults {
   final Result result;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'UserResults(result: $result)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserResults'))
-      ..add(DiagnosticsProperty('result', result));
   }
 
   @override
@@ -2804,7 +2039,7 @@ class __$$_ResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Result with DiagnosticableTreeMixin implements _Result {
+class _$_Result implements _Result {
   const _$_Result(
       {@JsonKey(name: 'affiliates_highlighted_label')
           required this.affiliatesHighlightedLabel,
@@ -2867,27 +2102,8 @@ class _$_Result with DiagnosticableTreeMixin implements _Result {
   final String typename;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Result(affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing, typename: $typename)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Result'))
-      ..add(DiagnosticsProperty(
-          'affiliatesHighlightedLabel', affiliatesHighlightedLabel))
-      ..add(DiagnosticsProperty('hasGraduatedAccess', hasGraduatedAccess))
-      ..add(DiagnosticsProperty('hasNftAvatar', hasNftAvatar))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('isBlueVerified', isBlueVerified))
-      ..add(DiagnosticsProperty('legacy', legacy))
-      ..add(DiagnosticsProperty('restId', restId))
-      ..add(DiagnosticsProperty('superFollowEligible', superFollowEligible))
-      ..add(DiagnosticsProperty('superFollowedBy', superFollowedBy))
-      ..add(DiagnosticsProperty('superFollowing', superFollowing))
-      ..add(DiagnosticsProperty('typename', typename));
   }
 
   @override
@@ -3723,7 +2939,7 @@ class __$$_UserLegacyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserLegacy with DiagnosticableTreeMixin implements _UserLegacy {
+class _$_UserLegacy implements _UserLegacy {
   const _$_UserLegacy(
       {@JsonKey(name: 'blocked_by')
           required this.blockedBy,
@@ -3946,58 +3162,8 @@ class _$_UserLegacy with DiagnosticableTreeMixin implements _UserLegacy {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'UserLegacy(blockedBy: $blockedBy, blocking: $blocking, canDm: $canDm, canMediaTag: $canMediaTag, createdAt: $createdAt, defaultProfile: $defaultProfile, defaultProfileImage: $defaultProfileImage, description: $description, entities: $entities, fastFollowersCount: $fastFollowersCount, favouritesCount: $favouritesCount, followRequestSent: $followRequestSent, followedBy: $followedBy, followersCount: $followersCount, following: $following, friendsCount: $friendsCount, hasCustomTimelines: $hasCustomTimelines, isTranslator: $isTranslator, listedCount: $listedCount, location: $location, mediaCount: $mediaCount, muting: $muting, name: $name, normalFollowersCount: $normalFollowersCount, notifications: $notifications, pinnedTweetIdsStr: $pinnedTweetIdsStr, possiblySensitive: $possiblySensitive, profileBannerExtensions: $profileBannerExtensions, profileBannerUrl: $profileBannerUrl, profileImageExtensions: $profileImageExtensions, profileImageUrlHttps: $profileImageUrlHttps, profileInterstitialType: $profileInterstitialType, protected: $protected, screenName: $screenName, statusesCount: $statusesCount, translatorType: $translatorType, url: $url, verified: $verified, wantRetweets: $wantRetweets, withheldInCountries: $withheldInCountries)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserLegacy'))
-      ..add(DiagnosticsProperty('blockedBy', blockedBy))
-      ..add(DiagnosticsProperty('blocking', blocking))
-      ..add(DiagnosticsProperty('canDm', canDm))
-      ..add(DiagnosticsProperty('canMediaTag', canMediaTag))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('defaultProfile', defaultProfile))
-      ..add(DiagnosticsProperty('defaultProfileImage', defaultProfileImage))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('entities', entities))
-      ..add(DiagnosticsProperty('fastFollowersCount', fastFollowersCount))
-      ..add(DiagnosticsProperty('favouritesCount', favouritesCount))
-      ..add(DiagnosticsProperty('followRequestSent', followRequestSent))
-      ..add(DiagnosticsProperty('followedBy', followedBy))
-      ..add(DiagnosticsProperty('followersCount', followersCount))
-      ..add(DiagnosticsProperty('following', following))
-      ..add(DiagnosticsProperty('friendsCount', friendsCount))
-      ..add(DiagnosticsProperty('hasCustomTimelines', hasCustomTimelines))
-      ..add(DiagnosticsProperty('isTranslator', isTranslator))
-      ..add(DiagnosticsProperty('listedCount', listedCount))
-      ..add(DiagnosticsProperty('location', location))
-      ..add(DiagnosticsProperty('mediaCount', mediaCount))
-      ..add(DiagnosticsProperty('muting', muting))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('normalFollowersCount', normalFollowersCount))
-      ..add(DiagnosticsProperty('notifications', notifications))
-      ..add(DiagnosticsProperty('pinnedTweetIdsStr', pinnedTweetIdsStr))
-      ..add(DiagnosticsProperty('possiblySensitive', possiblySensitive))
-      ..add(DiagnosticsProperty(
-          'profileBannerExtensions', profileBannerExtensions))
-      ..add(DiagnosticsProperty('profileBannerUrl', profileBannerUrl))
-      ..add(
-          DiagnosticsProperty('profileImageExtensions', profileImageExtensions))
-      ..add(DiagnosticsProperty('profileImageUrlHttps', profileImageUrlHttps))
-      ..add(DiagnosticsProperty(
-          'profileInterstitialType', profileInterstitialType))
-      ..add(DiagnosticsProperty('protected', protected))
-      ..add(DiagnosticsProperty('screenName', screenName))
-      ..add(DiagnosticsProperty('statusesCount', statusesCount))
-      ..add(DiagnosticsProperty('translatorType', translatorType))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('verified', verified))
-      ..add(DiagnosticsProperty('wantRetweets', wantRetweets))
-      ..add(DiagnosticsProperty('withheldInCountries', withheldInCountries));
   }
 
   @override
@@ -4354,12 +3520,12 @@ abstract class _UserLegacy implements UserLegacy {
       throw _privateConstructorUsedError;
 }
 
-Legacy _$LegacyFromJson(Map<String, dynamic> json) {
-  return _Legacy.fromJson(json);
+TweetLegacy _$TweetLegacyFromJson(Map<String, dynamic> json) {
+  return _TweetLegacy.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Legacy {
+mixin _$TweetLegacy {
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'conversation_id_str')
@@ -4402,13 +3568,15 @@ mixin _$Legacy {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LegacyCopyWith<Legacy> get copyWith => throw _privateConstructorUsedError;
+  $TweetLegacyCopyWith<TweetLegacy> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LegacyCopyWith<$Res> {
-  factory $LegacyCopyWith(Legacy value, $Res Function(Legacy) then) =
-      _$LegacyCopyWithImpl<$Res, Legacy>;
+abstract class $TweetLegacyCopyWith<$Res> {
+  factory $TweetLegacyCopyWith(
+          TweetLegacy value, $Res Function(TweetLegacy) then) =
+      _$TweetLegacyCopyWithImpl<$Res, TweetLegacy>;
   @useResult
   $Res call(
       {@JsonKey(name: 'created_at')
@@ -4453,9 +3621,9 @@ abstract class $LegacyCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LegacyCopyWithImpl<$Res, $Val extends Legacy>
-    implements $LegacyCopyWith<$Res> {
-  _$LegacyCopyWithImpl(this._value, this._then);
+class _$TweetLegacyCopyWithImpl<$Res, $Val extends TweetLegacy>
+    implements $TweetLegacyCopyWith<$Res> {
+  _$TweetLegacyCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -4567,9 +3735,11 @@ class _$LegacyCopyWithImpl<$Res, $Val extends Legacy>
 }
 
 /// @nodoc
-abstract class _$$_LegacyCopyWith<$Res> implements $LegacyCopyWith<$Res> {
-  factory _$$_LegacyCopyWith(_$_Legacy value, $Res Function(_$_Legacy) then) =
-      __$$_LegacyCopyWithImpl<$Res>;
+abstract class _$$_TweetLegacyCopyWith<$Res>
+    implements $TweetLegacyCopyWith<$Res> {
+  factory _$$_TweetLegacyCopyWith(
+          _$_TweetLegacy value, $Res Function(_$_TweetLegacy) then) =
+      __$$_TweetLegacyCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -4615,10 +3785,11 @@ abstract class _$$_LegacyCopyWith<$Res> implements $LegacyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LegacyCopyWithImpl<$Res>
-    extends _$LegacyCopyWithImpl<$Res, _$_Legacy>
-    implements _$$_LegacyCopyWith<$Res> {
-  __$$_LegacyCopyWithImpl(_$_Legacy _value, $Res Function(_$_Legacy) _then)
+class __$$_TweetLegacyCopyWithImpl<$Res>
+    extends _$TweetLegacyCopyWithImpl<$Res, _$_TweetLegacy>
+    implements _$$_TweetLegacyCopyWith<$Res> {
+  __$$_TweetLegacyCopyWithImpl(
+      _$_TweetLegacy _value, $Res Function(_$_TweetLegacy) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4644,7 +3815,7 @@ class __$$_LegacyCopyWithImpl<$Res>
     Object? idStr = null,
     Object? retweetedStatusResult = freezed,
   }) {
-    return _then(_$_Legacy(
+    return _then(_$_TweetLegacy(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -4727,8 +3898,8 @@ class __$$_LegacyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Legacy with DiagnosticableTreeMixin implements _Legacy {
-  const _$_Legacy(
+class _$_TweetLegacy implements _TweetLegacy {
+  const _$_TweetLegacy(
       {@JsonKey(name: 'created_at')
           required this.createdAt,
       @JsonKey(name: 'conversation_id_str')
@@ -4770,8 +3941,8 @@ class _$_Legacy with DiagnosticableTreeMixin implements _Legacy {
           required this.retweetedStatusResult})
       : _core = core;
 
-  factory _$_Legacy.fromJson(Map<String, dynamic> json) =>
-      _$$_LegacyFromJson(json);
+  factory _$_TweetLegacy.fromJson(Map<String, dynamic> json) =>
+      _$$_TweetLegacyFromJson(json);
 
   @override
   @JsonKey(name: 'created_at')
@@ -4839,43 +4010,15 @@ class _$_Legacy with DiagnosticableTreeMixin implements _Legacy {
   final dynamic retweetedStatusResult;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Legacy(createdAt: $createdAt, conversationIdStr: $conversationIdStr, core: $core, entities: $entities, extendedEntities: $extendedEntities, favoriteCount: $favoriteCount, favorited: $favorited, fullText: $fullText, isQuoteStatus: $isQuoteStatus, lang: $lang, possiblySensitive: $possiblySensitive, possiblySensitiveEditable: $possiblySensitiveEditable, quoteCount: $quoteCount, replyCount: $replyCount, retweetCount: $retweetCount, retweeted: $retweeted, userIdStr: $userIdStr, idStr: $idStr, retweetedStatusResult: $retweetedStatusResult)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Legacy'))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('conversationIdStr', conversationIdStr))
-      ..add(DiagnosticsProperty('core', core))
-      ..add(DiagnosticsProperty('entities', entities))
-      ..add(DiagnosticsProperty('extendedEntities', extendedEntities))
-      ..add(DiagnosticsProperty('favoriteCount', favoriteCount))
-      ..add(DiagnosticsProperty('favorited', favorited))
-      ..add(DiagnosticsProperty('fullText', fullText))
-      ..add(DiagnosticsProperty('isQuoteStatus', isQuoteStatus))
-      ..add(DiagnosticsProperty('lang', lang))
-      ..add(DiagnosticsProperty('possiblySensitive', possiblySensitive))
-      ..add(DiagnosticsProperty(
-          'possiblySensitiveEditable', possiblySensitiveEditable))
-      ..add(DiagnosticsProperty('quoteCount', quoteCount))
-      ..add(DiagnosticsProperty('replyCount', replyCount))
-      ..add(DiagnosticsProperty('retweetCount', retweetCount))
-      ..add(DiagnosticsProperty('retweeted', retweeted))
-      ..add(DiagnosticsProperty('userIdStr', userIdStr))
-      ..add(DiagnosticsProperty('idStr', idStr))
-      ..add(
-          DiagnosticsProperty('retweetedStatusResult', retweetedStatusResult));
+  String toString() {
+    return 'TweetLegacy(createdAt: $createdAt, conversationIdStr: $conversationIdStr, core: $core, entities: $entities, extendedEntities: $extendedEntities, favoriteCount: $favoriteCount, favorited: $favorited, fullText: $fullText, isQuoteStatus: $isQuoteStatus, lang: $lang, possiblySensitive: $possiblySensitive, possiblySensitiveEditable: $possiblySensitiveEditable, quoteCount: $quoteCount, replyCount: $replyCount, retweetCount: $retweetCount, retweeted: $retweeted, userIdStr: $userIdStr, idStr: $idStr, retweetedStatusResult: $retweetedStatusResult)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Legacy &&
+            other is _$_TweetLegacy &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.conversationIdStr, conversationIdStr) ||
@@ -4941,19 +4084,19 @@ class _$_Legacy with DiagnosticableTreeMixin implements _Legacy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LegacyCopyWith<_$_Legacy> get copyWith =>
-      __$$_LegacyCopyWithImpl<_$_Legacy>(this, _$identity);
+  _$$_TweetLegacyCopyWith<_$_TweetLegacy> get copyWith =>
+      __$$_TweetLegacyCopyWithImpl<_$_TweetLegacy>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LegacyToJson(
+    return _$$_TweetLegacyToJson(
       this,
     );
   }
 }
 
-abstract class _Legacy implements Legacy {
-  const factory _Legacy(
+abstract class _TweetLegacy implements TweetLegacy {
+  const factory _TweetLegacy(
       {@JsonKey(name: 'created_at')
           required final String createdAt,
       @JsonKey(name: 'conversation_id_str')
@@ -4992,9 +4135,10 @@ abstract class _Legacy implements Legacy {
       @JsonKey(name: 'id_str')
           required final String idStr,
       @JsonKey(name: 'retweeted_status_result')
-          required final dynamic retweetedStatusResult}) = _$_Legacy;
+          required final dynamic retweetedStatusResult}) = _$_TweetLegacy;
 
-  factory _Legacy.fromJson(Map<String, dynamic> json) = _$_Legacy.fromJson;
+  factory _TweetLegacy.fromJson(Map<String, dynamic> json) =
+      _$_TweetLegacy.fromJson;
 
   @override
   @JsonKey(name: 'created_at')
@@ -5056,6 +4200,6 @@ abstract class _Legacy implements Legacy {
   dynamic get retweetedStatusResult;
   @override
   @JsonKey(ignore: true)
-  _$$_LegacyCopyWith<_$_Legacy> get copyWith =>
+  _$$_TweetLegacyCopyWith<_$_TweetLegacy> get copyWith =>
       throw _privateConstructorUsedError;
 }

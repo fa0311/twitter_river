@@ -1,6 +1,3 @@
-// Flutter imports:
-import 'package:flutter/foundation.dart';
-
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,47 +6,6 @@ import 'package:twitter_river/infrastructure/twitter_river_api/converter/json.da
 
 part 'main.freezed.dart';
 part 'main.g.dart';
-
-@freezed
-class TwitterResponse with _$TwitterResponse {
-  const TwitterResponse._();
-  const factory TwitterResponse({
-    @JsonKey(name: 'data') required TwitterData data,
-  }) = _TwitterResponse;
-
-  Instruction get instruction => data.home.homeTimelineUrt.instructions[0];
-  List<Instruction> get instructions => data.home.homeTimelineUrt.instructions;
-
-  factory TwitterResponse.fromJson(Map<String, dynamic> json) => _$TwitterResponseFromJson(json);
-}
-
-@freezed
-class TwitterData with _$TwitterData {
-  const factory TwitterData({
-    @JsonKey(name: 'home') required TwitterHome home,
-  }) = _TwitterData;
-
-  factory TwitterData.fromJson(Map<String, dynamic> json) => _$TwitterDataFromJson(json);
-}
-
-@freezed
-class TwitterHome with _$TwitterHome {
-  const factory TwitterHome({
-    @JsonKey(name: 'home_timeline_urt') required HomeTimelineUrt homeTimelineUrt,
-  }) = _TwitterHome;
-
-  factory TwitterHome.fromJson(Map<String, dynamic> json) => _$TwitterHomeFromJson(json);
-}
-
-@freezed
-class HomeTimelineUrt with _$HomeTimelineUrt {
-  const factory HomeTimelineUrt({
-    @JsonKey(name: 'instructions') required List<Instruction> instructions,
-    @JsonKey(name: 'responseObjects') required Object? responseObjects,
-  }) = _HomeTimelineUrt;
-
-  factory HomeTimelineUrt.fromJson(Map<String, dynamic> json) => _$HomeTimelineUrtFromJson(json);
-}
 
 @freezed
 class Instruction with _$Instruction {
@@ -135,7 +91,7 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
     @JsonKey(name: 'is_translatable', defaultValue: false) required bool isTranslatable,
-    @JsonKey(name: 'legacy') required Legacy legacy,
+    @JsonKey(name: 'legacy') required TweetLegacy legacy,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
@@ -228,8 +184,8 @@ class UserLegacy with _$UserLegacy {
 }
 
 @freezed
-class Legacy with _$Legacy {
-  const factory Legacy({
+class TweetLegacy with _$TweetLegacy {
+  const factory TweetLegacy({
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'conversation_id_str') required String conversationIdStr,
     @JsonKey(name: 'display_text_range') required List<int> core,
@@ -249,7 +205,7 @@ class Legacy with _$Legacy {
     @JsonKey(name: 'user_id_str') required String userIdStr,
     @JsonKey(name: 'id_str') required String idStr,
     @JsonKey(name: 'retweeted_status_result') required dynamic retweetedStatusResult,
-  }) = _Legacy;
+  }) = _TweetLegacy;
 
-  factory Legacy.fromJson(Map<String, dynamic> json) => _$LegacyFromJson(json);
+  factory TweetLegacy.fromJson(Map<String, dynamic> json) => _$TweetLegacyFromJson(json);
 }
