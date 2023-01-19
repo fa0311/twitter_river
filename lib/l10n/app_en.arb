@@ -4,5 +4,10 @@
     "home": "home",
     "@____________________DRAWER____________________": {},
     "logout": "logout",
-    "close": "close"
+    "close": "close",
+    "setting": "setting",
+    "help": "help",
+    "@____________________HELP____________________": {},
+    "license": "license",
+    "licenseDetails": "View licence"
 }

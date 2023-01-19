@@ -24,7 +24,6 @@ final splashProvider = FutureProvider<SplashData>((ref) async {
     logger.w(e, e, trace);
     return SplashData.login;
   }
-
   return SplashData.top;
 });
 

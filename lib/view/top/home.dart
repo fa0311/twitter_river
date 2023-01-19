@@ -22,9 +22,9 @@ enum CurrentIndex {
       case CurrentIndex.timeline:
         return const TwitterRiverTimeline();
       case CurrentIndex.aaa:
-        return const TwitterRiverTimeline();
+        return Container();
       case CurrentIndex.bbb:
-        return const TwitterRiverTimeline();
+        return Container();
     }
   }
 
