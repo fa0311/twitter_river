@@ -56,7 +56,7 @@ class Instruction with _$Instruction {
   const Instruction._();
   const factory Instruction({
     @JsonKey(name: 'type') required String type,
-    @JsonKey(name: 'entries') required List<Entry> entries,
+    @JsonKey(name: 'entries', defaultValue: []) required List<Entry> entries,
   }) = _Instruction;
 
   List<Entry> getContents({required String entryType, String? cursorType}) {
@@ -129,17 +129,17 @@ class TweetResults with _$TweetResults {
 class TweetResult with _$TweetResult {
   const factory TweetResult({
     @JsonKey(name: '__typename') required dynamic typename,
-    @JsonKey(name: 'rest_id') required dynamic restId,
+    @JsonKey(name: 'rest_id') required String restId,
     @JsonKey(name: 'core') required Core core,
     @JsonKey(name: 'unmention_data') required dynamic unmentionData,
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
-    @SafetyIntegerConverter() @JsonKey(name: 'is_translatable') required bool isTranslatable,
+    @JsonKey(name: 'is_translatable', defaultValue: false) required bool isTranslatable,
     @JsonKey(name: 'legacy') required Legacy legacy,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
-  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(json);
+  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(json['tweet'] ?? json);
 }
 
 @freezed
@@ -210,7 +210,7 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'pinned_tweet_ids_str') required List<String> pinnedTweetIdsStr,
     @JsonKey(name: 'possibly_sensitive') required bool possiblySensitive,
     @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
-    @JsonKey(name: 'profile_banner_url') required String profileBannerUrl,
+    @JsonKey(name: 'profile_banner_url') String? profileBannerUrl,
     @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
     @JsonKey(name: 'profile_image_url_https') required String profileImageUrlHttps,
     @JsonKey(name: 'profile_interstitial_type') required String profileInterstitialType,

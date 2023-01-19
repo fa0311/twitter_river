@@ -54,9 +54,10 @@ Map<String, dynamic> _$$_HomeTimelineUrtToJson(_$_HomeTimelineUrt instance) =>
 _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
     _$_Instruction(
       type: json['type'] as String,
-      entries: (json['entries'] as List<dynamic>)
-          .map((e) => Entry.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      entries: (json['entries'] as List<dynamic>?)
+              ?.map((e) => Entry.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
@@ -130,12 +131,12 @@ Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
 _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
     _$_TweetResult(
       typename: json['__typename'],
-      restId: json['rest_id'],
+      restId: json['rest_id'] as String,
       core: Core.fromJson(json['core'] as Map<String, dynamic>),
       unmentionData: json['unmention_data'],
       editControl: json['edit_control'],
       editPerspective: json['edit_perspective'],
-      isTranslatable: json['is_translatable'] as bool,
+      isTranslatable: json['is_translatable'] as bool? ?? false,
       legacy: Legacy.fromJson(json['legacy'] as Map<String, dynamic>),
       views: json['views'],
     );
@@ -232,7 +233,7 @@ _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>
           .toList(),
       possiblySensitive: json['possibly_sensitive'] as bool,
       profileBannerExtensions: json['profile_banner_extensions'],
-      profileBannerUrl: json['profile_banner_url'] as String,
+      profileBannerUrl: json['profile_banner_url'] as String?,
       profileImageExtensions: json['profile_image_extensions'],
       profileImageUrlHttps: json['profile_image_url_https'] as String,
       profileInterstitialType: json['profile_interstitial_type'] as String,

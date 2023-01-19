@@ -703,7 +703,7 @@ Instruction _$InstructionFromJson(Map<String, dynamic> json) {
 mixin _$Instruction {
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'entries')
+  @JsonKey(name: 'entries', defaultValue: [])
   List<Entry> get entries => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -720,7 +720,7 @@ abstract class $InstructionCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'entries') List<Entry> entries});
+      @JsonKey(name: 'entries', defaultValue: []) List<Entry> entries});
 }
 
 /// @nodoc
@@ -762,7 +762,7 @@ abstract class _$$_InstructionCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'entries') List<Entry> entries});
+      @JsonKey(name: 'entries', defaultValue: []) List<Entry> entries});
 }
 
 /// @nodoc
@@ -796,8 +796,10 @@ class __$$_InstructionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
   const _$_Instruction(
-      {@JsonKey(name: 'type') required this.type,
-      @JsonKey(name: 'entries') required final List<Entry> entries})
+      {@JsonKey(name: 'type')
+          required this.type,
+      @JsonKey(name: 'entries', defaultValue: [])
+          required final List<Entry> entries})
       : _entries = entries,
         super._();
 
@@ -809,7 +811,7 @@ class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
   final String type;
   final List<Entry> _entries;
   @override
-  @JsonKey(name: 'entries')
+  @JsonKey(name: 'entries', defaultValue: [])
   List<Entry> get entries {
     if (_entries is EqualUnmodifiableListView) return _entries;
     // ignore: implicit_dynamic_type
@@ -860,9 +862,10 @@ class _$_Instruction extends _Instruction with DiagnosticableTreeMixin {
 
 abstract class _Instruction extends Instruction {
   const factory _Instruction(
-          {@JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'entries') required final List<Entry> entries}) =
-      _$_Instruction;
+      {@JsonKey(name: 'type')
+          required final String type,
+      @JsonKey(name: 'entries', defaultValue: [])
+          required final List<Entry> entries}) = _$_Instruction;
   const _Instruction._() : super._();
 
   factory _Instruction.fromJson(Map<String, dynamic> json) =
@@ -872,7 +875,7 @@ abstract class _Instruction extends Instruction {
   @JsonKey(name: 'type')
   String get type;
   @override
-  @JsonKey(name: 'entries')
+  @JsonKey(name: 'entries', defaultValue: [])
   List<Entry> get entries;
   @override
   @JsonKey(ignore: true)
@@ -1823,7 +1826,7 @@ mixin _$TweetResult {
   @JsonKey(name: '__typename')
   dynamic get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'rest_id')
-  dynamic get restId => throw _privateConstructorUsedError;
+  String get restId => throw _privateConstructorUsedError;
   @JsonKey(name: 'core')
   Core get core => throw _privateConstructorUsedError;
   @JsonKey(name: 'unmention_data')
@@ -1832,8 +1835,7 @@ mixin _$TweetResult {
   dynamic get editControl => throw _privateConstructorUsedError;
   @JsonKey(name: 'edit_perspective')
   dynamic get editPerspective => throw _privateConstructorUsedError;
-  @SafetyIntegerConverter()
-  @JsonKey(name: 'is_translatable')
+  @JsonKey(name: 'is_translatable', defaultValue: false)
   bool get isTranslatable => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
   Legacy get legacy => throw _privateConstructorUsedError;
@@ -1856,7 +1858,7 @@ abstract class $TweetResultCopyWith<$Res> {
       {@JsonKey(name: '__typename')
           dynamic typename,
       @JsonKey(name: 'rest_id')
-          dynamic restId,
+          String restId,
       @JsonKey(name: 'core')
           Core core,
       @JsonKey(name: 'unmention_data')
@@ -1865,8 +1867,7 @@ abstract class $TweetResultCopyWith<$Res> {
           dynamic editControl,
       @JsonKey(name: 'edit_perspective')
           dynamic editPerspective,
-      @SafetyIntegerConverter()
-      @JsonKey(name: 'is_translatable')
+      @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
       @JsonKey(name: 'legacy')
           Legacy legacy,
@@ -1891,7 +1892,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
   @override
   $Res call({
     Object? typename = freezed,
-    Object? restId = freezed,
+    Object? restId = null,
     Object? core = null,
     Object? unmentionData = freezed,
     Object? editControl = freezed,
@@ -1905,10 +1906,10 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
           ? _value.typename
           : typename // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      restId: freezed == restId
+      restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String,
       core: null == core
           ? _value.core
           : core // ignore: cast_nullable_to_non_nullable
@@ -1969,7 +1970,7 @@ abstract class _$$_TweetResultCopyWith<$Res>
       {@JsonKey(name: '__typename')
           dynamic typename,
       @JsonKey(name: 'rest_id')
-          dynamic restId,
+          String restId,
       @JsonKey(name: 'core')
           Core core,
       @JsonKey(name: 'unmention_data')
@@ -1978,8 +1979,7 @@ abstract class _$$_TweetResultCopyWith<$Res>
           dynamic editControl,
       @JsonKey(name: 'edit_perspective')
           dynamic editPerspective,
-      @SafetyIntegerConverter()
-      @JsonKey(name: 'is_translatable')
+      @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
       @JsonKey(name: 'legacy')
           Legacy legacy,
@@ -2004,7 +2004,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
   @override
   $Res call({
     Object? typename = freezed,
-    Object? restId = freezed,
+    Object? restId = null,
     Object? core = null,
     Object? unmentionData = freezed,
     Object? editControl = freezed,
@@ -2018,10 +2018,10 @@ class __$$_TweetResultCopyWithImpl<$Res>
           ? _value.typename
           : typename // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      restId: freezed == restId
+      restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String,
       core: null == core
           ? _value.core
           : core // ignore: cast_nullable_to_non_nullable
@@ -2070,8 +2070,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
           required this.editControl,
       @JsonKey(name: 'edit_perspective')
           required this.editPerspective,
-      @SafetyIntegerConverter()
-      @JsonKey(name: 'is_translatable')
+      @JsonKey(name: 'is_translatable', defaultValue: false)
           required this.isTranslatable,
       @JsonKey(name: 'legacy')
           required this.legacy,
@@ -2086,7 +2085,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
   final dynamic typename;
   @override
   @JsonKey(name: 'rest_id')
-  final dynamic restId;
+  final String restId;
   @override
   @JsonKey(name: 'core')
   final Core core;
@@ -2100,8 +2099,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
   @JsonKey(name: 'edit_perspective')
   final dynamic editPerspective;
   @override
-  @SafetyIntegerConverter()
-  @JsonKey(name: 'is_translatable')
+  @JsonKey(name: 'is_translatable', defaultValue: false)
   final bool isTranslatable;
   @override
   @JsonKey(name: 'legacy')
@@ -2137,7 +2135,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
         (other.runtimeType == runtimeType &&
             other is _$_TweetResult &&
             const DeepCollectionEquality().equals(other.typename, typename) &&
-            const DeepCollectionEquality().equals(other.restId, restId) &&
+            (identical(other.restId, restId) || other.restId == restId) &&
             (identical(other.core, core) || other.core == core) &&
             const DeepCollectionEquality()
                 .equals(other.unmentionData, unmentionData) &&
@@ -2156,7 +2154,7 @@ class _$_TweetResult with DiagnosticableTreeMixin implements _TweetResult {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(typename),
-      const DeepCollectionEquality().hash(restId),
+      restId,
       core,
       const DeepCollectionEquality().hash(unmentionData),
       const DeepCollectionEquality().hash(editControl),
@@ -2184,7 +2182,7 @@ abstract class _TweetResult implements TweetResult {
       {@JsonKey(name: '__typename')
           required final dynamic typename,
       @JsonKey(name: 'rest_id')
-          required final dynamic restId,
+          required final String restId,
       @JsonKey(name: 'core')
           required final Core core,
       @JsonKey(name: 'unmention_data')
@@ -2193,8 +2191,7 @@ abstract class _TweetResult implements TweetResult {
           required final dynamic editControl,
       @JsonKey(name: 'edit_perspective')
           required final dynamic editPerspective,
-      @SafetyIntegerConverter()
-      @JsonKey(name: 'is_translatable')
+      @JsonKey(name: 'is_translatable', defaultValue: false)
           required final bool isTranslatable,
       @JsonKey(name: 'legacy')
           required final Legacy legacy,
@@ -2209,7 +2206,7 @@ abstract class _TweetResult implements TweetResult {
   dynamic get typename;
   @override
   @JsonKey(name: 'rest_id')
-  dynamic get restId;
+  String get restId;
   @override
   @JsonKey(name: 'core')
   Core get core;
@@ -2223,8 +2220,7 @@ abstract class _TweetResult implements TweetResult {
   @JsonKey(name: 'edit_perspective')
   dynamic get editPerspective;
   @override
-  @SafetyIntegerConverter()
-  @JsonKey(name: 'is_translatable')
+  @JsonKey(name: 'is_translatable', defaultValue: false)
   bool get isTranslatable;
   @override
   @JsonKey(name: 'legacy')
@@ -3079,7 +3075,7 @@ mixin _$UserLegacy {
   @JsonKey(name: 'profile_banner_extensions')
   dynamic get profileBannerExtensions => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_banner_url')
-  String get profileBannerUrl => throw _privateConstructorUsedError;
+  String? get profileBannerUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image_extensions')
   dynamic get profileImageExtensions => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image_url_https')
@@ -3173,7 +3169,7 @@ abstract class $UserLegacyCopyWith<$Res> {
       @JsonKey(name: 'profile_banner_extensions')
           dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          String profileBannerUrl,
+          String? profileBannerUrl,
       @JsonKey(name: 'profile_image_extensions')
           dynamic profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
@@ -3239,7 +3235,7 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
     Object? pinnedTweetIdsStr = null,
     Object? possiblySensitive = null,
     Object? profileBannerExtensions = freezed,
-    Object? profileBannerUrl = null,
+    Object? profileBannerUrl = freezed,
     Object? profileImageExtensions = freezed,
     Object? profileImageUrlHttps = null,
     Object? profileInterstitialType = null,
@@ -3365,10 +3361,10 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.profileBannerExtensions
           : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      profileBannerUrl: null == profileBannerUrl
+      profileBannerUrl: freezed == profileBannerUrl
           ? _value.profileBannerUrl
           : profileBannerUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profileImageExtensions: freezed == profileImageExtensions
           ? _value.profileImageExtensions
           : profileImageExtensions // ignore: cast_nullable_to_non_nullable
@@ -3483,7 +3479,7 @@ abstract class _$$_UserLegacyCopyWith<$Res>
       @JsonKey(name: 'profile_banner_extensions')
           dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          String profileBannerUrl,
+          String? profileBannerUrl,
       @JsonKey(name: 'profile_image_extensions')
           dynamic profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
@@ -3547,7 +3543,7 @@ class __$$_UserLegacyCopyWithImpl<$Res>
     Object? pinnedTweetIdsStr = null,
     Object? possiblySensitive = null,
     Object? profileBannerExtensions = freezed,
-    Object? profileBannerUrl = null,
+    Object? profileBannerUrl = freezed,
     Object? profileImageExtensions = freezed,
     Object? profileImageUrlHttps = null,
     Object? profileInterstitialType = null,
@@ -3673,10 +3669,10 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.profileBannerExtensions
           : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      profileBannerUrl: null == profileBannerUrl
+      profileBannerUrl: freezed == profileBannerUrl
           ? _value.profileBannerUrl
           : profileBannerUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profileImageExtensions: freezed == profileImageExtensions
           ? _value.profileImageExtensions
           : profileImageExtensions // ignore: cast_nullable_to_non_nullable
@@ -3786,7 +3782,7 @@ class _$_UserLegacy with DiagnosticableTreeMixin implements _UserLegacy {
       @JsonKey(name: 'profile_banner_extensions')
           required this.profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          required this.profileBannerUrl,
+          this.profileBannerUrl,
       @JsonKey(name: 'profile_image_extensions')
           required this.profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
@@ -3908,7 +3904,7 @@ class _$_UserLegacy with DiagnosticableTreeMixin implements _UserLegacy {
   final dynamic profileBannerExtensions;
   @override
   @JsonKey(name: 'profile_banner_url')
-  final String profileBannerUrl;
+  final String? profileBannerUrl;
   @override
   @JsonKey(name: 'profile_image_extensions')
   final dynamic profileImageExtensions;
@@ -4205,7 +4201,7 @@ abstract class _UserLegacy implements UserLegacy {
       @JsonKey(name: 'profile_banner_extensions')
           required final dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          required final String profileBannerUrl,
+          final String? profileBannerUrl,
       @JsonKey(name: 'profile_image_extensions')
           required final dynamic profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
@@ -4318,7 +4314,7 @@ abstract class _UserLegacy implements UserLegacy {
   dynamic get profileBannerExtensions;
   @override
   @JsonKey(name: 'profile_banner_url')
-  String get profileBannerUrl;
+  String? get profileBannerUrl;
   @override
   @JsonKey(name: 'profile_image_extensions')
   dynamic get profileImageExtensions;
