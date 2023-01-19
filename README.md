@@ -1,16 +1,17 @@
-# twitter_river
+# twitter_river(Beta)
 
-A new Flutter project.
+## what is this
 
-## Getting Started
+A client for Twitter using an unofficial API.  
+This was created to counter the deliberate shutdown of Twitter's official API.
 
-This project is a starting point for a Flutter application.
+[Sources](https://www.theinformation.com/articles/musks-twitter-intentionally-suspended-tweet-bot-third-party-apps-messages-show)
 
-A few resources to get you started if this is your first Flutter project:
+This application does not infringe Twitter copyright.  
+Currently under development and most features are not yet implemented.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+See [roadmap](https://github.com/fa0311/twitter_river/issues/1) for details.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Download
+
+- [Releases](https://github.com/fa0311/vrc_manager/releases/latest)

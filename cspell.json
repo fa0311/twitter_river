@@ -25,7 +25,9 @@
     "inappwebview",
     "listview",
     /* Name */
-    "yuki"
+    "yuki",
+    /* Other */
+    "roadmap"
   ],
   "ignorePaths": [
     /* Flutter */
