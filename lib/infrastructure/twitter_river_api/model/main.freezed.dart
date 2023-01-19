@@ -313,11 +313,12 @@ class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Entry implements _Entry {
+class _$_Entry extends _Entry {
   const _$_Entry(
       {@JsonKey(name: 'entryId') required this.entryId,
       @JsonKey(name: 'sortIndex') required this.sortIndex,
-      @JsonKey(name: 'content') required this.content});
+      @JsonKey(name: 'content') required this.content})
+      : super._();
 
   factory _$_Entry.fromJson(Map<String, dynamic> json) =>
       _$$_EntryFromJson(json);
@@ -366,11 +367,12 @@ class _$_Entry implements _Entry {
   }
 }
 
-abstract class _Entry implements Entry {
+abstract class _Entry extends Entry {
   const factory _Entry(
       {@JsonKey(name: 'entryId') required final String entryId,
       @JsonKey(name: 'sortIndex') required final String sortIndex,
       @JsonKey(name: 'content') required final Content content}) = _$_Entry;
+  const _Entry._() : super._();
 
   factory _Entry.fromJson(Map<String, dynamic> json) = _$_Entry.fromJson;
 
@@ -707,9 +709,13 @@ mixin _$ItemContent {
   @JsonKey(name: '__typename')
   String get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweet_results')
-  TweetResults get tweetResults => throw _privateConstructorUsedError;
+  TweetResults? get tweetResults => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweetDisplayType')
-  String get tweetDisplayType => throw _privateConstructorUsedError;
+  String? get tweetDisplayType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'cursorType')
+  String? get cursorType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'value')
+  String? get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -726,10 +732,12 @@ abstract class $ItemContentCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'itemType') String itemType,
       @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+      @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
+      @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
+      @JsonKey(name: 'cursorType') String? cursorType,
+      @JsonKey(name: 'value') String? value});
 
-  $TweetResultsCopyWith<$Res> get tweetResults;
+  $TweetResultsCopyWith<$Res>? get tweetResults;
 }
 
 /// @nodoc
@@ -747,8 +755,10 @@ class _$ItemContentCopyWithImpl<$Res, $Val extends ItemContent>
   $Res call({
     Object? itemType = null,
     Object? typename = null,
-    Object? tweetResults = null,
-    Object? tweetDisplayType = null,
+    Object? tweetResults = freezed,
+    Object? tweetDisplayType = freezed,
+    Object? cursorType = freezed,
+    Object? value = freezed,
   }) {
     return _then(_value.copyWith(
       itemType: null == itemType
@@ -759,21 +769,33 @@ class _$ItemContentCopyWithImpl<$Res, $Val extends ItemContent>
           ? _value.typename
           : typename // ignore: cast_nullable_to_non_nullable
               as String,
-      tweetResults: null == tweetResults
+      tweetResults: freezed == tweetResults
           ? _value.tweetResults
           : tweetResults // ignore: cast_nullable_to_non_nullable
-              as TweetResults,
-      tweetDisplayType: null == tweetDisplayType
+              as TweetResults?,
+      tweetDisplayType: freezed == tweetDisplayType
           ? _value.tweetDisplayType
           : tweetDisplayType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      cursorType: freezed == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TweetResultsCopyWith<$Res> get tweetResults {
-    return $TweetResultsCopyWith<$Res>(_value.tweetResults, (value) {
+  $TweetResultsCopyWith<$Res>? get tweetResults {
+    if (_value.tweetResults == null) {
+      return null;
+    }
+
+    return $TweetResultsCopyWith<$Res>(_value.tweetResults!, (value) {
       return _then(_value.copyWith(tweetResults: value) as $Val);
     });
   }
@@ -790,11 +812,13 @@ abstract class _$$_ItemContentCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'itemType') String itemType,
       @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+      @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
+      @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
+      @JsonKey(name: 'cursorType') String? cursorType,
+      @JsonKey(name: 'value') String? value});
 
   @override
-  $TweetResultsCopyWith<$Res> get tweetResults;
+  $TweetResultsCopyWith<$Res>? get tweetResults;
 }
 
 /// @nodoc
@@ -810,8 +834,10 @@ class __$$_ItemContentCopyWithImpl<$Res>
   $Res call({
     Object? itemType = null,
     Object? typename = null,
-    Object? tweetResults = null,
-    Object? tweetDisplayType = null,
+    Object? tweetResults = freezed,
+    Object? tweetDisplayType = freezed,
+    Object? cursorType = freezed,
+    Object? value = freezed,
   }) {
     return _then(_$_ItemContent(
       itemType: null == itemType
@@ -822,14 +848,22 @@ class __$$_ItemContentCopyWithImpl<$Res>
           ? _value.typename
           : typename // ignore: cast_nullable_to_non_nullable
               as String,
-      tweetResults: null == tweetResults
+      tweetResults: freezed == tweetResults
           ? _value.tweetResults
           : tweetResults // ignore: cast_nullable_to_non_nullable
-              as TweetResults,
-      tweetDisplayType: null == tweetDisplayType
+              as TweetResults?,
+      tweetDisplayType: freezed == tweetDisplayType
           ? _value.tweetDisplayType
           : tweetDisplayType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      cursorType: freezed == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -840,8 +874,10 @@ class _$_ItemContent implements _ItemContent {
   const _$_ItemContent(
       {@JsonKey(name: 'itemType') required this.itemType,
       @JsonKey(name: '__typename') required this.typename,
-      @JsonKey(name: 'tweet_results') required this.tweetResults,
-      @JsonKey(name: 'tweetDisplayType') required this.tweetDisplayType});
+      @JsonKey(name: 'tweet_results') this.tweetResults,
+      @JsonKey(name: 'tweetDisplayType') this.tweetDisplayType,
+      @JsonKey(name: 'cursorType') this.cursorType,
+      @JsonKey(name: 'value') this.value});
 
   factory _$_ItemContent.fromJson(Map<String, dynamic> json) =>
       _$$_ItemContentFromJson(json);
@@ -854,14 +890,20 @@ class _$_ItemContent implements _ItemContent {
   final String typename;
   @override
   @JsonKey(name: 'tweet_results')
-  final TweetResults tweetResults;
+  final TweetResults? tweetResults;
   @override
   @JsonKey(name: 'tweetDisplayType')
-  final String tweetDisplayType;
+  final String? tweetDisplayType;
+  @override
+  @JsonKey(name: 'cursorType')
+  final String? cursorType;
+  @override
+  @JsonKey(name: 'value')
+  final String? value;
 
   @override
   String toString() {
-    return 'ItemContent(itemType: $itemType, typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType)';
+    return 'ItemContent(itemType: $itemType, typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType, cursorType: $cursorType, value: $value)';
   }
 
   @override
@@ -876,13 +918,16 @@ class _$_ItemContent implements _ItemContent {
             (identical(other.tweetResults, tweetResults) ||
                 other.tweetResults == tweetResults) &&
             (identical(other.tweetDisplayType, tweetDisplayType) ||
-                other.tweetDisplayType == tweetDisplayType));
+                other.tweetDisplayType == tweetDisplayType) &&
+            (identical(other.cursorType, cursorType) ||
+                other.cursorType == cursorType) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, itemType, typename, tweetResults, tweetDisplayType);
+  int get hashCode => Object.hash(runtimeType, itemType, typename, tweetResults,
+      tweetDisplayType, cursorType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -900,14 +945,12 @@ class _$_ItemContent implements _ItemContent {
 
 abstract class _ItemContent implements ItemContent {
   const factory _ItemContent(
-      {@JsonKey(name: 'itemType')
-          required final String itemType,
-      @JsonKey(name: '__typename')
-          required final String typename,
-      @JsonKey(name: 'tweet_results')
-          required final TweetResults tweetResults,
-      @JsonKey(name: 'tweetDisplayType')
-          required final String tweetDisplayType}) = _$_ItemContent;
+      {@JsonKey(name: 'itemType') required final String itemType,
+      @JsonKey(name: '__typename') required final String typename,
+      @JsonKey(name: 'tweet_results') final TweetResults? tweetResults,
+      @JsonKey(name: 'tweetDisplayType') final String? tweetDisplayType,
+      @JsonKey(name: 'cursorType') final String? cursorType,
+      @JsonKey(name: 'value') final String? value}) = _$_ItemContent;
 
   factory _ItemContent.fromJson(Map<String, dynamic> json) =
       _$_ItemContent.fromJson;
@@ -920,10 +963,16 @@ abstract class _ItemContent implements ItemContent {
   String get typename;
   @override
   @JsonKey(name: 'tweet_results')
-  TweetResults get tweetResults;
+  TweetResults? get tweetResults;
   @override
   @JsonKey(name: 'tweetDisplayType')
-  String get tweetDisplayType;
+  String? get tweetDisplayType;
+  @override
+  @JsonKey(name: 'cursorType')
+  String? get cursorType;
+  @override
+  @JsonKey(name: 'value')
+  String? get value;
   @override
   @JsonKey(ignore: true)
   _$$_ItemContentCopyWith<_$_ItemContent> get copyWith =>
@@ -937,7 +986,7 @@ TweetResults _$TweetResultsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetResults {
   @JsonKey(name: 'result')
-  TweetResult get result => throw _privateConstructorUsedError;
+  TweetResult? get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -951,9 +1000,9 @@ abstract class $TweetResultsCopyWith<$Res> {
           TweetResults value, $Res Function(TweetResults) then) =
       _$TweetResultsCopyWithImpl<$Res, TweetResults>;
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult result});
+  $Res call({@JsonKey(name: 'result') TweetResult? result});
 
-  $TweetResultCopyWith<$Res> get result;
+  $TweetResultCopyWith<$Res>? get result;
 }
 
 /// @nodoc
@@ -969,20 +1018,24 @@ class _$TweetResultsCopyWithImpl<$Res, $Val extends TweetResults>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? result = freezed,
   }) {
     return _then(_value.copyWith(
-      result: null == result
+      result: freezed == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult,
+              as TweetResult?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TweetResultCopyWith<$Res> get result {
-    return $TweetResultCopyWith<$Res>(_value.result, (value) {
+  $TweetResultCopyWith<$Res>? get result {
+    if (_value.result == null) {
+      return null;
+    }
+
+    return $TweetResultCopyWith<$Res>(_value.result!, (value) {
       return _then(_value.copyWith(result: value) as $Val);
     });
   }
@@ -996,10 +1049,10 @@ abstract class _$$_TweetResultsCopyWith<$Res>
       __$$_TweetResultsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult result});
+  $Res call({@JsonKey(name: 'result') TweetResult? result});
 
   @override
-  $TweetResultCopyWith<$Res> get result;
+  $TweetResultCopyWith<$Res>? get result;
 }
 
 /// @nodoc
@@ -1013,13 +1066,13 @@ class __$$_TweetResultsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? result = freezed,
   }) {
     return _then(_$_TweetResults(
-      result: null == result
+      result: freezed == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult,
+              as TweetResult?,
     ));
   }
 }
@@ -1027,14 +1080,14 @@ class __$$_TweetResultsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TweetResults implements _TweetResults {
-  const _$_TweetResults({@JsonKey(name: 'result') required this.result});
+  const _$_TweetResults({@JsonKey(name: 'result') this.result});
 
   factory _$_TweetResults.fromJson(Map<String, dynamic> json) =>
       _$$_TweetResultsFromJson(json);
 
   @override
   @JsonKey(name: 'result')
-  final TweetResult result;
+  final TweetResult? result;
 
   @override
   String toString() {
@@ -1069,15 +1122,14 @@ class _$_TweetResults implements _TweetResults {
 
 abstract class _TweetResults implements TweetResults {
   const factory _TweetResults(
-          {@JsonKey(name: 'result') required final TweetResult result}) =
-      _$_TweetResults;
+      {@JsonKey(name: 'result') final TweetResult? result}) = _$_TweetResults;
 
   factory _TweetResults.fromJson(Map<String, dynamic> json) =
       _$_TweetResults.fromJson;
 
   @override
   @JsonKey(name: 'result')
-  TweetResult get result;
+  TweetResult? get result;
   @override
   @JsonKey(ignore: true)
   _$$_TweetResultsCopyWith<_$_TweetResults> get copyWith =>

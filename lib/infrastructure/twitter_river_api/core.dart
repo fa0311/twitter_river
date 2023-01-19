@@ -5,13 +5,13 @@ import 'dart:convert';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:diox/diox.dart';
 import 'package:diox_cookie_manager/diox_cookie_manager.dart';
+import 'package:twitter_river/core/logger.dart';
 
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/home_timeline.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
-import 'package:twitter_river/main.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -116,7 +116,7 @@ class TwitterRiverAPI {
 
   Future<TweetDetailResponse> getTweetDetail({required String focalTweetId}) async {
     final response = await dio.get(
-      TwitterGraphQL.homeTimeline.path,
+      TwitterGraphQL.tweetDetail.path,
       queryParameters: {
         "variables": jsonEncode({
           "focalTweetId": focalTweetId,

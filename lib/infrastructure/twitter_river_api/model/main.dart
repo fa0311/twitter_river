@@ -15,19 +15,21 @@ class Instruction with _$Instruction {
     @JsonKey(name: 'entries', defaultValue: []) required List<Entry> entries,
   }) = _Instruction;
 
-  List<Entry> getContents({required String entryType, String? cursorType}) {
+  List<Entry> getContents({required String entryType, String? cursorType, String? itemType}) {
     return entries.where((element) {
+      if (element.content.entryType != entryType) return false;
       if (cursorType != null && element.content.cursorType != cursorType) return false;
-      if (element.content.entryType == entryType) return true;
-      return false;
+      if (itemType != null && element.content.itemContent!.itemType != itemType) return false;
+      return true;
     }).toList();
   }
 
-  Entry getContent({required String entryType, String? cursorType}) {
+  Entry getContent({required String entryType, String? cursorType, String? itemType}) {
     return entries.firstWhere((element) {
+      if (element.content.entryType != entryType) return false;
       if (cursorType != null && element.content.cursorType != cursorType) return false;
-      if (element.content.entryType == entryType) return true;
-      return false;
+      if (itemType != null && element.content.itemContent!.itemType != itemType) return false;
+      return true;
     });
   }
 
@@ -36,11 +38,15 @@ class Instruction with _$Instruction {
 
 @freezed
 class Entry with _$Entry {
+  const Entry._();
   const factory Entry({
     @JsonKey(name: 'entryId') required String entryId,
     @JsonKey(name: 'sortIndex') required String sortIndex,
     @JsonKey(name: 'content') required Content content,
   }) = _Entry;
+
+  get user => content.itemContent!.tweetResults!.result!.core.userResults.result.legacy;
+  get tweet => content.itemContent!.tweetResults!.result!.legacy;
 
   factory Entry.fromJson(Map<String, dynamic> json) => _$EntryFromJson(json);
 }
@@ -65,8 +71,10 @@ class ItemContent with _$ItemContent {
   const factory ItemContent({
     @JsonKey(name: 'itemType') required String itemType,
     @JsonKey(name: '__typename') required String typename,
-    @JsonKey(name: 'tweet_results') required TweetResults tweetResults,
-    @JsonKey(name: 'tweetDisplayType') required String tweetDisplayType,
+    @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
+    @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
+    @JsonKey(name: 'cursorType') String? cursorType,
+    @JsonKey(name: 'value') String? value,
   }) = _ItemContent;
 
   factory ItemContent.fromJson(Map<String, dynamic> json) => _$ItemContentFromJson(json);
@@ -75,7 +83,7 @@ class ItemContent with _$ItemContent {
 @freezed
 class TweetResults with _$TweetResults {
   const factory TweetResults({
-    @JsonKey(name: 'result') required TweetResult result,
+    @JsonKey(name: 'result') TweetResult? result,
   }) = _TweetResults;
 
   factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(json);

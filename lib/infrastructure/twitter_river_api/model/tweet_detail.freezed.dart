@@ -110,10 +110,10 @@ class __$$_TweetDetailResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetDetailResponse
-    with DiagnosticableTreeMixin
-    implements _TweetDetailResponse {
-  const _$_TweetDetailResponse({@JsonKey(name: 'data') required this.data});
+class _$_TweetDetailResponse extends _TweetDetailResponse
+    with DiagnosticableTreeMixin {
+  const _$_TweetDetailResponse({@JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$_TweetDetailResponse.fromJson(Map<String, dynamic> json) =>
       _$$_TweetDetailResponseFromJson(json);
@@ -162,10 +162,11 @@ class _$_TweetDetailResponse
   }
 }
 
-abstract class _TweetDetailResponse implements TweetDetailResponse {
+abstract class _TweetDetailResponse extends TweetDetailResponse {
   const factory _TweetDetailResponse(
           {@JsonKey(name: 'data') required final TweetDetailData data}) =
       _$_TweetDetailResponse;
+  const _TweetDetailResponse._() : super._();
 
   factory _TweetDetailResponse.fromJson(Map<String, dynamic> json) =
       _$_TweetDetailResponse.fromJson;
@@ -366,7 +367,7 @@ ThreadedConversationWithInjectionsV2
 /// @nodoc
 mixin _$ThreadedConversationWithInjectionsV2 {
   @JsonKey(name: 'instructions')
-  dynamic get instructions => throw _privateConstructorUsedError;
+  List<Instruction> get instructions => throw _privateConstructorUsedError;
   @JsonKey(name: 'metadata')
   dynamic get metadata => throw _privateConstructorUsedError;
 
@@ -386,7 +387,7 @@ abstract class $ThreadedConversationWithInjectionsV2CopyWith<$Res> {
           ThreadedConversationWithInjectionsV2>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'instructions') dynamic instructions,
+      {@JsonKey(name: 'instructions') List<Instruction> instructions,
       @JsonKey(name: 'metadata') dynamic metadata});
 }
 
@@ -404,14 +405,14 @@ class _$ThreadedConversationWithInjectionsV2CopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? instructions = freezed,
+    Object? instructions = null,
     Object? metadata = freezed,
   }) {
     return _then(_value.copyWith(
-      instructions: freezed == instructions
+      instructions: null == instructions
           ? _value.instructions
           : instructions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<Instruction>,
       metadata: freezed == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -430,7 +431,7 @@ abstract class _$$_ThreadedConversationWithInjectionsV2CopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'instructions') dynamic instructions,
+      {@JsonKey(name: 'instructions') List<Instruction> instructions,
       @JsonKey(name: 'metadata') dynamic metadata});
 }
 
@@ -447,14 +448,14 @@ class __$$_ThreadedConversationWithInjectionsV2CopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? instructions = freezed,
+    Object? instructions = null,
     Object? metadata = freezed,
   }) {
     return _then(_$_ThreadedConversationWithInjectionsV2(
-      instructions: freezed == instructions
-          ? _value.instructions
+      instructions: null == instructions
+          ? _value._instructions
           : instructions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<Instruction>,
       metadata: freezed == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -469,16 +470,25 @@ class _$_ThreadedConversationWithInjectionsV2
     with DiagnosticableTreeMixin
     implements _ThreadedConversationWithInjectionsV2 {
   const _$_ThreadedConversationWithInjectionsV2(
-      {@JsonKey(name: 'instructions') required this.instructions,
-      @JsonKey(name: 'metadata') required this.metadata});
+      {@JsonKey(name: 'instructions')
+          required final List<Instruction> instructions,
+      @JsonKey(name: 'metadata')
+          required this.metadata})
+      : _instructions = instructions;
 
   factory _$_ThreadedConversationWithInjectionsV2.fromJson(
           Map<String, dynamic> json) =>
       _$$_ThreadedConversationWithInjectionsV2FromJson(json);
 
+  final List<Instruction> _instructions;
   @override
   @JsonKey(name: 'instructions')
-  final dynamic instructions;
+  List<Instruction> get instructions {
+    if (_instructions is EqualUnmodifiableListView) return _instructions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_instructions);
+  }
+
   @override
   @JsonKey(name: 'metadata')
   final dynamic metadata;
@@ -503,7 +513,7 @@ class _$_ThreadedConversationWithInjectionsV2
         (other.runtimeType == runtimeType &&
             other is _$_ThreadedConversationWithInjectionsV2 &&
             const DeepCollectionEquality()
-                .equals(other.instructions, instructions) &&
+                .equals(other._instructions, _instructions) &&
             const DeepCollectionEquality().equals(other.metadata, metadata));
   }
 
@@ -511,7 +521,7 @@ class _$_ThreadedConversationWithInjectionsV2
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(instructions),
+      const DeepCollectionEquality().hash(_instructions),
       const DeepCollectionEquality().hash(metadata));
 
   @JsonKey(ignore: true)
@@ -533,8 +543,10 @@ class _$_ThreadedConversationWithInjectionsV2
 abstract class _ThreadedConversationWithInjectionsV2
     implements ThreadedConversationWithInjectionsV2 {
   const factory _ThreadedConversationWithInjectionsV2(
-          {@JsonKey(name: 'instructions') required final dynamic instructions,
-          @JsonKey(name: 'metadata') required final dynamic metadata}) =
+          {@JsonKey(name: 'instructions')
+              required final List<Instruction> instructions,
+          @JsonKey(name: 'metadata')
+              required final dynamic metadata}) =
       _$_ThreadedConversationWithInjectionsV2;
 
   factory _ThreadedConversationWithInjectionsV2.fromJson(
@@ -543,7 +555,7 @@ abstract class _ThreadedConversationWithInjectionsV2
 
   @override
   @JsonKey(name: 'instructions')
-  dynamic get instructions;
+  List<Instruction> get instructions;
   @override
   @JsonKey(name: 'metadata')
   dynamic get metadata;

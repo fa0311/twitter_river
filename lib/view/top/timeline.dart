@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_listview/infinite_listview.dart';
 
@@ -12,6 +11,7 @@ import 'package:twitter_river/infrastructure/twitter_river_api/model/home_timeli
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 import 'package:twitter_river/view/sub/tweet.dart';
+import 'package:twitter_river/widget/tweet.dart';
 
 final timeLineProvider = FutureProvider.family<HomeTimelineResponse, String?>((ref, cursor) async {
   if (kDebugMode) {
@@ -83,80 +83,18 @@ class TwitterRiverTimeline extends ConsumerWidget {
               ),
             );
           }
-          final user = itemList[itemKey].content.itemContent!.tweetResults.result.core.userResults.result.legacy;
-          final tweet = itemList[itemKey].content.itemContent!.tweetResults.result.legacy;
-
+          final item = itemList[itemKey];
           return Card(
             child: InkWell(
               borderRadius: BorderRadius.circular(5),
-              onTap: () async {
-                final focalTweetId = user.pinnedTweetIdsStr[0];
-                ref.read(tweetDetailProvider(focalTweetId)).value;
-                final data = await ref.read(tweetDetailProvider(focalTweetId).future);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(user: item.user, tweet: item.tweet)),
+                );
               },
               onLongPress: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: CachedNetworkImage(
-                        imageUrl: user.profileImageUrlHttps,
-                        progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(value: progress.progress),
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
-                        fit: BoxFit.fill,
-                        imageBuilder: (context, imageProvider) {
-                          return CircleAvatar(backgroundImage: imageProvider);
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            user.name,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(tweet.fullText),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.comment, size: 16),
-                                    Text(tweet.replyCount.toString()),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.recycling, size: 16),
-                                    Text(tweet.retweetCount.toString()),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.favorite, size: 16),
-                                    Text(tweet.favoriteCount.toString()),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: TweetWidget(user: item.user, tweet: item.tweet),
             ),
           );
         },

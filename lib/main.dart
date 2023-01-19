@@ -5,14 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 // Project imports:
 import 'package:twitter_river/view/splash.dart';
 
 // Package imports:
-
-Logger logger = Logger();
 
 main() {
   runApp(const ProviderScope(child: TwitterRiver()));

@@ -60,9 +60,13 @@ _$_ItemContent _$$_ItemContentFromJson(Map<String, dynamic> json) =>
     _$_ItemContent(
       itemType: json['itemType'] as String,
       typename: json['__typename'] as String,
-      tweetResults:
-          TweetResults.fromJson(json['tweet_results'] as Map<String, dynamic>),
-      tweetDisplayType: json['tweetDisplayType'] as String,
+      tweetResults: json['tweet_results'] == null
+          ? null
+          : TweetResults.fromJson(
+              json['tweet_results'] as Map<String, dynamic>),
+      tweetDisplayType: json['tweetDisplayType'] as String?,
+      cursorType: json['cursorType'] as String?,
+      value: json['value'] as String?,
     );
 
 Map<String, dynamic> _$$_ItemContentToJson(_$_ItemContent instance) =>
@@ -71,11 +75,15 @@ Map<String, dynamic> _$$_ItemContentToJson(_$_ItemContent instance) =>
       '__typename': instance.typename,
       'tweet_results': instance.tweetResults,
       'tweetDisplayType': instance.tweetDisplayType,
+      'cursorType': instance.cursorType,
+      'value': instance.value,
     };
 
 _$_TweetResults _$$_TweetResultsFromJson(Map<String, dynamic> json) =>
     _$_TweetResults(
-      result: TweetResult.fromJson(json['result'] as Map<String, dynamic>),
+      result: json['result'] == null
+          ? null
+          : TweetResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>

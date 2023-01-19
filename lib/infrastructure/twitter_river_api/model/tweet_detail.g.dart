@@ -37,7 +37,9 @@ _$_ThreadedConversationWithInjectionsV2
     _$$_ThreadedConversationWithInjectionsV2FromJson(
             Map<String, dynamic> json) =>
         _$_ThreadedConversationWithInjectionsV2(
-          instructions: json['instructions'],
+          instructions: (json['instructions'] as List<dynamic>)
+              .map((e) => Instruction.fromJson(e as Map<String, dynamic>))
+              .toList(),
           metadata: json['metadata'],
         );
 
