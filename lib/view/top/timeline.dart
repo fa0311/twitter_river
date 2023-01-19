@@ -107,7 +107,37 @@ class TwitterRiverTimeline extends ConsumerWidget {
                           itemList[itemKey].content.itemContent!.tweetResults.result.core.userResults.result.legacy.name,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(itemList[itemKey].content.itemContent!.tweetResults.result.legacy.fullText)
+                        Text(itemList[itemKey].content.itemContent!.tweetResults.result.legacy.fullText),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.comment, size: 16),
+                                  Text(itemList[itemKey].content.itemContent!.tweetResults.result.legacy.replyCount.toString()),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.recycling, size: 16),
+                                  Text(itemList[itemKey].content.itemContent!.tweetResults.result.legacy.retweetCount.toString()),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.favorite, size: 16),
+                                  Text(itemList[itemKey].content.itemContent!.tweetResults.result.legacy.favoriteCount.toString()),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
