@@ -14,4 +14,4 @@ See [roadmap](https://github.com/fa0311/twitter_river/issues/1) for details.
 
 ## Download
 
-- [Releases](https://github.com/fa0311/vrc_manager/releases/latest)
+- [Releases](https://github.com/fa0311/twitter_river/releases/latest)
