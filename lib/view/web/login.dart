@@ -84,6 +84,10 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                   final session = await ref.read(loginSessionProvider.future);
                   try {
                     await session.cookieJar.deleteAll();
+                  } catch (e, trace) {
+                    logger.w(e, e, trace);
+                  }
+                  try {
                     await session.cookieJar.saveFromResponse(TwitterUris.api, ioCookies);
                   } catch (e, trace) {
                     logger.w(e, e, trace);
