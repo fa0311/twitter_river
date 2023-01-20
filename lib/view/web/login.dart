@@ -14,8 +14,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/constant/uris.dart';
+import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
-import 'package:twitter_river/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 import 'package:twitter_river/view/splash.dart';
 
@@ -84,6 +84,10 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                   final session = await ref.read(loginSessionProvider.future);
                   try {
                     await session.cookieJar.deleteAll();
+                  } catch (e, trace) {
+                    logger.w(e, e, trace);
+                  }
+                  try {
                     await session.cookieJar.saveFromResponse(TwitterUris.api, ioCookies);
                   } catch (e, trace) {
                     logger.w(e, e, trace);

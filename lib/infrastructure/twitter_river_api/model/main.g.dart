@@ -6,121 +6,197 @@ part of 'main.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TwitterResponse _$$_TwitterResponseFromJson(Map<String, dynamic> json) =>
-    _$_TwitterResponse(
-      data: TwitterData.fromJson(json['data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterResponseToJson(_$_TwitterResponse instance) =>
-    <String, dynamic>{
-      'data': instance.data,
-    };
-
-_$_TwitterData _$$_TwitterDataFromJson(Map<String, dynamic> json) =>
-    _$_TwitterData(
-      home: TwitterHome.fromJson(json['home'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterDataToJson(_$_TwitterData instance) =>
-    <String, dynamic>{
-      'home': instance.home,
-    };
-
-_$_TwitterHome _$$_TwitterHomeFromJson(Map<String, dynamic> json) =>
-    _$_TwitterHome(
-      homeTimelineUrt: HomeTimelineUrt.fromJson(
-          json['home_timeline_urt'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TwitterHomeToJson(_$_TwitterHome instance) =>
-    <String, dynamic>{
-      'home_timeline_urt': instance.homeTimelineUrt,
-    };
-
-_$_HomeTimelineUrt _$$_HomeTimelineUrtFromJson(Map<String, dynamic> json) =>
-    _$_HomeTimelineUrt(
-      instructions: (json['instructions'] as List<dynamic>)
-          .map((e) => Instruction.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      responseObjects: json['responseObjects'],
-    );
-
-Map<String, dynamic> _$$_HomeTimelineUrtToJson(_$_HomeTimelineUrt instance) =>
-    <String, dynamic>{
-      'instructions': instance.instructions,
-      'responseObjects': instance.responseObjects,
-    };
-
 _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
     _$_Instruction(
-      type: json['type'] as String,
-      entries: (json['entries'] as List<dynamic>?)
-              ?.map((e) => Entry.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
+      type: const InstructionsTypeConverter().fromJson(json['type'] as String),
+      timelineAddEntries: json['timelineAddEntries'] == null
+          ? null
+          : TimelineAddEntries.fromJson(
+              json['timelineAddEntries'] as Map<String, dynamic>),
+      timelineTerminateTimeline: json['timelineTerminateTimeline'],
+      timelineShowAlert: json['timelineShowAlert'],
     );
 
 Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
     <String, dynamic>{
-      'type': instance.type,
+      'type': const InstructionsTypeConverter().toJson(instance.type),
+      'timelineAddEntries': instance.timelineAddEntries,
+      'timelineTerminateTimeline': instance.timelineTerminateTimeline,
+      'timelineShowAlert': instance.timelineShowAlert,
+    };
+
+_$_TimelineAddEntries _$$_TimelineAddEntriesFromJson(
+        Map<String, dynamic> json) =>
+    _$_TimelineAddEntries(
+      type: const InstructionsTypeConverter().fromJson(json['type'] as String),
+      entries: (json['entries'] as List<dynamic>)
+          .map((e) => TimelineAddEntry.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_TimelineAddEntriesToJson(
+        _$_TimelineAddEntries instance) =>
+    <String, dynamic>{
+      'type': const InstructionsTypeConverter().toJson(instance.type),
       'entries': instance.entries,
     };
 
-_$_Entry _$$_EntryFromJson(Map<String, dynamic> json) => _$_Entry(
+_$_TimelineAddEntry _$$_TimelineAddEntryFromJson(Map<String, dynamic> json) =>
+    _$_TimelineAddEntry(
       entryId: json['entryId'] as String,
-      sortIndex: json['sortIndex'] as String,
+      entry: json['sortIndex'] as String,
       content: Content.fromJson(json['content'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_EntryToJson(_$_Entry instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TimelineAddEntryToJson(_$_TimelineAddEntry instance) =>
+    <String, dynamic>{
       'entryId': instance.entryId,
-      'sortIndex': instance.sortIndex,
+      'sortIndex': instance.entry,
       'content': instance.content,
     };
 
 _$_Content _$$_ContentFromJson(Map<String, dynamic> json) => _$_Content(
-      entryType: json['entryType'] as String,
-      typename: json['__typename'] as String,
-      itemContent: json['itemContent'] == null
+      entryType:
+          const EntryTypeConverter().fromJson(json['entryType'] as String),
+      timelineTimelineItem: json['timelineTimelineItem'] == null
           ? null
-          : ItemContent.fromJson(json['itemContent'] as Map<String, dynamic>),
-      feedbackInfo: json['feedbackInfo'],
-      clientEventInfo: json['clientEventInfo'],
-      cursorType: json['cursorType'] as String?,
-      value: json['value'] as String?,
+          : TimelineTimelineItem.fromJson(
+              json['timelineTimelineItem'] as Map<String, dynamic>),
+      timelineTimelineModule: json['timelineTimelineModule'] == null
+          ? null
+          : TimelineTimelineModule.fromJson(
+              json['timelineTimelineModule'] as Map<String, dynamic>),
+      timelineTimelineCursor: json['timelineTimelineCursor'] == null
+          ? null
+          : TimelineTimelineCursor.fromJson(
+              json['timelineTimelineCursor'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ContentToJson(_$_Content instance) =>
     <String, dynamic>{
-      'entryType': instance.entryType,
-      '__typename': instance.typename,
-      'itemContent': instance.itemContent,
-      'feedbackInfo': instance.feedbackInfo,
-      'clientEventInfo': instance.clientEventInfo,
-      'cursorType': instance.cursorType,
+      'entryType': const EntryTypeConverter().toJson(instance.entryType),
+      'timelineTimelineItem': instance.timelineTimelineItem,
+      'timelineTimelineModule': instance.timelineTimelineModule,
+      'timelineTimelineCursor': instance.timelineTimelineCursor,
+    };
+
+_$_TimelineTimelineCursor _$$_TimelineTimelineCursorFromJson(
+        Map<String, dynamic> json) =>
+    _$_TimelineTimelineCursor(
+      typename:
+          const TypenameConverter().fromJson(json['__typename'] as String),
+      value: json['value'] as String,
+      cursorType:
+          const CursorTypeConverter().fromJson(json['cursorType'] as String),
+    );
+
+Map<String, dynamic> _$$_TimelineTimelineCursorToJson(
+        _$_TimelineTimelineCursor instance) =>
+    <String, dynamic>{
+      '__typename': const TypenameConverter().toJson(instance.typename),
       'value': instance.value,
+      'cursorType': const CursorTypeConverter().toJson(instance.cursorType),
+    };
+
+_$_TimelineTimelineItem _$$_TimelineTimelineItemFromJson(
+        Map<String, dynamic> json) =>
+    _$_TimelineTimelineItem(
+      typename:
+          const TypenameConverter().fromJson(json['__typename'] as String),
+      itemContent:
+          ItemContent.fromJson(json['itemContent'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_TimelineTimelineItemToJson(
+        _$_TimelineTimelineItem instance) =>
+    <String, dynamic>{
+      '__typename': const TypenameConverter().toJson(instance.typename),
+      'itemContent': instance.itemContent,
+    };
+
+_$_TimelineTimelineModule _$$_TimelineTimelineModuleFromJson(
+        Map<String, dynamic> json) =>
+    _$_TimelineTimelineModule(
+      typename:
+          const TypenameConverter().fromJson(json['__typename'] as String),
+      itemContent: (json['items'] as List<dynamic>)
+          .map((e) => Items.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      displayType: json['displayType'] as String,
+      clientEventInfo: json['clientEventInfo'],
+    );
+
+Map<String, dynamic> _$$_TimelineTimelineModuleToJson(
+        _$_TimelineTimelineModule instance) =>
+    <String, dynamic>{
+      '__typename': const TypenameConverter().toJson(instance.typename),
+      'items': instance.itemContent,
+      'displayType': instance.displayType,
+      'clientEventInfo': instance.clientEventInfo,
+    };
+
+_$_Items _$$_ItemsFromJson(Map<String, dynamic> json) => _$_Items(
+      entryId: json['entryId'] as String,
+      item: Item.fromJson(json['item'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_ItemsToJson(_$_Items instance) => <String, dynamic>{
+      'entryId': instance.entryId,
+      'item': instance.item,
+    };
+
+_$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
+      itemContent:
+          ItemContent.fromJson(json['itemContent'] as Map<String, dynamic>),
+      clientEventInfo: json['clientEventInfo'],
+    );
+
+Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
+      'itemContent': instance.itemContent,
+      'clientEventInfo': instance.clientEventInfo,
     };
 
 _$_ItemContent _$$_ItemContentFromJson(Map<String, dynamic> json) =>
     _$_ItemContent(
-      itemType: json['itemType'] as String,
-      typename: json['__typename'] as String,
+      entryType: const ItemTypeConverter().fromJson(json['itemType'] as String),
+      timelineTweet: json['timelineTweet'] == null
+          ? null
+          : TimelineTweet.fromJson(
+              json['timelineTweet'] as Map<String, dynamic>),
+      timelineTimelineCursor: json['timelineTimelineCursor'] == null
+          ? null
+          : TimelineTimelineCursor.fromJson(
+              json['timelineTimelineCursor'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_ItemContentToJson(_$_ItemContent instance) =>
+    <String, dynamic>{
+      'itemType': const ItemTypeConverter().toJson(instance.entryType),
+      'timelineTweet': instance.timelineTweet,
+      'timelineTimelineCursor': instance.timelineTimelineCursor,
+    };
+
+_$_TimelineTweet _$$_TimelineTweetFromJson(Map<String, dynamic> json) =>
+    _$_TimelineTweet(
+      typename:
+          const TypenameConverter().fromJson(json['__typename'] as String),
       tweetResults:
           TweetResults.fromJson(json['tweet_results'] as Map<String, dynamic>),
       tweetDisplayType: json['tweetDisplayType'] as String,
     );
 
-Map<String, dynamic> _$$_ItemContentToJson(_$_ItemContent instance) =>
+Map<String, dynamic> _$$_TimelineTweetToJson(_$_TimelineTweet instance) =>
     <String, dynamic>{
-      'itemType': instance.itemType,
-      '__typename': instance.typename,
+      '__typename': const TypenameConverter().toJson(instance.typename),
       'tweet_results': instance.tweetResults,
       'tweetDisplayType': instance.tweetDisplayType,
     };
 
 _$_TweetResults _$$_TweetResultsFromJson(Map<String, dynamic> json) =>
     _$_TweetResults(
-      result: TweetResult.fromJson(json['result'] as Map<String, dynamic>),
+      result: json['result'] == null
+          ? null
+          : TweetResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
@@ -137,7 +213,7 @@ _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
       editControl: json['edit_control'],
       editPerspective: json['edit_perspective'],
       isTranslatable: json['is_translatable'] as bool? ?? false,
-      legacy: Legacy.fromJson(json['legacy'] as Map<String, dynamic>),
+      legacy: TweetLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
       views: json['views'],
     );
 
@@ -291,7 +367,8 @@ Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
       'withheld_in_countries': instance.withheldInCountries,
     };
 
-_$_Legacy _$$_LegacyFromJson(Map<String, dynamic> json) => _$_Legacy(
+_$_TweetLegacy _$$_TweetLegacyFromJson(Map<String, dynamic> json) =>
+    _$_TweetLegacy(
       createdAt: json['created_at'] as String,
       conversationIdStr: json['conversation_id_str'] as String,
       core: (json['display_text_range'] as List<dynamic>)
@@ -317,7 +394,8 @@ _$_Legacy _$$_LegacyFromJson(Map<String, dynamic> json) => _$_Legacy(
       retweetedStatusResult: json['retweeted_status_result'],
     );
 
-Map<String, dynamic> _$$_LegacyToJson(_$_Legacy instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TweetLegacyToJson(_$_TweetLegacy instance) =>
+    <String, dynamic>{
       'created_at': instance.createdAt,
       'conversation_id_str': instance.conversationIdStr,
       'display_text_range': instance.core,

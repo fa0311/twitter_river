@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'package:twitter_river/main.dart';
+import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 import 'package:twitter_river/view/top/home.dart';
 import 'package:twitter_river/view/web/login.dart';
@@ -18,12 +18,15 @@ enum SplashData {
 
 final splashProvider = FutureProvider<SplashData>((ref) async {
   final session = await ref.watch(loginSessionProvider.future);
+  /*
   try {
     await session.getTimeLine(cursor: null);
   } catch (e, trace) {
     logger.w(e, e, trace);
     return SplashData.login;
   }
+  */
+  await session.getTimeLine();
   return SplashData.top;
 });
 

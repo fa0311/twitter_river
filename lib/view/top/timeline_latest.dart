@@ -23,7 +23,7 @@ final timeLineProvider = FutureProvider.family<HomeTimelineResponse, String?>((r
     print("Request API: $cursor");
   }
   final session = await ref.watch(loginSessionProvider.future);
-  return await session.getTimeLine(cursor: cursor);
+  return await session.getHomeLatestTimeline(cursor: cursor);
 });
 
 final timelineInitProvider = FutureProvider<void>((ref) async {
@@ -65,8 +65,8 @@ class TimelineItemListNotifier extends StateNotifier<List<TimelineTweet>> {
 final topCursorProvider = StateProvider<String?>((ref) => null);
 final bottomCursorProvider = StateProvider<String?>((ref) => null);
 
-class TwitterRiverTimeline extends ConsumerWidget {
-  const TwitterRiverTimeline({super.key});
+class TwitterRiverLatestTimeline extends ConsumerWidget {
+  const TwitterRiverLatestTimeline({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

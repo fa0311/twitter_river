@@ -6,4 +6,7 @@ class TwitterGraphQL {
   static Uri all = Uri.https(".twitter.com", "/");
   static Uri graphQL = base.resolve("graphql/");
   static Uri homeTimeline = graphQL.resolve("${TwitterQueryId.homeTimeline}/HomeTimeline");
+  static Uri homeLatestTimeline = graphQL.resolve("${TwitterQueryId.homeLatestTimeline}/HomeLatestTimeline");
+  static Uri listLatestTweetsTimeline = graphQL.resolve("${TwitterQueryId.listLatestTweetsTimeline}/ListLatestTweetsTimeline");
+  static Uri tweetDetail = graphQL.resolve("${TwitterQueryId.tweetDetail}/TweetDetail");
 }
