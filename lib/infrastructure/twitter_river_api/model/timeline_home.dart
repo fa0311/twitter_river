@@ -1,9 +1,9 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 part 'timeline_home.freezed.dart';
 part 'timeline_home.g.dart';

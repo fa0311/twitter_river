@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/tweet_detail.dart';
-
-// Project imports:
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
 import 'package:twitter_river/widget/tweet.dart';
 

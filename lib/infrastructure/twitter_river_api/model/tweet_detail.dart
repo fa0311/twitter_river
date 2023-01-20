@@ -3,8 +3,10 @@ import 'package:flutter/foundation.dart';
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 part 'tweet_detail.freezed.dart';
 part 'tweet_detail.g.dart';

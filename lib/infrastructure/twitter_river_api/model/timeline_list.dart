@@ -1,11 +1,10 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
-
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/timeline_home.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_home.dart';
 
 part 'timeline_list.freezed.dart';
 part 'timeline_list.g.dart';

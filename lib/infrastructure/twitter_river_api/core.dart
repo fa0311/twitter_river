@@ -5,14 +5,14 @@ import 'dart:convert';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:diox/diox.dart';
 import 'package:diox_cookie_manager/diox_cookie_manager.dart';
-import 'package:twitter_river/core/logger.dart';
 
 // Project imports:
+import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/timeline_home.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/timeline_list.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/tweet_detail.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_home.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_list.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
