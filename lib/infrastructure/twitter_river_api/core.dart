@@ -10,7 +10,8 @@ import 'package:twitter_river/core/logger.dart';
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/new_model/home_timeline.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/timeline_home.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/timeline_list.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/new_model/tweet_detail.dart';
 
 class TwitterRiverAPI {
@@ -73,24 +74,58 @@ class TwitterRiverAPI {
     return HomeTimelineResponse.fromJson(response.data);
   }
 
-  Future<HomeTimelineResponse> postTimeLine({String? cursor}) async {
+  Future<HomeTimelineResponse> getHomeLatestTimeline({required String? cursor}) async {
     final response = await dio.get(
-      TwitterGraphQL.homeTimeline.path,
-      data: {
-        "variables": {
-          "count": 20,
+      TwitterGraphQL.homeLatestTimeline.path,
+      queryParameters: {
+        "variables": jsonEncode({
           "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
-          "withCommunity": true,
           "withSuperFollowsUserFields": true,
           "withDownvotePerspective": false,
           "withReactionsMetadata": false,
           "withReactionsPerspective": false,
-          "withSuperFollowsTweetFields": true,
-          "seenTweetIds": []
-        },
-        "features": {
+          "withSuperFollowsTweetFields": true
+        }),
+        "features": jsonEncode({
+          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
+          "verified_phone_label_enabled": false,
+          "responsive_web_graphql_timeline_navigation_enabled": true,
+          "view_counts_public_visibility_enabled": true,
+          "longform_notetweets_consumption_enabled": false,
+          "tweetypie_unmention_optimization_enabled": true,
+          "responsive_web_uc_gql_enabled": true,
+          "vibe_api_enabled": true,
+          "responsive_web_edit_tweet_api_enabled": true,
+          "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+          "view_counts_everywhere_api_enabled": true,
+          "standardized_nudges_misinfo": true,
+          "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": false,
+          "interactive_text_enabled": true,
+          "responsive_web_text_conversations_enabled": false,
+          "responsive_web_enhance_cards_enabled": false
+        }),
+      },
+    );
+    return HomeTimelineResponse.fromJson(response.data);
+  }
+
+  Future<ListTimelineResponse> getListLatestTweetsTimeline({required String listId, required String? cursor}) async {
+    final response = await dio.get(
+      TwitterGraphQL.listLatestTweetsTimeline.path,
+      queryParameters: {
+        "variables": jsonEncode({
+          "listId": listId,
+          "count": 20,
+          if (cursor != null) "cursor": cursor,
+          "withSuperFollowsUserFields": true,
+          "withDownvotePerspective": false,
+          "withReactionsMetadata": false,
+          "withReactionsPerspective": false,
+          "withSuperFollowsTweetFields": true
+        }),
+        "features": jsonEncode({
           "responsive_web_twitter_blue_verified_badge_is_enabled": true,
           "verified_phone_label_enabled": false,
           "responsive_web_graphql_timeline_navigation_enabled": true,
@@ -107,11 +142,10 @@ class TwitterRiverAPI {
           "interactive_text_enabled": true,
           "responsive_web_text_conversations_enabled": false,
           "responsive_web_enhance_cards_enabled": false
-        },
-        "queryId": TwitterQueryId.homeTimeline
+        }),
       },
     );
-    return HomeTimelineResponse.fromJson(response.data);
+    return ListTimelineResponse.fromJson(response.data);
   }
 
   Future<TweetDetailResponse> getTweetDetail({required String focalTweetId}) async {

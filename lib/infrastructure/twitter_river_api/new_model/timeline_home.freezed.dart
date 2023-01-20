@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_timeline.dart';
+part of 'timeline_home.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -333,7 +333,7 @@ TwitterHome _$TwitterHomeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TwitterHome {
   @JsonKey(name: 'home_timeline_urt')
-  HomeTimelineUrt get homeTimelineUrt => throw _privateConstructorUsedError;
+  Timeline get homeTimelineUrt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -347,10 +347,9 @@ abstract class $TwitterHomeCopyWith<$Res> {
           TwitterHome value, $Res Function(TwitterHome) then) =
       _$TwitterHomeCopyWithImpl<$Res, TwitterHome>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'home_timeline_urt') HomeTimelineUrt homeTimelineUrt});
+  $Res call({@JsonKey(name: 'home_timeline_urt') Timeline homeTimelineUrt});
 
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt;
+  $TimelineCopyWith<$Res> get homeTimelineUrt;
 }
 
 /// @nodoc
@@ -372,14 +371,14 @@ class _$TwitterHomeCopyWithImpl<$Res, $Val extends TwitterHome>
       homeTimelineUrt: null == homeTimelineUrt
           ? _value.homeTimelineUrt
           : homeTimelineUrt // ignore: cast_nullable_to_non_nullable
-              as HomeTimelineUrt,
+              as Timeline,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt {
-    return $HomeTimelineUrtCopyWith<$Res>(_value.homeTimelineUrt, (value) {
+  $TimelineCopyWith<$Res> get homeTimelineUrt {
+    return $TimelineCopyWith<$Res>(_value.homeTimelineUrt, (value) {
       return _then(_value.copyWith(homeTimelineUrt: value) as $Val);
     });
   }
@@ -393,11 +392,10 @@ abstract class _$$_TwitterHomeCopyWith<$Res>
       __$$_TwitterHomeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'home_timeline_urt') HomeTimelineUrt homeTimelineUrt});
+  $Res call({@JsonKey(name: 'home_timeline_urt') Timeline homeTimelineUrt});
 
   @override
-  $HomeTimelineUrtCopyWith<$Res> get homeTimelineUrt;
+  $TimelineCopyWith<$Res> get homeTimelineUrt;
 }
 
 /// @nodoc
@@ -417,7 +415,7 @@ class __$$_TwitterHomeCopyWithImpl<$Res>
       homeTimelineUrt: null == homeTimelineUrt
           ? _value.homeTimelineUrt
           : homeTimelineUrt // ignore: cast_nullable_to_non_nullable
-              as HomeTimelineUrt,
+              as Timeline,
     ));
   }
 }
@@ -433,7 +431,7 @@ class _$_TwitterHome implements _TwitterHome {
 
   @override
   @JsonKey(name: 'home_timeline_urt')
-  final HomeTimelineUrt homeTimelineUrt;
+  final Timeline homeTimelineUrt;
 
   @override
   String toString() {
@@ -470,26 +468,26 @@ class _$_TwitterHome implements _TwitterHome {
 abstract class _TwitterHome implements TwitterHome {
   const factory _TwitterHome(
       {@JsonKey(name: 'home_timeline_urt')
-          required final HomeTimelineUrt homeTimelineUrt}) = _$_TwitterHome;
+          required final Timeline homeTimelineUrt}) = _$_TwitterHome;
 
   factory _TwitterHome.fromJson(Map<String, dynamic> json) =
       _$_TwitterHome.fromJson;
 
   @override
   @JsonKey(name: 'home_timeline_urt')
-  HomeTimelineUrt get homeTimelineUrt;
+  Timeline get homeTimelineUrt;
   @override
   @JsonKey(ignore: true)
   _$$_TwitterHomeCopyWith<_$_TwitterHome> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-HomeTimelineUrt _$HomeTimelineUrtFromJson(Map<String, dynamic> json) {
-  return _HomeTimelineUrt.fromJson(json);
+Timeline _$TimelineFromJson(Map<String, dynamic> json) {
+  return _Timeline.fromJson(json);
 }
 
 /// @nodoc
-mixin _$HomeTimelineUrt {
+mixin _$Timeline {
   @JsonKey(name: 'instructions')
   List<Instruction> get instructions => throw _privateConstructorUsedError;
   @JsonKey(name: 'responseObjects')
@@ -497,15 +495,14 @@ mixin _$HomeTimelineUrt {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $HomeTimelineUrtCopyWith<HomeTimelineUrt> get copyWith =>
+  $TimelineCopyWith<Timeline> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeTimelineUrtCopyWith<$Res> {
-  factory $HomeTimelineUrtCopyWith(
-          HomeTimelineUrt value, $Res Function(HomeTimelineUrt) then) =
-      _$HomeTimelineUrtCopyWithImpl<$Res, HomeTimelineUrt>;
+abstract class $TimelineCopyWith<$Res> {
+  factory $TimelineCopyWith(Timeline value, $Res Function(Timeline) then) =
+      _$TimelineCopyWithImpl<$Res, Timeline>;
   @useResult
   $Res call(
       {@JsonKey(name: 'instructions') List<Instruction> instructions,
@@ -513,9 +510,9 @@ abstract class $HomeTimelineUrtCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeTimelineUrtCopyWithImpl<$Res, $Val extends HomeTimelineUrt>
-    implements $HomeTimelineUrtCopyWith<$Res> {
-  _$HomeTimelineUrtCopyWithImpl(this._value, this._then);
+class _$TimelineCopyWithImpl<$Res, $Val extends Timeline>
+    implements $TimelineCopyWith<$Res> {
+  _$TimelineCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -540,11 +537,10 @@ class _$HomeTimelineUrtCopyWithImpl<$Res, $Val extends HomeTimelineUrt>
 }
 
 /// @nodoc
-abstract class _$$_HomeTimelineUrtCopyWith<$Res>
-    implements $HomeTimelineUrtCopyWith<$Res> {
-  factory _$$_HomeTimelineUrtCopyWith(
-          _$_HomeTimelineUrt value, $Res Function(_$_HomeTimelineUrt) then) =
-      __$$_HomeTimelineUrtCopyWithImpl<$Res>;
+abstract class _$$_TimelineCopyWith<$Res> implements $TimelineCopyWith<$Res> {
+  factory _$$_TimelineCopyWith(
+          _$_Timeline value, $Res Function(_$_Timeline) then) =
+      __$$_TimelineCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -553,11 +549,11 @@ abstract class _$$_HomeTimelineUrtCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HomeTimelineUrtCopyWithImpl<$Res>
-    extends _$HomeTimelineUrtCopyWithImpl<$Res, _$_HomeTimelineUrt>
-    implements _$$_HomeTimelineUrtCopyWith<$Res> {
-  __$$_HomeTimelineUrtCopyWithImpl(
-      _$_HomeTimelineUrt _value, $Res Function(_$_HomeTimelineUrt) _then)
+class __$$_TimelineCopyWithImpl<$Res>
+    extends _$TimelineCopyWithImpl<$Res, _$_Timeline>
+    implements _$$_TimelineCopyWith<$Res> {
+  __$$_TimelineCopyWithImpl(
+      _$_Timeline _value, $Res Function(_$_Timeline) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -566,7 +562,7 @@ class __$$_HomeTimelineUrtCopyWithImpl<$Res>
     Object? instructions = null,
     Object? responseObjects = freezed,
   }) {
-    return _then(_$_HomeTimelineUrt(
+    return _then(_$_Timeline(
       instructions: null == instructions
           ? _value._instructions
           : instructions // ignore: cast_nullable_to_non_nullable
@@ -579,16 +575,16 @@ class __$$_HomeTimelineUrtCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HomeTimelineUrt implements _HomeTimelineUrt {
-  const _$_HomeTimelineUrt(
+class _$_Timeline implements _Timeline {
+  const _$_Timeline(
       {@JsonKey(name: 'instructions')
           required final List<Instruction> instructions,
       @JsonKey(name: 'responseObjects')
           required this.responseObjects})
       : _instructions = instructions;
 
-  factory _$_HomeTimelineUrt.fromJson(Map<String, dynamic> json) =>
-      _$$_HomeTimelineUrtFromJson(json);
+  factory _$_Timeline.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineFromJson(json);
 
   final List<Instruction> _instructions;
   @override
@@ -605,14 +601,14 @@ class _$_HomeTimelineUrt implements _HomeTimelineUrt {
 
   @override
   String toString() {
-    return 'HomeTimelineUrt(instructions: $instructions, responseObjects: $responseObjects)';
+    return 'Timeline(instructions: $instructions, responseObjects: $responseObjects)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeTimelineUrt &&
+            other is _$_Timeline &&
             const DeepCollectionEquality()
                 .equals(other._instructions, _instructions) &&
             const DeepCollectionEquality()
@@ -629,26 +625,25 @@ class _$_HomeTimelineUrt implements _HomeTimelineUrt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeTimelineUrtCopyWith<_$_HomeTimelineUrt> get copyWith =>
-      __$$_HomeTimelineUrtCopyWithImpl<_$_HomeTimelineUrt>(this, _$identity);
+  _$$_TimelineCopyWith<_$_Timeline> get copyWith =>
+      __$$_TimelineCopyWithImpl<_$_Timeline>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HomeTimelineUrtToJson(
+    return _$$_TimelineToJson(
       this,
     );
   }
 }
 
-abstract class _HomeTimelineUrt implements HomeTimelineUrt {
-  const factory _HomeTimelineUrt(
+abstract class _Timeline implements Timeline {
+  const factory _Timeline(
       {@JsonKey(name: 'instructions')
           required final List<Instruction> instructions,
       @JsonKey(name: 'responseObjects')
-          required final Object? responseObjects}) = _$_HomeTimelineUrt;
+          required final Object? responseObjects}) = _$_Timeline;
 
-  factory _HomeTimelineUrt.fromJson(Map<String, dynamic> json) =
-      _$_HomeTimelineUrt.fromJson;
+  factory _Timeline.fromJson(Map<String, dynamic> json) = _$_Timeline.fromJson;
 
   @override
   @JsonKey(name: 'instructions')
@@ -658,6 +653,6 @@ abstract class _HomeTimelineUrt implements HomeTimelineUrt {
   Object? get responseObjects;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeTimelineUrtCopyWith<_$_HomeTimelineUrt> get copyWith =>
+  _$$_TimelineCopyWith<_$_Timeline> get copyWith =>
       throw _privateConstructorUsedError;
 }

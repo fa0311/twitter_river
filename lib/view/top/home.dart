@@ -9,20 +9,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/component/physics.dart';
 import 'package:twitter_river/view/drawer/drawer.dart';
 import 'package:twitter_river/view/top/timeline.dart';
+import 'package:twitter_river/view/top/timeline_latest.dart';
 
 final currentIndexProvider = StateProvider<CurrentIndex>((ref) => CurrentIndex.timeline);
 
 enum CurrentIndex {
   timeline(icon: Icons.home),
-  aaa(icon: Icons.home),
+  latestTimeline(icon: Icons.home),
   bbb(icon: Icons.home);
 
   Widget toWidget() {
     switch (this) {
       case CurrentIndex.timeline:
         return const TwitterRiverTimeline();
-      case CurrentIndex.aaa:
-        return Container();
+      case CurrentIndex.latestTimeline:
+        return const TwitterRiverLatestTimeline();
       case CurrentIndex.bbb:
         return Container();
     }
@@ -31,9 +32,9 @@ enum CurrentIndex {
   String toLocalization(BuildContext context) {
     switch (this) {
       case CurrentIndex.timeline:
-        return AppLocalizations.of(context)!.home;
-      case CurrentIndex.aaa:
-        return AppLocalizations.of(context)!.home;
+        return AppLocalizations.of(context)!.forYou;
+      case CurrentIndex.latestTimeline:
+        return AppLocalizations.of(context)!.following;
       case CurrentIndex.bbb:
         return AppLocalizations.of(context)!.home;
     }

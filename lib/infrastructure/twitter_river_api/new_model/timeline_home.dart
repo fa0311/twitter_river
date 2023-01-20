@@ -5,8 +5,8 @@ import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.da
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
 
-part 'home_timeline.freezed.dart';
-part 'home_timeline.g.dart';
+part 'timeline_home.freezed.dart';
+part 'timeline_home.g.dart';
 
 @freezed
 class HomeTimelineResponse with _$HomeTimelineResponse {
@@ -35,18 +35,18 @@ class HomeTimelineData with _$HomeTimelineData {
 @freezed
 class TwitterHome with _$TwitterHome {
   const factory TwitterHome({
-    @JsonKey(name: 'home_timeline_urt') required HomeTimelineUrt homeTimelineUrt,
+    @JsonKey(name: 'home_timeline_urt') required Timeline homeTimelineUrt,
   }) = _TwitterHome;
 
   factory TwitterHome.fromJson(Map<String, dynamic> json) => _$TwitterHomeFromJson(json);
 }
 
 @freezed
-class HomeTimelineUrt with _$HomeTimelineUrt {
-  const factory HomeTimelineUrt({
+class Timeline with _$Timeline {
+  const factory Timeline({
     @JsonKey(name: 'instructions') required List<Instruction> instructions,
     @JsonKey(name: 'responseObjects') required Object? responseObjects,
-  }) = _HomeTimelineUrt;
+  }) = _Timeline;
 
-  factory HomeTimelineUrt.fromJson(Map<String, dynamic> json) => _$HomeTimelineUrtFromJson(json);
+  factory Timeline.fromJson(Map<String, dynamic> json) => _$TimelineFromJson(json);
 }
