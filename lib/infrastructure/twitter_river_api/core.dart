@@ -10,8 +10,8 @@ import 'package:twitter_river/core/logger.dart';
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/home_timeline.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/home_timeline.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/tweet_detail.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;

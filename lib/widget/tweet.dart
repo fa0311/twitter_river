@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
 
 class TweetWidget extends ConsumerWidget {
   final UserLegacy user;

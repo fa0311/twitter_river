@@ -15,3 +15,19 @@ class SafetyIntegerConverter extends JsonConverter<int, Object> {
     return object;
   }
 }
+
+class SafetyObjectConverter extends JsonConverter<Object?, Object> {
+  const SafetyObjectConverter();
+
+  @override
+  Object? fromJson(Object json) {
+    if (json == {}) return null;
+    return json;
+  }
+
+  @override
+  Object toJson(Object? object) {
+    if (object == null) return {};
+    return object;
+  }
+}

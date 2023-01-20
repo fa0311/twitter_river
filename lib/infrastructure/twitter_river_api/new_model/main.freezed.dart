@@ -20,10 +20,16 @@ Instruction _$InstructionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Instruction {
+  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
-  String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'entries', defaultValue: [])
-  List<Entry> get entries => throw _privateConstructorUsedError;
+  InstructionsType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineAddEntries')
+  TimelineAddEntries? get timelineAddEntries =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineTerminateTimeline')
+  dynamic get timelineTerminateTimeline => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineShowAlert')
+  dynamic get timelineShowAlert => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,8 +44,17 @@ abstract class $InstructionCopyWith<$Res> {
       _$InstructionCopyWithImpl<$Res, Instruction>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'entries', defaultValue: []) List<Entry> entries});
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
+          InstructionsType type,
+      @JsonKey(name: 'timelineAddEntries')
+          TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineTerminateTimeline')
+          dynamic timelineTerminateTimeline,
+      @JsonKey(name: 'timelineShowAlert')
+          dynamic timelineShowAlert});
+
+  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries;
 }
 
 /// @nodoc
@@ -56,18 +71,41 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
   @override
   $Res call({
     Object? type = null,
-    Object? entries = null,
+    Object? timelineAddEntries = freezed,
+    Object? timelineTerminateTimeline = freezed,
+    Object? timelineShowAlert = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      entries: null == entries
-          ? _value.entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as List<Entry>,
+              as InstructionsType,
+      timelineAddEntries: freezed == timelineAddEntries
+          ? _value.timelineAddEntries
+          : timelineAddEntries // ignore: cast_nullable_to_non_nullable
+              as TimelineAddEntries?,
+      timelineTerminateTimeline: freezed == timelineTerminateTimeline
+          ? _value.timelineTerminateTimeline
+          : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      timelineShowAlert: freezed == timelineShowAlert
+          ? _value.timelineShowAlert
+          : timelineShowAlert // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries {
+    if (_value.timelineAddEntries == null) {
+      return null;
+    }
+
+    return $TimelineAddEntriesCopyWith<$Res>(_value.timelineAddEntries!,
+        (value) {
+      return _then(_value.copyWith(timelineAddEntries: value) as $Val);
+    });
   }
 }
 
@@ -80,8 +118,18 @@ abstract class _$$_InstructionCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'entries', defaultValue: []) List<Entry> entries});
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
+          InstructionsType type,
+      @JsonKey(name: 'timelineAddEntries')
+          TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineTerminateTimeline')
+          dynamic timelineTerminateTimeline,
+      @JsonKey(name: 'timelineShowAlert')
+          dynamic timelineShowAlert});
+
+  @override
+  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries;
 }
 
 /// @nodoc
@@ -96,50 +144,65 @@ class __$$_InstructionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = null,
-    Object? entries = null,
+    Object? timelineAddEntries = freezed,
+    Object? timelineTerminateTimeline = freezed,
+    Object? timelineShowAlert = freezed,
   }) {
     return _then(_$_Instruction(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      entries: null == entries
-          ? _value._entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as List<Entry>,
+              as InstructionsType,
+      timelineAddEntries: freezed == timelineAddEntries
+          ? _value.timelineAddEntries
+          : timelineAddEntries // ignore: cast_nullable_to_non_nullable
+              as TimelineAddEntries?,
+      timelineTerminateTimeline: freezed == timelineTerminateTimeline
+          ? _value.timelineTerminateTimeline
+          : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      timelineShowAlert: freezed == timelineShowAlert
+          ? _value.timelineShowAlert
+          : timelineShowAlert // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Instruction extends _Instruction {
+class _$_Instruction implements _Instruction {
   const _$_Instruction(
-      {@JsonKey(name: 'type')
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
           required this.type,
-      @JsonKey(name: 'entries', defaultValue: [])
-          required final List<Entry> entries})
-      : _entries = entries,
-        super._();
+      @JsonKey(name: 'timelineAddEntries')
+          required this.timelineAddEntries,
+      @JsonKey(name: 'timelineTerminateTimeline')
+          required this.timelineTerminateTimeline,
+      @JsonKey(name: 'timelineShowAlert')
+          required this.timelineShowAlert});
 
   factory _$_Instruction.fromJson(Map<String, dynamic> json) =>
       _$$_InstructionFromJson(json);
 
   @override
+  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
-  final String type;
-  final List<Entry> _entries;
+  final InstructionsType type;
   @override
-  @JsonKey(name: 'entries', defaultValue: [])
-  List<Entry> get entries {
-    if (_entries is EqualUnmodifiableListView) return _entries;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_entries);
-  }
+  @JsonKey(name: 'timelineAddEntries')
+  final TimelineAddEntries? timelineAddEntries;
+  @override
+  @JsonKey(name: 'timelineTerminateTimeline')
+  final dynamic timelineTerminateTimeline;
+  @override
+  @JsonKey(name: 'timelineShowAlert')
+  final dynamic timelineShowAlert;
 
   @override
   String toString() {
-    return 'Instruction(type: $type, entries: $entries)';
+    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
   }
 
   @override
@@ -148,13 +211,22 @@ class _$_Instruction extends _Instruction {
         (other.runtimeType == runtimeType &&
             other is _$_Instruction &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._entries, _entries));
+            (identical(other.timelineAddEntries, timelineAddEntries) ||
+                other.timelineAddEntries == timelineAddEntries) &&
+            const DeepCollectionEquality().equals(
+                other.timelineTerminateTimeline, timelineTerminateTimeline) &&
+            const DeepCollectionEquality()
+                .equals(other.timelineShowAlert, timelineShowAlert));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, type, const DeepCollectionEquality().hash(_entries));
+      runtimeType,
+      type,
+      timelineAddEntries,
+      const DeepCollectionEquality().hash(timelineTerminateTimeline),
+      const DeepCollectionEquality().hash(timelineShowAlert));
 
   @JsonKey(ignore: true)
   @override
@@ -170,64 +242,266 @@ class _$_Instruction extends _Instruction {
   }
 }
 
-abstract class _Instruction extends Instruction {
+abstract class _Instruction implements Instruction {
   const factory _Instruction(
-      {@JsonKey(name: 'type')
-          required final String type,
-      @JsonKey(name: 'entries', defaultValue: [])
-          required final List<Entry> entries}) = _$_Instruction;
-  const _Instruction._() : super._();
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
+          required final InstructionsType type,
+      @JsonKey(name: 'timelineAddEntries')
+          required final TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineTerminateTimeline')
+          required final dynamic timelineTerminateTimeline,
+      @JsonKey(name: 'timelineShowAlert')
+          required final dynamic timelineShowAlert}) = _$_Instruction;
 
   factory _Instruction.fromJson(Map<String, dynamic> json) =
       _$_Instruction.fromJson;
 
   @override
+  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
-  String get type;
+  InstructionsType get type;
   @override
-  @JsonKey(name: 'entries', defaultValue: [])
-  List<Entry> get entries;
+  @JsonKey(name: 'timelineAddEntries')
+  TimelineAddEntries? get timelineAddEntries;
+  @override
+  @JsonKey(name: 'timelineTerminateTimeline')
+  dynamic get timelineTerminateTimeline;
+  @override
+  @JsonKey(name: 'timelineShowAlert')
+  dynamic get timelineShowAlert;
   @override
   @JsonKey(ignore: true)
   _$$_InstructionCopyWith<_$_Instruction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-Entry _$EntryFromJson(Map<String, dynamic> json) {
-  return _Entry.fromJson(json);
+TimelineAddEntries _$TimelineAddEntriesFromJson(Map<String, dynamic> json) {
+  return _TimelineAddEntries.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Entry {
+mixin _$TimelineAddEntries {
+  @InstructionsTypeConverter()
+  @JsonKey(name: 'type')
+  InstructionsType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'entries')
+  List<TimelineAddEntry> get entries => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TimelineAddEntriesCopyWith<TimelineAddEntries> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimelineAddEntriesCopyWith<$Res> {
+  factory $TimelineAddEntriesCopyWith(
+          TimelineAddEntries value, $Res Function(TimelineAddEntries) then) =
+      _$TimelineAddEntriesCopyWithImpl<$Res, TimelineAddEntries>;
+  @useResult
+  $Res call(
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
+          InstructionsType type,
+      @JsonKey(name: 'entries')
+          List<TimelineAddEntry> entries});
+}
+
+/// @nodoc
+class _$TimelineAddEntriesCopyWithImpl<$Res, $Val extends TimelineAddEntries>
+    implements $TimelineAddEntriesCopyWith<$Res> {
+  _$TimelineAddEntriesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? entries = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as InstructionsType,
+      entries: null == entries
+          ? _value.entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<TimelineAddEntry>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TimelineAddEntriesCopyWith<$Res>
+    implements $TimelineAddEntriesCopyWith<$Res> {
+  factory _$$_TimelineAddEntriesCopyWith(_$_TimelineAddEntries value,
+          $Res Function(_$_TimelineAddEntries) then) =
+      __$$_TimelineAddEntriesCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@InstructionsTypeConverter()
+      @JsonKey(name: 'type')
+          InstructionsType type,
+      @JsonKey(name: 'entries')
+          List<TimelineAddEntry> entries});
+}
+
+/// @nodoc
+class __$$_TimelineAddEntriesCopyWithImpl<$Res>
+    extends _$TimelineAddEntriesCopyWithImpl<$Res, _$_TimelineAddEntries>
+    implements _$$_TimelineAddEntriesCopyWith<$Res> {
+  __$$_TimelineAddEntriesCopyWithImpl(
+      _$_TimelineAddEntries _value, $Res Function(_$_TimelineAddEntries) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? entries = null,
+  }) {
+    return _then(_$_TimelineAddEntries(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as InstructionsType,
+      entries: null == entries
+          ? _value._entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<TimelineAddEntry>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TimelineAddEntries extends _TimelineAddEntries {
+  const _$_TimelineAddEntries(
+      {@InstructionsTypeConverter() @JsonKey(name: 'type') required this.type,
+      @JsonKey(name: 'entries') required final List<TimelineAddEntry> entries})
+      : _entries = entries,
+        super._();
+
+  factory _$_TimelineAddEntries.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineAddEntriesFromJson(json);
+
+  @override
+  @InstructionsTypeConverter()
+  @JsonKey(name: 'type')
+  final InstructionsType type;
+  final List<TimelineAddEntry> _entries;
+  @override
+  @JsonKey(name: 'entries')
+  List<TimelineAddEntry> get entries {
+    if (_entries is EqualUnmodifiableListView) return _entries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_entries);
+  }
+
+  @override
+  String toString() {
+    return 'TimelineAddEntries(type: $type, entries: $entries)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimelineAddEntries &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._entries, _entries));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, type, const DeepCollectionEquality().hash(_entries));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TimelineAddEntriesCopyWith<_$_TimelineAddEntries> get copyWith =>
+      __$$_TimelineAddEntriesCopyWithImpl<_$_TimelineAddEntries>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TimelineAddEntriesToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimelineAddEntries extends TimelineAddEntries {
+  const factory _TimelineAddEntries(
+          {@InstructionsTypeConverter()
+          @JsonKey(name: 'type')
+              required final InstructionsType type,
+          @JsonKey(name: 'entries')
+              required final List<TimelineAddEntry> entries}) =
+      _$_TimelineAddEntries;
+  const _TimelineAddEntries._() : super._();
+
+  factory _TimelineAddEntries.fromJson(Map<String, dynamic> json) =
+      _$_TimelineAddEntries.fromJson;
+
+  @override
+  @InstructionsTypeConverter()
+  @JsonKey(name: 'type')
+  InstructionsType get type;
+  @override
+  @JsonKey(name: 'entries')
+  List<TimelineAddEntry> get entries;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TimelineAddEntriesCopyWith<_$_TimelineAddEntries> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TimelineAddEntry _$TimelineAddEntryFromJson(Map<String, dynamic> json) {
+  return _TimelineAddEntry.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimelineAddEntry {
   @JsonKey(name: 'entryId')
   String get entryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'sortIndex')
-  String get sortIndex => throw _privateConstructorUsedError;
+  String get entry => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
   Content get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EntryCopyWith<Entry> get copyWith => throw _privateConstructorUsedError;
+  $TimelineAddEntryCopyWith<TimelineAddEntry> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntryCopyWith<$Res> {
-  factory $EntryCopyWith(Entry value, $Res Function(Entry) then) =
-      _$EntryCopyWithImpl<$Res, Entry>;
+abstract class $TimelineAddEntryCopyWith<$Res> {
+  factory $TimelineAddEntryCopyWith(
+          TimelineAddEntry value, $Res Function(TimelineAddEntry) then) =
+      _$TimelineAddEntryCopyWithImpl<$Res, TimelineAddEntry>;
   @useResult
   $Res call(
       {@JsonKey(name: 'entryId') String entryId,
-      @JsonKey(name: 'sortIndex') String sortIndex,
+      @JsonKey(name: 'sortIndex') String entry,
       @JsonKey(name: 'content') Content content});
 
   $ContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class _$EntryCopyWithImpl<$Res, $Val extends Entry>
-    implements $EntryCopyWith<$Res> {
-  _$EntryCopyWithImpl(this._value, this._then);
+class _$TimelineAddEntryCopyWithImpl<$Res, $Val extends TimelineAddEntry>
+    implements $TimelineAddEntryCopyWith<$Res> {
+  _$TimelineAddEntryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -238,7 +512,7 @@ class _$EntryCopyWithImpl<$Res, $Val extends Entry>
   @override
   $Res call({
     Object? entryId = null,
-    Object? sortIndex = null,
+    Object? entry = null,
     Object? content = null,
   }) {
     return _then(_value.copyWith(
@@ -246,9 +520,9 @@ class _$EntryCopyWithImpl<$Res, $Val extends Entry>
           ? _value.entryId
           : entryId // ignore: cast_nullable_to_non_nullable
               as String,
-      sortIndex: null == sortIndex
-          ? _value.sortIndex
-          : sortIndex // ignore: cast_nullable_to_non_nullable
+      entry: null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -267,14 +541,16 @@ class _$EntryCopyWithImpl<$Res, $Val extends Entry>
 }
 
 /// @nodoc
-abstract class _$$_EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
-  factory _$$_EntryCopyWith(_$_Entry value, $Res Function(_$_Entry) then) =
-      __$$_EntryCopyWithImpl<$Res>;
+abstract class _$$_TimelineAddEntryCopyWith<$Res>
+    implements $TimelineAddEntryCopyWith<$Res> {
+  factory _$$_TimelineAddEntryCopyWith(
+          _$_TimelineAddEntry value, $Res Function(_$_TimelineAddEntry) then) =
+      __$$_TimelineAddEntryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'entryId') String entryId,
-      @JsonKey(name: 'sortIndex') String sortIndex,
+      @JsonKey(name: 'sortIndex') String entry,
       @JsonKey(name: 'content') Content content});
 
   @override
@@ -282,26 +558,28 @@ abstract class _$$_EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
-    implements _$$_EntryCopyWith<$Res> {
-  __$$_EntryCopyWithImpl(_$_Entry _value, $Res Function(_$_Entry) _then)
+class __$$_TimelineAddEntryCopyWithImpl<$Res>
+    extends _$TimelineAddEntryCopyWithImpl<$Res, _$_TimelineAddEntry>
+    implements _$$_TimelineAddEntryCopyWith<$Res> {
+  __$$_TimelineAddEntryCopyWithImpl(
+      _$_TimelineAddEntry _value, $Res Function(_$_TimelineAddEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? entryId = null,
-    Object? sortIndex = null,
+    Object? entry = null,
     Object? content = null,
   }) {
-    return _then(_$_Entry(
+    return _then(_$_TimelineAddEntry(
       entryId: null == entryId
           ? _value.entryId
           : entryId // ignore: cast_nullable_to_non_nullable
               as String,
-      sortIndex: null == sortIndex
-          ? _value.sortIndex
-          : sortIndex // ignore: cast_nullable_to_non_nullable
+      entry: null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -313,81 +591,80 @@ class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Entry extends _Entry {
-  const _$_Entry(
+class _$_TimelineAddEntry implements _TimelineAddEntry {
+  const _$_TimelineAddEntry(
       {@JsonKey(name: 'entryId') required this.entryId,
-      @JsonKey(name: 'sortIndex') required this.sortIndex,
-      @JsonKey(name: 'content') required this.content})
-      : super._();
+      @JsonKey(name: 'sortIndex') required this.entry,
+      @JsonKey(name: 'content') required this.content});
 
-  factory _$_Entry.fromJson(Map<String, dynamic> json) =>
-      _$$_EntryFromJson(json);
+  factory _$_TimelineAddEntry.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineAddEntryFromJson(json);
 
   @override
   @JsonKey(name: 'entryId')
   final String entryId;
   @override
   @JsonKey(name: 'sortIndex')
-  final String sortIndex;
+  final String entry;
   @override
   @JsonKey(name: 'content')
   final Content content;
 
   @override
   String toString() {
-    return 'Entry(entryId: $entryId, sortIndex: $sortIndex, content: $content)';
+    return 'TimelineAddEntry(entryId: $entryId, entry: $entry, content: $content)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Entry &&
+            other is _$_TimelineAddEntry &&
             (identical(other.entryId, entryId) || other.entryId == entryId) &&
-            (identical(other.sortIndex, sortIndex) ||
-                other.sortIndex == sortIndex) &&
+            (identical(other.entry, entry) || other.entry == entry) &&
             (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, entryId, sortIndex, content);
+  int get hashCode => Object.hash(runtimeType, entryId, entry, content);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EntryCopyWith<_$_Entry> get copyWith =>
-      __$$_EntryCopyWithImpl<_$_Entry>(this, _$identity);
+  _$$_TimelineAddEntryCopyWith<_$_TimelineAddEntry> get copyWith =>
+      __$$_TimelineAddEntryCopyWithImpl<_$_TimelineAddEntry>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EntryToJson(
+    return _$$_TimelineAddEntryToJson(
       this,
     );
   }
 }
 
-abstract class _Entry extends Entry {
-  const factory _Entry(
-      {@JsonKey(name: 'entryId') required final String entryId,
-      @JsonKey(name: 'sortIndex') required final String sortIndex,
-      @JsonKey(name: 'content') required final Content content}) = _$_Entry;
-  const _Entry._() : super._();
+abstract class _TimelineAddEntry implements TimelineAddEntry {
+  const factory _TimelineAddEntry(
+          {@JsonKey(name: 'entryId') required final String entryId,
+          @JsonKey(name: 'sortIndex') required final String entry,
+          @JsonKey(name: 'content') required final Content content}) =
+      _$_TimelineAddEntry;
 
-  factory _Entry.fromJson(Map<String, dynamic> json) = _$_Entry.fromJson;
+  factory _TimelineAddEntry.fromJson(Map<String, dynamic> json) =
+      _$_TimelineAddEntry.fromJson;
 
   @override
   @JsonKey(name: 'entryId')
   String get entryId;
   @override
   @JsonKey(name: 'sortIndex')
-  String get sortIndex;
+  String get entry;
   @override
   @JsonKey(name: 'content')
   Content get content;
   @override
   @JsonKey(ignore: true)
-  _$$_EntryCopyWith<_$_Entry> get copyWith =>
+  _$$_TimelineAddEntryCopyWith<_$_TimelineAddEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -397,20 +674,18 @@ Content _$ContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Content {
+  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
-  String get entryType => throw _privateConstructorUsedError;
-  @JsonKey(name: '__typename')
-  String get typename => throw _privateConstructorUsedError;
-  @JsonKey(name: 'itemContent')
-  ItemContent? get itemContent => throw _privateConstructorUsedError;
-  @JsonKey(name: 'feedbackInfo')
-  dynamic get feedbackInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientEventInfo')
-  dynamic get clientEventInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'cursorType')
-  String? get cursorType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'value')
-  String? get value => throw _privateConstructorUsedError;
+  EntryType get entryType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineTimelineItem')
+  TimelineTimelineItem? get timelineTimelineItem =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineTimelineModule')
+  dynamic get timelineTimelineModule => throw _privateConstructorUsedError;
+  @EntryValueConverter()
+  @JsonKey(name: 'timelineTimelineCursor')
+  TimelineTimelineCursor? get timelineTimelineCursor =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -423,15 +698,19 @@ abstract class $ContentCopyWith<$Res> {
       _$ContentCopyWithImpl<$Res, Content>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'entryType') String entryType,
-      @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'itemContent') ItemContent? itemContent,
-      @JsonKey(name: 'feedbackInfo') dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo,
-      @JsonKey(name: 'cursorType') String? cursorType,
-      @JsonKey(name: 'value') String? value});
+      {@EntryTypeConverter()
+      @JsonKey(name: 'entryType')
+          EntryType entryType,
+      @JsonKey(name: 'timelineTimelineItem')
+          TimelineTimelineItem? timelineTimelineItem,
+      @JsonKey(name: 'timelineTimelineModule')
+          dynamic timelineTimelineModule,
+      @EntryValueConverter()
+      @JsonKey(name: 'timelineTimelineCursor')
+          TimelineTimelineCursor? timelineTimelineCursor});
 
-  $ItemContentCopyWith<$Res>? get itemContent;
+  $TimelineTimelineItemCopyWith<$Res>? get timelineTimelineItem;
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor;
 }
 
 /// @nodoc
@@ -448,54 +727,53 @@ class _$ContentCopyWithImpl<$Res, $Val extends Content>
   @override
   $Res call({
     Object? entryType = null,
-    Object? typename = null,
-    Object? itemContent = freezed,
-    Object? feedbackInfo = freezed,
-    Object? clientEventInfo = freezed,
-    Object? cursorType = freezed,
-    Object? value = freezed,
+    Object? timelineTimelineItem = freezed,
+    Object? timelineTimelineModule = freezed,
+    Object? timelineTimelineCursor = freezed,
   }) {
     return _then(_value.copyWith(
       entryType: null == entryType
           ? _value.entryType
           : entryType // ignore: cast_nullable_to_non_nullable
-              as String,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemContent: freezed == itemContent
-          ? _value.itemContent
-          : itemContent // ignore: cast_nullable_to_non_nullable
-              as ItemContent?,
-      feedbackInfo: freezed == feedbackInfo
-          ? _value.feedbackInfo
-          : feedbackInfo // ignore: cast_nullable_to_non_nullable
+              as EntryType,
+      timelineTimelineItem: freezed == timelineTimelineItem
+          ? _value.timelineTimelineItem
+          : timelineTimelineItem // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineItem?,
+      timelineTimelineModule: freezed == timelineTimelineModule
+          ? _value.timelineTimelineModule
+          : timelineTimelineModule // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      clientEventInfo: freezed == clientEventInfo
-          ? _value.clientEventInfo
-          : clientEventInfo // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      cursorType: freezed == cursorType
-          ? _value.cursorType
-          : cursorType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      timelineTimelineCursor: freezed == timelineTimelineCursor
+          ? _value.timelineTimelineCursor
+          : timelineTimelineCursor // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineCursor?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ItemContentCopyWith<$Res>? get itemContent {
-    if (_value.itemContent == null) {
+  $TimelineTimelineItemCopyWith<$Res>? get timelineTimelineItem {
+    if (_value.timelineTimelineItem == null) {
       return null;
     }
 
-    return $ItemContentCopyWith<$Res>(_value.itemContent!, (value) {
-      return _then(_value.copyWith(itemContent: value) as $Val);
+    return $TimelineTimelineItemCopyWith<$Res>(_value.timelineTimelineItem!,
+        (value) {
+      return _then(_value.copyWith(timelineTimelineItem: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor {
+    if (_value.timelineTimelineCursor == null) {
+      return null;
+    }
+
+    return $TimelineTimelineCursorCopyWith<$Res>(_value.timelineTimelineCursor!,
+        (value) {
+      return _then(_value.copyWith(timelineTimelineCursor: value) as $Val);
     });
   }
 }
@@ -508,16 +786,21 @@ abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'entryType') String entryType,
-      @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'itemContent') ItemContent? itemContent,
-      @JsonKey(name: 'feedbackInfo') dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo,
-      @JsonKey(name: 'cursorType') String? cursorType,
-      @JsonKey(name: 'value') String? value});
+      {@EntryTypeConverter()
+      @JsonKey(name: 'entryType')
+          EntryType entryType,
+      @JsonKey(name: 'timelineTimelineItem')
+          TimelineTimelineItem? timelineTimelineItem,
+      @JsonKey(name: 'timelineTimelineModule')
+          dynamic timelineTimelineModule,
+      @EntryValueConverter()
+      @JsonKey(name: 'timelineTimelineCursor')
+          TimelineTimelineCursor? timelineTimelineCursor});
 
   @override
-  $ItemContentCopyWith<$Res>? get itemContent;
+  $TimelineTimelineItemCopyWith<$Res>? get timelineTimelineItem;
+  @override
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor;
 }
 
 /// @nodoc
@@ -531,42 +814,27 @@ class __$$_ContentCopyWithImpl<$Res>
   @override
   $Res call({
     Object? entryType = null,
-    Object? typename = null,
-    Object? itemContent = freezed,
-    Object? feedbackInfo = freezed,
-    Object? clientEventInfo = freezed,
-    Object? cursorType = freezed,
-    Object? value = freezed,
+    Object? timelineTimelineItem = freezed,
+    Object? timelineTimelineModule = freezed,
+    Object? timelineTimelineCursor = freezed,
   }) {
     return _then(_$_Content(
       entryType: null == entryType
           ? _value.entryType
           : entryType // ignore: cast_nullable_to_non_nullable
-              as String,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemContent: freezed == itemContent
-          ? _value.itemContent
-          : itemContent // ignore: cast_nullable_to_non_nullable
-              as ItemContent?,
-      feedbackInfo: freezed == feedbackInfo
-          ? _value.feedbackInfo
-          : feedbackInfo // ignore: cast_nullable_to_non_nullable
+              as EntryType,
+      timelineTimelineItem: freezed == timelineTimelineItem
+          ? _value.timelineTimelineItem
+          : timelineTimelineItem // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineItem?,
+      timelineTimelineModule: freezed == timelineTimelineModule
+          ? _value.timelineTimelineModule
+          : timelineTimelineModule // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      clientEventInfo: freezed == clientEventInfo
-          ? _value.clientEventInfo
-          : clientEventInfo // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      cursorType: freezed == cursorType
-          ? _value.cursorType
-          : cursorType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      timelineTimelineCursor: freezed == timelineTimelineCursor
+          ? _value.timelineTimelineCursor
+          : timelineTimelineCursor // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineCursor?,
     ));
   }
 }
@@ -575,42 +843,38 @@ class __$$_ContentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Content implements _Content {
   const _$_Content(
-      {@JsonKey(name: 'entryType') required this.entryType,
-      @JsonKey(name: '__typename') required this.typename,
-      @JsonKey(name: 'itemContent') required this.itemContent,
-      @JsonKey(name: 'feedbackInfo') required this.feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') required this.clientEventInfo,
-      @JsonKey(name: 'cursorType') this.cursorType,
-      @JsonKey(name: 'value') this.value});
+      {@EntryTypeConverter()
+      @JsonKey(name: 'entryType')
+          required this.entryType,
+      @JsonKey(name: 'timelineTimelineItem')
+          required this.timelineTimelineItem,
+      @JsonKey(name: 'timelineTimelineModule')
+          required this.timelineTimelineModule,
+      @EntryValueConverter()
+      @JsonKey(name: 'timelineTimelineCursor')
+          required this.timelineTimelineCursor});
 
   factory _$_Content.fromJson(Map<String, dynamic> json) =>
       _$$_ContentFromJson(json);
 
   @override
+  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
-  final String entryType;
+  final EntryType entryType;
   @override
-  @JsonKey(name: '__typename')
-  final String typename;
+  @JsonKey(name: 'timelineTimelineItem')
+  final TimelineTimelineItem? timelineTimelineItem;
   @override
-  @JsonKey(name: 'itemContent')
-  final ItemContent? itemContent;
+  @JsonKey(name: 'timelineTimelineModule')
+  final dynamic timelineTimelineModule;
   @override
-  @JsonKey(name: 'feedbackInfo')
-  final dynamic feedbackInfo;
-  @override
-  @JsonKey(name: 'clientEventInfo')
-  final dynamic clientEventInfo;
-  @override
-  @JsonKey(name: 'cursorType')
-  final String? cursorType;
-  @override
-  @JsonKey(name: 'value')
-  final String? value;
+  @EntryValueConverter()
+  @JsonKey(name: 'timelineTimelineCursor')
+  final TimelineTimelineCursor? timelineTimelineCursor;
 
   @override
   String toString() {
-    return 'Content(entryType: $entryType, typename: $typename, itemContent: $itemContent, feedbackInfo: $feedbackInfo, clientEventInfo: $clientEventInfo, cursorType: $cursorType, value: $value)';
+    return 'Content(entryType: $entryType, timelineTimelineItem: $timelineTimelineItem, timelineTimelineModule: $timelineTimelineModule, timelineTimelineCursor: $timelineTimelineCursor)';
   }
 
   @override
@@ -620,17 +884,12 @@ class _$_Content implements _Content {
             other is _$_Content &&
             (identical(other.entryType, entryType) ||
                 other.entryType == entryType) &&
-            (identical(other.typename, typename) ||
-                other.typename == typename) &&
-            (identical(other.itemContent, itemContent) ||
-                other.itemContent == itemContent) &&
+            (identical(other.timelineTimelineItem, timelineTimelineItem) ||
+                other.timelineTimelineItem == timelineTimelineItem) &&
             const DeepCollectionEquality()
-                .equals(other.feedbackInfo, feedbackInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.clientEventInfo, clientEventInfo) &&
-            (identical(other.cursorType, cursorType) ||
-                other.cursorType == cursorType) &&
-            (identical(other.value, value) || other.value == value));
+                .equals(other.timelineTimelineModule, timelineTimelineModule) &&
+            (identical(other.timelineTimelineCursor, timelineTimelineCursor) ||
+                other.timelineTimelineCursor == timelineTimelineCursor));
   }
 
   @JsonKey(ignore: true)
@@ -638,12 +897,9 @@ class _$_Content implements _Content {
   int get hashCode => Object.hash(
       runtimeType,
       entryType,
-      typename,
-      itemContent,
-      const DeepCollectionEquality().hash(feedbackInfo),
-      const DeepCollectionEquality().hash(clientEventInfo),
-      cursorType,
-      value);
+      timelineTimelineItem,
+      const DeepCollectionEquality().hash(timelineTimelineModule),
+      timelineTimelineCursor);
 
   @JsonKey(ignore: true)
   @override
@@ -661,40 +917,447 @@ class _$_Content implements _Content {
 
 abstract class _Content implements Content {
   const factory _Content(
-      {@JsonKey(name: 'entryType') required final String entryType,
-      @JsonKey(name: '__typename') required final String typename,
-      @JsonKey(name: 'itemContent') required final ItemContent? itemContent,
-      @JsonKey(name: 'feedbackInfo') required final dynamic feedbackInfo,
-      @JsonKey(name: 'clientEventInfo') required final dynamic clientEventInfo,
-      @JsonKey(name: 'cursorType') final String? cursorType,
-      @JsonKey(name: 'value') final String? value}) = _$_Content;
+          {@EntryTypeConverter()
+          @JsonKey(name: 'entryType')
+              required final EntryType entryType,
+          @JsonKey(name: 'timelineTimelineItem')
+              required final TimelineTimelineItem? timelineTimelineItem,
+          @JsonKey(name: 'timelineTimelineModule')
+              required final dynamic timelineTimelineModule,
+          @EntryValueConverter()
+          @JsonKey(name: 'timelineTimelineCursor')
+              required final TimelineTimelineCursor? timelineTimelineCursor}) =
+      _$_Content;
 
   factory _Content.fromJson(Map<String, dynamic> json) = _$_Content.fromJson;
 
   @override
+  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
-  String get entryType;
+  EntryType get entryType;
   @override
-  @JsonKey(name: '__typename')
-  String get typename;
+  @JsonKey(name: 'timelineTimelineItem')
+  TimelineTimelineItem? get timelineTimelineItem;
   @override
-  @JsonKey(name: 'itemContent')
-  ItemContent? get itemContent;
+  @JsonKey(name: 'timelineTimelineModule')
+  dynamic get timelineTimelineModule;
   @override
-  @JsonKey(name: 'feedbackInfo')
-  dynamic get feedbackInfo;
-  @override
-  @JsonKey(name: 'clientEventInfo')
-  dynamic get clientEventInfo;
-  @override
-  @JsonKey(name: 'cursorType')
-  String? get cursorType;
-  @override
-  @JsonKey(name: 'value')
-  String? get value;
+  @EntryValueConverter()
+  @JsonKey(name: 'timelineTimelineCursor')
+  TimelineTimelineCursor? get timelineTimelineCursor;
   @override
   @JsonKey(ignore: true)
   _$$_ContentCopyWith<_$_Content> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TimelineTimelineCursor _$TimelineTimelineCursorFromJson(
+    Map<String, dynamic> json) {
+  return _TimelineTimelineCursor.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimelineTimelineCursor {
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename => throw _privateConstructorUsedError;
+  @JsonKey(name: 'value')
+  String get value => throw _privateConstructorUsedError;
+  @CursorTypeConverter()
+  @JsonKey(name: 'cursorType')
+  CursorType get cursorType => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TimelineTimelineCursorCopyWith<TimelineTimelineCursor> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimelineTimelineCursorCopyWith<$Res> {
+  factory $TimelineTimelineCursorCopyWith(TimelineTimelineCursor value,
+          $Res Function(TimelineTimelineCursor) then) =
+      _$TimelineTimelineCursorCopyWithImpl<$Res, TimelineTimelineCursor>;
+  @useResult
+  $Res call(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          Typename typename,
+      @JsonKey(name: 'value')
+          String value,
+      @CursorTypeConverter()
+      @JsonKey(name: 'cursorType')
+          CursorType cursorType});
+}
+
+/// @nodoc
+class _$TimelineTimelineCursorCopyWithImpl<$Res,
+        $Val extends TimelineTimelineCursor>
+    implements $TimelineTimelineCursorCopyWith<$Res> {
+  _$TimelineTimelineCursorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? value = null,
+    Object? cursorType = null,
+  }) {
+    return _then(_value.copyWith(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      cursorType: null == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as CursorType,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TimelineTimelineCursorCopyWith<$Res>
+    implements $TimelineTimelineCursorCopyWith<$Res> {
+  factory _$$_TimelineTimelineCursorCopyWith(_$_TimelineTimelineCursor value,
+          $Res Function(_$_TimelineTimelineCursor) then) =
+      __$$_TimelineTimelineCursorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          Typename typename,
+      @JsonKey(name: 'value')
+          String value,
+      @CursorTypeConverter()
+      @JsonKey(name: 'cursorType')
+          CursorType cursorType});
+}
+
+/// @nodoc
+class __$$_TimelineTimelineCursorCopyWithImpl<$Res>
+    extends _$TimelineTimelineCursorCopyWithImpl<$Res,
+        _$_TimelineTimelineCursor>
+    implements _$$_TimelineTimelineCursorCopyWith<$Res> {
+  __$$_TimelineTimelineCursorCopyWithImpl(_$_TimelineTimelineCursor _value,
+      $Res Function(_$_TimelineTimelineCursor) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? value = null,
+    Object? cursorType = null,
+  }) {
+    return _then(_$_TimelineTimelineCursor(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      cursorType: null == cursorType
+          ? _value.cursorType
+          : cursorType // ignore: cast_nullable_to_non_nullable
+              as CursorType,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TimelineTimelineCursor implements _TimelineTimelineCursor {
+  const _$_TimelineTimelineCursor(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required this.typename,
+      @JsonKey(name: 'value')
+          required this.value,
+      @CursorTypeConverter()
+      @JsonKey(name: 'cursorType')
+          required this.cursorType});
+
+  factory _$_TimelineTimelineCursor.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineTimelineCursorFromJson(json);
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  final Typename typename;
+  @override
+  @JsonKey(name: 'value')
+  final String value;
+  @override
+  @CursorTypeConverter()
+  @JsonKey(name: 'cursorType')
+  final CursorType cursorType;
+
+  @override
+  String toString() {
+    return 'TimelineTimelineCursor(typename: $typename, value: $value, cursorType: $cursorType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimelineTimelineCursor &&
+            (identical(other.typename, typename) ||
+                other.typename == typename) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.cursorType, cursorType) ||
+                other.cursorType == cursorType));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, typename, value, cursorType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TimelineTimelineCursorCopyWith<_$_TimelineTimelineCursor> get copyWith =>
+      __$$_TimelineTimelineCursorCopyWithImpl<_$_TimelineTimelineCursor>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TimelineTimelineCursorToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimelineTimelineCursor implements TimelineTimelineCursor {
+  const factory _TimelineTimelineCursor(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required final Typename typename,
+      @JsonKey(name: 'value')
+          required final String value,
+      @CursorTypeConverter()
+      @JsonKey(name: 'cursorType')
+          required final CursorType cursorType}) = _$_TimelineTimelineCursor;
+
+  factory _TimelineTimelineCursor.fromJson(Map<String, dynamic> json) =
+      _$_TimelineTimelineCursor.fromJson;
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename;
+  @override
+  @JsonKey(name: 'value')
+  String get value;
+  @override
+  @CursorTypeConverter()
+  @JsonKey(name: 'cursorType')
+  CursorType get cursorType;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TimelineTimelineCursorCopyWith<_$_TimelineTimelineCursor> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TimelineTimelineItem _$TimelineTimelineItemFromJson(Map<String, dynamic> json) {
+  return _TimelineTimelineItem.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimelineTimelineItem {
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename => throw _privateConstructorUsedError;
+  @JsonKey(name: 'itemContent')
+  ItemContent get itemContent => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TimelineTimelineItemCopyWith<TimelineTimelineItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimelineTimelineItemCopyWith<$Res> {
+  factory $TimelineTimelineItemCopyWith(TimelineTimelineItem value,
+          $Res Function(TimelineTimelineItem) then) =
+      _$TimelineTimelineItemCopyWithImpl<$Res, TimelineTimelineItem>;
+  @useResult
+  $Res call(
+      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      @JsonKey(name: 'itemContent') ItemContent itemContent});
+
+  $ItemContentCopyWith<$Res> get itemContent;
+}
+
+/// @nodoc
+class _$TimelineTimelineItemCopyWithImpl<$Res,
+        $Val extends TimelineTimelineItem>
+    implements $TimelineTimelineItemCopyWith<$Res> {
+  _$TimelineTimelineItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? itemContent = null,
+  }) {
+    return _then(_value.copyWith(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      itemContent: null == itemContent
+          ? _value.itemContent
+          : itemContent // ignore: cast_nullable_to_non_nullable
+              as ItemContent,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ItemContentCopyWith<$Res> get itemContent {
+    return $ItemContentCopyWith<$Res>(_value.itemContent, (value) {
+      return _then(_value.copyWith(itemContent: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TimelineTimelineItemCopyWith<$Res>
+    implements $TimelineTimelineItemCopyWith<$Res> {
+  factory _$$_TimelineTimelineItemCopyWith(_$_TimelineTimelineItem value,
+          $Res Function(_$_TimelineTimelineItem) then) =
+      __$$_TimelineTimelineItemCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      @JsonKey(name: 'itemContent') ItemContent itemContent});
+
+  @override
+  $ItemContentCopyWith<$Res> get itemContent;
+}
+
+/// @nodoc
+class __$$_TimelineTimelineItemCopyWithImpl<$Res>
+    extends _$TimelineTimelineItemCopyWithImpl<$Res, _$_TimelineTimelineItem>
+    implements _$$_TimelineTimelineItemCopyWith<$Res> {
+  __$$_TimelineTimelineItemCopyWithImpl(_$_TimelineTimelineItem _value,
+      $Res Function(_$_TimelineTimelineItem) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? itemContent = null,
+  }) {
+    return _then(_$_TimelineTimelineItem(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      itemContent: null == itemContent
+          ? _value.itemContent
+          : itemContent // ignore: cast_nullable_to_non_nullable
+              as ItemContent,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TimelineTimelineItem implements _TimelineTimelineItem {
+  const _$_TimelineTimelineItem(
+      {@TypenameConverter() @JsonKey(name: '__typename') required this.typename,
+      @JsonKey(name: 'itemContent') required this.itemContent});
+
+  factory _$_TimelineTimelineItem.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineTimelineItemFromJson(json);
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  final Typename typename;
+  @override
+  @JsonKey(name: 'itemContent')
+  final ItemContent itemContent;
+
+  @override
+  String toString() {
+    return 'TimelineTimelineItem(typename: $typename, itemContent: $itemContent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimelineTimelineItem &&
+            (identical(other.typename, typename) ||
+                other.typename == typename) &&
+            (identical(other.itemContent, itemContent) ||
+                other.itemContent == itemContent));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, typename, itemContent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TimelineTimelineItemCopyWith<_$_TimelineTimelineItem> get copyWith =>
+      __$$_TimelineTimelineItemCopyWithImpl<_$_TimelineTimelineItem>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TimelineTimelineItemToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimelineTimelineItem implements TimelineTimelineItem {
+  const factory _TimelineTimelineItem(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required final Typename typename,
+      @JsonKey(name: 'itemContent')
+          required final ItemContent itemContent}) = _$_TimelineTimelineItem;
+
+  factory _TimelineTimelineItem.fromJson(Map<String, dynamic> json) =
+      _$_TimelineTimelineItem.fromJson;
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename;
+  @override
+  @JsonKey(name: 'itemContent')
+  ItemContent get itemContent;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TimelineTimelineItemCopyWith<_$_TimelineTimelineItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -704,18 +1367,14 @@ ItemContent _$ItemContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ItemContent {
+  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
-  String get itemType => throw _privateConstructorUsedError;
-  @JsonKey(name: '__typename')
-  String get typename => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tweet_results')
-  TweetResults? get tweetResults => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tweetDisplayType')
-  String? get tweetDisplayType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'cursorType')
-  String? get cursorType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'value')
-  String? get value => throw _privateConstructorUsedError;
+  ItemType get entryType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineTweet')
+  TimelineTweet? get timelineTweet => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineTimelineCursor')
+  TimelineTimelineCursor? get timelineTimelineCursor =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -730,14 +1389,16 @@ abstract class $ItemContentCopyWith<$Res> {
       _$ItemContentCopyWithImpl<$Res, ItemContent>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'itemType') String itemType,
-      @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
-      @JsonKey(name: 'cursorType') String? cursorType,
-      @JsonKey(name: 'value') String? value});
+      {@ItemTypeConverter()
+      @JsonKey(name: 'itemType')
+          ItemType entryType,
+      @JsonKey(name: 'timelineTweet')
+          TimelineTweet? timelineTweet,
+      @JsonKey(name: 'timelineTimelineCursor')
+          TimelineTimelineCursor? timelineTimelineCursor});
 
-  $TweetResultsCopyWith<$Res>? get tweetResults;
+  $TimelineTweetCopyWith<$Res>? get timelineTweet;
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor;
 }
 
 /// @nodoc
@@ -753,50 +1414,48 @@ class _$ItemContentCopyWithImpl<$Res, $Val extends ItemContent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemType = null,
-    Object? typename = null,
-    Object? tweetResults = freezed,
-    Object? tweetDisplayType = freezed,
-    Object? cursorType = freezed,
-    Object? value = freezed,
+    Object? entryType = null,
+    Object? timelineTweet = freezed,
+    Object? timelineTimelineCursor = freezed,
   }) {
     return _then(_value.copyWith(
-      itemType: null == itemType
-          ? _value.itemType
-          : itemType // ignore: cast_nullable_to_non_nullable
-              as String,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
-      tweetResults: freezed == tweetResults
-          ? _value.tweetResults
-          : tweetResults // ignore: cast_nullable_to_non_nullable
-              as TweetResults?,
-      tweetDisplayType: freezed == tweetDisplayType
-          ? _value.tweetDisplayType
-          : tweetDisplayType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cursorType: freezed == cursorType
-          ? _value.cursorType
-          : cursorType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      entryType: null == entryType
+          ? _value.entryType
+          : entryType // ignore: cast_nullable_to_non_nullable
+              as ItemType,
+      timelineTweet: freezed == timelineTweet
+          ? _value.timelineTweet
+          : timelineTweet // ignore: cast_nullable_to_non_nullable
+              as TimelineTweet?,
+      timelineTimelineCursor: freezed == timelineTimelineCursor
+          ? _value.timelineTimelineCursor
+          : timelineTimelineCursor // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineCursor?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TweetResultsCopyWith<$Res>? get tweetResults {
-    if (_value.tweetResults == null) {
+  $TimelineTweetCopyWith<$Res>? get timelineTweet {
+    if (_value.timelineTweet == null) {
       return null;
     }
 
-    return $TweetResultsCopyWith<$Res>(_value.tweetResults!, (value) {
-      return _then(_value.copyWith(tweetResults: value) as $Val);
+    return $TimelineTweetCopyWith<$Res>(_value.timelineTweet!, (value) {
+      return _then(_value.copyWith(timelineTweet: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor {
+    if (_value.timelineTimelineCursor == null) {
+      return null;
+    }
+
+    return $TimelineTimelineCursorCopyWith<$Res>(_value.timelineTimelineCursor!,
+        (value) {
+      return _then(_value.copyWith(timelineTimelineCursor: value) as $Val);
     });
   }
 }
@@ -810,15 +1469,18 @@ abstract class _$$_ItemContentCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'itemType') String itemType,
-      @JsonKey(name: '__typename') String typename,
-      @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
-      @JsonKey(name: 'cursorType') String? cursorType,
-      @JsonKey(name: 'value') String? value});
+      {@ItemTypeConverter()
+      @JsonKey(name: 'itemType')
+          ItemType entryType,
+      @JsonKey(name: 'timelineTweet')
+          TimelineTweet? timelineTweet,
+      @JsonKey(name: 'timelineTimelineCursor')
+          TimelineTimelineCursor? timelineTimelineCursor});
 
   @override
-  $TweetResultsCopyWith<$Res>? get tweetResults;
+  $TimelineTweetCopyWith<$Res>? get timelineTweet;
+  @override
+  $TimelineTimelineCursorCopyWith<$Res>? get timelineTimelineCursor;
 }
 
 /// @nodoc
@@ -832,38 +1494,23 @@ class __$$_ItemContentCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemType = null,
-    Object? typename = null,
-    Object? tweetResults = freezed,
-    Object? tweetDisplayType = freezed,
-    Object? cursorType = freezed,
-    Object? value = freezed,
+    Object? entryType = null,
+    Object? timelineTweet = freezed,
+    Object? timelineTimelineCursor = freezed,
   }) {
     return _then(_$_ItemContent(
-      itemType: null == itemType
-          ? _value.itemType
-          : itemType // ignore: cast_nullable_to_non_nullable
-              as String,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
-      tweetResults: freezed == tweetResults
-          ? _value.tweetResults
-          : tweetResults // ignore: cast_nullable_to_non_nullable
-              as TweetResults?,
-      tweetDisplayType: freezed == tweetDisplayType
-          ? _value.tweetDisplayType
-          : tweetDisplayType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cursorType: freezed == cursorType
-          ? _value.cursorType
-          : cursorType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      entryType: null == entryType
+          ? _value.entryType
+          : entryType // ignore: cast_nullable_to_non_nullable
+              as ItemType,
+      timelineTweet: freezed == timelineTweet
+          ? _value.timelineTweet
+          : timelineTweet // ignore: cast_nullable_to_non_nullable
+              as TimelineTweet?,
+      timelineTimelineCursor: freezed == timelineTimelineCursor
+          ? _value.timelineTimelineCursor
+          : timelineTimelineCursor // ignore: cast_nullable_to_non_nullable
+              as TimelineTimelineCursor?,
     ));
   }
 }
@@ -872,38 +1519,31 @@ class __$$_ItemContentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ItemContent implements _ItemContent {
   const _$_ItemContent(
-      {@JsonKey(name: 'itemType') required this.itemType,
-      @JsonKey(name: '__typename') required this.typename,
-      @JsonKey(name: 'tweet_results') this.tweetResults,
-      @JsonKey(name: 'tweetDisplayType') this.tweetDisplayType,
-      @JsonKey(name: 'cursorType') this.cursorType,
-      @JsonKey(name: 'value') this.value});
+      {@ItemTypeConverter()
+      @JsonKey(name: 'itemType')
+          required this.entryType,
+      @JsonKey(name: 'timelineTweet')
+          required this.timelineTweet,
+      @JsonKey(name: 'timelineTimelineCursor')
+          required this.timelineTimelineCursor});
 
   factory _$_ItemContent.fromJson(Map<String, dynamic> json) =>
       _$$_ItemContentFromJson(json);
 
   @override
+  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
-  final String itemType;
+  final ItemType entryType;
   @override
-  @JsonKey(name: '__typename')
-  final String typename;
+  @JsonKey(name: 'timelineTweet')
+  final TimelineTweet? timelineTweet;
   @override
-  @JsonKey(name: 'tweet_results')
-  final TweetResults? tweetResults;
-  @override
-  @JsonKey(name: 'tweetDisplayType')
-  final String? tweetDisplayType;
-  @override
-  @JsonKey(name: 'cursorType')
-  final String? cursorType;
-  @override
-  @JsonKey(name: 'value')
-  final String? value;
+  @JsonKey(name: 'timelineTimelineCursor')
+  final TimelineTimelineCursor? timelineTimelineCursor;
 
   @override
   String toString() {
-    return 'ItemContent(itemType: $itemType, typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType, cursorType: $cursorType, value: $value)';
+    return 'ItemContent(entryType: $entryType, timelineTweet: $timelineTweet, timelineTimelineCursor: $timelineTimelineCursor)';
   }
 
   @override
@@ -911,23 +1551,18 @@ class _$_ItemContent implements _ItemContent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemContent &&
-            (identical(other.itemType, itemType) ||
-                other.itemType == itemType) &&
-            (identical(other.typename, typename) ||
-                other.typename == typename) &&
-            (identical(other.tweetResults, tweetResults) ||
-                other.tweetResults == tweetResults) &&
-            (identical(other.tweetDisplayType, tweetDisplayType) ||
-                other.tweetDisplayType == tweetDisplayType) &&
-            (identical(other.cursorType, cursorType) ||
-                other.cursorType == cursorType) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.entryType, entryType) ||
+                other.entryType == entryType) &&
+            (identical(other.timelineTweet, timelineTweet) ||
+                other.timelineTweet == timelineTweet) &&
+            (identical(other.timelineTimelineCursor, timelineTimelineCursor) ||
+                other.timelineTimelineCursor == timelineTimelineCursor));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, itemType, typename, tweetResults,
-      tweetDisplayType, cursorType, value);
+  int get hashCode => Object.hash(
+      runtimeType, entryType, timelineTweet, timelineTimelineCursor);
 
   @JsonKey(ignore: true)
   @override
@@ -945,37 +1580,246 @@ class _$_ItemContent implements _ItemContent {
 
 abstract class _ItemContent implements ItemContent {
   const factory _ItemContent(
-      {@JsonKey(name: 'itemType') required final String itemType,
-      @JsonKey(name: '__typename') required final String typename,
-      @JsonKey(name: 'tweet_results') final TweetResults? tweetResults,
-      @JsonKey(name: 'tweetDisplayType') final String? tweetDisplayType,
-      @JsonKey(name: 'cursorType') final String? cursorType,
-      @JsonKey(name: 'value') final String? value}) = _$_ItemContent;
+          {@ItemTypeConverter()
+          @JsonKey(name: 'itemType')
+              required final ItemType entryType,
+          @JsonKey(name: 'timelineTweet')
+              required final TimelineTweet? timelineTweet,
+          @JsonKey(name: 'timelineTimelineCursor')
+              required final TimelineTimelineCursor? timelineTimelineCursor}) =
+      _$_ItemContent;
 
   factory _ItemContent.fromJson(Map<String, dynamic> json) =
       _$_ItemContent.fromJson;
 
   @override
+  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
-  String get itemType;
+  ItemType get entryType;
   @override
-  @JsonKey(name: '__typename')
-  String get typename;
+  @JsonKey(name: 'timelineTweet')
+  TimelineTweet? get timelineTweet;
   @override
-  @JsonKey(name: 'tweet_results')
-  TweetResults? get tweetResults;
-  @override
-  @JsonKey(name: 'tweetDisplayType')
-  String? get tweetDisplayType;
-  @override
-  @JsonKey(name: 'cursorType')
-  String? get cursorType;
-  @override
-  @JsonKey(name: 'value')
-  String? get value;
+  @JsonKey(name: 'timelineTimelineCursor')
+  TimelineTimelineCursor? get timelineTimelineCursor;
   @override
   @JsonKey(ignore: true)
   _$$_ItemContentCopyWith<_$_ItemContent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TimelineTweet _$TimelineTweetFromJson(Map<String, dynamic> json) {
+  return _TimelineTweet.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimelineTweet {
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tweet_results')
+  TweetResults get tweetResults => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tweetDisplayType')
+  String get tweetDisplayType => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TimelineTweetCopyWith<TimelineTweet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimelineTweetCopyWith<$Res> {
+  factory $TimelineTweetCopyWith(
+          TimelineTweet value, $Res Function(TimelineTweet) then) =
+      _$TimelineTweetCopyWithImpl<$Res, TimelineTweet>;
+  @useResult
+  $Res call(
+      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
+      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+
+  $TweetResultsCopyWith<$Res> get tweetResults;
+}
+
+/// @nodoc
+class _$TimelineTweetCopyWithImpl<$Res, $Val extends TimelineTweet>
+    implements $TimelineTweetCopyWith<$Res> {
+  _$TimelineTweetCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? tweetResults = null,
+    Object? tweetDisplayType = null,
+  }) {
+    return _then(_value.copyWith(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      tweetResults: null == tweetResults
+          ? _value.tweetResults
+          : tweetResults // ignore: cast_nullable_to_non_nullable
+              as TweetResults,
+      tweetDisplayType: null == tweetDisplayType
+          ? _value.tweetDisplayType
+          : tweetDisplayType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TweetResultsCopyWith<$Res> get tweetResults {
+    return $TweetResultsCopyWith<$Res>(_value.tweetResults, (value) {
+      return _then(_value.copyWith(tweetResults: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TimelineTweetCopyWith<$Res>
+    implements $TimelineTweetCopyWith<$Res> {
+  factory _$$_TimelineTweetCopyWith(
+          _$_TimelineTweet value, $Res Function(_$_TimelineTweet) then) =
+      __$$_TimelineTweetCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
+      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+
+  @override
+  $TweetResultsCopyWith<$Res> get tweetResults;
+}
+
+/// @nodoc
+class __$$_TimelineTweetCopyWithImpl<$Res>
+    extends _$TimelineTweetCopyWithImpl<$Res, _$_TimelineTweet>
+    implements _$$_TimelineTweetCopyWith<$Res> {
+  __$$_TimelineTweetCopyWithImpl(
+      _$_TimelineTweet _value, $Res Function(_$_TimelineTweet) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typename = null,
+    Object? tweetResults = null,
+    Object? tweetDisplayType = null,
+  }) {
+    return _then(_$_TimelineTweet(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
+      tweetResults: null == tweetResults
+          ? _value.tweetResults
+          : tweetResults // ignore: cast_nullable_to_non_nullable
+              as TweetResults,
+      tweetDisplayType: null == tweetDisplayType
+          ? _value.tweetDisplayType
+          : tweetDisplayType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TimelineTweet extends _TimelineTweet {
+  const _$_TimelineTweet(
+      {@TypenameConverter() @JsonKey(name: '__typename') required this.typename,
+      @JsonKey(name: 'tweet_results') required this.tweetResults,
+      @JsonKey(name: 'tweetDisplayType') required this.tweetDisplayType})
+      : super._();
+
+  factory _$_TimelineTweet.fromJson(Map<String, dynamic> json) =>
+      _$$_TimelineTweetFromJson(json);
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  final Typename typename;
+  @override
+  @JsonKey(name: 'tweet_results')
+  final TweetResults tweetResults;
+  @override
+  @JsonKey(name: 'tweetDisplayType')
+  final String tweetDisplayType;
+
+  @override
+  String toString() {
+    return 'TimelineTweet(typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimelineTweet &&
+            (identical(other.typename, typename) ||
+                other.typename == typename) &&
+            (identical(other.tweetResults, tweetResults) ||
+                other.tweetResults == tweetResults) &&
+            (identical(other.tweetDisplayType, tweetDisplayType) ||
+                other.tweetDisplayType == tweetDisplayType));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, typename, tweetResults, tweetDisplayType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TimelineTweetCopyWith<_$_TimelineTweet> get copyWith =>
+      __$$_TimelineTweetCopyWithImpl<_$_TimelineTweet>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TimelineTweetToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimelineTweet extends TimelineTweet {
+  const factory _TimelineTweet(
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required final Typename typename,
+      @JsonKey(name: 'tweet_results')
+          required final TweetResults tweetResults,
+      @JsonKey(name: 'tweetDisplayType')
+          required final String tweetDisplayType}) = _$_TimelineTweet;
+  const _TimelineTweet._() : super._();
+
+  factory _TimelineTweet.fromJson(Map<String, dynamic> json) =
+      _$_TimelineTweet.fromJson;
+
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename;
+  @override
+  @JsonKey(name: 'tweet_results')
+  TweetResults get tweetResults;
+  @override
+  @JsonKey(name: 'tweetDisplayType')
+  String get tweetDisplayType;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TimelineTweetCopyWith<_$_TimelineTweet> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -986,7 +1830,7 @@ TweetResults _$TweetResultsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetResults {
   @JsonKey(name: 'result')
-  TweetResult? get result => throw _privateConstructorUsedError;
+  TweetResult get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1000,9 +1844,9 @@ abstract class $TweetResultsCopyWith<$Res> {
           TweetResults value, $Res Function(TweetResults) then) =
       _$TweetResultsCopyWithImpl<$Res, TweetResults>;
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult? result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
-  $TweetResultCopyWith<$Res>? get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -1018,24 +1862,20 @@ class _$TweetResultsCopyWithImpl<$Res, $Val extends TweetResults>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_value.copyWith(
-      result: freezed == result
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult?,
+              as TweetResult,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TweetResultCopyWith<$Res>? get result {
-    if (_value.result == null) {
-      return null;
-    }
-
-    return $TweetResultCopyWith<$Res>(_value.result!, (value) {
+  $TweetResultCopyWith<$Res> get result {
+    return $TweetResultCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value) as $Val);
     });
   }
@@ -1049,10 +1889,10 @@ abstract class _$$_TweetResultsCopyWith<$Res>
       __$$_TweetResultsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult? result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
   @override
-  $TweetResultCopyWith<$Res>? get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -1066,13 +1906,13 @@ class __$$_TweetResultsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$_TweetResults(
-      result: freezed == result
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult?,
+              as TweetResult,
     ));
   }
 }
@@ -1080,14 +1920,14 @@ class __$$_TweetResultsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TweetResults implements _TweetResults {
-  const _$_TweetResults({@JsonKey(name: 'result') this.result});
+  const _$_TweetResults({@JsonKey(name: 'result') required this.result});
 
   factory _$_TweetResults.fromJson(Map<String, dynamic> json) =>
       _$$_TweetResultsFromJson(json);
 
   @override
   @JsonKey(name: 'result')
-  final TweetResult? result;
+  final TweetResult result;
 
   @override
   String toString() {
@@ -1122,14 +1962,15 @@ class _$_TweetResults implements _TweetResults {
 
 abstract class _TweetResults implements TweetResults {
   const factory _TweetResults(
-      {@JsonKey(name: 'result') final TweetResult? result}) = _$_TweetResults;
+          {@JsonKey(name: 'result') required final TweetResult result}) =
+      _$_TweetResults;
 
   factory _TweetResults.fromJson(Map<String, dynamic> json) =
       _$_TweetResults.fromJson;
 
   @override
   @JsonKey(name: 'result')
-  TweetResult? get result;
+  TweetResult get result;
   @override
   @JsonKey(ignore: true)
   _$$_TweetResultsCopyWith<_$_TweetResults> get copyWith =>

@@ -1,8 +1,9 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
 
 part 'home_timeline.freezed.dart';
 part 'home_timeline.g.dart';
@@ -14,8 +15,10 @@ class HomeTimelineResponse with _$HomeTimelineResponse {
     @JsonKey(name: 'data') required HomeTimelineData data,
   }) = _HomeTimelineResponse;
 
-  Instruction get instruction => data.home.homeTimelineUrt.instructions[0];
-  List<Instruction> get instructions => data.home.homeTimelineUrt.instructions;
+  TimelineAddEntries get timelineAddEntries =>
+      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
+  dynamic get timelineTerminateTimeline =>
+      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineTerminateTimeline).timelineTerminateTimeline!;
 
   factory HomeTimelineResponse.fromJson(Map<String, dynamic> json) => _$HomeTimelineResponseFromJson(json);
 }

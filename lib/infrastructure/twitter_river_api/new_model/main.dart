@@ -1,92 +1,136 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/safety.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/json.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 part 'main.freezed.dart';
 part 'main.g.dart';
 
+// ===== UNION =====
 @freezed
 class Instruction with _$Instruction {
-  const Instruction._();
   const factory Instruction({
-    @JsonKey(name: 'type') required String type,
-    @JsonKey(name: 'entries', defaultValue: []) required List<Entry> entries,
+    @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
+    @JsonKey(name: 'timelineAddEntries') required TimelineAddEntries? timelineAddEntries,
+    @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
+    @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
   }) = _Instruction;
 
-  List<Entry> getContents({required String entryType, String? cursorType, String? itemType}) {
-    return entries.where((element) {
-      if (element.content.entryType != entryType) return false;
-      if (cursorType != null && element.content.cursorType != cursorType) return false;
-      if (itemType != null && element.content.itemContent!.itemType != itemType) return false;
-      return true;
-    }).toList();
-  }
-
-  Entry getContent({required String entryType, String? cursorType, String? itemType}) {
-    return entries.firstWhere((element) {
-      if (element.content.entryType != entryType) return false;
-      if (cursorType != null && element.content.cursorType != cursorType) return false;
-      if (itemType != null && element.content.itemContent!.itemType != itemType) return false;
-      return true;
-    });
-  }
-
-  factory Instruction.fromJson(Map<String, dynamic> json) => _$InstructionFromJson(json);
+  factory Instruction.fromJson(Map<String, dynamic> json) =>
+      _$InstructionFromJson({...json, InstructionsType.values.firstWhere((e) => e.toUpperCamelCase() == json['type']).name: json});
 }
 
 @freezed
-class Entry with _$Entry {
-  const Entry._();
-  const factory Entry({
-    @JsonKey(name: 'entryId') required String entryId,
-    @JsonKey(name: 'sortIndex') required String sortIndex,
-    @JsonKey(name: 'content') required Content content,
-  }) = _Entry;
+class TimelineAddEntries with _$TimelineAddEntries {
+  const TimelineAddEntries._();
+  const factory TimelineAddEntries({
+    @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
+    @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
+  }) = _TimelineAddEntries;
 
-  get user => content.itemContent!.tweetResults!.result!.core.userResults.result.legacy;
-  get tweet => content.itemContent!.tweetResults!.result!.legacy;
+  List<TimelineTimelineItem> get timelineItem =>
+      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineItem)).map((e) => e.content.timelineTimelineItem!).toList();
 
-  factory Entry.fromJson(Map<String, dynamic> json) => _$EntryFromJson(json);
+  List<TimelineTweet> get item =>
+      timelineItem.where((e) => e.itemContent.entryType == ItemType.timelineTweet).map((e) => e.itemContent.timelineTweet!).toList();
+
+  List<TimelineTimelineCursor> get cursor =>
+      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!).toList();
+
+  TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
+  TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
+
+  factory TimelineAddEntries.fromJson(Map<String, dynamic> json) => _$TimelineAddEntriesFromJson(fromJsonProxy(json));
 }
+
+@freezed
+class TimelineAddEntry with _$TimelineAddEntry {
+  const factory TimelineAddEntry({
+    @JsonKey(name: 'entryId') required String entryId,
+    @JsonKey(name: 'sortIndex') required String entry,
+    @JsonKey(name: 'content') required Content content,
+  }) = _TimelineAddEntry;
+
+  factory TimelineAddEntry.fromJson(Map<String, dynamic> json) => _$TimelineAddEntryFromJson(fromJsonProxy(json));
+}
+
+// ===== UNION =====
 
 @freezed
 class Content with _$Content {
   const factory Content({
-    @JsonKey(name: 'entryType') required String entryType,
-    @JsonKey(name: '__typename') required String typename,
-    @JsonKey(name: 'itemContent') required ItemContent? itemContent,
-    @JsonKey(name: 'feedbackInfo') required dynamic feedbackInfo,
-    @JsonKey(name: 'clientEventInfo') required dynamic clientEventInfo,
-    @JsonKey(name: 'cursorType') String? cursorType,
-    @JsonKey(name: 'value') String? value,
+    @EntryTypeConverter() @JsonKey(name: 'entryType') required EntryType entryType,
+    @JsonKey(name: 'timelineTimelineItem') required TimelineTimelineItem? timelineTimelineItem,
+    @JsonKey(name: 'timelineTimelineModule') required dynamic timelineTimelineModule,
+    @EntryValueConverter() @JsonKey(name: 'timelineTimelineCursor') required TimelineTimelineCursor? timelineTimelineCursor,
   }) = _Content;
 
-  factory Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
+  factory Content.fromJson(Map<String, dynamic> json) =>
+      _$ContentFromJson({...json, EntryType.values.firstWhere((e) => e.toUpperCamelCase() == json['entryType']).name: json});
 }
+
+@freezed
+class TimelineTimelineCursor with _$TimelineTimelineCursor {
+  const factory TimelineTimelineCursor({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: 'value') required String value,
+    @CursorTypeConverter() @JsonKey(name: 'cursorType') required CursorType cursorType,
+  }) = _TimelineTimelineCursor;
+
+  factory TimelineTimelineCursor.fromJson(Map<String, dynamic> json) => _$TimelineTimelineCursorFromJson(fromJsonProxy(json));
+}
+
+@freezed
+class TimelineTimelineItem with _$TimelineTimelineItem {
+  const factory TimelineTimelineItem({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: 'itemContent') required ItemContent itemContent,
+  }) = _TimelineTimelineItem;
+
+  factory TimelineTimelineItem.fromJson(Map<String, dynamic> json) => _$TimelineTimelineItemFromJson(fromJsonProxy(json));
+}
+
+// ===== UNION =====
 
 @freezed
 class ItemContent with _$ItemContent {
   const factory ItemContent({
-    @JsonKey(name: 'itemType') required String itemType,
-    @JsonKey(name: '__typename') required String typename,
-    @JsonKey(name: 'tweet_results') TweetResults? tweetResults,
-    @JsonKey(name: 'tweetDisplayType') String? tweetDisplayType,
-    @JsonKey(name: 'cursorType') String? cursorType,
-    @JsonKey(name: 'value') String? value,
+    @ItemTypeConverter() @JsonKey(name: 'itemType') required ItemType entryType,
+    @JsonKey(name: 'timelineTweet') required TimelineTweet? timelineTweet,
+    @JsonKey(name: 'timelineTimelineCursor') required TimelineTimelineCursor? timelineTimelineCursor,
   }) = _ItemContent;
 
-  factory ItemContent.fromJson(Map<String, dynamic> json) => _$ItemContentFromJson(json);
+  factory ItemContent.fromJson(Map<String, dynamic> json) =>
+      _$ItemContentFromJson({...json, ItemType.values.firstWhere((e) => e.toUpperCamelCase() == json['itemType']).name: json});
 }
+
+@freezed
+class TimelineTweet with _$TimelineTweet {
+  const TimelineTweet._();
+  const factory TimelineTweet({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: 'tweet_results') required TweetResults tweetResults,
+    @JsonKey(name: 'tweetDisplayType') required String tweetDisplayType, // enum
+    // @JsonKey(name: 'hasModeratedReplies') required bool hasModeratedReplies,
+  }) = _TimelineTweet;
+
+  UserLegacy get user => tweetResults.result.core.userResults.result.legacy;
+  TweetLegacy get tweet => tweetResults.result.legacy;
+
+  factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));
+}
+
+// ==================== TweetResults ====================
 
 @freezed
 class TweetResults with _$TweetResults {
   const factory TweetResults({
-    @JsonKey(name: 'result') TweetResult? result,
+    @JsonKey(name: 'result') required TweetResult result,
   }) = _TweetResults;
 
-  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(json);
+  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -103,7 +147,7 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
-  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(json['tweet'] ?? json);
+  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -121,7 +165,7 @@ class UserResults with _$UserResults {
     @JsonKey(name: 'result') required Result result,
   }) = _UserResults;
 
-  factory UserResults.fromJson(Map<String, dynamic> json) => _$UserResultsFromJson(json);
+  factory UserResults.fromJson(Map<String, dynamic> json) => _$UserResultsFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -140,7 +184,7 @@ class Result with _$Result {
     @JsonKey(name: '__typename') required String typename,
   }) = _Result;
 
-  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
+  factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -188,7 +232,7 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
   }) = _UserLegacy;
 
-  factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(json);
+  factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -215,5 +259,5 @@ class TweetLegacy with _$TweetLegacy {
     @JsonKey(name: 'retweeted_status_result') required dynamic retweetedStatusResult,
   }) = _TweetLegacy;
 
-  factory TweetLegacy.fromJson(Map<String, dynamic> json) => _$TweetLegacyFromJson(json);
+  factory TweetLegacy.fromJson(Map<String, dynamic> json) => _$TweetLegacyFromJson(fromJsonProxy(json));
 }

@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/new_model/tweet_detail.dart';
 
 // Project imports:
 import 'package:twitter_river/provider/twitter_api.dart';
@@ -57,11 +57,9 @@ class TwitterRiverTweet extends ConsumerWidget {
                 );
               },
               data: (data) {
-                print(data.instruction.getContents(entryType: "TimelineTimelineItem", itemType: "TimelineTweet"));
                 return Column(
                   children: [
-                    for (final item in data.instruction.getContents(entryType: "TimelineTimelineItem", itemType: "TimelineTweet"))
-                      Card(child: TweetWidget(user: item.user, tweet: item.tweet)),
+                    for (final item in data.timelineAddEntries.item) Card(child: TweetWidget(user: item.user, tweet: item.tweet)),
                   ],
                 );
               },
@@ -72,7 +70,6 @@ class TwitterRiverTweet extends ConsumerWidget {
     );
   }
 }
-
 
 
 
