@@ -22,8 +22,8 @@ class TwitterRiverAPI {
     dio = Dio(
       BaseOptions(
         baseUrl: TwitterGraphQL.base.toString(),
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 3),
+        connectTimeout: const Duration(seconds: 50),
+        receiveTimeout: const Duration(seconds: 30),
         contentType: 'application/json',
       ),
     );

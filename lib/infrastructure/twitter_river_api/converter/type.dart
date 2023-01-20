@@ -123,7 +123,9 @@ class ItemTypeConverter extends JsonConverter<ItemType, String> {
 enum CursorType {
   top,
   bottom,
-  showMoreThreadsPrompt;
+  showMoreThreads,
+  showMoreThreadsPrompt,
+  showMore;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);
 }

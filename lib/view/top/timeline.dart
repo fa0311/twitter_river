@@ -15,7 +15,6 @@ import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/new_model/home_timeline.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/new_model/main.dart';
 import 'package:twitter_river/provider/twitter_api.dart';
-import 'package:twitter_river/view/sub/tweet.dart';
 import 'package:twitter_river/widget/tweet.dart';
 
 final timeLineProvider = FutureProvider.family<HomeTimelineResponse, String?>((ref, cursor) async {
@@ -106,19 +105,13 @@ class TwitterRiverTimeline extends ConsumerWidget {
               }
             }
             final item = itemList[itemKey];
-            return Card(
-              child: InkWell(
-                borderRadius: BorderRadius.circular(5),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(user: item.user, tweet: item.tweet)),
-                  );
-                },
-                onLongPress: () {},
-                child: TweetWidget(user: item.user, tweet: item.tweet),
-              ),
-            );
+
+            if (item.hidden) {
+              inspect(item);
+              return const HiddenUserWidget();
+            } else {
+              return TweetWidget(user: item.user, tweet: item.tweet);
+            }
           },
         ),
       ),

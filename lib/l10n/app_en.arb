@@ -2,6 +2,8 @@
     "@@locale": "en",
     "@____________________TOP____________________": {},
     "home": "home",
+    "@____________________WIDGET____________________": {},
+    "hiddenUser": "This account is private",
     "@____________________DRAWER____________________": {},
     "logout": "logout",
     "close": "close",

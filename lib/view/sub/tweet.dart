@@ -46,7 +46,7 @@ class TwitterRiverTweet extends ConsumerWidget {
         onRefresh: () => ref.refresh((tweetDetailProvider(tweet.idStr).future)),
         child: Column(
           children: [
-            Card(child: TweetWidget(user: user, tweet: tweet)),
+            TweetWidget(user: user, tweet: tweet),
             data.when(
               loading: () => const Loading(),
               error: (e, trace) {
@@ -59,7 +59,14 @@ class TwitterRiverTweet extends ConsumerWidget {
               data: (data) {
                 return Column(
                   children: [
-                    for (final item in data.timelineAddEntries.item) Card(child: TweetWidget(user: item.user, tweet: item.tweet)),
+                    for (final items in data.timelineAddEntries.module)
+                      TweetCard(
+                        child: Column(
+                          children: [
+                            for (final item in items) item.hidden ? const HiddenUserWidget() : TweetWidget(user: item.user, tweet: item.tweet, card: false),
+                          ],
+                        ),
+                      ),
                   ],
                 );
               },
@@ -70,12 +77,3 @@ class TwitterRiverTweet extends ConsumerWidget {
     );
   }
 }
-
-
-
-/*
-
-                final focalTweetId = user.pinnedTweetIdsStr[0];
-                ref.read(tweetDetailProvider(focalTweetId)).value;
-                // final data = await ref.read(tweetDetailProvider(focalTweetId).future);
-*/
