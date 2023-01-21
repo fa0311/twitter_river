@@ -2962,7 +2962,7 @@ Core _$CoreFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Core {
   @JsonKey(name: 'user_results')
-  UserLimitedResults get userResults => throw _privateConstructorUsedError;
+  UserResults get userResults => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2974,9 +2974,9 @@ abstract class $CoreCopyWith<$Res> {
   factory $CoreCopyWith(Core value, $Res Function(Core) then) =
       _$CoreCopyWithImpl<$Res, Core>;
   @useResult
-  $Res call({@JsonKey(name: 'user_results') UserLimitedResults userResults});
+  $Res call({@JsonKey(name: 'user_results') UserResults userResults});
 
-  $UserLimitedResultsCopyWith<$Res> get userResults;
+  $UserResultsCopyWith<$Res> get userResults;
 }
 
 /// @nodoc
@@ -2998,14 +2998,14 @@ class _$CoreCopyWithImpl<$Res, $Val extends Core>
       userResults: null == userResults
           ? _value.userResults
           : userResults // ignore: cast_nullable_to_non_nullable
-              as UserLimitedResults,
+              as UserResults,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserLimitedResultsCopyWith<$Res> get userResults {
-    return $UserLimitedResultsCopyWith<$Res>(_value.userResults, (value) {
+  $UserResultsCopyWith<$Res> get userResults {
+    return $UserResultsCopyWith<$Res>(_value.userResults, (value) {
       return _then(_value.copyWith(userResults: value) as $Val);
     });
   }
@@ -3017,10 +3017,10 @@ abstract class _$$_CoreCopyWith<$Res> implements $CoreCopyWith<$Res> {
       __$$_CoreCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'user_results') UserLimitedResults userResults});
+  $Res call({@JsonKey(name: 'user_results') UserResults userResults});
 
   @override
-  $UserLimitedResultsCopyWith<$Res> get userResults;
+  $UserResultsCopyWith<$Res> get userResults;
 }
 
 /// @nodoc
@@ -3038,7 +3038,7 @@ class __$$_CoreCopyWithImpl<$Res> extends _$CoreCopyWithImpl<$Res, _$_Core>
       userResults: null == userResults
           ? _value.userResults
           : userResults // ignore: cast_nullable_to_non_nullable
-              as UserLimitedResults,
+              as UserResults,
     ));
   }
 }
@@ -3052,7 +3052,7 @@ class _$_Core implements _Core {
 
   @override
   @JsonKey(name: 'user_results')
-  final UserLimitedResults userResults;
+  final UserResults userResults;
 
   @override
   String toString() {
@@ -3089,628 +3089,16 @@ class _$_Core implements _Core {
 abstract class _Core implements Core {
   const factory _Core(
       {@JsonKey(name: 'user_results')
-          required final UserLimitedResults userResults}) = _$_Core;
+          required final UserResults userResults}) = _$_Core;
 
   factory _Core.fromJson(Map<String, dynamic> json) = _$_Core.fromJson;
 
   @override
   @JsonKey(name: 'user_results')
-  UserLimitedResults get userResults;
+  UserResults get userResults;
   @override
   @JsonKey(ignore: true)
   _$$_CoreCopyWith<_$_Core> get copyWith => throw _privateConstructorUsedError;
-}
-
-UserLimitedResults _$UserLimitedResultsFromJson(Map<String, dynamic> json) {
-  return _UserLimitedResults.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UserLimitedResults {
-  @JsonKey(name: 'result')
-  LimitedResults get result => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserLimitedResultsCopyWith<UserLimitedResults> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserLimitedResultsCopyWith<$Res> {
-  factory $UserLimitedResultsCopyWith(
-          UserLimitedResults value, $Res Function(UserLimitedResults) then) =
-      _$UserLimitedResultsCopyWithImpl<$Res, UserLimitedResults>;
-  @useResult
-  $Res call({@JsonKey(name: 'result') LimitedResults result});
-
-  $LimitedResultsCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class _$UserLimitedResultsCopyWithImpl<$Res, $Val extends UserLimitedResults>
-    implements $UserLimitedResultsCopyWith<$Res> {
-  _$UserLimitedResultsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as LimitedResults,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LimitedResultsCopyWith<$Res> get result {
-    return $LimitedResultsCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_UserLimitedResultsCopyWith<$Res>
-    implements $UserLimitedResultsCopyWith<$Res> {
-  factory _$$_UserLimitedResultsCopyWith(_$_UserLimitedResults value,
-          $Res Function(_$_UserLimitedResults) then) =
-      __$$_UserLimitedResultsCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: 'result') LimitedResults result});
-
-  @override
-  $LimitedResultsCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class __$$_UserLimitedResultsCopyWithImpl<$Res>
-    extends _$UserLimitedResultsCopyWithImpl<$Res, _$_UserLimitedResults>
-    implements _$$_UserLimitedResultsCopyWith<$Res> {
-  __$$_UserLimitedResultsCopyWithImpl(
-      _$_UserLimitedResults _value, $Res Function(_$_UserLimitedResults) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_$_UserLimitedResults(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as LimitedResults,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_UserLimitedResults implements _UserLimitedResults {
-  const _$_UserLimitedResults({@JsonKey(name: 'result') required this.result});
-
-  factory _$_UserLimitedResults.fromJson(Map<String, dynamic> json) =>
-      _$$_UserLimitedResultsFromJson(json);
-
-  @override
-  @JsonKey(name: 'result')
-  final LimitedResults result;
-
-  @override
-  String toString() {
-    return 'UserLimitedResults(result: $result)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UserLimitedResults &&
-            (identical(other.result, result) || other.result == result));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, result);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UserLimitedResultsCopyWith<_$_UserLimitedResults> get copyWith =>
-      __$$_UserLimitedResultsCopyWithImpl<_$_UserLimitedResults>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_UserLimitedResultsToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UserLimitedResults implements UserLimitedResults {
-  const factory _UserLimitedResults(
-          {@JsonKey(name: 'result') required final LimitedResults result}) =
-      _$_UserLimitedResults;
-
-  factory _UserLimitedResults.fromJson(Map<String, dynamic> json) =
-      _$_UserLimitedResults.fromJson;
-
-  @override
-  @JsonKey(name: 'result')
-  LimitedResults get result;
-  @override
-  @JsonKey(ignore: true)
-  _$$_UserLimitedResultsCopyWith<_$_UserLimitedResults> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-LimitedResults _$LimitedResultsFromJson(Map<String, dynamic> json) {
-  return _LimitedResults.fromJson(json);
-}
-
-/// @nodoc
-mixin _$LimitedResults {
-  @TypenameConverter()
-  @JsonKey(name: '__typename')
-  Typename get typename => throw _privateConstructorUsedError;
-  @JsonKey(name: 'affiliates_highlighted_label')
-  dynamic get affiliatesHighlightedLabel => throw _privateConstructorUsedError;
-  @JsonKey(name: 'has_graduated_access')
-  bool get hasGraduatedAccess => throw _privateConstructorUsedError;
-  @JsonKey(name: 'has_nft_avatar')
-  bool get hasNftAvatar => throw _privateConstructorUsedError;
-  @JsonKey(name: 'id')
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_blue_verified')
-  bool get isBlueVerified => throw _privateConstructorUsedError;
-  @JsonKey(name: 'legacy')
-  UserLegacy get legacy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'rest_id')
-  String get restId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_follow_eligible')
-  bool get superFollowEligible => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_followed_by')
-  bool get superFollowedBy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_following')
-  bool get superFollowing => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LimitedResultsCopyWith<LimitedResults> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LimitedResultsCopyWith<$Res> {
-  factory $LimitedResultsCopyWith(
-          LimitedResults value, $Res Function(LimitedResults) then) =
-      _$LimitedResultsCopyWithImpl<$Res, LimitedResults>;
-  @useResult
-  $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
-          Typename typename,
-      @JsonKey(name: 'affiliates_highlighted_label')
-          dynamic affiliatesHighlightedLabel,
-      @JsonKey(name: 'has_graduated_access')
-          bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          bool hasNftAvatar,
-      @JsonKey(name: 'id')
-          String id,
-      @JsonKey(name: 'is_blue_verified')
-          bool isBlueVerified,
-      @JsonKey(name: 'legacy')
-          UserLegacy legacy,
-      @JsonKey(name: 'rest_id')
-          String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          bool superFollowing});
-
-  $UserLegacyCopyWith<$Res> get legacy;
-}
-
-/// @nodoc
-class _$LimitedResultsCopyWithImpl<$Res, $Val extends LimitedResults>
-    implements $LimitedResultsCopyWith<$Res> {
-  _$LimitedResultsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? typename = null,
-    Object? affiliatesHighlightedLabel = freezed,
-    Object? hasGraduatedAccess = null,
-    Object? hasNftAvatar = null,
-    Object? id = null,
-    Object? isBlueVerified = null,
-    Object? legacy = null,
-    Object? restId = null,
-    Object? superFollowEligible = null,
-    Object? superFollowedBy = null,
-    Object? superFollowing = null,
-  }) {
-    return _then(_value.copyWith(
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as Typename,
-      affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
-          ? _value.affiliatesHighlightedLabel
-          : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasGraduatedAccess: null == hasGraduatedAccess
-          ? _value.hasGraduatedAccess
-          : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNftAvatar: null == hasNftAvatar
-          ? _value.hasNftAvatar
-          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlueVerified: null == isBlueVerified
-          ? _value.isBlueVerified
-          : isBlueVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      legacy: null == legacy
-          ? _value.legacy
-          : legacy // ignore: cast_nullable_to_non_nullable
-              as UserLegacy,
-      restId: null == restId
-          ? _value.restId
-          : restId // ignore: cast_nullable_to_non_nullable
-              as String,
-      superFollowEligible: null == superFollowEligible
-          ? _value.superFollowEligible
-          : superFollowEligible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowedBy: null == superFollowedBy
-          ? _value.superFollowedBy
-          : superFollowedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowing: null == superFollowing
-          ? _value.superFollowing
-          : superFollowing // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserLegacyCopyWith<$Res> get legacy {
-    return $UserLegacyCopyWith<$Res>(_value.legacy, (value) {
-      return _then(_value.copyWith(legacy: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_LimitedResultsCopyWith<$Res>
-    implements $LimitedResultsCopyWith<$Res> {
-  factory _$$_LimitedResultsCopyWith(
-          _$_LimitedResults value, $Res Function(_$_LimitedResults) then) =
-      __$$_LimitedResultsCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
-          Typename typename,
-      @JsonKey(name: 'affiliates_highlighted_label')
-          dynamic affiliatesHighlightedLabel,
-      @JsonKey(name: 'has_graduated_access')
-          bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          bool hasNftAvatar,
-      @JsonKey(name: 'id')
-          String id,
-      @JsonKey(name: 'is_blue_verified')
-          bool isBlueVerified,
-      @JsonKey(name: 'legacy')
-          UserLegacy legacy,
-      @JsonKey(name: 'rest_id')
-          String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          bool superFollowing});
-
-  @override
-  $UserLegacyCopyWith<$Res> get legacy;
-}
-
-/// @nodoc
-class __$$_LimitedResultsCopyWithImpl<$Res>
-    extends _$LimitedResultsCopyWithImpl<$Res, _$_LimitedResults>
-    implements _$$_LimitedResultsCopyWith<$Res> {
-  __$$_LimitedResultsCopyWithImpl(
-      _$_LimitedResults _value, $Res Function(_$_LimitedResults) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? typename = null,
-    Object? affiliatesHighlightedLabel = freezed,
-    Object? hasGraduatedAccess = null,
-    Object? hasNftAvatar = null,
-    Object? id = null,
-    Object? isBlueVerified = null,
-    Object? legacy = null,
-    Object? restId = null,
-    Object? superFollowEligible = null,
-    Object? superFollowedBy = null,
-    Object? superFollowing = null,
-  }) {
-    return _then(_$_LimitedResults(
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as Typename,
-      affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
-          ? _value.affiliatesHighlightedLabel
-          : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasGraduatedAccess: null == hasGraduatedAccess
-          ? _value.hasGraduatedAccess
-          : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNftAvatar: null == hasNftAvatar
-          ? _value.hasNftAvatar
-          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlueVerified: null == isBlueVerified
-          ? _value.isBlueVerified
-          : isBlueVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      legacy: null == legacy
-          ? _value.legacy
-          : legacy // ignore: cast_nullable_to_non_nullable
-              as UserLegacy,
-      restId: null == restId
-          ? _value.restId
-          : restId // ignore: cast_nullable_to_non_nullable
-              as String,
-      superFollowEligible: null == superFollowEligible
-          ? _value.superFollowEligible
-          : superFollowEligible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowedBy: null == superFollowedBy
-          ? _value.superFollowedBy
-          : superFollowedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowing: null == superFollowing
-          ? _value.superFollowing
-          : superFollowing // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_LimitedResults implements _LimitedResults {
-  const _$_LimitedResults(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
-          required this.typename,
-      @JsonKey(name: 'affiliates_highlighted_label')
-          required this.affiliatesHighlightedLabel,
-      @JsonKey(name: 'has_graduated_access')
-          required this.hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          required this.hasNftAvatar,
-      @JsonKey(name: 'id')
-          required this.id,
-      @JsonKey(name: 'is_blue_verified')
-          required this.isBlueVerified,
-      @JsonKey(name: 'legacy')
-          required this.legacy,
-      @JsonKey(name: 'rest_id')
-          required this.restId,
-      @JsonKey(name: 'super_follow_eligible')
-          required this.superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          required this.superFollowedBy,
-      @JsonKey(name: 'super_following')
-          required this.superFollowing});
-
-  factory _$_LimitedResults.fromJson(Map<String, dynamic> json) =>
-      _$$_LimitedResultsFromJson(json);
-
-  @override
-  @TypenameConverter()
-  @JsonKey(name: '__typename')
-  final Typename typename;
-  @override
-  @JsonKey(name: 'affiliates_highlighted_label')
-  final dynamic affiliatesHighlightedLabel;
-  @override
-  @JsonKey(name: 'has_graduated_access')
-  final bool hasGraduatedAccess;
-  @override
-  @JsonKey(name: 'has_nft_avatar')
-  final bool hasNftAvatar;
-  @override
-  @JsonKey(name: 'id')
-  final String id;
-  @override
-  @JsonKey(name: 'is_blue_verified')
-  final bool isBlueVerified;
-  @override
-  @JsonKey(name: 'legacy')
-  final UserLegacy legacy;
-  @override
-  @JsonKey(name: 'rest_id')
-  final String restId;
-  @override
-  @JsonKey(name: 'super_follow_eligible')
-  final bool superFollowEligible;
-  @override
-  @JsonKey(name: 'super_followed_by')
-  final bool superFollowedBy;
-  @override
-  @JsonKey(name: 'super_following')
-  final bool superFollowing;
-
-  @override
-  String toString() {
-    return 'LimitedResults(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LimitedResults &&
-            (identical(other.typename, typename) ||
-                other.typename == typename) &&
-            const DeepCollectionEquality().equals(
-                other.affiliatesHighlightedLabel, affiliatesHighlightedLabel) &&
-            (identical(other.hasGraduatedAccess, hasGraduatedAccess) ||
-                other.hasGraduatedAccess == hasGraduatedAccess) &&
-            (identical(other.hasNftAvatar, hasNftAvatar) ||
-                other.hasNftAvatar == hasNftAvatar) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.isBlueVerified, isBlueVerified) ||
-                other.isBlueVerified == isBlueVerified) &&
-            (identical(other.legacy, legacy) || other.legacy == legacy) &&
-            (identical(other.restId, restId) || other.restId == restId) &&
-            (identical(other.superFollowEligible, superFollowEligible) ||
-                other.superFollowEligible == superFollowEligible) &&
-            (identical(other.superFollowedBy, superFollowedBy) ||
-                other.superFollowedBy == superFollowedBy) &&
-            (identical(other.superFollowing, superFollowing) ||
-                other.superFollowing == superFollowing));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      typename,
-      const DeepCollectionEquality().hash(affiliatesHighlightedLabel),
-      hasGraduatedAccess,
-      hasNftAvatar,
-      id,
-      isBlueVerified,
-      legacy,
-      restId,
-      superFollowEligible,
-      superFollowedBy,
-      superFollowing);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LimitedResultsCopyWith<_$_LimitedResults> get copyWith =>
-      __$$_LimitedResultsCopyWithImpl<_$_LimitedResults>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_LimitedResultsToJson(
-      this,
-    );
-  }
-}
-
-abstract class _LimitedResults implements LimitedResults {
-  const factory _LimitedResults(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
-          required final Typename typename,
-      @JsonKey(name: 'affiliates_highlighted_label')
-          required final dynamic affiliatesHighlightedLabel,
-      @JsonKey(name: 'has_graduated_access')
-          required final bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          required final bool hasNftAvatar,
-      @JsonKey(name: 'id')
-          required final String id,
-      @JsonKey(name: 'is_blue_verified')
-          required final bool isBlueVerified,
-      @JsonKey(name: 'legacy')
-          required final UserLegacy legacy,
-      @JsonKey(name: 'rest_id')
-          required final String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          required final bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          required final bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          required final bool superFollowing}) = _$_LimitedResults;
-
-  factory _LimitedResults.fromJson(Map<String, dynamic> json) =
-      _$_LimitedResults.fromJson;
-
-  @override
-  @TypenameConverter()
-  @JsonKey(name: '__typename')
-  Typename get typename;
-  @override
-  @JsonKey(name: 'affiliates_highlighted_label')
-  dynamic get affiliatesHighlightedLabel;
-  @override
-  @JsonKey(name: 'has_graduated_access')
-  bool get hasGraduatedAccess;
-  @override
-  @JsonKey(name: 'has_nft_avatar')
-  bool get hasNftAvatar;
-  @override
-  @JsonKey(name: 'id')
-  String get id;
-  @override
-  @JsonKey(name: 'is_blue_verified')
-  bool get isBlueVerified;
-  @override
-  @JsonKey(name: 'legacy')
-  UserLegacy get legacy;
-  @override
-  @JsonKey(name: 'rest_id')
-  String get restId;
-  @override
-  @JsonKey(name: 'super_follow_eligible')
-  bool get superFollowEligible;
-  @override
-  @JsonKey(name: 'super_followed_by')
-  bool get superFollowedBy;
-  @override
-  @JsonKey(name: 'super_following')
-  bool get superFollowing;
-  @override
-  @JsonKey(ignore: true)
-  _$$_LimitedResultsCopyWith<_$_LimitedResults> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 UserResults _$UserResultsFromJson(Map<String, dynamic> json) {
@@ -3885,28 +3273,16 @@ mixin _$Result {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_blue_verified')
   bool get isBlueVerified => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_profile_translatable')
-  bool get isProfileTranslatable => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
   UserLegacy get legacy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'legacy_extended_profile')
-  dynamic get legacyExtendedProfile => throw _privateConstructorUsedError;
-  @JsonKey(name: 'professional')
-  dynamic get professional => throw _privateConstructorUsedError;
   @JsonKey(name: 'rest_id')
   String get restId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'smart_blocked_by')
-  bool get smartBlockedBy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'smart_blocking')
-  bool get smartBlocking => throw _privateConstructorUsedError;
   @JsonKey(name: 'super_follow_eligible')
   bool get superFollowEligible => throw _privateConstructorUsedError;
   @JsonKey(name: 'super_followed_by')
   bool get superFollowedBy => throw _privateConstructorUsedError;
   @JsonKey(name: 'super_following')
   bool get superFollowing => throw _privateConstructorUsedError;
-  @JsonKey(name: 'verification_info')
-  dynamic get verificationInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3932,28 +3308,16 @@ abstract class $ResultCopyWith<$Res> {
           String id,
       @JsonKey(name: 'is_blue_verified')
           bool isBlueVerified,
-      @JsonKey(name: 'is_profile_translatable')
-          bool isProfileTranslatable,
       @JsonKey(name: 'legacy')
           UserLegacy legacy,
-      @JsonKey(name: 'legacy_extended_profile')
-          dynamic legacyExtendedProfile,
-      @JsonKey(name: 'professional')
-          dynamic professional,
       @JsonKey(name: 'rest_id')
           String restId,
-      @JsonKey(name: 'smart_blocked_by')
-          bool smartBlockedBy,
-      @JsonKey(name: 'smart_blocking')
-          bool smartBlocking,
       @JsonKey(name: 'super_follow_eligible')
           bool superFollowEligible,
       @JsonKey(name: 'super_followed_by')
           bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          bool superFollowing,
-      @JsonKey(name: 'verification_info')
-          dynamic verificationInfo});
+          bool superFollowing});
 
   $UserLegacyCopyWith<$Res> get legacy;
 }
@@ -3977,17 +3341,11 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
     Object? hasNftAvatar = null,
     Object? id = null,
     Object? isBlueVerified = null,
-    Object? isProfileTranslatable = null,
     Object? legacy = null,
-    Object? legacyExtendedProfile = freezed,
-    Object? professional = freezed,
     Object? restId = null,
-    Object? smartBlockedBy = null,
-    Object? smartBlocking = null,
     Object? superFollowEligible = null,
     Object? superFollowedBy = null,
     Object? superFollowing = null,
-    Object? verificationInfo = freezed,
   }) {
     return _then(_value.copyWith(
       typename: null == typename
@@ -4014,34 +3372,14 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.isBlueVerified
           : isBlueVerified // ignore: cast_nullable_to_non_nullable
               as bool,
-      isProfileTranslatable: null == isProfileTranslatable
-          ? _value.isProfileTranslatable
-          : isProfileTranslatable // ignore: cast_nullable_to_non_nullable
-              as bool,
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
               as UserLegacy,
-      legacyExtendedProfile: freezed == legacyExtendedProfile
-          ? _value.legacyExtendedProfile
-          : legacyExtendedProfile // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      professional: freezed == professional
-          ? _value.professional
-          : professional // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as String,
-      smartBlockedBy: null == smartBlockedBy
-          ? _value.smartBlockedBy
-          : smartBlockedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      smartBlocking: null == smartBlocking
-          ? _value.smartBlocking
-          : smartBlocking // ignore: cast_nullable_to_non_nullable
-              as bool,
       superFollowEligible: null == superFollowEligible
           ? _value.superFollowEligible
           : superFollowEligible // ignore: cast_nullable_to_non_nullable
@@ -4054,10 +3392,6 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.superFollowing
           : superFollowing // ignore: cast_nullable_to_non_nullable
               as bool,
-      verificationInfo: freezed == verificationInfo
-          ? _value.verificationInfo
-          : verificationInfo // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ) as $Val);
   }
 
@@ -4090,28 +3424,16 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
           String id,
       @JsonKey(name: 'is_blue_verified')
           bool isBlueVerified,
-      @JsonKey(name: 'is_profile_translatable')
-          bool isProfileTranslatable,
       @JsonKey(name: 'legacy')
           UserLegacy legacy,
-      @JsonKey(name: 'legacy_extended_profile')
-          dynamic legacyExtendedProfile,
-      @JsonKey(name: 'professional')
-          dynamic professional,
       @JsonKey(name: 'rest_id')
           String restId,
-      @JsonKey(name: 'smart_blocked_by')
-          bool smartBlockedBy,
-      @JsonKey(name: 'smart_blocking')
-          bool smartBlocking,
       @JsonKey(name: 'super_follow_eligible')
           bool superFollowEligible,
       @JsonKey(name: 'super_followed_by')
           bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          bool superFollowing,
-      @JsonKey(name: 'verification_info')
-          dynamic verificationInfo});
+          bool superFollowing});
 
   @override
   $UserLegacyCopyWith<$Res> get legacy;
@@ -4133,17 +3455,11 @@ class __$$_ResultCopyWithImpl<$Res>
     Object? hasNftAvatar = null,
     Object? id = null,
     Object? isBlueVerified = null,
-    Object? isProfileTranslatable = null,
     Object? legacy = null,
-    Object? legacyExtendedProfile = freezed,
-    Object? professional = freezed,
     Object? restId = null,
-    Object? smartBlockedBy = null,
-    Object? smartBlocking = null,
     Object? superFollowEligible = null,
     Object? superFollowedBy = null,
     Object? superFollowing = null,
-    Object? verificationInfo = freezed,
   }) {
     return _then(_$_Result(
       typename: null == typename
@@ -4170,34 +3486,14 @@ class __$$_ResultCopyWithImpl<$Res>
           ? _value.isBlueVerified
           : isBlueVerified // ignore: cast_nullable_to_non_nullable
               as bool,
-      isProfileTranslatable: null == isProfileTranslatable
-          ? _value.isProfileTranslatable
-          : isProfileTranslatable // ignore: cast_nullable_to_non_nullable
-              as bool,
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
               as UserLegacy,
-      legacyExtendedProfile: freezed == legacyExtendedProfile
-          ? _value.legacyExtendedProfile
-          : legacyExtendedProfile // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      professional: freezed == professional
-          ? _value.professional
-          : professional // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as String,
-      smartBlockedBy: null == smartBlockedBy
-          ? _value.smartBlockedBy
-          : smartBlockedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      smartBlocking: null == smartBlocking
-          ? _value.smartBlocking
-          : smartBlocking // ignore: cast_nullable_to_non_nullable
-              as bool,
       superFollowEligible: null == superFollowEligible
           ? _value.superFollowEligible
           : superFollowEligible // ignore: cast_nullable_to_non_nullable
@@ -4210,10 +3506,6 @@ class __$$_ResultCopyWithImpl<$Res>
           ? _value.superFollowing
           : superFollowing // ignore: cast_nullable_to_non_nullable
               as bool,
-      verificationInfo: freezed == verificationInfo
-          ? _value.verificationInfo
-          : verificationInfo // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
@@ -4235,28 +3527,16 @@ class _$_Result implements _Result {
           required this.id,
       @JsonKey(name: 'is_blue_verified')
           required this.isBlueVerified,
-      @JsonKey(name: 'is_profile_translatable')
-          required this.isProfileTranslatable,
       @JsonKey(name: 'legacy')
           required this.legacy,
-      @JsonKey(name: 'legacy_extended_profile')
-          required this.legacyExtendedProfile,
-      @JsonKey(name: 'professional')
-          required this.professional,
       @JsonKey(name: 'rest_id')
           required this.restId,
-      @JsonKey(name: 'smart_blocked_by')
-          required this.smartBlockedBy,
-      @JsonKey(name: 'smart_blocking')
-          required this.smartBlocking,
       @JsonKey(name: 'super_follow_eligible')
           required this.superFollowEligible,
       @JsonKey(name: 'super_followed_by')
           required this.superFollowedBy,
       @JsonKey(name: 'super_following')
-          required this.superFollowing,
-      @JsonKey(name: 'verification_info')
-          required this.verificationInfo});
+          required this.superFollowing});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
       _$$_ResultFromJson(json);
@@ -4281,26 +3561,11 @@ class _$_Result implements _Result {
   @JsonKey(name: 'is_blue_verified')
   final bool isBlueVerified;
   @override
-  @JsonKey(name: 'is_profile_translatable')
-  final bool isProfileTranslatable;
-  @override
   @JsonKey(name: 'legacy')
   final UserLegacy legacy;
   @override
-  @JsonKey(name: 'legacy_extended_profile')
-  final dynamic legacyExtendedProfile;
-  @override
-  @JsonKey(name: 'professional')
-  final dynamic professional;
-  @override
   @JsonKey(name: 'rest_id')
   final String restId;
-  @override
-  @JsonKey(name: 'smart_blocked_by')
-  final bool smartBlockedBy;
-  @override
-  @JsonKey(name: 'smart_blocking')
-  final bool smartBlocking;
   @override
   @JsonKey(name: 'super_follow_eligible')
   final bool superFollowEligible;
@@ -4310,13 +3575,10 @@ class _$_Result implements _Result {
   @override
   @JsonKey(name: 'super_following')
   final bool superFollowing;
-  @override
-  @JsonKey(name: 'verification_info')
-  final dynamic verificationInfo;
 
   @override
   String toString() {
-    return 'Result(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, isProfileTranslatable: $isProfileTranslatable, legacy: $legacy, legacyExtendedProfile: $legacyExtendedProfile, professional: $professional, restId: $restId, smartBlockedBy: $smartBlockedBy, smartBlocking: $smartBlocking, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing, verificationInfo: $verificationInfo)';
+    return 'Result(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing)';
   }
 
   @override
@@ -4335,26 +3597,14 @@ class _$_Result implements _Result {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isBlueVerified, isBlueVerified) ||
                 other.isBlueVerified == isBlueVerified) &&
-            (identical(other.isProfileTranslatable, isProfileTranslatable) ||
-                other.isProfileTranslatable == isProfileTranslatable) &&
             (identical(other.legacy, legacy) || other.legacy == legacy) &&
-            const DeepCollectionEquality()
-                .equals(other.legacyExtendedProfile, legacyExtendedProfile) &&
-            const DeepCollectionEquality()
-                .equals(other.professional, professional) &&
             (identical(other.restId, restId) || other.restId == restId) &&
-            (identical(other.smartBlockedBy, smartBlockedBy) ||
-                other.smartBlockedBy == smartBlockedBy) &&
-            (identical(other.smartBlocking, smartBlocking) ||
-                other.smartBlocking == smartBlocking) &&
             (identical(other.superFollowEligible, superFollowEligible) ||
                 other.superFollowEligible == superFollowEligible) &&
             (identical(other.superFollowedBy, superFollowedBy) ||
                 other.superFollowedBy == superFollowedBy) &&
             (identical(other.superFollowing, superFollowing) ||
-                other.superFollowing == superFollowing) &&
-            const DeepCollectionEquality()
-                .equals(other.verificationInfo, verificationInfo));
+                other.superFollowing == superFollowing));
   }
 
   @JsonKey(ignore: true)
@@ -4367,17 +3617,11 @@ class _$_Result implements _Result {
       hasNftAvatar,
       id,
       isBlueVerified,
-      isProfileTranslatable,
       legacy,
-      const DeepCollectionEquality().hash(legacyExtendedProfile),
-      const DeepCollectionEquality().hash(professional),
       restId,
-      smartBlockedBy,
-      smartBlocking,
       superFollowEligible,
       superFollowedBy,
-      superFollowing,
-      const DeepCollectionEquality().hash(verificationInfo));
+      superFollowing);
 
   @JsonKey(ignore: true)
   @override
@@ -4408,28 +3652,16 @@ abstract class _Result implements Result {
           required final String id,
       @JsonKey(name: 'is_blue_verified')
           required final bool isBlueVerified,
-      @JsonKey(name: 'is_profile_translatable')
-          required final bool isProfileTranslatable,
       @JsonKey(name: 'legacy')
           required final UserLegacy legacy,
-      @JsonKey(name: 'legacy_extended_profile')
-          required final dynamic legacyExtendedProfile,
-      @JsonKey(name: 'professional')
-          required final dynamic professional,
       @JsonKey(name: 'rest_id')
           required final String restId,
-      @JsonKey(name: 'smart_blocked_by')
-          required final bool smartBlockedBy,
-      @JsonKey(name: 'smart_blocking')
-          required final bool smartBlocking,
       @JsonKey(name: 'super_follow_eligible')
           required final bool superFollowEligible,
       @JsonKey(name: 'super_followed_by')
           required final bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          required final bool superFollowing,
-      @JsonKey(name: 'verification_info')
-          required final dynamic verificationInfo}) = _$_Result;
+          required final bool superFollowing}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
@@ -4453,26 +3685,11 @@ abstract class _Result implements Result {
   @JsonKey(name: 'is_blue_verified')
   bool get isBlueVerified;
   @override
-  @JsonKey(name: 'is_profile_translatable')
-  bool get isProfileTranslatable;
-  @override
   @JsonKey(name: 'legacy')
   UserLegacy get legacy;
   @override
-  @JsonKey(name: 'legacy_extended_profile')
-  dynamic get legacyExtendedProfile;
-  @override
-  @JsonKey(name: 'professional')
-  dynamic get professional;
-  @override
   @JsonKey(name: 'rest_id')
   String get restId;
-  @override
-  @JsonKey(name: 'smart_blocked_by')
-  bool get smartBlockedBy;
-  @override
-  @JsonKey(name: 'smart_blocking')
-  bool get smartBlocking;
   @override
   @JsonKey(name: 'super_follow_eligible')
   bool get superFollowEligible;
@@ -4482,9 +3699,6 @@ abstract class _Result implements Result {
   @override
   @JsonKey(name: 'super_following')
   bool get superFollowing;
-  @override
-  @JsonKey(name: 'verification_info')
-  dynamic get verificationInfo;
   @override
   @JsonKey(ignore: true)
   _$$_ResultCopyWith<_$_Result> get copyWith =>

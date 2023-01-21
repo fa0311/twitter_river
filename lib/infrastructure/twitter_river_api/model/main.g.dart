@@ -229,55 +229,12 @@ Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
     };
 
 _$_Core _$$_CoreFromJson(Map<String, dynamic> json) => _$_Core(
-      userResults: UserLimitedResults.fromJson(
-          json['user_results'] as Map<String, dynamic>),
+      userResults:
+          UserResults.fromJson(json['user_results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CoreToJson(_$_Core instance) => <String, dynamic>{
       'user_results': instance.userResults,
-    };
-
-_$_UserLimitedResults _$$_UserLimitedResultsFromJson(
-        Map<String, dynamic> json) =>
-    _$_UserLimitedResults(
-      result: LimitedResults.fromJson(json['result'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_UserLimitedResultsToJson(
-        _$_UserLimitedResults instance) =>
-    <String, dynamic>{
-      'result': instance.result,
-    };
-
-_$_LimitedResults _$$_LimitedResultsFromJson(Map<String, dynamic> json) =>
-    _$_LimitedResults(
-      typename:
-          const TypenameConverter().fromJson(json['__typename'] as String),
-      affiliatesHighlightedLabel: json['affiliates_highlighted_label'],
-      hasGraduatedAccess: json['has_graduated_access'] as bool,
-      hasNftAvatar: json['has_nft_avatar'] as bool,
-      id: json['id'] as String,
-      isBlueVerified: json['is_blue_verified'] as bool,
-      legacy: UserLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
-      restId: json['rest_id'] as String,
-      superFollowEligible: json['super_follow_eligible'] as bool,
-      superFollowedBy: json['super_followed_by'] as bool,
-      superFollowing: json['super_following'] as bool,
-    );
-
-Map<String, dynamic> _$$_LimitedResultsToJson(_$_LimitedResults instance) =>
-    <String, dynamic>{
-      '__typename': const TypenameConverter().toJson(instance.typename),
-      'affiliates_highlighted_label': instance.affiliatesHighlightedLabel,
-      'has_graduated_access': instance.hasGraduatedAccess,
-      'has_nft_avatar': instance.hasNftAvatar,
-      'id': instance.id,
-      'is_blue_verified': instance.isBlueVerified,
-      'legacy': instance.legacy,
-      'rest_id': instance.restId,
-      'super_follow_eligible': instance.superFollowEligible,
-      'super_followed_by': instance.superFollowedBy,
-      'super_following': instance.superFollowing,
     };
 
 _$_UserResults _$$_UserResultsFromJson(Map<String, dynamic> json) =>
@@ -298,17 +255,11 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       hasNftAvatar: json['has_nft_avatar'] as bool,
       id: json['id'] as String,
       isBlueVerified: json['is_blue_verified'] as bool,
-      isProfileTranslatable: json['is_profile_translatable'] as bool,
       legacy: UserLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
-      legacyExtendedProfile: json['legacy_extended_profile'],
-      professional: json['professional'],
       restId: json['rest_id'] as String,
-      smartBlockedBy: json['smart_blocked_by'] as bool,
-      smartBlocking: json['smart_blocking'] as bool,
       superFollowEligible: json['super_follow_eligible'] as bool,
       superFollowedBy: json['super_followed_by'] as bool,
       superFollowing: json['super_following'] as bool,
-      verificationInfo: json['verification_info'],
     );
 
 Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
@@ -318,17 +269,11 @@ Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       'has_nft_avatar': instance.hasNftAvatar,
       'id': instance.id,
       'is_blue_verified': instance.isBlueVerified,
-      'is_profile_translatable': instance.isProfileTranslatable,
       'legacy': instance.legacy,
-      'legacy_extended_profile': instance.legacyExtendedProfile,
-      'professional': instance.professional,
       'rest_id': instance.restId,
-      'smart_blocked_by': instance.smartBlockedBy,
-      'smart_blocking': instance.smartBlocking,
       'super_follow_eligible': instance.superFollowEligible,
       'super_followed_by': instance.superFollowedBy,
       'super_following': instance.superFollowing,
-      'verification_info': instance.verificationInfo,
     };
 
 _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>
