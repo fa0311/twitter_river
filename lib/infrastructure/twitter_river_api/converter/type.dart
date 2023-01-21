@@ -42,7 +42,9 @@ enum InstructionsType {
   timelineAddEntries,
   timelineTerminateTimeline,
   timelineReplaceEntry,
-  timelineShowAlert;
+  timelineShowAlert,
+  timelineClearCache,
+  timelinePinEntry;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);
 }
@@ -100,6 +102,7 @@ class EntryValueConverter extends JsonConverter<dynamic, dynamic> {
 
 enum ItemType {
   timelineTweet,
+  timelineUser,
   timelineTimelineCursor;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);

@@ -25,7 +25,7 @@ class TweetCard extends ConsumerWidget {
 
 class TweetInkWell extends ConsumerWidget {
   final Widget child;
-  final UserLegacy user;
+  final Result user;
   final TweetLegacy tweet;
   const TweetInkWell({super.key, required this.child, required this.user, required this.tweet});
 
@@ -52,7 +52,7 @@ class TweetInkWell extends ConsumerWidget {
 
 class UserInkWell extends ConsumerWidget {
   final Widget child;
-  final UserLegacy user;
+  final Result user;
   const UserInkWell({super.key, required this.child, required this.user});
 
   @override
@@ -77,7 +77,7 @@ class UserInkWell extends ConsumerWidget {
 }
 
 class TweetWidget extends ConsumerWidget {
-  final UserLegacy user;
+  final Result user;
   final TweetLegacy tweet;
   final bool card;
   const TweetWidget({
@@ -102,7 +102,7 @@ class TweetWidget extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 child: CachedNetworkImage(
-                  imageUrl: user.profileImageUrlHttps,
+                  imageUrl: user.legacy.profileImageUrlHttps,
                   progressIndicatorBuilder: (context, url, progress) => CircleAvatar(backgroundColor: Colors.black.withAlpha(0)),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.fill,
@@ -123,7 +123,7 @@ class TweetWidget extends ConsumerWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2),
                         child: Text(
-                          user.name,
+                          user.legacy.name,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),

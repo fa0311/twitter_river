@@ -33,7 +33,7 @@ class TwitterRiverTweetFromFocalTweetId extends ConsumerWidget {
 }
 
 class TwitterRiverTweet extends ConsumerWidget {
-  final UserLegacy user;
+  final Result user;
   final TweetLegacy tweet;
   const TwitterRiverTweet({super.key, required this.user, required this.tweet});
 

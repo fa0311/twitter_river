@@ -21,9 +21,6 @@ class TweetDetailResponse with _$TweetDetailResponse {
   TimelineAddEntries get timelineAddEntries =>
       data.threadedConversation.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
 
-  dynamic get timelineTerminateTimeline =>
-      data.threadedConversation.instructions.firstWhere((e) => e.type == InstructionsType.timelineTerminateTimeline).timelineTerminateTimeline!;
-
   factory TweetDetailResponse.fromJson(Map<String, dynamic> json) => _$TweetDetailResponseFromJson(json);
 }
 

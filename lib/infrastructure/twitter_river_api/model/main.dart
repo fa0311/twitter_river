@@ -157,7 +157,7 @@ class TimelineTweet with _$TimelineTweet {
 
   bool get hidden => tweetResults.result?.core.userResults.result == null;
 
-  UserLegacy get user => tweetResults.result!.core.userResults.result.legacy;
+  Result get user => tweetResults.result!.core.userResults.result;
   TweetLegacy get tweet => tweetResults.result!.legacy;
 
   factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));

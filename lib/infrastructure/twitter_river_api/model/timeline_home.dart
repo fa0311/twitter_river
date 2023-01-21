@@ -17,8 +17,6 @@ class HomeTimelineResponse with _$HomeTimelineResponse {
 
   TimelineAddEntries get timelineAddEntries =>
       data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
-  dynamic get timelineTerminateTimeline =>
-      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineTerminateTimeline).timelineTerminateTimeline!;
 
   factory HomeTimelineResponse.fromJson(Map<String, dynamic> json) => _$HomeTimelineResponseFromJson(json);
 }

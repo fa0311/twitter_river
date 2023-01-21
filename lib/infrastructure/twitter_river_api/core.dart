@@ -14,6 +14,7 @@ import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_ho
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_list.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_screen_name.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -208,6 +209,46 @@ class TwitterRiverAPI {
       },
     );
     return UserByScreenNameResponse.fromJson(response.data);
+  }
+
+  Future<UserTweetsResponse> getUserTweets({required String userId}) async {
+    final response = await dio.get(
+      TwitterGraphQL.userTweets.path,
+      queryParameters: {
+        "variables": jsonEncode({
+          "userId": userId,
+          "count": 40,
+          "includePromotedContent": true,
+          "withQuickPromoteEligibilityTweetFields": true,
+          "withSuperFollowsUserFields": true,
+          "withDownvotePerspective": false,
+          "withReactionsMetadata": false,
+          "withReactionsPerspective": false,
+          "withSuperFollowsTweetFields": true,
+          "withVoice": true,
+          "withV2Timeline": true
+        }),
+        "features": jsonEncode({
+          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
+          "verified_phone_label_enabled": false,
+          "responsive_web_graphql_timeline_navigation_enabled": true,
+          "view_counts_public_visibility_enabled": true,
+          "longform_notetweets_consumption_enabled": false,
+          "tweetypie_unmention_optimization_enabled": true,
+          "responsive_web_uc_gql_enabled": true,
+          "vibe_api_enabled": true,
+          "responsive_web_edit_tweet_api_enabled": true,
+          "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+          "view_counts_everywhere_api_enabled": true,
+          "standardized_nudges_misinfo": true,
+          "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": false,
+          "interactive_text_enabled": true,
+          "responsive_web_text_conversations_enabled": false,
+          "responsive_web_enhance_cards_enabled": false
+        }),
+      },
+    );
+    return UserTweetsResponse.fromJson(response.data);
   }
 }
 

@@ -13,13 +13,8 @@ class UserByScreenNameResponse with _$UserByScreenNameResponse {
   const factory UserByScreenNameResponse({
     @JsonKey(name: 'data') required UserByScreenNameData data,
   }) = _UserByScreenNameResponse;
-  /*
 
-  TimelineAddEntries get timelineAddEntries =>
-      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
-  dynamic get timelineTerminateTimeline =>
-      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineTerminateTimeline).timelineTerminateTimeline!;
-      */
+  Result get result => data.user.result;
 
   factory UserByScreenNameResponse.fromJson(Map<String, dynamic> json) => _$UserByScreenNameResponseFromJson(json);
 }
