@@ -42,7 +42,7 @@ class TwitterRiverAPI {
       TwitterGraphQL.homeTimeline.path,
       queryParameters: {
         "variables": jsonEncode({
-          "count": 20,
+          "count": 40,
           "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
@@ -81,6 +81,7 @@ class TwitterRiverAPI {
       TwitterGraphQL.homeLatestTimeline.path,
       queryParameters: {
         "variables": jsonEncode({
+          "count": 40,
           "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
