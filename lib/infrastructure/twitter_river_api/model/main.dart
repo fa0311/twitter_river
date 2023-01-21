@@ -177,7 +177,6 @@ class TweetResults with _$TweetResults {
 @freezed
 class TweetResult with _$TweetResult {
   const factory TweetResult({
-    @JsonKey(name: '__typename') required dynamic typename,
     @JsonKey(name: 'rest_id') required String restId,
     @JsonKey(name: 'core') required Core core,
     @JsonKey(name: 'unmention_data') required dynamic unmentionData,
@@ -194,10 +193,38 @@ class TweetResult with _$TweetResult {
 @freezed
 class Core with _$Core {
   const factory Core({
-    @JsonKey(name: 'user_results') required UserResults userResults,
+    @JsonKey(name: 'user_results') required UserLimitedResults userResults,
   }) = _Core;
 
-  factory Core.fromJson(Map<String, dynamic> json) => _$CoreFromJson(json);
+  factory Core.fromJson(Map<String, dynamic> json) => _$CoreFromJson(fromJsonProxy(json));
+}
+
+@freezed
+class UserLimitedResults with _$UserLimitedResults {
+  const factory UserLimitedResults({
+    @JsonKey(name: 'result') required LimitedResults result,
+  }) = _UserLimitedResults;
+
+  factory UserLimitedResults.fromJson(Map<String, dynamic> json) => _$UserLimitedResultsFromJson(fromJsonProxy(json));
+}
+
+@freezed
+class LimitedResults with _$LimitedResults {
+  const factory LimitedResults({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
+    @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
+    @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
+    @JsonKey(name: 'id') required String id,
+    @JsonKey(name: 'is_blue_verified') required bool isBlueVerified,
+    @JsonKey(name: 'legacy') required UserLegacy legacy,
+    @JsonKey(name: 'rest_id') required String restId,
+    @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
+    @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
+    @JsonKey(name: 'super_following') required bool superFollowing,
+  }) = _LimitedResults;
+
+  factory LimitedResults.fromJson(Map<String, dynamic> json) => _$LimitedResultsFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -212,17 +239,23 @@ class UserResults with _$UserResults {
 @freezed
 class Result with _$Result {
   const factory Result({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
     @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
     @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
     @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'is_blue_verified') required bool isBlueVerified,
+    @JsonKey(name: 'is_profile_translatable') required bool isProfileTranslatable,
     @JsonKey(name: 'legacy') required UserLegacy legacy,
+    @JsonKey(name: 'legacy_extended_profile') required dynamic legacyExtendedProfile,
+    @JsonKey(name: 'professional') required dynamic professional,
     @JsonKey(name: 'rest_id') required String restId,
+    @JsonKey(name: 'smart_blocked_by') required bool smartBlockedBy,
+    @JsonKey(name: 'smart_blocking') required bool smartBlocking,
     @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
     @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
     @JsonKey(name: 'super_following') required bool superFollowing,
-    @JsonKey(name: '__typename') required String typename,
+    @JsonKey(name: 'verification_info') required dynamic verificationInfo,
   }) = _Result;
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(fromJsonProxy(json));
@@ -230,6 +263,7 @@ class Result with _$Result {
 
 @freezed
 class UserLegacy with _$UserLegacy {
+  const UserLegacy._();
   const factory UserLegacy({
     @JsonKey(name: 'blocked_by') required bool blockedBy,
     @JsonKey(name: 'blocking') required dynamic blocking,
@@ -272,6 +306,8 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'want_retweets') required bool wantRetweets,
     @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
   }) = _UserLegacy;
+
+  String get profileImageUrlHttpsSource => profileImageUrlHttps.replaceAll(RegExp(r'_[a-zA-Z0-9]+?.jpg$'), '.jpg');
 
   factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(fromJsonProxy(json));
 }

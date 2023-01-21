@@ -13,6 +13,7 @@ import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dar
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_home.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_list.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_screen_name.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -188,6 +189,25 @@ class TwitterRiverAPI {
       },
     );
     return TweetDetailResponse.fromJson(response.data);
+  }
+
+  Future<UserByScreenNameResponse> getUserByScreenName({required String screenName}) async {
+    final response = await dio.get(
+      TwitterGraphQL.userByScreenName.path,
+      queryParameters: {
+        "variables": jsonEncode({
+          "screen_name": screenName,
+          "withSafetyModeUserFields": true,
+          "withSuperFollowsUserFields": true,
+        }),
+        "features": jsonEncode({
+          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
+          "verified_phone_label_enabled": false,
+          "responsive_web_graphql_timeline_navigation_enabled": true
+        }),
+      },
+    );
+    return UserByScreenNameResponse.fromJson(response.data);
   }
 }
 
