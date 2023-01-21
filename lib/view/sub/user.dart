@@ -14,7 +14,7 @@ import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_scr
 import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets.dart';
 
 // Project imports:
-import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/widget/tweet.dart';
 import 'package:twitter_river/widget/user.dart';
 

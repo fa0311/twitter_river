@@ -30,6 +30,15 @@ class TimelineAddEntries with _$TimelineAddEntries {
     @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
   }) = _TimelineAddEntries;
 
+  List<Content> get contents => entries.map((e) => e.content).where((e) => e.entryType != EntryType.timelineTimelineCursor).toList();
+
+  List<TimelineTimelineCursor> get cursor =>
+      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!).toList();
+
+  TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
+  TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
+
+// ==== Legacy
   List<TimelineTimelineItem> get timelineItem =>
       entries.where((e) => (e.content.entryType == EntryType.timelineTimelineItem)).map((e) => e.content.timelineTimelineItem!).toList();
 
@@ -42,12 +51,6 @@ class TimelineAddEntries with _$TimelineAddEntries {
   List<List<TimelineTweet>> get module => timelineModule
       .map((e) => e.itemContent.where((e) => e.item.itemContent.entryType == ItemType.timelineTweet).map((e) => e.item.itemContent.timelineTweet!).toList())
       .toList();
-
-  List<TimelineTimelineCursor> get cursor =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!).toList();
-
-  TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
-  TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
 
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) => _$TimelineAddEntriesFromJson(fromJsonProxy(json));
 }

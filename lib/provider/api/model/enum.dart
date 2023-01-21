@@ -1,0 +1,4 @@
+enum ContentAPI {
+  getTimeLine,
+  getHomeLatestTimeline;
+}

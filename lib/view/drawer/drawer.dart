@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import 'package:twitter_river/component/future/tile.dart';
-import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/settings/settings.dart';
 import 'package:twitter_river/view/splash.dart';
 import 'package:twitter_river/view/web/login.dart';

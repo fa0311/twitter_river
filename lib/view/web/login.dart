@@ -16,7 +16,7 @@ import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/constant/uris.dart';
 import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
-import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/splash.dart';
 
 final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {

@@ -1,10 +1,12 @@
 // Flutter imports:
+
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
@@ -72,6 +74,37 @@ class UserInkWell extends ConsumerWidget {
         );
       },
       child: child,
+    );
+  }
+}
+
+class ItemContentWidget extends ConsumerWidget {
+  final List<ItemContent> contents;
+  const ItemContentWidget({super.key, required this.contents});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cursor = contents.where((e) => (e.entryType == ItemType.timelineTimelineCursor)).map((e) => e.timelineTimelineCursor!).toList();
+    final topCursor = cursor.where((e) => e.cursorType == CursorType.top);
+    final bottomCursor = cursor.where((e) => e.cursorType == CursorType.bottom);
+
+    return Column(
+      children: [
+        if (topCursor.isEmpty)
+          TextButton(
+            onPressed: () {},
+            child: const Text('Button'),
+          ),
+        for (final content in contents) ...[
+          if (content.entryType == ItemType.timelineUser) Container(),
+          if (content.entryType == ItemType.timelineTweet) Container(),
+        ],
+        if (bottomCursor.isEmpty)
+          TextButton(
+            onPressed: () {},
+            child: const Text('Button'),
+          ),
+      ],
     );
   }
 }

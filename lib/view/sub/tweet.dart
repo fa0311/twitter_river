@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -10,17 +9,8 @@ import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
-import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/widget/tweet.dart';
-
-final tweetDetailProvider = FutureProvider.family<TweetDetailResponse, String>((ref, focalTweetId) async {
-  if (kDebugMode) {
-    print("Request API_________: $focalTweetId");
-  }
-  final session = await ref.watch(loginSessionProvider.future);
-  return await session.getTweetDetail(focalTweetId: focalTweetId);
-});
 
 class TwitterRiverTweetFromFocalTweetId extends ConsumerWidget {
   final String focalTweetId;
