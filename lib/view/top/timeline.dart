@@ -42,10 +42,12 @@ final timeLineProxyProvider = FutureProvider.family<void, String>((ref, cursor) 
   if (items.isEmpty) await Future.delayed(const Duration(seconds: 10));
 
   if (cursor == ref.read(topCursorProvider)) {
+    print("top");
     final newTopCursor = data.timelineAddEntries.topCursor?.value;
     ref.read(topCursorProvider.notifier).state = newTopCursor;
     ref.read(timelineTopItemListProvider.notifier).add(items);
   } else if (cursor == ref.read(bottomCursorProvider)) {
+    print("bottom");
     final newBottomCursor = data.timelineAddEntries.bottomCursor?.value;
     ref.read(bottomCursorProvider.notifier).state = newBottomCursor;
     ref.read(timelineBottomItemListProvider.notifier).add(items);
@@ -72,7 +74,7 @@ class TwitterRiverTimeline extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final topItemList = ref.watch(timelineTopItemListProvider);
     final bottomItemList = ref.watch(timelineBottomItemListProvider);
-    final init = ref.read(timelineInitProvider);
+    final init = ref.watch(timelineInitProvider);
 
     return init.when(
       loading: () => const Loading(),

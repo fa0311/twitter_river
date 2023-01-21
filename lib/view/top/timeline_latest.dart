@@ -72,7 +72,7 @@ class TwitterRiverLatestTimeline extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final topItemList = ref.watch(timelineTopItemListProvider);
     final bottomItemList = ref.watch(timelineBottomItemListProvider);
-    final init = ref.read(timelineInitProvider);
+    final init = ref.watch(timelineInitProvider);
 
     return init.when(
       loading: () => const Loading(),
