@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tweet_detail.dart';
+part of '../tweet_detail.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

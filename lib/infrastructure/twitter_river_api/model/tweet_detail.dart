@@ -8,8 +8,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
-part 'tweet_detail.freezed.dart';
-part 'tweet_detail.g.dart';
+part 'generated/tweet_detail.freezed.dart';
+part 'generated/tweet_detail.g.dart';
 
 @freezed
 class TweetDetailResponse with _$TweetDetailResponse {

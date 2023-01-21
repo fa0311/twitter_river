@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
-part 'user_by_screen_name.freezed.dart';
-part 'user_by_screen_name.g.dart';
+part 'generated/user_by_screen_name.freezed.dart';
+part 'generated/user_by_screen_name.g.dart';
 
 @freezed
 class UserByScreenNameResponse with _$UserByScreenNameResponse {

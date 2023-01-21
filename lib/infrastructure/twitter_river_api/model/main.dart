@@ -5,8 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/safety.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
-part 'main.freezed.dart';
-part 'main.g.dart';
+part 'generated/main.freezed.dart';
+part 'generated/main.g.dart';
 
 // ===== UNION =====
 @freezed

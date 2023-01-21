@@ -5,8 +5,8 @@ import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.da
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
-part 'user_tweets.freezed.dart';
-part 'user_tweets.g.dart';
+part 'generated/user_tweets.freezed.dart';
+part 'generated/user_tweets.g.dart';
 
 @freezed
 class UserTweetsResponse with _$UserTweetsResponse {
