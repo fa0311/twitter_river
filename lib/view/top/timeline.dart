@@ -42,12 +42,10 @@ final timeLineProxyProvider = FutureProvider.family<void, String>((ref, cursor) 
   if (items.isEmpty) await Future.delayed(const Duration(seconds: 10));
 
   if (cursor == ref.read(topCursorProvider)) {
-    print("top");
     final newTopCursor = data.timelineAddEntries.topCursor?.value;
     ref.read(topCursorProvider.notifier).state = newTopCursor;
     ref.read(timelineTopItemListProvider.notifier).add(items);
   } else if (cursor == ref.read(bottomCursorProvider)) {
-    print("bottom");
     final newBottomCursor = data.timelineAddEntries.bottomCursor?.value;
     ref.read(bottomCursorProvider.notifier).state = newBottomCursor;
     ref.read(timelineBottomItemListProvider.notifier).add(items);

@@ -39,7 +39,6 @@ class NormalDrawer extends ConsumerWidget {
                 currentAccountPicture: CachedNetworkImage(
                   imageUrl: "https://pbs.twimg.com/profile_images/1449745429801811978/lHINmMuy_400x400.jpg",
                   fit: BoxFit.fitWidth,
-                  progressIndicatorBuilder: (context, url, downloadProgress) => const Padding(padding: EdgeInsets.all(20), child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   imageBuilder: (context, imageProvider) => CircleAvatar(backgroundImage: imageProvider),
                 ),
