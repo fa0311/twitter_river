@@ -26,6 +26,8 @@ mixin _$Instruction {
   @JsonKey(name: 'timelineAddEntries')
   TimelineAddEntries? get timelineAddEntries =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineAddToModule')
+  dynamic get timelineAddToModule => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTerminateTimeline')
   dynamic get timelineTerminateTimeline => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineShowAlert')
@@ -49,6 +51,8 @@ abstract class $InstructionCopyWith<$Res> {
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -72,6 +76,7 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
   $Res call({
     Object? type = null,
     Object? timelineAddEntries = freezed,
+    Object? timelineAddToModule = freezed,
     Object? timelineTerminateTimeline = freezed,
     Object? timelineShowAlert = freezed,
   }) {
@@ -84,6 +89,10 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
           ? _value.timelineAddEntries
           : timelineAddEntries // ignore: cast_nullable_to_non_nullable
               as TimelineAddEntries?,
+      timelineAddToModule: freezed == timelineAddToModule
+          ? _value.timelineAddToModule
+          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       timelineTerminateTimeline: freezed == timelineTerminateTimeline
           ? _value.timelineTerminateTimeline
           : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
@@ -123,6 +132,8 @@ abstract class _$$_InstructionCopyWith<$Res>
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -145,6 +156,7 @@ class __$$_InstructionCopyWithImpl<$Res>
   $Res call({
     Object? type = null,
     Object? timelineAddEntries = freezed,
+    Object? timelineAddToModule = freezed,
     Object? timelineTerminateTimeline = freezed,
     Object? timelineShowAlert = freezed,
   }) {
@@ -157,6 +169,10 @@ class __$$_InstructionCopyWithImpl<$Res>
           ? _value.timelineAddEntries
           : timelineAddEntries // ignore: cast_nullable_to_non_nullable
               as TimelineAddEntries?,
+      timelineAddToModule: freezed == timelineAddToModule
+          ? _value.timelineAddToModule
+          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       timelineTerminateTimeline: freezed == timelineTerminateTimeline
           ? _value.timelineTerminateTimeline
           : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
@@ -178,6 +194,8 @@ class _$_Instruction implements _Instruction {
           required this.type,
       @JsonKey(name: 'timelineAddEntries')
           required this.timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          required this.timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           required this.timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -194,6 +212,9 @@ class _$_Instruction implements _Instruction {
   @JsonKey(name: 'timelineAddEntries')
   final TimelineAddEntries? timelineAddEntries;
   @override
+  @JsonKey(name: 'timelineAddToModule')
+  final dynamic timelineAddToModule;
+  @override
   @JsonKey(name: 'timelineTerminateTimeline')
   final dynamic timelineTerminateTimeline;
   @override
@@ -202,7 +223,7 @@ class _$_Instruction implements _Instruction {
 
   @override
   String toString() {
-    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
+    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineAddToModule: $timelineAddToModule, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
   }
 
   @override
@@ -213,6 +234,8 @@ class _$_Instruction implements _Instruction {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.timelineAddEntries, timelineAddEntries) ||
                 other.timelineAddEntries == timelineAddEntries) &&
+            const DeepCollectionEquality()
+                .equals(other.timelineAddToModule, timelineAddToModule) &&
             const DeepCollectionEquality().equals(
                 other.timelineTerminateTimeline, timelineTerminateTimeline) &&
             const DeepCollectionEquality()
@@ -225,6 +248,7 @@ class _$_Instruction implements _Instruction {
       runtimeType,
       type,
       timelineAddEntries,
+      const DeepCollectionEquality().hash(timelineAddToModule),
       const DeepCollectionEquality().hash(timelineTerminateTimeline),
       const DeepCollectionEquality().hash(timelineShowAlert));
 
@@ -249,6 +273,8 @@ abstract class _Instruction implements Instruction {
           required final InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           required final TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          required final dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           required final dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -264,6 +290,9 @@ abstract class _Instruction implements Instruction {
   @override
   @JsonKey(name: 'timelineAddEntries')
   TimelineAddEntries? get timelineAddEntries;
+  @override
+  @JsonKey(name: 'timelineAddToModule')
+  dynamic get timelineAddToModule;
   @override
   @JsonKey(name: 'timelineTerminateTimeline')
   dynamic get timelineTerminateTimeline;

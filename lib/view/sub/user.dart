@@ -15,7 +15,6 @@ import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets
 
 // Project imports:
 import 'package:twitter_river/provider/session.dart';
-import 'package:twitter_river/widget/tweet.dart';
 import 'package:twitter_river/widget/user.dart';
 
 final userByScreenNameProvider = FutureProvider.family<UserByScreenNameResponse, String>((ref, screenName) async {
@@ -86,9 +85,7 @@ class TwitterRiverUserProfile extends ConsumerWidget {
             );
           },
           data: (data) {
-            return Column(
-              children: [UserProfileWidget(user: user), for (final item in data.timelineAddEntries.item) TweetWidget(user: user, tweet: item.tweet)],
-            );
+            return Container();
           },
         ),
       ),

@@ -13,6 +13,7 @@ _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
           ? null
           : TimelineAddEntries.fromJson(
               json['timelineAddEntries'] as Map<String, dynamic>),
+      timelineAddToModule: json['timelineAddToModule'],
       timelineTerminateTimeline: json['timelineTerminateTimeline'],
       timelineShowAlert: json['timelineShowAlert'],
     );
@@ -21,6 +22,7 @@ Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
     <String, dynamic>{
       'type': const InstructionsTypeConverter().toJson(instance.type),
       'timelineAddEntries': instance.timelineAddEntries,
+      'timelineAddToModule': instance.timelineAddToModule,
       'timelineTerminateTimeline': instance.timelineTerminateTimeline,
       'timelineShowAlert': instance.timelineShowAlert,
     };

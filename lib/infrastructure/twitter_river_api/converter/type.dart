@@ -44,7 +44,8 @@ enum InstructionsType {
   timelineReplaceEntry,
   timelineShowAlert,
   timelineClearCache,
-  timelinePinEntry;
+  timelinePinEntry,
+  timelineAddToModule;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);
 }

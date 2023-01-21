@@ -7,8 +7,8 @@ part 'generated/cursor.freezed.dart';
 @freezed
 class ContentSession with _$ContentSession {
   const factory ContentSession({
-    required String name,
     required ContentAPI type,
+    String? args,
   }) = _ContentSession;
 }
 
@@ -20,17 +20,22 @@ class ContentCursor with _$ContentCursor {
   }) = _ContentCursor;
 }
 
-
-/*
+@freezed
+class ItemContentSession with _$ItemContentSession {
+  const factory ItemContentSession({
+    String? args,
+    required ItemsContentAPI type,
+  }) = _ItemContentSession;
+}
 
 @freezed
 class ItemContentCursor with _$ItemContentCursor {
   const factory ItemContentCursor({
     String? value,
-    required Session session,
+    required ItemContentSession session,
   }) = _ItemContentCursor;
 }
-
+/*
 @freezed
 class TweetDetailCursor with _$TweetDetailCursor {
   const factory TweetDetailCursor({

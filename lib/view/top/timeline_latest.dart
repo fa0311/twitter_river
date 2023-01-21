@@ -17,7 +17,7 @@ import 'package:twitter_river/widget/contents.dart';
 
 class TwitterRiverLatestTimeline extends ConsumerWidget {
   const TwitterRiverLatestTimeline({super.key});
-  static const session = ContentSession(name: 'timeline_latest', type: ContentAPI.getHomeLatestTimeline);
+  static const session = ContentSession(type: ContentAPI.getHomeLatestTimeline);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

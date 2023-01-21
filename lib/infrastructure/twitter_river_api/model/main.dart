@@ -14,6 +14,7 @@ class Instruction with _$Instruction {
   const factory Instruction({
     @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
     @JsonKey(name: 'timelineAddEntries') required TimelineAddEntries? timelineAddEntries,
+    @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
     @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
     @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
   }) = _Instruction;
@@ -38,19 +39,8 @@ class TimelineAddEntries with _$TimelineAddEntries {
   TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
   TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
 
-// ==== Legacy
-  List<TimelineTimelineItem> get timelineItem =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineItem)).map((e) => e.content.timelineTimelineItem!).toList();
-
-  List<TimelineTweet> get item =>
-      timelineItem.where((e) => e.itemContent.entryType == ItemType.timelineTweet).map((e) => e.itemContent.timelineTweet!).toList();
-
   List<TimelineTimelineModule> get timelineModule =>
       entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
-
-  List<List<TimelineTweet>> get module => timelineModule
-      .map((e) => e.itemContent.where((e) => e.item.itemContent.entryType == ItemType.timelineTweet).map((e) => e.item.itemContent.timelineTweet!).toList())
-      .toList();
 
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) => _$TimelineAddEntriesFromJson(fromJsonProxy(json));
 }
