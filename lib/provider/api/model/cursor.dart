@@ -9,6 +9,7 @@ class ContentSession with _$ContentSession {
   const factory ContentSession({
     required ContentAPI type,
     String? args,
+    String? args2,
   }) = _ContentSession;
 }
 

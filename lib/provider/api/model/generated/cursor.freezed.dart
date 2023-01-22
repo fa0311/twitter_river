@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ContentSession {
   ContentAPI get type => throw _privateConstructorUsedError;
   String? get args => throw _privateConstructorUsedError;
+  String? get args2 => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ContentSessionCopyWith<ContentSession> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $ContentSessionCopyWith<$Res> {
           ContentSession value, $Res Function(ContentSession) then) =
       _$ContentSessionCopyWithImpl<$Res, ContentSession>;
   @useResult
-  $Res call({ContentAPI type, String? args});
+  $Res call({ContentAPI type, String? args, String? args2});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$ContentSessionCopyWithImpl<$Res, $Val extends ContentSession>
   $Res call({
     Object? type = null,
     Object? args = freezed,
+    Object? args2 = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -57,6 +59,10 @@ class _$ContentSessionCopyWithImpl<$Res, $Val extends ContentSession>
       args: freezed == args
           ? _value.args
           : args // ignore: cast_nullable_to_non_nullable
+              as String?,
+      args2: freezed == args2
+          ? _value.args2
+          : args2 // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -70,7 +76,7 @@ abstract class _$$_ContentSessionCopyWith<$Res>
       __$$_ContentSessionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ContentAPI type, String? args});
+  $Res call({ContentAPI type, String? args, String? args2});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$_ContentSessionCopyWithImpl<$Res>
   $Res call({
     Object? type = null,
     Object? args = freezed,
+    Object? args2 = freezed,
   }) {
     return _then(_$_ContentSession(
       type: null == type
@@ -96,6 +103,10 @@ class __$$_ContentSessionCopyWithImpl<$Res>
           ? _value.args
           : args // ignore: cast_nullable_to_non_nullable
               as String?,
+      args2: freezed == args2
+          ? _value.args2
+          : args2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -103,16 +114,18 @@ class __$$_ContentSessionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ContentSession implements _ContentSession {
-  const _$_ContentSession({required this.type, this.args});
+  const _$_ContentSession({required this.type, this.args, this.args2});
 
   @override
   final ContentAPI type;
   @override
   final String? args;
+  @override
+  final String? args2;
 
   @override
   String toString() {
-    return 'ContentSession(type: $type, args: $args)';
+    return 'ContentSession(type: $type, args: $args, args2: $args2)';
   }
 
   @override
@@ -121,11 +134,12 @@ class _$_ContentSession implements _ContentSession {
         (other.runtimeType == runtimeType &&
             other is _$_ContentSession &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.args, args) || other.args == args));
+            (identical(other.args, args) || other.args == args) &&
+            (identical(other.args2, args2) || other.args2 == args2));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, args);
+  int get hashCode => Object.hash(runtimeType, type, args, args2);
 
   @JsonKey(ignore: true)
   @override
@@ -136,12 +150,16 @@ class _$_ContentSession implements _ContentSession {
 
 abstract class _ContentSession implements ContentSession {
   const factory _ContentSession(
-      {required final ContentAPI type, final String? args}) = _$_ContentSession;
+      {required final ContentAPI type,
+      final String? args,
+      final String? args2}) = _$_ContentSession;
 
   @override
   ContentAPI get type;
   @override
   String? get args;
+  @override
+  String? get args2;
   @override
   @JsonKey(ignore: true)
   _$$_ContentSessionCopyWith<_$_ContentSession> get copyWith =>

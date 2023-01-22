@@ -26,20 +26,18 @@ class TwitterRiverTweetFromFocalTweetId extends ConsumerWidget {
 }
 
 class TwitterRiverTweet extends ConsumerWidget {
-  final Result user;
-  final TweetLegacy tweet;
-  const TwitterRiverTweet({super.key, required this.user, required this.tweet});
+  final TweetResult tweet;
+  const TwitterRiverTweet({super.key, required this.tweet});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final session = ContentSession(type: ContentAPI.tweetDetail, args: tweet.idStr);
-
+    final session = ContentSession(type: ContentAPI.tweetDetail, args: tweet.legacy.idStr);
     final init = ref.watch(contentsInitProvider(session));
-
+    final child = TweetWidget(tweet: tweet);
     return Scaffold(
       appBar: AppBar(),
       body: init.when(
-        loading: () => const Loading(),
+        loading: () => Column(children: [child, const Loading()]),
         error: (e, trace) {
           logger.w(e, e, trace);
           return ScrollWidget(
@@ -49,10 +47,7 @@ class TwitterRiverTweet extends ConsumerWidget {
         },
         data: (_) => RefreshIndicator(
           onRefresh: () => ref.refresh(contentsInitProvider(session).future),
-          child: ContentWidget(
-            session: session,
-            child: TweetWidget(user: user, tweet: tweet),
-          ),
+          child: ContentListViewWidget(session: session),
         ),
       ),
     );

@@ -41,7 +41,7 @@ final itemContentsInitProvider = FutureProvider.family<void, ItemContentSession>
   ref.read(bottomItemContentsProvider(session).notifier).add(contents);
 });
 
-final contentsProxyProvider = FutureProvider.family<void, ItemContentCursor>((ref, cursor) async {
+final itemContentsProxyProvider = FutureProvider.family<void, ItemContentCursor>((ref, cursor) async {
   final data = await () {
     switch (cursor.session.type) {
       case ItemsContentAPI.tweetDetail:

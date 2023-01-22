@@ -1,7 +1,8 @@
 enum ContentAPI {
   getTimeLine,
   getHomeLatestTimeline,
-  tweetDetail;
+  tweetDetail,
+  userTweets;
 }
 
 enum ItemsContentAPI {

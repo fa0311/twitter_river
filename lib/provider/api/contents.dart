@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets.dart';
 
 // Project imports:
 import 'package:twitter_river/provider/api/model/cursor.dart';
@@ -33,7 +34,15 @@ final tweetDetailProvider = FutureProvider.family<TimelineAddEntries, ContentCur
     print("Request API: ${cursor.session.args}");
   }
   final session = await ref.watch(loginSessionProvider.future);
-  return (await session.getTweetDetail(focalTweetId: cursor.session.args!)).timelineAddEntries;
+  return (await session.getTweetDetail(cursor: cursor.value, focalTweetId: cursor.session.args!)).timelineAddEntries;
+});
+
+final userTweetsProvider = FutureProvider.family<UserTweetsResponse, ContentCursor>((ref, cursor) async {
+  if (kDebugMode) {
+    print("Request API: $cursor");
+  }
+  final session = await ref.watch(loginSessionProvider.future);
+  return await session.getUserTweets(cursor: cursor.value, userId: cursor.session.args!);
 });
 
 final contentsInitProvider = FutureProvider.family<void, ContentSession>((ref, session) async {
@@ -45,6 +54,8 @@ final contentsInitProvider = FutureProvider.family<void, ContentSession>((ref, s
         return ref.watch(homeLatestTimelineLatestProvider(ContentCursor(session: session)).future);
       case ContentAPI.tweetDetail:
         return ref.watch(tweetDetailProvider(ContentCursor(session: session)).future);
+      case ContentAPI.userTweets:
+        return ref.watch(userTweetsProvider(ContentCursor(session: session)).future).then((e) => e.timelineAddEntries);
     }
   }();
 
@@ -65,17 +76,19 @@ final contentsProxyProvider = FutureProvider.family<void, ContentCursor>((ref, c
         return ref.watch(homeLatestTimelineLatestProvider(cursor).future);
       case ContentAPI.tweetDetail:
         return ref.watch(tweetDetailProvider(cursor).future);
+      case ContentAPI.userTweets:
+        return ref.watch(userTweetsProvider(cursor).future).then((e) => e.timelineAddEntries);
     }
   }();
 
   final contents = data.contents;
   if (contents.isEmpty) await Future.delayed(const Duration(seconds: 10));
 
-  if (cursor == ref.read(topContentsCursorProvider(cursor.session))) {
+  if (cursor.value == ref.read(topContentsCursorProvider(cursor.session))?.value) {
     final newTopCursor = cursor.copyWith(value: data.topCursor?.value);
     ref.read(topContentsCursorProvider(cursor.session).notifier).state = newTopCursor;
     ref.read(topContentsProvider(cursor.session).notifier).add(contents);
-  } else if (cursor == ref.read(bottomContentsCursorProvider(cursor.session))) {
+  } else if (cursor.value == ref.read(bottomContentsCursorProvider(cursor.session))?.value) {
     final newBottomCursor = cursor.copyWith(value: data.bottomCursor?.value);
     ref.read(bottomContentsCursorProvider(cursor.session).notifier).state = newBottomCursor;
     ref.read(bottomContentsProvider(cursor.session).notifier).add(contents);
@@ -89,6 +102,10 @@ class ContentListNotifier extends StateNotifier<List<Content>> {
   ContentListNotifier() : super([]);
   void add(List<Content> entries) {
     state = [...state, ...entries];
+  }
+
+  void insertFirst(List<Content> entries) {
+    state = [...entries, ...state];
   }
 }
 

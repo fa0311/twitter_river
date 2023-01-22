@@ -151,12 +151,13 @@ class TwitterRiverAPI {
     return ListTimelineResponse.fromJson(response.data);
   }
 
-  Future<TweetDetailResponse> getTweetDetail({required String focalTweetId}) async {
+  Future<TweetDetailResponse> getTweetDetail({String? cursor, required String focalTweetId}) async {
     final response = await dio.get(
       TwitterGraphQL.tweetDetail.path,
       queryParameters: {
         "variables": jsonEncode({
           "focalTweetId": focalTweetId,
+          "cursor": cursor,
           "with_rux_injections": false,
           "includePromotedContent": true,
           "withCommunity": true,
@@ -212,12 +213,13 @@ class TwitterRiverAPI {
     return UserByScreenNameResponse.fromJson(response.data);
   }
 
-  Future<UserTweetsResponse> getUserTweets({required String userId}) async {
+  Future<UserTweetsResponse> getUserTweets({String? cursor, required String userId}) async {
     final response = await dio.get(
       TwitterGraphQL.userTweets.path,
       queryParameters: {
         "variables": jsonEncode({
           "userId": userId,
+          if (cursor != null) "cursor": cursor,
           "count": 40,
           "includePromotedContent": true,
           "withQuickPromoteEligibilityTweetFields": true,

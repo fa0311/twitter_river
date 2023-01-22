@@ -31,10 +31,21 @@ class TimelineAddEntries with _$TimelineAddEntries {
     @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
   }) = _TimelineAddEntries;
 
-  List<Content> get contents => entries.map((e) => e.content).where((e) => e.entryType != EntryType.timelineTimelineCursor).toList();
+  List<Content> get contents => [
+        ...entries
+            .map((e) => e.content)
+            .where((e) => e.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.timelineTimelineItem!.itemContent.entryType != ItemType.timelineTimelineCursor),
+        ...entries.map((e) => e.content).where((e) => e.entryType == EntryType.timelineTimelineModule)
+      ].toList();
 
-  List<TimelineTimelineCursor> get cursor =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!).toList();
+  List<TimelineTimelineCursor> get cursor => [
+        ...entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!),
+        ...entries
+            .where((e) => e.content.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.content.timelineTimelineItem!.itemContent.entryType == ItemType.timelineTimelineCursor)
+            .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
+      ].toList();
 
   TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
   TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
@@ -150,8 +161,7 @@ class TimelineTweet with _$TimelineTweet {
 
   bool get hidden => tweetResults.result?.core.userResults.result == null;
 
-  Result get user => tweetResults.result!.core.userResults.result;
-  TweetLegacy get tweet => tweetResults.result!.legacy;
+  TweetResult get tweet => tweetResults.result!;
 
   factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));
 }
@@ -169,6 +179,7 @@ class TweetResults with _$TweetResults {
 
 @freezed
 class TweetResult with _$TweetResult {
+  const TweetResult._();
   const factory TweetResult({
     @JsonKey(name: 'rest_id') required String restId,
     @JsonKey(name: 'core') required Core core,
@@ -179,6 +190,8 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'legacy') required TweetLegacy legacy,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
+
+  Result get user => core.userResults.result;
 
   factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(json));
 }

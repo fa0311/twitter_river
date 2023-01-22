@@ -8,7 +8,8 @@ enum Typename {
   timelineTimelineCursor,
   timelineTimelineItem,
   timelineTimelineModule,
-  tweetWithVisibilityResults;
+  tweetWithVisibilityResults,
+  tweetTombstone;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);
 }
@@ -104,7 +105,8 @@ class EntryValueConverter extends JsonConverter<dynamic, dynamic> {
 enum ItemType {
   timelineTweet,
   timelineUser,
-  timelineTimelineCursor;
+  timelineTimelineCursor,
+  timelineTombstone;
 
   String toUpperCamelCase() => name[0].toUpperCase() + name.substring(1);
 }

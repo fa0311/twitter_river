@@ -27,7 +27,7 @@ class ItemContentWidget extends ConsumerWidget {
         final itemList = i < 0 ? topItemList : bottomItemList;
         final itemKey = i.abs() - (i < 0 ? 1 : 0);
         final cursor = i < 0 ? ref.read(topContentsCursorProvider(session)) : ref.read(bottomContentsCursorProvider(session));
-        if (cursor != null && itemList.length - 20 < itemKey) ref.read(contentsProxyProvider(cursor).future);
+        if (cursor?.value != null && itemList.length - 20 < itemKey) ref.read(contentsProxyProvider(cursor!).future);
 
         if (itemList.length <= itemKey) {
           if (cursor == null) {
@@ -48,10 +48,21 @@ class ItemContentWidget extends ConsumerWidget {
           if (tweet.hidden) {
             inspect(item);
           } else {
-            return TweetWidget(user: tweet.user, tweet: tweet.tweet);
+            return TweetWidget(tweet: tweet.tweet);
           }
         } else if (item.entryType == EntryType.timelineTimelineModule) {
-          item.timelineTimelineModule!.itemContent;
+          final tweets = item.timelineTimelineModule!.itemContent
+              .where((e) => e.item.itemContent.entryType == ItemType.timelineTweet)
+              .map((e) => e.item.itemContent.timelineTweet!.tweet)
+              .toList();
+
+          return TweetCard(
+            child: Column(
+              children: [
+                for (final tweet in tweets) TweetWidget(tweet: tweet, card: false),
+              ],
+            ),
+          );
         }
         return const HiddenUserWidget();
       },

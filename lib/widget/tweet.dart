@@ -27,9 +27,8 @@ class TweetCard extends ConsumerWidget {
 
 class TweetInkWell extends ConsumerWidget {
   final Widget child;
-  final Result user;
-  final TweetLegacy tweet;
-  const TweetInkWell({super.key, required this.child, required this.user, required this.tweet});
+  final TweetResult tweet;
+  const TweetInkWell({super.key, required this.child, required this.tweet});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,13 +37,13 @@ class TweetInkWell extends ConsumerWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(user: user, tweet: tweet)),
+          MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(tweet: tweet)),
         );
       },
       onLongPress: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(user: user, tweet: tweet)),
+          MaterialPageRoute(builder: (BuildContext context) => TwitterRiverTweet(tweet: tweet)),
         );
       },
       child: child,
@@ -110,12 +109,10 @@ class ItemContentWidget extends ConsumerWidget {
 }
 
 class TweetWidget extends ConsumerWidget {
-  final Result user;
-  final TweetLegacy tweet;
+  final TweetResult tweet;
   final bool card;
   const TweetWidget({
     super.key,
-    required this.user,
     required this.tweet,
     this.card = true,
   });
@@ -123,7 +120,6 @@ class TweetWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final child = TweetInkWell(
-      user: user,
       tweet: tweet,
       child: Padding(
         padding: const EdgeInsets.all(5),
@@ -131,11 +127,11 @@ class TweetWidget extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             UserInkWell(
-              user: user,
+              user: tweet.user,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 child: CachedNetworkImage(
-                  imageUrl: user.legacy.profileImageUrlHttps,
+                  imageUrl: tweet.user.legacy.profileImageUrlHttps,
                   progressIndicatorBuilder: (context, url, progress) => CircleAvatar(backgroundColor: Colors.black.withAlpha(0)),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.fill,
@@ -150,19 +146,19 @@ class TweetWidget extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   UserInkWell(
-                    user: user,
+                    user: tweet.user,
                     child: SizedBox(
                       width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2),
                         child: Text(
-                          user.legacy.name,
+                          tweet.user.legacy.name,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
-                  Text(tweet.fullText),
+                  Text(tweet.legacy.fullText),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -171,7 +167,7 @@ class TweetWidget extends ConsumerWidget {
                         child: Row(
                           children: [
                             const Icon(Icons.comment, size: 16),
-                            Text(tweet.replyCount.toString()),
+                            Text(tweet.legacy.replyCount.toString()),
                           ],
                         ),
                       ),
@@ -179,7 +175,7 @@ class TweetWidget extends ConsumerWidget {
                         child: Row(
                           children: [
                             const Icon(Icons.recycling, size: 16),
-                            Text(tweet.retweetCount.toString()),
+                            Text(tweet.legacy.retweetCount.toString()),
                           ],
                         ),
                       ),
@@ -187,7 +183,7 @@ class TweetWidget extends ConsumerWidget {
                         child: Row(
                           children: [
                             const Icon(Icons.favorite, size: 16),
-                            Text(tweet.favoriteCount.toString()),
+                            Text(tweet.legacy.favoriteCount.toString()),
                           ],
                         ),
                       ),

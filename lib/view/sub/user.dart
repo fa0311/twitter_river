@@ -11,10 +11,13 @@ import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_screen_name.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets.dart';
+import 'package:twitter_river/provider/api/contents.dart';
+import 'package:twitter_river/provider/api/model/cursor.dart';
+import 'package:twitter_river/provider/api/model/enum.dart';
 
 // Project imports:
 import 'package:twitter_river/provider/session.dart';
+import 'package:twitter_river/widget/contents.dart';
 import 'package:twitter_river/widget/user.dart';
 
 final userByScreenNameProvider = FutureProvider.family<UserByScreenNameResponse, String>((ref, screenName) async {
@@ -23,14 +26,6 @@ final userByScreenNameProvider = FutureProvider.family<UserByScreenNameResponse,
   }
   final session = await ref.watch(loginSessionProvider.future);
   return await session.getUserByScreenName(screenName: screenName);
-});
-
-final userTweets = FutureProvider.family<UserTweetsResponse, String>((ref, userId) async {
-  if (kDebugMode) {
-    print("Request API: $userId");
-  }
-  final session = await ref.watch(loginSessionProvider.future);
-  return await session.getUserTweets(userId: userId);
 });
 
 class TwitterRiverUserProfileFromScreenName extends ConsumerWidget {
@@ -64,29 +59,38 @@ class TwitterRiverUserProfileFromScreenName extends ConsumerWidget {
 
 class TwitterRiverUserProfile extends ConsumerWidget {
   final Result user;
+  static const baseSession = ContentSession(type: ContentAPI.userTweets);
 
   const TwitterRiverUserProfile({super.key, required this.user});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final init = ref.watch(userTweets(user.restId));
-
+    final session = baseSession.copyWith(args: user.restId);
+    final init = ref.watch(contentsInitProvider(session));
+    final child = UserProfileWidget(user: user);
     return Scaffold(
       appBar: AppBar(),
-      body: ScrollWidget(
-        onRefresh: () async => {},
-        child: init.when(
-          loading: () => const Loading(),
-          error: (e, trace) {
-            logger.w(e, e, trace);
-            return ScrollWidget(
-              onRefresh: () => ref.refresh(userTweets(user.restId).future),
-              child: Container(),
-            );
+      body: init.when(
+        loading: () => Column(children: [child, const Loading()]),
+        error: (e, trace) {
+          logger.w(e, e, trace);
+          return ScrollWidget(
+            onRefresh: () => ref.refresh(contentsInitProvider(session).future),
+            child: Container(),
+          );
+        },
+        data: (_) => RefreshIndicator(
+          onRefresh: () async {
+            final cursor = ref.read(bottomContentsCursorProvider(session))!;
+            final data = await ref.read(userTweetsProvider(cursor).future).then((e) => e.timelineAddEntries);
+            final contents = data.contents;
+            ref.read(bottomContentsCursorProvider(session).notifier).state = ContentCursor(session: session, value: data.topCursor?.value);
+            ref.read(bottomContentsProvider(session).notifier).insertFirst(contents);
           },
-          data: (data) {
-            return Container();
-          },
+          child: ContentListViewWidget(
+            session: session.copyWith(args: user.restId),
+            child: child,
+          ),
         ),
       ),
     );

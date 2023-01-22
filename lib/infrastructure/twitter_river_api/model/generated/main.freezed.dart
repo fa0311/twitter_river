@@ -2834,7 +2834,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetResult implements _TweetResult {
+class _$_TweetResult extends _TweetResult {
   const _$_TweetResult(
       {@JsonKey(name: 'rest_id')
           required this.restId,
@@ -2851,7 +2851,8 @@ class _$_TweetResult implements _TweetResult {
       @JsonKey(name: 'legacy')
           required this.legacy,
       @JsonKey(name: 'views')
-          required this.views});
+          required this.views})
+      : super._();
 
   factory _$_TweetResult.fromJson(Map<String, dynamic> json) =>
       _$$_TweetResultFromJson(json);
@@ -2932,7 +2933,7 @@ class _$_TweetResult implements _TweetResult {
   }
 }
 
-abstract class _TweetResult implements TweetResult {
+abstract class _TweetResult extends TweetResult {
   const factory _TweetResult(
       {@JsonKey(name: 'rest_id')
           required final String restId,
@@ -2950,6 +2951,7 @@ abstract class _TweetResult implements TweetResult {
           required final TweetLegacy legacy,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
+  const _TweetResult._() : super._();
 
   factory _TweetResult.fromJson(Map<String, dynamic> json) =
       _$_TweetResult.fromJson;
