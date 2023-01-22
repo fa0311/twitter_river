@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'main.dart';
+part of '../main.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -26,6 +26,8 @@ mixin _$Instruction {
   @JsonKey(name: 'timelineAddEntries')
   TimelineAddEntries? get timelineAddEntries =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'timelineAddToModule')
+  dynamic get timelineAddToModule => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTerminateTimeline')
   dynamic get timelineTerminateTimeline => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineShowAlert')
@@ -49,6 +51,8 @@ abstract class $InstructionCopyWith<$Res> {
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -72,6 +76,7 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
   $Res call({
     Object? type = null,
     Object? timelineAddEntries = freezed,
+    Object? timelineAddToModule = freezed,
     Object? timelineTerminateTimeline = freezed,
     Object? timelineShowAlert = freezed,
   }) {
@@ -84,6 +89,10 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
           ? _value.timelineAddEntries
           : timelineAddEntries // ignore: cast_nullable_to_non_nullable
               as TimelineAddEntries?,
+      timelineAddToModule: freezed == timelineAddToModule
+          ? _value.timelineAddToModule
+          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       timelineTerminateTimeline: freezed == timelineTerminateTimeline
           ? _value.timelineTerminateTimeline
           : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
@@ -123,6 +132,8 @@ abstract class _$$_InstructionCopyWith<$Res>
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -145,6 +156,7 @@ class __$$_InstructionCopyWithImpl<$Res>
   $Res call({
     Object? type = null,
     Object? timelineAddEntries = freezed,
+    Object? timelineAddToModule = freezed,
     Object? timelineTerminateTimeline = freezed,
     Object? timelineShowAlert = freezed,
   }) {
@@ -157,6 +169,10 @@ class __$$_InstructionCopyWithImpl<$Res>
           ? _value.timelineAddEntries
           : timelineAddEntries // ignore: cast_nullable_to_non_nullable
               as TimelineAddEntries?,
+      timelineAddToModule: freezed == timelineAddToModule
+          ? _value.timelineAddToModule
+          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       timelineTerminateTimeline: freezed == timelineTerminateTimeline
           ? _value.timelineTerminateTimeline
           : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
@@ -178,6 +194,8 @@ class _$_Instruction implements _Instruction {
           required this.type,
       @JsonKey(name: 'timelineAddEntries')
           required this.timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          required this.timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           required this.timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -194,6 +212,9 @@ class _$_Instruction implements _Instruction {
   @JsonKey(name: 'timelineAddEntries')
   final TimelineAddEntries? timelineAddEntries;
   @override
+  @JsonKey(name: 'timelineAddToModule')
+  final dynamic timelineAddToModule;
+  @override
   @JsonKey(name: 'timelineTerminateTimeline')
   final dynamic timelineTerminateTimeline;
   @override
@@ -202,7 +223,7 @@ class _$_Instruction implements _Instruction {
 
   @override
   String toString() {
-    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
+    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineAddToModule: $timelineAddToModule, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
   }
 
   @override
@@ -213,6 +234,8 @@ class _$_Instruction implements _Instruction {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.timelineAddEntries, timelineAddEntries) ||
                 other.timelineAddEntries == timelineAddEntries) &&
+            const DeepCollectionEquality()
+                .equals(other.timelineAddToModule, timelineAddToModule) &&
             const DeepCollectionEquality().equals(
                 other.timelineTerminateTimeline, timelineTerminateTimeline) &&
             const DeepCollectionEquality()
@@ -225,6 +248,7 @@ class _$_Instruction implements _Instruction {
       runtimeType,
       type,
       timelineAddEntries,
+      const DeepCollectionEquality().hash(timelineAddToModule),
       const DeepCollectionEquality().hash(timelineTerminateTimeline),
       const DeepCollectionEquality().hash(timelineShowAlert));
 
@@ -249,6 +273,8 @@ abstract class _Instruction implements Instruction {
           required final InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           required final TimelineAddEntries? timelineAddEntries,
+      @JsonKey(name: 'timelineAddToModule')
+          required final dynamic timelineAddToModule,
       @JsonKey(name: 'timelineTerminateTimeline')
           required final dynamic timelineTerminateTimeline,
       @JsonKey(name: 'timelineShowAlert')
@@ -264,6 +290,9 @@ abstract class _Instruction implements Instruction {
   @override
   @JsonKey(name: 'timelineAddEntries')
   TimelineAddEntries? get timelineAddEntries;
+  @override
+  @JsonKey(name: 'timelineAddToModule')
+  dynamic get timelineAddToModule;
   @override
   @JsonKey(name: 'timelineTerminateTimeline')
   dynamic get timelineTerminateTimeline;
@@ -2588,8 +2617,6 @@ TweetResult _$TweetResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TweetResult {
-  @JsonKey(name: '__typename')
-  dynamic get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'rest_id')
   String get restId => throw _privateConstructorUsedError;
   @JsonKey(name: 'core')
@@ -2620,9 +2647,7 @@ abstract class $TweetResultCopyWith<$Res> {
       _$TweetResultCopyWithImpl<$Res, TweetResult>;
   @useResult
   $Res call(
-      {@JsonKey(name: '__typename')
-          dynamic typename,
-      @JsonKey(name: 'rest_id')
+      {@JsonKey(name: 'rest_id')
           String restId,
       @JsonKey(name: 'core')
           Core core,
@@ -2656,7 +2681,6 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? typename = freezed,
     Object? restId = null,
     Object? core = null,
     Object? unmentionData = freezed,
@@ -2667,10 +2691,6 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
     Object? views = freezed,
   }) {
     return _then(_value.copyWith(
-      typename: freezed == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
@@ -2732,9 +2752,7 @@ abstract class _$$_TweetResultCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '__typename')
-          dynamic typename,
-      @JsonKey(name: 'rest_id')
+      {@JsonKey(name: 'rest_id')
           String restId,
       @JsonKey(name: 'core')
           Core core,
@@ -2768,7 +2786,6 @@ class __$$_TweetResultCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? typename = freezed,
     Object? restId = null,
     Object? core = null,
     Object? unmentionData = freezed,
@@ -2779,10 +2796,6 @@ class __$$_TweetResultCopyWithImpl<$Res>
     Object? views = freezed,
   }) {
     return _then(_$_TweetResult(
-      typename: freezed == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
@@ -2821,11 +2834,9 @@ class __$$_TweetResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetResult implements _TweetResult {
+class _$_TweetResult extends _TweetResult {
   const _$_TweetResult(
-      {@JsonKey(name: '__typename')
-          required this.typename,
-      @JsonKey(name: 'rest_id')
+      {@JsonKey(name: 'rest_id')
           required this.restId,
       @JsonKey(name: 'core')
           required this.core,
@@ -2840,14 +2851,12 @@ class _$_TweetResult implements _TweetResult {
       @JsonKey(name: 'legacy')
           required this.legacy,
       @JsonKey(name: 'views')
-          required this.views});
+          required this.views})
+      : super._();
 
   factory _$_TweetResult.fromJson(Map<String, dynamic> json) =>
       _$$_TweetResultFromJson(json);
 
-  @override
-  @JsonKey(name: '__typename')
-  final dynamic typename;
   @override
   @JsonKey(name: 'rest_id')
   final String restId;
@@ -2875,7 +2884,7 @@ class _$_TweetResult implements _TweetResult {
 
   @override
   String toString() {
-    return 'TweetResult(typename: $typename, restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
+    return 'TweetResult(restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
   }
 
   @override
@@ -2883,7 +2892,6 @@ class _$_TweetResult implements _TweetResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TweetResult &&
-            const DeepCollectionEquality().equals(other.typename, typename) &&
             (identical(other.restId, restId) || other.restId == restId) &&
             (identical(other.core, core) || other.core == core) &&
             const DeepCollectionEquality()
@@ -2902,7 +2910,6 @@ class _$_TweetResult implements _TweetResult {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(typename),
       restId,
       core,
       const DeepCollectionEquality().hash(unmentionData),
@@ -2926,11 +2933,9 @@ class _$_TweetResult implements _TweetResult {
   }
 }
 
-abstract class _TweetResult implements TweetResult {
+abstract class _TweetResult extends TweetResult {
   const factory _TweetResult(
-      {@JsonKey(name: '__typename')
-          required final dynamic typename,
-      @JsonKey(name: 'rest_id')
+      {@JsonKey(name: 'rest_id')
           required final String restId,
       @JsonKey(name: 'core')
           required final Core core,
@@ -2946,13 +2951,11 @@ abstract class _TweetResult implements TweetResult {
           required final TweetLegacy legacy,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
+  const _TweetResult._() : super._();
 
   factory _TweetResult.fromJson(Map<String, dynamic> json) =
       _$_TweetResult.fromJson;
 
-  @override
-  @JsonKey(name: '__typename')
-  dynamic get typename;
   @override
   @JsonKey(name: 'rest_id')
   String get restId;
@@ -3288,6 +3291,9 @@ Result _$ResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Result {
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'affiliates_highlighted_label')
   dynamic get affiliatesHighlightedLabel => throw _privateConstructorUsedError;
   @JsonKey(name: 'has_graduated_access')
@@ -3308,8 +3314,6 @@ mixin _$Result {
   bool get superFollowedBy => throw _privateConstructorUsedError;
   @JsonKey(name: 'super_following')
   bool get superFollowing => throw _privateConstructorUsedError;
-  @JsonKey(name: '__typename')
-  String get typename => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3322,7 +3326,10 @@ abstract class $ResultCopyWith<$Res> {
       _$ResultCopyWithImpl<$Res, Result>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'affiliates_highlighted_label')
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          Typename typename,
+      @JsonKey(name: 'affiliates_highlighted_label')
           dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           bool hasGraduatedAccess,
@@ -3341,9 +3348,7 @@ abstract class $ResultCopyWith<$Res> {
       @JsonKey(name: 'super_followed_by')
           bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          bool superFollowing,
-      @JsonKey(name: '__typename')
-          String typename});
+          bool superFollowing});
 
   $UserLegacyCopyWith<$Res> get legacy;
 }
@@ -3361,6 +3366,7 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? typename = null,
     Object? affiliatesHighlightedLabel = freezed,
     Object? hasGraduatedAccess = null,
     Object? hasNftAvatar = null,
@@ -3371,9 +3377,12 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
     Object? superFollowEligible = null,
     Object? superFollowedBy = null,
     Object? superFollowing = null,
-    Object? typename = null,
   }) {
     return _then(_value.copyWith(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
       affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
           ? _value.affiliatesHighlightedLabel
           : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
@@ -3414,10 +3423,6 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.superFollowing
           : superFollowing // ignore: cast_nullable_to_non_nullable
               as bool,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 
@@ -3437,7 +3442,10 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'affiliates_highlighted_label')
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          Typename typename,
+      @JsonKey(name: 'affiliates_highlighted_label')
           dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           bool hasGraduatedAccess,
@@ -3456,9 +3464,7 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
       @JsonKey(name: 'super_followed_by')
           bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          bool superFollowing,
-      @JsonKey(name: '__typename')
-          String typename});
+          bool superFollowing});
 
   @override
   $UserLegacyCopyWith<$Res> get legacy;
@@ -3474,6 +3480,7 @@ class __$$_ResultCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? typename = null,
     Object? affiliatesHighlightedLabel = freezed,
     Object? hasGraduatedAccess = null,
     Object? hasNftAvatar = null,
@@ -3484,9 +3491,12 @@ class __$$_ResultCopyWithImpl<$Res>
     Object? superFollowEligible = null,
     Object? superFollowedBy = null,
     Object? superFollowing = null,
-    Object? typename = null,
   }) {
     return _then(_$_Result(
+      typename: null == typename
+          ? _value.typename
+          : typename // ignore: cast_nullable_to_non_nullable
+              as Typename,
       affiliatesHighlightedLabel: freezed == affiliatesHighlightedLabel
           ? _value.affiliatesHighlightedLabel
           : affiliatesHighlightedLabel // ignore: cast_nullable_to_non_nullable
@@ -3527,10 +3537,6 @@ class __$$_ResultCopyWithImpl<$Res>
           ? _value.superFollowing
           : superFollowing // ignore: cast_nullable_to_non_nullable
               as bool,
-      typename: null == typename
-          ? _value.typename
-          : typename // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -3539,7 +3545,10 @@ class __$$_ResultCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Result implements _Result {
   const _$_Result(
-      {@JsonKey(name: 'affiliates_highlighted_label')
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required this.typename,
+      @JsonKey(name: 'affiliates_highlighted_label')
           required this.affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           required this.hasGraduatedAccess,
@@ -3558,13 +3567,15 @@ class _$_Result implements _Result {
       @JsonKey(name: 'super_followed_by')
           required this.superFollowedBy,
       @JsonKey(name: 'super_following')
-          required this.superFollowing,
-      @JsonKey(name: '__typename')
-          required this.typename});
+          required this.superFollowing});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
       _$$_ResultFromJson(json);
 
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  final Typename typename;
   @override
   @JsonKey(name: 'affiliates_highlighted_label')
   final dynamic affiliatesHighlightedLabel;
@@ -3595,13 +3606,10 @@ class _$_Result implements _Result {
   @override
   @JsonKey(name: 'super_following')
   final bool superFollowing;
-  @override
-  @JsonKey(name: '__typename')
-  final String typename;
 
   @override
   String toString() {
-    return 'Result(affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing, typename: $typename)';
+    return 'Result(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing)';
   }
 
   @override
@@ -3609,6 +3617,8 @@ class _$_Result implements _Result {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Result &&
+            (identical(other.typename, typename) ||
+                other.typename == typename) &&
             const DeepCollectionEquality().equals(
                 other.affiliatesHighlightedLabel, affiliatesHighlightedLabel) &&
             (identical(other.hasGraduatedAccess, hasGraduatedAccess) ||
@@ -3625,15 +3635,14 @@ class _$_Result implements _Result {
             (identical(other.superFollowedBy, superFollowedBy) ||
                 other.superFollowedBy == superFollowedBy) &&
             (identical(other.superFollowing, superFollowing) ||
-                other.superFollowing == superFollowing) &&
-            (identical(other.typename, typename) ||
-                other.typename == typename));
+                other.superFollowing == superFollowing));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      typename,
       const DeepCollectionEquality().hash(affiliatesHighlightedLabel),
       hasGraduatedAccess,
       hasNftAvatar,
@@ -3643,8 +3652,7 @@ class _$_Result implements _Result {
       restId,
       superFollowEligible,
       superFollowedBy,
-      superFollowing,
-      typename);
+      superFollowing);
 
   @JsonKey(ignore: true)
   @override
@@ -3662,7 +3670,10 @@ class _$_Result implements _Result {
 
 abstract class _Result implements Result {
   const factory _Result(
-      {@JsonKey(name: 'affiliates_highlighted_label')
+      {@TypenameConverter()
+      @JsonKey(name: '__typename')
+          required final Typename typename,
+      @JsonKey(name: 'affiliates_highlighted_label')
           required final dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           required final bool hasGraduatedAccess,
@@ -3681,12 +3692,14 @@ abstract class _Result implements Result {
       @JsonKey(name: 'super_followed_by')
           required final bool superFollowedBy,
       @JsonKey(name: 'super_following')
-          required final bool superFollowing,
-      @JsonKey(name: '__typename')
-          required final String typename}) = _$_Result;
+          required final bool superFollowing}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
+  @override
+  @TypenameConverter()
+  @JsonKey(name: '__typename')
+  Typename get typename;
   @override
   @JsonKey(name: 'affiliates_highlighted_label')
   dynamic get affiliatesHighlightedLabel;
@@ -3717,9 +3730,6 @@ abstract class _Result implements Result {
   @override
   @JsonKey(name: 'super_following')
   bool get superFollowing;
-  @override
-  @JsonKey(name: '__typename')
-  String get typename;
   @override
   @JsonKey(ignore: true)
   _$$_ResultCopyWith<_$_Result> get copyWith =>
@@ -4437,7 +4447,7 @@ class __$$_UserLegacyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserLegacy implements _UserLegacy {
+class _$_UserLegacy extends _UserLegacy {
   const _$_UserLegacy(
       {@JsonKey(name: 'blocked_by')
           required this.blockedBy,
@@ -4520,7 +4530,8 @@ class _$_UserLegacy implements _UserLegacy {
       @JsonKey(name: 'withheld_in_countries')
           required final List<dynamic> withheldInCountries})
       : _pinnedTweetIdsStr = pinnedTweetIdsStr,
-        _withheldInCountries = withheldInCountries;
+        _withheldInCountries = withheldInCountries,
+        super._();
 
   factory _$_UserLegacy.fromJson(Map<String, dynamic> json) =>
       _$$_UserLegacyFromJson(json);
@@ -4806,7 +4817,7 @@ class _$_UserLegacy implements _UserLegacy {
   }
 }
 
-abstract class _UserLegacy implements UserLegacy {
+abstract class _UserLegacy extends UserLegacy {
   const factory _UserLegacy(
       {@JsonKey(name: 'blocked_by')
           required final bool blockedBy,
@@ -4888,6 +4899,7 @@ abstract class _UserLegacy implements UserLegacy {
           required final bool wantRetweets,
       @JsonKey(name: 'withheld_in_countries')
           required final List<dynamic> withheldInCountries}) = _$_UserLegacy;
+  const _UserLegacy._() : super._();
 
   factory _UserLegacy.fromJson(Map<String, dynamic> json) =
       _$_UserLegacy.fromJson;

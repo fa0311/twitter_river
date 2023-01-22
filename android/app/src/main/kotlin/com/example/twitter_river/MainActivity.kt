@@ -1,4 +1,4 @@
-package com.example.twitter_river
+package com.yuki0311.twitter_river
 
 import io.flutter.embedding.android.FlutterActivity
 

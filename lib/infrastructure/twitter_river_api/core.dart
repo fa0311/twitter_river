@@ -13,6 +13,8 @@ import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dar
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_home.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_list.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_screen_name.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/model/user_tweets.dart';
 
 class TwitterRiverAPI {
   final String? cookiePath;
@@ -40,8 +42,8 @@ class TwitterRiverAPI {
       TwitterGraphQL.homeTimeline.path,
       queryParameters: {
         "variables": jsonEncode({
-          "count": 20,
-          if (cursor != null) "cursor": cursor,
+          "count": 40,
+          "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
           "withCommunity": true,
@@ -79,6 +81,7 @@ class TwitterRiverAPI {
       TwitterGraphQL.homeLatestTimeline.path,
       queryParameters: {
         "variables": jsonEncode({
+          "count": 40,
           "cursor": cursor,
           "includePromotedContent": true,
           "latestControlAvailable": true,
@@ -118,7 +121,7 @@ class TwitterRiverAPI {
         "variables": jsonEncode({
           "listId": listId,
           "count": 20,
-          if (cursor != null) "cursor": cursor,
+          "cursor": cursor,
           "withSuperFollowsUserFields": true,
           "withDownvotePerspective": false,
           "withReactionsMetadata": false,
@@ -148,14 +151,13 @@ class TwitterRiverAPI {
     return ListTimelineResponse.fromJson(response.data);
   }
 
-  Future<TweetDetailResponse> getTweetDetail({required String focalTweetId}) async {
+  Future<TweetDetailResponse> getTweetDetail({String? cursor, required String focalTweetId}) async {
     final response = await dio.get(
       TwitterGraphQL.tweetDetail.path,
       queryParameters: {
         "variables": jsonEncode({
           "focalTweetId": focalTweetId,
-          // "referrer": "home",
-          // "controller_data":"",
+          "cursor": cursor,
           "with_rux_injections": false,
           "includePromotedContent": true,
           "withCommunity": true,
@@ -190,6 +192,66 @@ class TwitterRiverAPI {
       },
     );
     return TweetDetailResponse.fromJson(response.data);
+  }
+
+  Future<UserByScreenNameResponse> getUserByScreenName({required String screenName}) async {
+    final response = await dio.get(
+      TwitterGraphQL.userByScreenName.path,
+      queryParameters: {
+        "variables": jsonEncode({
+          "screen_name": screenName,
+          "withSafetyModeUserFields": true,
+          "withSuperFollowsUserFields": true,
+        }),
+        "features": jsonEncode({
+          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
+          "verified_phone_label_enabled": false,
+          "responsive_web_graphql_timeline_navigation_enabled": true
+        }),
+      },
+    );
+    return UserByScreenNameResponse.fromJson(response.data);
+  }
+
+  Future<UserTweetsResponse> getUserTweets({String? cursor, required String userId}) async {
+    final response = await dio.get(
+      TwitterGraphQL.userTweets.path,
+      queryParameters: {
+        "variables": jsonEncode({
+          "userId": userId,
+          if (cursor != null) "cursor": cursor,
+          "count": 40,
+          "includePromotedContent": true,
+          "withQuickPromoteEligibilityTweetFields": true,
+          "withSuperFollowsUserFields": true,
+          "withDownvotePerspective": false,
+          "withReactionsMetadata": false,
+          "withReactionsPerspective": false,
+          "withSuperFollowsTweetFields": true,
+          "withVoice": true,
+          "withV2Timeline": true
+        }),
+        "features": jsonEncode({
+          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
+          "verified_phone_label_enabled": false,
+          "responsive_web_graphql_timeline_navigation_enabled": true,
+          "view_counts_public_visibility_enabled": true,
+          "longform_notetweets_consumption_enabled": false,
+          "tweetypie_unmention_optimization_enabled": true,
+          "responsive_web_uc_gql_enabled": true,
+          "vibe_api_enabled": true,
+          "responsive_web_edit_tweet_api_enabled": true,
+          "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+          "view_counts_everywhere_api_enabled": true,
+          "standardized_nudges_misinfo": true,
+          "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": false,
+          "interactive_text_enabled": true,
+          "responsive_web_text_conversations_enabled": false,
+          "responsive_web_enhance_cards_enabled": false
+        }),
+      },
+    );
+    return UserTweetsResponse.fromJson(response.data);
   }
 }
 

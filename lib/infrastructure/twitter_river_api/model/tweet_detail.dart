@@ -8,8 +8,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
-part 'tweet_detail.freezed.dart';
-part 'tweet_detail.g.dart';
+part 'generated/tweet_detail.freezed.dart';
+part 'generated/tweet_detail.g.dart';
 
 @freezed
 class TweetDetailResponse with _$TweetDetailResponse {
@@ -21,8 +21,8 @@ class TweetDetailResponse with _$TweetDetailResponse {
   TimelineAddEntries get timelineAddEntries =>
       data.threadedConversation.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
 
-  dynamic get timelineTerminateTimeline =>
-      data.threadedConversation.instructions.firstWhere((e) => e.type == InstructionsType.timelineTerminateTimeline).timelineTerminateTimeline!;
+  dynamic get timelineAddToModule =>
+      data.threadedConversation.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddToModule).timelineAddToModule!;
 
   factory TweetDetailResponse.fromJson(Map<String, dynamic> json) => _$TweetDetailResponseFromJson(json);
 }

@@ -6,8 +6,8 @@ import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.da
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/timeline_home.dart';
 
-part 'timeline_list.freezed.dart';
-part 'timeline_list.g.dart';
+part 'generated/timeline_list.freezed.dart';
+part 'generated/timeline_list.g.dart';
 
 @freezed
 class ListTimelineResponse with _$ListTimelineResponse {

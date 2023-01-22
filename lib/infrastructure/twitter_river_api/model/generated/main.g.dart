@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main.dart';
+part of '../main.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -13,6 +13,7 @@ _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
           ? null
           : TimelineAddEntries.fromJson(
               json['timelineAddEntries'] as Map<String, dynamic>),
+      timelineAddToModule: json['timelineAddToModule'],
       timelineTerminateTimeline: json['timelineTerminateTimeline'],
       timelineShowAlert: json['timelineShowAlert'],
     );
@@ -21,6 +22,7 @@ Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
     <String, dynamic>{
       'type': const InstructionsTypeConverter().toJson(instance.type),
       'timelineAddEntries': instance.timelineAddEntries,
+      'timelineAddToModule': instance.timelineAddToModule,
       'timelineTerminateTimeline': instance.timelineTerminateTimeline,
       'timelineShowAlert': instance.timelineShowAlert,
     };
@@ -206,7 +208,6 @@ Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
 
 _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
     _$_TweetResult(
-      typename: json['__typename'],
       restId: json['rest_id'] as String,
       core: Core.fromJson(json['core'] as Map<String, dynamic>),
       unmentionData: json['unmention_data'],
@@ -219,7 +220,6 @@ _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
     <String, dynamic>{
-      '__typename': instance.typename,
       'rest_id': instance.restId,
       'core': instance.core,
       'unmention_data': instance.unmentionData,
@@ -250,6 +250,8 @@ Map<String, dynamic> _$$_UserResultsToJson(_$_UserResults instance) =>
     };
 
 _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
+      typename:
+          const TypenameConverter().fromJson(json['__typename'] as String),
       affiliatesHighlightedLabel: json['affiliates_highlighted_label'],
       hasGraduatedAccess: json['has_graduated_access'] as bool,
       hasNftAvatar: json['has_nft_avatar'] as bool,
@@ -260,10 +262,10 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       superFollowEligible: json['super_follow_eligible'] as bool,
       superFollowedBy: json['super_followed_by'] as bool,
       superFollowing: json['super_following'] as bool,
-      typename: json['__typename'] as String,
     );
 
 Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
+      '__typename': const TypenameConverter().toJson(instance.typename),
       'affiliates_highlighted_label': instance.affiliatesHighlightedLabel,
       'has_graduated_access': instance.hasGraduatedAccess,
       'has_nft_avatar': instance.hasNftAvatar,
@@ -274,7 +276,6 @@ Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       'super_follow_eligible': instance.superFollowEligible,
       'super_followed_by': instance.superFollowedBy,
       'super_following': instance.superFollowing,
-      '__typename': instance.typename,
     };
 
 _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>

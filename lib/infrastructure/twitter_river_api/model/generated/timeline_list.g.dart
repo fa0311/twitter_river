@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'timeline_list.dart';
+part of '../timeline_list.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

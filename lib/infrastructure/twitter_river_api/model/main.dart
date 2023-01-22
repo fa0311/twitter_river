@@ -5,8 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/safety.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
-part 'main.freezed.dart';
-part 'main.g.dart';
+part 'generated/main.freezed.dart';
+part 'generated/main.g.dart';
 
 // ===== UNION =====
 @freezed
@@ -14,6 +14,7 @@ class Instruction with _$Instruction {
   const factory Instruction({
     @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
     @JsonKey(name: 'timelineAddEntries') required TimelineAddEntries? timelineAddEntries,
+    @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
     @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
     @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
   }) = _Instruction;
@@ -30,24 +31,27 @@ class TimelineAddEntries with _$TimelineAddEntries {
     @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
   }) = _TimelineAddEntries;
 
-  List<TimelineTimelineItem> get timelineItem =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineItem)).map((e) => e.content.timelineTimelineItem!).toList();
+  List<Content> get contents => [
+        ...entries
+            .map((e) => e.content)
+            .where((e) => e.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.timelineTimelineItem!.itemContent.entryType != ItemType.timelineTimelineCursor),
+        ...entries.map((e) => e.content).where((e) => e.entryType == EntryType.timelineTimelineModule)
+      ].toList();
 
-  List<TimelineTweet> get item =>
-      timelineItem.where((e) => e.itemContent.entryType == ItemType.timelineTweet).map((e) => e.itemContent.timelineTweet!).toList();
-
-  List<TimelineTimelineModule> get timelineModule =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
-
-  List<List<TimelineTweet>> get module => timelineModule
-      .map((e) => e.itemContent.where((e) => e.item.itemContent.entryType == ItemType.timelineTweet).map((e) => e.item.itemContent.timelineTweet!).toList())
-      .toList();
-
-  List<TimelineTimelineCursor> get cursor =>
-      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!).toList();
+  List<TimelineTimelineCursor> get cursor => [
+        ...entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!),
+        ...entries
+            .where((e) => e.content.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.content.timelineTimelineItem!.itemContent.entryType == ItemType.timelineTimelineCursor)
+            .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
+      ].toList();
 
   TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
   TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
+
+  List<TimelineTimelineModule> get timelineModule =>
+      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
 
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) => _$TimelineAddEntriesFromJson(fromJsonProxy(json));
 }
@@ -157,8 +161,7 @@ class TimelineTweet with _$TimelineTweet {
 
   bool get hidden => tweetResults.result?.core.userResults.result == null;
 
-  UserLegacy get user => tweetResults.result!.core.userResults.result.legacy;
-  TweetLegacy get tweet => tweetResults.result!.legacy;
+  TweetResult get tweet => tweetResults.result!;
 
   factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));
 }
@@ -176,8 +179,8 @@ class TweetResults with _$TweetResults {
 
 @freezed
 class TweetResult with _$TweetResult {
+  const TweetResult._();
   const factory TweetResult({
-    @JsonKey(name: '__typename') required dynamic typename,
     @JsonKey(name: 'rest_id') required String restId,
     @JsonKey(name: 'core') required Core core,
     @JsonKey(name: 'unmention_data') required dynamic unmentionData,
@@ -188,6 +191,8 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
+  Result get user => core.userResults.result;
+
   factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(json));
 }
 
@@ -197,7 +202,7 @@ class Core with _$Core {
     @JsonKey(name: 'user_results') required UserResults userResults,
   }) = _Core;
 
-  factory Core.fromJson(Map<String, dynamic> json) => _$CoreFromJson(json);
+  factory Core.fromJson(Map<String, dynamic> json) => _$CoreFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -212,6 +217,7 @@ class UserResults with _$UserResults {
 @freezed
 class Result with _$Result {
   const factory Result({
+    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
     @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
     @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
     @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
@@ -222,7 +228,6 @@ class Result with _$Result {
     @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
     @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
     @JsonKey(name: 'super_following') required bool superFollowing,
-    @JsonKey(name: '__typename') required String typename,
   }) = _Result;
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(fromJsonProxy(json));
@@ -230,6 +235,7 @@ class Result with _$Result {
 
 @freezed
 class UserLegacy with _$UserLegacy {
+  const UserLegacy._();
   const factory UserLegacy({
     @JsonKey(name: 'blocked_by') required bool blockedBy,
     @JsonKey(name: 'blocking') required dynamic blocking,
@@ -272,6 +278,8 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'want_retweets') required bool wantRetweets,
     @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
   }) = _UserLegacy;
+
+  String get profileImageUrlHttpsSource => profileImageUrlHttps.replaceAll(RegExp(r'_[a-zA-Z0-9]+?.jpg$'), '.jpg');
 
   factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(fromJsonProxy(json));
 }
