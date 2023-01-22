@@ -10,9 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
+import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/provider/api/model/enum.dart';
-import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/widget/contents.dart';
 
 class TwitterRiverLatestTimeline extends ConsumerWidget {

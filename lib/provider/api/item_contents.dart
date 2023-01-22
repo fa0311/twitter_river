@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 // Project imports:
+import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/tweet_detail.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/provider/api/model/enum.dart';

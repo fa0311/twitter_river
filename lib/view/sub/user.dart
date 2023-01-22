@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
@@ -14,8 +16,6 @@ import 'package:twitter_river/infrastructure/twitter_river_api/model/user_by_scr
 import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/provider/api/model/enum.dart';
-
-// Project imports:
 import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/widget/contents.dart';
 import 'package:twitter_river/widget/user.dart';

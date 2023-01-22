@@ -1,8 +1,8 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 // Project imports:
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 part 'generated/user_tweets.freezed.dart';

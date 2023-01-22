@@ -1,16 +1,17 @@
-// Flutter imports:
+// Dart imports:
 import 'dart:developer';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_listview/infinite_listview.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
 // Project imports:
-import 'package:twitter_river/provider/api/model/cursor.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/provider/api/contents.dart';
+import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/widget/tweet.dart';
 
 class ItemContentWidget extends ConsumerWidget {

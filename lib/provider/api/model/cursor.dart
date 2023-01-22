@@ -1,5 +1,7 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:twitter_river/provider/api/model/enum.dart';
 
 part 'generated/cursor.freezed.dart';
