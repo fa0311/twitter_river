@@ -120,7 +120,7 @@ class TwitterRiverAPI {
       queryParameters: {
         "variables": jsonEncode({
           "listId": listId,
-          "count": 20,
+          "count": 40,
           "cursor": cursor,
           "withSuperFollowsUserFields": true,
           "withDownvotePerspective": false,
@@ -157,6 +157,7 @@ class TwitterRiverAPI {
       queryParameters: {
         "variables": jsonEncode({
           "focalTweetId": focalTweetId,
+          "count": 40,
           "cursor": cursor,
           "with_rux_injections": false,
           "includePromotedContent": true,
@@ -219,7 +220,7 @@ class TwitterRiverAPI {
       queryParameters: {
         "variables": jsonEncode({
           "userId": userId,
-          if (cursor != null) "cursor": cursor,
+          "cursor": cursor,
           "count": 40,
           "includePromotedContent": true,
           "withQuickPromoteEligibilityTweetFields": true,
