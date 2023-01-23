@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_river/ui_core/date.dart';
 import 'package:twitter_river/view/sub/tweet.dart';
 import 'package:twitter_river/view/sub/user.dart';
 
@@ -146,18 +147,35 @@ class TweetWidget extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  UserInkWell(
-                    user: tweet.user,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Text(
-                          tweet.user.legacy.name,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: UserInkWell(
+                          user: tweet.user,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              tweet.user.legacy.name,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: Text(UiCore.of(context).generalDateDifference(tweet.legacy.createdAt)),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   Text(tweet.legacy.fullText),
                   Row(

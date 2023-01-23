@@ -1,5 +1,7 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/date.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/from_json.dart';
 
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/safety.dart';
@@ -12,7 +14,7 @@ part 'generated/main.g.dart';
 @freezed
 class Instruction with _$Instruction {
   const factory Instruction({
-    @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
+    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
     @JsonKey(name: 'timelineAddEntries') required TimelineAddEntries? timelineAddEntries,
     @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
     @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
@@ -27,7 +29,7 @@ class Instruction with _$Instruction {
 class TimelineAddEntries with _$TimelineAddEntries {
   const TimelineAddEntries._();
   const factory TimelineAddEntries({
-    @InstructionsTypeConverter() @JsonKey(name: 'type') required InstructionsType type,
+    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
     @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
   }) = _TimelineAddEntries;
 
@@ -72,7 +74,7 @@ class TimelineAddEntry with _$TimelineAddEntry {
 @freezed
 class Content with _$Content {
   const factory Content({
-    @EntryTypeConverter() @JsonKey(name: 'entryType') required EntryType entryType,
+    @JsonKey(name: 'entryType') @EntryTypeConverter() required EntryType entryType,
     @JsonKey(name: 'timelineTimelineItem') required TimelineTimelineItem? timelineTimelineItem,
     @JsonKey(name: 'timelineTimelineModule') required TimelineTimelineModule? timelineTimelineModule,
     @EntryValueConverter() @JsonKey(name: 'timelineTimelineCursor') required TimelineTimelineCursor? timelineTimelineCursor,
@@ -85,7 +87,7 @@ class Content with _$Content {
 @freezed
 class TimelineTimelineCursor with _$TimelineTimelineCursor {
   const factory TimelineTimelineCursor({
-    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'value') required String value,
     @CursorTypeConverter() @JsonKey(name: 'cursorType') required CursorType cursorType,
   }) = _TimelineTimelineCursor;
@@ -96,7 +98,7 @@ class TimelineTimelineCursor with _$TimelineTimelineCursor {
 @freezed
 class TimelineTimelineItem with _$TimelineTimelineItem {
   const factory TimelineTimelineItem({
-    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'itemContent') required ItemContent itemContent,
   }) = _TimelineTimelineItem;
 
@@ -106,7 +108,7 @@ class TimelineTimelineItem with _$TimelineTimelineItem {
 @freezed
 class TimelineTimelineModule with _$TimelineTimelineModule {
   const factory TimelineTimelineModule({
-    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'items') required List<Items> itemContent,
     @JsonKey(name: 'displayType') required String displayType, // enum
     @JsonKey(name: 'clientEventInfo') required dynamic clientEventInfo,
@@ -140,7 +142,7 @@ class Item with _$Item {
 @freezed
 class ItemContent with _$ItemContent {
   const factory ItemContent({
-    @ItemTypeConverter() @JsonKey(name: 'itemType') required ItemType entryType,
+    @JsonKey(name: 'itemType') @ItemTypeConverter() required ItemType entryType,
     @JsonKey(name: 'timelineTweet') required TimelineTweet? timelineTweet,
     @JsonKey(name: 'timelineTimelineCursor') required TimelineTimelineCursor? timelineTimelineCursor,
   }) = _ItemContent;
@@ -153,7 +155,7 @@ class ItemContent with _$ItemContent {
 class TimelineTweet with _$TimelineTweet {
   const TimelineTweet._();
   const factory TimelineTweet({
-    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'tweet_results') required TweetResults tweetResults,
     @JsonKey(name: 'tweetDisplayType') required String tweetDisplayType, // enum
     // @JsonKey(name: 'hasModeratedReplies') required bool hasModeratedReplies,
@@ -174,7 +176,7 @@ class TweetResults with _$TweetResults {
     @JsonKey(name: 'result') required TweetResult? result,
   }) = _TweetResults;
 
-  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(json));
+  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(printJson(json)));
 }
 
 @freezed
@@ -188,6 +190,7 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
     @JsonKey(name: 'is_translatable', defaultValue: false) required bool isTranslatable,
     @JsonKey(name: 'legacy') required TweetLegacy legacy,
+    @JsonKey(name: 'quick_promote_eligibility') required dynamic quickPromoteEligibility,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
@@ -217,7 +220,7 @@ class UserResults with _$UserResults {
 @freezed
 class Result with _$Result {
   const factory Result({
-    @TypenameConverter() @JsonKey(name: '__typename') required Typename typename,
+    @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
     @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
     @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
@@ -287,13 +290,13 @@ class UserLegacy with _$UserLegacy {
 @freezed
 class TweetLegacy with _$TweetLegacy {
   const factory TweetLegacy({
-    @JsonKey(name: 'created_at') required String createdAt,
+    @JsonKey(name: 'created_at') @DateTimeConverter() required DateTime createdAt,
     @JsonKey(name: 'conversation_id_str') required String conversationIdStr,
     @JsonKey(name: 'display_text_range') required List<int> core,
     @JsonKey(name: 'entities') required dynamic entities,
     @JsonKey(name: 'extended_entities') required dynamic extendedEntities,
     @JsonKey(name: 'favorite_count') required int favoriteCount,
-    @SafetyIntegerConverter() @JsonKey(name: 'favorited') required int favorited,
+    @JsonKey(name: 'favorited') @SafetyIntegerConverter() required int favorited,
     @JsonKey(name: 'full_text') required String fullText,
     @JsonKey(name: 'is_quote_status') required bool isQuoteStatus,
     @JsonKey(name: 'lang') required String lang,

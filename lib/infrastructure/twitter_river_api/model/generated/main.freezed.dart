@@ -20,8 +20,8 @@ Instruction _$InstructionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Instruction {
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   InstructionsType get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineAddEntries')
   TimelineAddEntries? get timelineAddEntries =>
@@ -46,8 +46,8 @@ abstract class $InstructionCopyWith<$Res> {
       _$InstructionCopyWithImpl<$Res, Instruction>;
   @useResult
   $Res call(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
@@ -127,8 +127,8 @@ abstract class _$$_InstructionCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           TimelineAddEntries? timelineAddEntries,
@@ -189,8 +189,8 @@ class __$$_InstructionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Instruction implements _Instruction {
   const _$_Instruction(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           required this.type,
       @JsonKey(name: 'timelineAddEntries')
           required this.timelineAddEntries,
@@ -205,8 +205,8 @@ class _$_Instruction implements _Instruction {
       _$$_InstructionFromJson(json);
 
   @override
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   final InstructionsType type;
   @override
   @JsonKey(name: 'timelineAddEntries')
@@ -268,8 +268,8 @@ class _$_Instruction implements _Instruction {
 
 abstract class _Instruction implements Instruction {
   const factory _Instruction(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           required final InstructionsType type,
       @JsonKey(name: 'timelineAddEntries')
           required final TimelineAddEntries? timelineAddEntries,
@@ -284,8 +284,8 @@ abstract class _Instruction implements Instruction {
       _$_Instruction.fromJson;
 
   @override
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   InstructionsType get type;
   @override
   @JsonKey(name: 'timelineAddEntries')
@@ -311,8 +311,8 @@ TimelineAddEntries _$TimelineAddEntriesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TimelineAddEntries {
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   InstructionsType get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'entries')
   List<TimelineAddEntry> get entries => throw _privateConstructorUsedError;
@@ -330,8 +330,8 @@ abstract class $TimelineAddEntriesCopyWith<$Res> {
       _$TimelineAddEntriesCopyWithImpl<$Res, TimelineAddEntries>;
   @useResult
   $Res call(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           InstructionsType type,
       @JsonKey(name: 'entries')
           List<TimelineAddEntry> entries});
@@ -375,8 +375,8 @@ abstract class _$$_TimelineAddEntriesCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@InstructionsTypeConverter()
-      @JsonKey(name: 'type')
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
           InstructionsType type,
       @JsonKey(name: 'entries')
           List<TimelineAddEntry> entries});
@@ -413,7 +413,7 @@ class __$$_TimelineAddEntriesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineAddEntries extends _TimelineAddEntries {
   const _$_TimelineAddEntries(
-      {@InstructionsTypeConverter() @JsonKey(name: 'type') required this.type,
+      {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
       @JsonKey(name: 'entries') required final List<TimelineAddEntry> entries})
       : _entries = entries,
         super._();
@@ -422,8 +422,8 @@ class _$_TimelineAddEntries extends _TimelineAddEntries {
       _$$_TimelineAddEntriesFromJson(json);
 
   @override
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   final InstructionsType type;
   final List<TimelineAddEntry> _entries;
   @override
@@ -470,8 +470,8 @@ class _$_TimelineAddEntries extends _TimelineAddEntries {
 
 abstract class _TimelineAddEntries extends TimelineAddEntries {
   const factory _TimelineAddEntries(
-          {@InstructionsTypeConverter()
-          @JsonKey(name: 'type')
+          {@JsonKey(name: 'type')
+          @InstructionsTypeConverter()
               required final InstructionsType type,
           @JsonKey(name: 'entries')
               required final List<TimelineAddEntry> entries}) =
@@ -482,8 +482,8 @@ abstract class _TimelineAddEntries extends TimelineAddEntries {
       _$_TimelineAddEntries.fromJson;
 
   @override
-  @InstructionsTypeConverter()
   @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
   InstructionsType get type;
   @override
   @JsonKey(name: 'entries')
@@ -703,8 +703,8 @@ Content _$ContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Content {
-  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
+  @EntryTypeConverter()
   EntryType get entryType => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTimelineItem')
   TimelineTimelineItem? get timelineTimelineItem =>
@@ -728,8 +728,8 @@ abstract class $ContentCopyWith<$Res> {
       _$ContentCopyWithImpl<$Res, Content>;
   @useResult
   $Res call(
-      {@EntryTypeConverter()
-      @JsonKey(name: 'entryType')
+      {@JsonKey(name: 'entryType')
+      @EntryTypeConverter()
           EntryType entryType,
       @JsonKey(name: 'timelineTimelineItem')
           TimelineTimelineItem? timelineTimelineItem,
@@ -830,8 +830,8 @@ abstract class _$$_ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@EntryTypeConverter()
-      @JsonKey(name: 'entryType')
+      {@JsonKey(name: 'entryType')
+      @EntryTypeConverter()
           EntryType entryType,
       @JsonKey(name: 'timelineTimelineItem')
           TimelineTimelineItem? timelineTimelineItem,
@@ -889,8 +889,8 @@ class __$$_ContentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Content implements _Content {
   const _$_Content(
-      {@EntryTypeConverter()
-      @JsonKey(name: 'entryType')
+      {@JsonKey(name: 'entryType')
+      @EntryTypeConverter()
           required this.entryType,
       @JsonKey(name: 'timelineTimelineItem')
           required this.timelineTimelineItem,
@@ -904,8 +904,8 @@ class _$_Content implements _Content {
       _$$_ContentFromJson(json);
 
   @override
-  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
+  @EntryTypeConverter()
   final EntryType entryType;
   @override
   @JsonKey(name: 'timelineTimelineItem')
@@ -959,8 +959,8 @@ class _$_Content implements _Content {
 
 abstract class _Content implements Content {
   const factory _Content(
-          {@EntryTypeConverter()
-          @JsonKey(name: 'entryType')
+          {@JsonKey(name: 'entryType')
+          @EntryTypeConverter()
               required final EntryType entryType,
           @JsonKey(name: 'timelineTimelineItem')
               required final TimelineTimelineItem? timelineTimelineItem,
@@ -974,8 +974,8 @@ abstract class _Content implements Content {
   factory _Content.fromJson(Map<String, dynamic> json) = _$_Content.fromJson;
 
   @override
-  @EntryTypeConverter()
   @JsonKey(name: 'entryType')
+  @EntryTypeConverter()
   EntryType get entryType;
   @override
   @JsonKey(name: 'timelineTimelineItem')
@@ -1000,8 +1000,8 @@ TimelineTimelineCursor _$TimelineTimelineCursorFromJson(
 
 /// @nodoc
 mixin _$TimelineTimelineCursor {
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'value')
   String get value => throw _privateConstructorUsedError;
@@ -1022,8 +1022,8 @@ abstract class $TimelineTimelineCursorCopyWith<$Res> {
       _$TimelineTimelineCursorCopyWithImpl<$Res, TimelineTimelineCursor>;
   @useResult
   $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'value')
           String value,
@@ -1076,8 +1076,8 @@ abstract class _$$_TimelineTimelineCursorCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'value')
           String value,
@@ -1123,8 +1123,8 @@ class __$$_TimelineTimelineCursorCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineTimelineCursor implements _TimelineTimelineCursor {
   const _$_TimelineTimelineCursor(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required this.typename,
       @JsonKey(name: 'value')
           required this.value,
@@ -1136,8 +1136,8 @@ class _$_TimelineTimelineCursor implements _TimelineTimelineCursor {
       _$$_TimelineTimelineCursorFromJson(json);
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   final Typename typename;
   @override
   @JsonKey(name: 'value')
@@ -1185,8 +1185,8 @@ class _$_TimelineTimelineCursor implements _TimelineTimelineCursor {
 
 abstract class _TimelineTimelineCursor implements TimelineTimelineCursor {
   const factory _TimelineTimelineCursor(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'value')
           required final String value,
@@ -1198,8 +1198,8 @@ abstract class _TimelineTimelineCursor implements TimelineTimelineCursor {
       _$_TimelineTimelineCursor.fromJson;
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename;
   @override
   @JsonKey(name: 'value')
@@ -1220,8 +1220,8 @@ TimelineTimelineItem _$TimelineTimelineItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TimelineTimelineItem {
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemContent')
   ItemContent get itemContent => throw _privateConstructorUsedError;
@@ -1239,7 +1239,7 @@ abstract class $TimelineTimelineItemCopyWith<$Res> {
       _$TimelineTimelineItemCopyWithImpl<$Res, TimelineTimelineItem>;
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'itemContent') ItemContent itemContent});
 
   $ItemContentCopyWith<$Res> get itemContent;
@@ -1292,7 +1292,7 @@ abstract class _$$_TimelineTimelineItemCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'itemContent') ItemContent itemContent});
 
   @override
@@ -1330,15 +1330,15 @@ class __$$_TimelineTimelineItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineTimelineItem implements _TimelineTimelineItem {
   const _$_TimelineTimelineItem(
-      {@TypenameConverter() @JsonKey(name: '__typename') required this.typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() required this.typename,
       @JsonKey(name: 'itemContent') required this.itemContent});
 
   factory _$_TimelineTimelineItem.fromJson(Map<String, dynamic> json) =>
       _$$_TimelineTimelineItemFromJson(json);
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   final Typename typename;
   @override
   @JsonKey(name: 'itemContent')
@@ -1381,8 +1381,8 @@ class _$_TimelineTimelineItem implements _TimelineTimelineItem {
 
 abstract class _TimelineTimelineItem implements TimelineTimelineItem {
   const factory _TimelineTimelineItem(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'itemContent')
           required final ItemContent itemContent}) = _$_TimelineTimelineItem;
@@ -1391,8 +1391,8 @@ abstract class _TimelineTimelineItem implements TimelineTimelineItem {
       _$_TimelineTimelineItem.fromJson;
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename;
   @override
   @JsonKey(name: 'itemContent')
@@ -1410,8 +1410,8 @@ TimelineTimelineModule _$TimelineTimelineModuleFromJson(
 
 /// @nodoc
 mixin _$TimelineTimelineModule {
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'items')
   List<Items> get itemContent => throw _privateConstructorUsedError;
@@ -1433,7 +1433,7 @@ abstract class $TimelineTimelineModuleCopyWith<$Res> {
       _$TimelineTimelineModuleCopyWithImpl<$Res, TimelineTimelineModule>;
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'items') List<Items> itemContent,
       @JsonKey(name: 'displayType') String displayType,
       @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo});
@@ -1488,7 +1488,7 @@ abstract class _$$_TimelineTimelineModuleCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'items') List<Items> itemContent,
       @JsonKey(name: 'displayType') String displayType,
       @JsonKey(name: 'clientEventInfo') dynamic clientEventInfo});
@@ -1536,7 +1536,7 @@ class __$$_TimelineTimelineModuleCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineTimelineModule implements _TimelineTimelineModule {
   const _$_TimelineTimelineModule(
-      {@TypenameConverter() @JsonKey(name: '__typename') required this.typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() required this.typename,
       @JsonKey(name: 'items') required final List<Items> itemContent,
       @JsonKey(name: 'displayType') required this.displayType,
       @JsonKey(name: 'clientEventInfo') required this.clientEventInfo})
@@ -1546,8 +1546,8 @@ class _$_TimelineTimelineModule implements _TimelineTimelineModule {
       _$$_TimelineTimelineModuleFromJson(json);
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   final Typename typename;
   final List<Items> _itemContent;
   @override
@@ -1612,8 +1612,8 @@ class _$_TimelineTimelineModule implements _TimelineTimelineModule {
 
 abstract class _TimelineTimelineModule implements TimelineTimelineModule {
   const factory _TimelineTimelineModule(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'items')
           required final List<Items> itemContent,
@@ -1626,8 +1626,8 @@ abstract class _TimelineTimelineModule implements TimelineTimelineModule {
       _$_TimelineTimelineModule.fromJson;
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename;
   @override
   @JsonKey(name: 'items')
@@ -1997,8 +1997,8 @@ ItemContent _$ItemContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ItemContent {
-  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
+  @ItemTypeConverter()
   ItemType get entryType => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTweet')
   TimelineTweet? get timelineTweet => throw _privateConstructorUsedError;
@@ -2019,8 +2019,8 @@ abstract class $ItemContentCopyWith<$Res> {
       _$ItemContentCopyWithImpl<$Res, ItemContent>;
   @useResult
   $Res call(
-      {@ItemTypeConverter()
-      @JsonKey(name: 'itemType')
+      {@JsonKey(name: 'itemType')
+      @ItemTypeConverter()
           ItemType entryType,
       @JsonKey(name: 'timelineTweet')
           TimelineTweet? timelineTweet,
@@ -2099,8 +2099,8 @@ abstract class _$$_ItemContentCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@ItemTypeConverter()
-      @JsonKey(name: 'itemType')
+      {@JsonKey(name: 'itemType')
+      @ItemTypeConverter()
           ItemType entryType,
       @JsonKey(name: 'timelineTweet')
           TimelineTweet? timelineTweet,
@@ -2149,8 +2149,8 @@ class __$$_ItemContentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ItemContent implements _ItemContent {
   const _$_ItemContent(
-      {@ItemTypeConverter()
-      @JsonKey(name: 'itemType')
+      {@JsonKey(name: 'itemType')
+      @ItemTypeConverter()
           required this.entryType,
       @JsonKey(name: 'timelineTweet')
           required this.timelineTweet,
@@ -2161,8 +2161,8 @@ class _$_ItemContent implements _ItemContent {
       _$$_ItemContentFromJson(json);
 
   @override
-  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
+  @ItemTypeConverter()
   final ItemType entryType;
   @override
   @JsonKey(name: 'timelineTweet')
@@ -2210,8 +2210,8 @@ class _$_ItemContent implements _ItemContent {
 
 abstract class _ItemContent implements ItemContent {
   const factory _ItemContent(
-          {@ItemTypeConverter()
-          @JsonKey(name: 'itemType')
+          {@JsonKey(name: 'itemType')
+          @ItemTypeConverter()
               required final ItemType entryType,
           @JsonKey(name: 'timelineTweet')
               required final TimelineTweet? timelineTweet,
@@ -2223,8 +2223,8 @@ abstract class _ItemContent implements ItemContent {
       _$_ItemContent.fromJson;
 
   @override
-  @ItemTypeConverter()
   @JsonKey(name: 'itemType')
+  @ItemTypeConverter()
   ItemType get entryType;
   @override
   @JsonKey(name: 'timelineTweet')
@@ -2244,8 +2244,8 @@ TimelineTweet _$TimelineTweetFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TimelineTweet {
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweet_results')
   TweetResults get tweetResults => throw _privateConstructorUsedError;
@@ -2265,7 +2265,7 @@ abstract class $TimelineTweetCopyWith<$Res> {
       _$TimelineTweetCopyWithImpl<$Res, TimelineTweet>;
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'tweet_results') TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
 
@@ -2323,7 +2323,7 @@ abstract class _$$_TimelineTweetCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@TypenameConverter() @JsonKey(name: '__typename') Typename typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
       @JsonKey(name: 'tweet_results') TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
 
@@ -2367,7 +2367,7 @@ class __$$_TimelineTweetCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineTweet extends _TimelineTweet {
   const _$_TimelineTweet(
-      {@TypenameConverter() @JsonKey(name: '__typename') required this.typename,
+      {@JsonKey(name: '__typename') @TypenameConverter() required this.typename,
       @JsonKey(name: 'tweet_results') required this.tweetResults,
       @JsonKey(name: 'tweetDisplayType') required this.tweetDisplayType})
       : super._();
@@ -2376,8 +2376,8 @@ class _$_TimelineTweet extends _TimelineTweet {
       _$$_TimelineTweetFromJson(json);
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   final Typename typename;
   @override
   @JsonKey(name: 'tweet_results')
@@ -2425,8 +2425,8 @@ class _$_TimelineTweet extends _TimelineTweet {
 
 abstract class _TimelineTweet extends TimelineTweet {
   const factory _TimelineTweet(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'tweet_results')
           required final TweetResults tweetResults,
@@ -2438,8 +2438,8 @@ abstract class _TimelineTweet extends TimelineTweet {
       _$_TimelineTweet.fromJson;
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename;
   @override
   @JsonKey(name: 'tweet_results')
@@ -2631,6 +2631,8 @@ mixin _$TweetResult {
   bool get isTranslatable => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quick_promote_eligibility')
+  dynamic get quickPromoteEligibility => throw _privateConstructorUsedError;
   @JsonKey(name: 'views')
   dynamic get views => throw _privateConstructorUsedError;
 
@@ -2661,6 +2663,8 @@ abstract class $TweetResultCopyWith<$Res> {
           bool isTranslatable,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
+      @JsonKey(name: 'quick_promote_eligibility')
+          dynamic quickPromoteEligibility,
       @JsonKey(name: 'views')
           dynamic views});
 
@@ -2688,6 +2692,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
     Object? editPerspective = freezed,
     Object? isTranslatable = null,
     Object? legacy = null,
+    Object? quickPromoteEligibility = freezed,
     Object? views = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2719,6 +2724,10 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
               as TweetLegacy,
+      quickPromoteEligibility: freezed == quickPromoteEligibility
+          ? _value.quickPromoteEligibility
+          : quickPromoteEligibility // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -2766,6 +2775,8 @@ abstract class _$$_TweetResultCopyWith<$Res>
           bool isTranslatable,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
+      @JsonKey(name: 'quick_promote_eligibility')
+          dynamic quickPromoteEligibility,
       @JsonKey(name: 'views')
           dynamic views});
 
@@ -2793,6 +2804,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
     Object? editPerspective = freezed,
     Object? isTranslatable = null,
     Object? legacy = null,
+    Object? quickPromoteEligibility = freezed,
     Object? views = freezed,
   }) {
     return _then(_$_TweetResult(
@@ -2824,6 +2836,10 @@ class __$$_TweetResultCopyWithImpl<$Res>
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
               as TweetLegacy,
+      quickPromoteEligibility: freezed == quickPromoteEligibility
+          ? _value.quickPromoteEligibility
+          : quickPromoteEligibility // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -2850,6 +2866,8 @@ class _$_TweetResult extends _TweetResult {
           required this.isTranslatable,
       @JsonKey(name: 'legacy')
           required this.legacy,
+      @JsonKey(name: 'quick_promote_eligibility')
+          required this.quickPromoteEligibility,
       @JsonKey(name: 'views')
           required this.views})
       : super._();
@@ -2879,12 +2897,15 @@ class _$_TweetResult extends _TweetResult {
   @JsonKey(name: 'legacy')
   final TweetLegacy legacy;
   @override
+  @JsonKey(name: 'quick_promote_eligibility')
+  final dynamic quickPromoteEligibility;
+  @override
   @JsonKey(name: 'views')
   final dynamic views;
 
   @override
   String toString() {
-    return 'TweetResult(restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, views: $views)';
+    return 'TweetResult(restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, quickPromoteEligibility: $quickPromoteEligibility, views: $views)';
   }
 
   @override
@@ -2903,6 +2924,8 @@ class _$_TweetResult extends _TweetResult {
             (identical(other.isTranslatable, isTranslatable) ||
                 other.isTranslatable == isTranslatable) &&
             (identical(other.legacy, legacy) || other.legacy == legacy) &&
+            const DeepCollectionEquality().equals(
+                other.quickPromoteEligibility, quickPromoteEligibility) &&
             const DeepCollectionEquality().equals(other.views, views));
   }
 
@@ -2917,6 +2940,7 @@ class _$_TweetResult extends _TweetResult {
       const DeepCollectionEquality().hash(editPerspective),
       isTranslatable,
       legacy,
+      const DeepCollectionEquality().hash(quickPromoteEligibility),
       const DeepCollectionEquality().hash(views));
 
   @JsonKey(ignore: true)
@@ -2949,6 +2973,8 @@ abstract class _TweetResult extends TweetResult {
           required final bool isTranslatable,
       @JsonKey(name: 'legacy')
           required final TweetLegacy legacy,
+      @JsonKey(name: 'quick_promote_eligibility')
+          required final dynamic quickPromoteEligibility,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
   const _TweetResult._() : super._();
@@ -2977,6 +3003,9 @@ abstract class _TweetResult extends TweetResult {
   @override
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy;
+  @override
+  @JsonKey(name: 'quick_promote_eligibility')
+  dynamic get quickPromoteEligibility;
   @override
   @JsonKey(name: 'views')
   dynamic get views;
@@ -3291,8 +3320,8 @@ Result _$ResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Result {
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'affiliates_highlighted_label')
   dynamic get affiliatesHighlightedLabel => throw _privateConstructorUsedError;
@@ -3326,8 +3355,8 @@ abstract class $ResultCopyWith<$Res> {
       _$ResultCopyWithImpl<$Res, Result>;
   @useResult
   $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'affiliates_highlighted_label')
           dynamic affiliatesHighlightedLabel,
@@ -3442,8 +3471,8 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'affiliates_highlighted_label')
           dynamic affiliatesHighlightedLabel,
@@ -3545,8 +3574,8 @@ class __$$_ResultCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Result implements _Result {
   const _$_Result(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required this.typename,
       @JsonKey(name: 'affiliates_highlighted_label')
           required this.affiliatesHighlightedLabel,
@@ -3573,8 +3602,8 @@ class _$_Result implements _Result {
       _$$_ResultFromJson(json);
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   final Typename typename;
   @override
   @JsonKey(name: 'affiliates_highlighted_label')
@@ -3670,8 +3699,8 @@ class _$_Result implements _Result {
 
 abstract class _Result implements Result {
   const factory _Result(
-      {@TypenameConverter()
-      @JsonKey(name: '__typename')
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'affiliates_highlighted_label')
           required final dynamic affiliatesHighlightedLabel,
@@ -3697,8 +3726,8 @@ abstract class _Result implements Result {
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
   @override
-  @TypenameConverter()
   @JsonKey(name: '__typename')
+  @TypenameConverter()
   Typename get typename;
   @override
   @JsonKey(name: 'affiliates_highlighted_label')
@@ -5037,7 +5066,8 @@ TweetLegacy _$TweetLegacyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetLegacy {
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
+  @DateTimeConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'conversation_id_str')
   String get conversationIdStr => throw _privateConstructorUsedError;
   @JsonKey(name: 'display_text_range')
@@ -5048,8 +5078,8 @@ mixin _$TweetLegacy {
   dynamic get extendedEntities => throw _privateConstructorUsedError;
   @JsonKey(name: 'favorite_count')
   int get favoriteCount => throw _privateConstructorUsedError;
-  @SafetyIntegerConverter()
   @JsonKey(name: 'favorited')
+  @SafetyIntegerConverter()
   int get favorited => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_text')
   String get fullText => throw _privateConstructorUsedError;
@@ -5090,7 +5120,8 @@ abstract class $TweetLegacyCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'created_at')
-          String createdAt,
+      @DateTimeConverter()
+          DateTime createdAt,
       @JsonKey(name: 'conversation_id_str')
           String conversationIdStr,
       @JsonKey(name: 'display_text_range')
@@ -5101,8 +5132,8 @@ abstract class $TweetLegacyCopyWith<$Res> {
           dynamic extendedEntities,
       @JsonKey(name: 'favorite_count')
           int favoriteCount,
-      @SafetyIntegerConverter()
       @JsonKey(name: 'favorited')
+      @SafetyIntegerConverter()
           int favorited,
       @JsonKey(name: 'full_text')
           String fullText,
@@ -5167,7 +5198,7 @@ class _$TweetLegacyCopyWithImpl<$Res, $Val extends TweetLegacy>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       conversationIdStr: null == conversationIdStr
           ? _value.conversationIdStr
           : conversationIdStr // ignore: cast_nullable_to_non_nullable
@@ -5254,7 +5285,8 @@ abstract class _$$_TweetLegacyCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'created_at')
-          String createdAt,
+      @DateTimeConverter()
+          DateTime createdAt,
       @JsonKey(name: 'conversation_id_str')
           String conversationIdStr,
       @JsonKey(name: 'display_text_range')
@@ -5265,8 +5297,8 @@ abstract class _$$_TweetLegacyCopyWith<$Res>
           dynamic extendedEntities,
       @JsonKey(name: 'favorite_count')
           int favoriteCount,
-      @SafetyIntegerConverter()
       @JsonKey(name: 'favorited')
+      @SafetyIntegerConverter()
           int favorited,
       @JsonKey(name: 'full_text')
           String fullText,
@@ -5329,7 +5361,7 @@ class __$$_TweetLegacyCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       conversationIdStr: null == conversationIdStr
           ? _value.conversationIdStr
           : conversationIdStr // ignore: cast_nullable_to_non_nullable
@@ -5411,6 +5443,7 @@ class __$$_TweetLegacyCopyWithImpl<$Res>
 class _$_TweetLegacy implements _TweetLegacy {
   const _$_TweetLegacy(
       {@JsonKey(name: 'created_at')
+      @DateTimeConverter()
           required this.createdAt,
       @JsonKey(name: 'conversation_id_str')
           required this.conversationIdStr,
@@ -5422,8 +5455,8 @@ class _$_TweetLegacy implements _TweetLegacy {
           required this.extendedEntities,
       @JsonKey(name: 'favorite_count')
           required this.favoriteCount,
-      @SafetyIntegerConverter()
       @JsonKey(name: 'favorited')
+      @SafetyIntegerConverter()
           required this.favorited,
       @JsonKey(name: 'full_text')
           required this.fullText,
@@ -5456,7 +5489,8 @@ class _$_TweetLegacy implements _TweetLegacy {
 
   @override
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  @DateTimeConverter()
+  final DateTime createdAt;
   @override
   @JsonKey(name: 'conversation_id_str')
   final String conversationIdStr;
@@ -5479,8 +5513,8 @@ class _$_TweetLegacy implements _TweetLegacy {
   @JsonKey(name: 'favorite_count')
   final int favoriteCount;
   @override
-  @SafetyIntegerConverter()
   @JsonKey(name: 'favorited')
+  @SafetyIntegerConverter()
   final int favorited;
   @override
   @JsonKey(name: 'full_text')
@@ -5608,7 +5642,8 @@ class _$_TweetLegacy implements _TweetLegacy {
 abstract class _TweetLegacy implements TweetLegacy {
   const factory _TweetLegacy(
       {@JsonKey(name: 'created_at')
-          required final String createdAt,
+      @DateTimeConverter()
+          required final DateTime createdAt,
       @JsonKey(name: 'conversation_id_str')
           required final String conversationIdStr,
       @JsonKey(name: 'display_text_range')
@@ -5619,8 +5654,8 @@ abstract class _TweetLegacy implements TweetLegacy {
           required final dynamic extendedEntities,
       @JsonKey(name: 'favorite_count')
           required final int favoriteCount,
-      @SafetyIntegerConverter()
       @JsonKey(name: 'favorited')
+      @SafetyIntegerConverter()
           required final int favorited,
       @JsonKey(name: 'full_text')
           required final String fullText,
@@ -5652,7 +5687,8 @@ abstract class _TweetLegacy implements TweetLegacy {
 
   @override
   @JsonKey(name: 'created_at')
-  String get createdAt;
+  @DateTimeConverter()
+  DateTime get createdAt;
   @override
   @JsonKey(name: 'conversation_id_str')
   String get conversationIdStr;
@@ -5669,8 +5705,8 @@ abstract class _TweetLegacy implements TweetLegacy {
   @JsonKey(name: 'favorite_count')
   int get favoriteCount;
   @override
-  @SafetyIntegerConverter()
   @JsonKey(name: 'favorited')
+  @SafetyIntegerConverter()
   int get favorited;
   @override
   @JsonKey(name: 'full_text')

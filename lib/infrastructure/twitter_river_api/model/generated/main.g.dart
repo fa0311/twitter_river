@@ -215,6 +215,7 @@ _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
       editPerspective: json['edit_perspective'],
       isTranslatable: json['is_translatable'] as bool? ?? false,
       legacy: TweetLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
+      quickPromoteEligibility: json['quick_promote_eligibility'],
       views: json['views'],
     );
 
@@ -227,6 +228,7 @@ Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
       'edit_perspective': instance.editPerspective,
       'is_translatable': instance.isTranslatable,
       'legacy': instance.legacy,
+      'quick_promote_eligibility': instance.quickPromoteEligibility,
       'views': instance.views,
     };
 
@@ -370,7 +372,8 @@ Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
 
 _$_TweetLegacy _$$_TweetLegacyFromJson(Map<String, dynamic> json) =>
     _$_TweetLegacy(
-      createdAt: json['created_at'] as String,
+      createdAt:
+          const DateTimeConverter().fromJson(json['created_at'] as String),
       conversationIdStr: json['conversation_id_str'] as String,
       core: (json['display_text_range'] as List<dynamic>)
           .map((e) => e as int)
@@ -397,7 +400,7 @@ _$_TweetLegacy _$$_TweetLegacyFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_TweetLegacyToJson(_$_TweetLegacy instance) =>
     <String, dynamic>{
-      'created_at': instance.createdAt,
+      'created_at': const DateTimeConverter().toJson(instance.createdAt),
       'conversation_id_str': instance.conversationIdStr,
       'display_text_range': instance.core,
       'entities': instance.entities,

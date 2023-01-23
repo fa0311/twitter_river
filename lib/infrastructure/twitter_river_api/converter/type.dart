@@ -29,16 +29,6 @@ class TypenameConverter extends JsonConverter<Typename, String> {
   }
 }
 
-Map<String, dynamic> fromJsonProxy(Map<String, dynamic> json) {
-  if (json['__typename'] == null) return json;
-  switch (Typename.values.firstWhere((e) => e.toUpperCamelCase() == json['__typename'])) {
-    case Typename.tweetWithVisibilityResults:
-      return json['tweet'];
-    default:
-      return json;
-  }
-}
-
 enum InstructionsType {
   timelineAddEntries,
   timelineTerminateTimeline,
