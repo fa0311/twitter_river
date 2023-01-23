@@ -11,7 +11,43 @@
     "close": "close",
     "setting": "setting",
     "help": "help",
+    "@____________________DATE____________________": {},
+    "dateFormat1": "{inMonth}m{inDays}d",
+    "dateFormat2": "{inDays}d{inHours}h",
+    "dateFormat3": "{inHours}h{inMinutes}m",
+    "dateFormat4": "{inMinutes}m",
+    "dateFormat5": "{inSeconds}s",
     "@____________________HELP____________________": {},
     "license": "license",
-    "licenseDetails": "View licence"
+    "licenseDetails": "View licence",
+    "@____________________PLACEHOLDER____________________": {},
+    "@__PLACEHOLDER_DATE__": {},
+    "@dateFormat1": {
+        "placeholders": {
+            "inMonth": {},
+            "inDays": {}
+        }
+    },
+    "@dateFormat2": {
+        "placeholders": {
+            "inDays": {},
+            "inHours": {}
+        }
+    },
+    "@dateFormat3": {
+        "placeholders": {
+            "inHours": {},
+            "inMinutes": {}
+        }
+    },
+    "@dateFormat4": {
+        "placeholders": {
+            "inMinutes": {}
+        }
+    },
+    "@dateFormat5": {
+        "placeholders": {
+            "inSeconds": {}
+        }
+    }
 }

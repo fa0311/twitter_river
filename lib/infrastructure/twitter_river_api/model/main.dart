@@ -1,9 +1,9 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/date.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/from_json.dart';
 
 // Project imports:
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/date.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/from_json.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/safety.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 
