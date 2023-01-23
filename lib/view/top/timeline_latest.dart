@@ -15,9 +15,9 @@ import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/provider/api/model/enum.dart';
 import 'package:twitter_river/widget/contents.dart';
 
-class TwitterRiverTimeline extends ConsumerWidget {
-  const TwitterRiverTimeline({super.key});
-  static const session = ContentSession(type: ContentAPI.getTimeLine);
+class TwitterRiverLatestTimeline extends ConsumerWidget {
+  const TwitterRiverLatestTimeline({super.key});
+  static const session = ContentSession(type: ContentAPI.getHomeLatestTimeline);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

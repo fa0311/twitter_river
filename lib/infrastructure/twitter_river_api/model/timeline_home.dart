@@ -2,10 +2,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
-part 'home_timeline.freezed.dart';
-part 'home_timeline.g.dart';
+part 'generated/timeline_home.freezed.dart';
+part 'generated/timeline_home.g.dart';
 
 @freezed
 class HomeTimelineResponse with _$HomeTimelineResponse {
@@ -14,8 +15,8 @@ class HomeTimelineResponse with _$HomeTimelineResponse {
     @JsonKey(name: 'data') required HomeTimelineData data,
   }) = _HomeTimelineResponse;
 
-  Instruction get instruction => data.home.homeTimelineUrt.instructions[0];
-  List<Instruction> get instructions => data.home.homeTimelineUrt.instructions;
+  TimelineAddEntries get timelineAddEntries =>
+      data.home.homeTimelineUrt.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
 
   factory HomeTimelineResponse.fromJson(Map<String, dynamic> json) => _$HomeTimelineResponseFromJson(json);
 }
@@ -32,18 +33,18 @@ class HomeTimelineData with _$HomeTimelineData {
 @freezed
 class TwitterHome with _$TwitterHome {
   const factory TwitterHome({
-    @JsonKey(name: 'home_timeline_urt') required HomeTimelineUrt homeTimelineUrt,
+    @JsonKey(name: 'home_timeline_urt') required Timeline homeTimelineUrt,
   }) = _TwitterHome;
 
   factory TwitterHome.fromJson(Map<String, dynamic> json) => _$TwitterHomeFromJson(json);
 }
 
 @freezed
-class HomeTimelineUrt with _$HomeTimelineUrt {
-  const factory HomeTimelineUrt({
+class Timeline with _$Timeline {
+  const factory Timeline({
     @JsonKey(name: 'instructions') required List<Instruction> instructions,
     @JsonKey(name: 'responseObjects') required Object? responseObjects,
-  }) = _HomeTimelineUrt;
+  }) = _Timeline;
 
-  factory HomeTimelineUrt.fromJson(Map<String, dynamic> json) => _$HomeTimelineUrtFromJson(json);
+  factory Timeline.fromJson(Map<String, dynamic> json) => _$TimelineFromJson(json);
 }

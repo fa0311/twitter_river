@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tweet_detail.dart';
+part of '../tweet_detail.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -187,7 +187,7 @@ TweetDetailData _$TweetDetailDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetDetailData {
   @JsonKey(name: 'threaded_conversation_with_injections_v2')
-  ThreadedConversationWithInjectionsV2? get threadedConversation =>
+  ThreadedConversationWithInjectionsV2 get threadedConversation =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -204,9 +204,9 @@ abstract class $TweetDetailDataCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'threaded_conversation_with_injections_v2')
-          ThreadedConversationWithInjectionsV2? threadedConversation});
+          ThreadedConversationWithInjectionsV2 threadedConversation});
 
-  $ThreadedConversationWithInjectionsV2CopyWith<$Res>? get threadedConversation;
+  $ThreadedConversationWithInjectionsV2CopyWith<$Res> get threadedConversation;
 }
 
 /// @nodoc
@@ -222,26 +222,21 @@ class _$TweetDetailDataCopyWithImpl<$Res, $Val extends TweetDetailData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? threadedConversation = freezed,
+    Object? threadedConversation = null,
   }) {
     return _then(_value.copyWith(
-      threadedConversation: freezed == threadedConversation
+      threadedConversation: null == threadedConversation
           ? _value.threadedConversation
           : threadedConversation // ignore: cast_nullable_to_non_nullable
-              as ThreadedConversationWithInjectionsV2?,
+              as ThreadedConversationWithInjectionsV2,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ThreadedConversationWithInjectionsV2CopyWith<$Res>?
-      get threadedConversation {
-    if (_value.threadedConversation == null) {
-      return null;
-    }
-
+  $ThreadedConversationWithInjectionsV2CopyWith<$Res> get threadedConversation {
     return $ThreadedConversationWithInjectionsV2CopyWith<$Res>(
-        _value.threadedConversation!, (value) {
+        _value.threadedConversation, (value) {
       return _then(_value.copyWith(threadedConversation: value) as $Val);
     });
   }
@@ -257,10 +252,10 @@ abstract class _$$_TweetDetailDataCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'threaded_conversation_with_injections_v2')
-          ThreadedConversationWithInjectionsV2? threadedConversation});
+          ThreadedConversationWithInjectionsV2 threadedConversation});
 
   @override
-  $ThreadedConversationWithInjectionsV2CopyWith<$Res>? get threadedConversation;
+  $ThreadedConversationWithInjectionsV2CopyWith<$Res> get threadedConversation;
 }
 
 /// @nodoc
@@ -274,13 +269,13 @@ class __$$_TweetDetailDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? threadedConversation = freezed,
+    Object? threadedConversation = null,
   }) {
     return _then(_$_TweetDetailData(
-      threadedConversation: freezed == threadedConversation
+      threadedConversation: null == threadedConversation
           ? _value.threadedConversation
           : threadedConversation // ignore: cast_nullable_to_non_nullable
-              as ThreadedConversationWithInjectionsV2?,
+              as ThreadedConversationWithInjectionsV2,
     ));
   }
 }
@@ -292,14 +287,14 @@ class _$_TweetDetailData
     implements _TweetDetailData {
   const _$_TweetDetailData(
       {@JsonKey(name: 'threaded_conversation_with_injections_v2')
-          this.threadedConversation});
+          required this.threadedConversation});
 
   factory _$_TweetDetailData.fromJson(Map<String, dynamic> json) =>
       _$$_TweetDetailDataFromJson(json);
 
   @override
   @JsonKey(name: 'threaded_conversation_with_injections_v2')
-  final ThreadedConversationWithInjectionsV2? threadedConversation;
+  final ThreadedConversationWithInjectionsV2 threadedConversation;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -344,7 +339,7 @@ class _$_TweetDetailData
 abstract class _TweetDetailData implements TweetDetailData {
   const factory _TweetDetailData(
       {@JsonKey(name: 'threaded_conversation_with_injections_v2')
-          final ThreadedConversationWithInjectionsV2?
+          required final ThreadedConversationWithInjectionsV2
               threadedConversation}) = _$_TweetDetailData;
 
   factory _TweetDetailData.fromJson(Map<String, dynamic> json) =
@@ -352,7 +347,7 @@ abstract class _TweetDetailData implements TweetDetailData {
 
   @override
   @JsonKey(name: 'threaded_conversation_with_injections_v2')
-  ThreadedConversationWithInjectionsV2? get threadedConversation;
+  ThreadedConversationWithInjectionsV2 get threadedConversation;
   @override
   @JsonKey(ignore: true)
   _$$_TweetDetailDataCopyWith<_$_TweetDetailData> get copyWith =>

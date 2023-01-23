@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_river/core/logger.dart';
 
 // Project imports:
-import 'package:twitter_river/provider/twitter_api.dart';
+import 'package:twitter_river/core/logger.dart';
+import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/top/home.dart';
 import 'package:twitter_river/view/web/login.dart';
 

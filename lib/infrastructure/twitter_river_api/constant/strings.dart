@@ -11,5 +11,9 @@ class TwitterQueryId {
   /* cSpell:disable */
   static String homeTimeline = "ZP0bf3ZWo8WcJnJ5PoTljQ";
   static String tweetDetail = "HQ_gjq7zDNvSiJOCSkwUEw";
+  static String homeLatestTimeline = "LzHaBKEfYdaz7jSq78_PTw";
+  static String listLatestTweetsTimeline = "reOtxklNMfPHriP2dqnL2w";
+  static String userByScreenName = "hVhfo_TquFTmgL7gYwf91Q";
+  static String userTweets = "WDLVXDT4-qiiRqKQC07C3w";
   /* cSpell:enable */
 }

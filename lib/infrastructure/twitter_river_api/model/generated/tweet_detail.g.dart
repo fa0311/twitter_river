@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tweet_detail.dart';
+part of '../tweet_detail.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -20,12 +20,9 @@ Map<String, dynamic> _$$_TweetDetailResponseToJson(
 
 _$_TweetDetailData _$$_TweetDetailDataFromJson(Map<String, dynamic> json) =>
     _$_TweetDetailData(
-      threadedConversation:
-          json['threaded_conversation_with_injections_v2'] == null
-              ? null
-              : ThreadedConversationWithInjectionsV2.fromJson(
-                  json['threaded_conversation_with_injections_v2']
-                      as Map<String, dynamic>),
+      threadedConversation: ThreadedConversationWithInjectionsV2.fromJson(
+          json['threaded_conversation_with_injections_v2']
+              as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetDetailDataToJson(_$_TweetDetailData instance) =>
