@@ -35,7 +35,7 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
     );
   }
 });
-
+InAppWebViewController? webViewController;
 final webViewKey = GlobalKey();
 
 class TwitterRiverWebLogin extends ConsumerWidget {
@@ -44,28 +44,37 @@ class TwitterRiverWebLogin extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final init = ref.watch(webViewInitProvider);
+    goBack() async {
+      if (await webViewController?.canGoBack() ?? false) {
+        await webViewController?.goBack();
+        return true;
+      }
+      return false;
+    }
 
     return WillPopScope(
-      onWillPop: null,
+      onWillPop: goBack,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(leading: BackButton(onPressed: goBack)),
         body: init.when(
           loading: () => const Loading(),
           error: (e, trace) {
             logger.w(e, e, trace);
             return ScrollWidget(
-              onRefresh: () => ref.refresh((webViewInitProvider.future)),
+              onRefresh: () => ref.refresh(webViewInitProvider.future),
               child: Container(),
             );
           },
           data: (data) => InAppWebView(
-            key: webViewKey,
             initialUrlRequest: URLRequest(url: TwitterUris.login),
             initialOptions: InAppWebViewGroupOptions(
               crossPlatform: InAppWebViewOptions(
                 useShouldOverrideUrlLoading: true,
               ),
             ),
+            onWebViewCreated: (controller) {
+              webViewController = controller;
+            },
             onTitleChanged: (controller, title) async {
               CookieManager cookieManager = CookieManager.instance();
               final url = await controller.getUrl();
