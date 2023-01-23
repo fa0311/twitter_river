@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:developer';
+import 'dart:ffi';
 
 // Flutter imports:
 import 'package:flutter/material.dart';
@@ -14,10 +15,13 @@ import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
 import 'package:twitter_river/widget/tweet.dart';
 
+/*
 class ContentWidget extends ConsumerWidget {
-  final ContentSession session;
+  final int session;
+  final Function getContents;
   const ContentWidget({
     super.key,
+    required this.getContents,
     required this.session,
   });
 
@@ -26,23 +30,26 @@ class ContentWidget extends ConsumerWidget {
     final topItemList = ref.read(topContentsProvider(session));
     final cursor = ref.read(topContentsCursorProvider(session));
 
-    if (topItemList.isEmpty && cursor?.value == null) {
-      return ContentListViewWidget(session: session);
+    if (topItemList.isEmpty && cursor == null) {
+      return ContentListViewWidget(session: session, getContents: getContents);
     } else {
-      return ContentInfiniteListViewWidget(session: session);
+      return ContentInfiniteListViewWidget(session: session, getContents: getContents);
     }
   }
 }
-
+*/
+/*
 class ContentListViewWidget extends ConsumerWidget {
-  final ContentSession session;
+  final int session;
+  final Function getContents;
   final Widget? child;
-  const ContentListViewWidget({super.key, required this.session, this.child});
+  const ContentListViewWidget({super.key, required this.session, required this.getContents, this.child});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bottomItemList = ref.watch(bottomContentsProvider(session));
-    final cursor = ref.read(bottomContentsCursorProvider(session));
+    final bottomItemList = ref.watch(bottomContentListProvider(session));
+    final cursor = ref.read(bottomContentListProvider(session));
+
     final len = bottomItemList.length + (child == null ? 0 : 1) - 1;
     return ListView.builder(
       itemCount: cursor?.value == null ? len + 1 : null,
@@ -51,7 +58,7 @@ class ContentListViewWidget extends ConsumerWidget {
           if (i == 0) return child!;
           if (i > 0) i--;
         }
-        if (cursor?.value != null && bottomItemList.length - 20 < i) ref.read(contentsProxyProvider(cursor!).future);
+        if (cursor != null && bottomItemList.length - 20 < i) getContents();
 
         if (bottomItemList.length <= i) {
           if (cursor == null) {
@@ -94,8 +101,9 @@ class ContentListViewWidget extends ConsumerWidget {
 }
 
 class ContentInfiniteListViewWidget extends ConsumerWidget {
-  final ContentSession session;
-  const ContentInfiniteListViewWidget({super.key, required this.session});
+  final int session;
+  final Function getContents;
+  const ContentInfiniteListViewWidget({super.key, required this.session, required this.getContents});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -107,7 +115,7 @@ class ContentInfiniteListViewWidget extends ConsumerWidget {
         final itemList = i < 0 ? topItemList : bottomItemList;
         final itemKey = i.abs() - (i < 0 ? 1 : 0);
         final cursor = i < 0 ? ref.read(topContentsCursorProvider(session)) : ref.read(bottomContentsCursorProvider(session));
-        if (cursor?.value != null && itemList.length - 20 < itemKey) ref.read(contentsProxyProvider(cursor!).future);
+        if (cursor != null && itemList.length - 20 < itemKey) getContents();
 
         if (itemList.length <= itemKey) {
           if (cursor == null) {
@@ -150,3 +158,4 @@ class ContentInfiniteListViewWidget extends ConsumerWidget {
     );
   }
 }
+*/

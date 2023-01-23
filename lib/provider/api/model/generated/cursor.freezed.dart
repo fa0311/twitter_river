@@ -15,29 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ContentSession {
-  ContentAPI get type => throw _privateConstructorUsedError;
-  String? get args => throw _privateConstructorUsedError;
-  String? get args2 => throw _privateConstructorUsedError;
+mixin _$TimeLineArgs {
+  String? get cursor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ContentSessionCopyWith<ContentSession> get copyWith =>
+  $TimeLineArgsCopyWith<TimeLineArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContentSessionCopyWith<$Res> {
-  factory $ContentSessionCopyWith(
-          ContentSession value, $Res Function(ContentSession) then) =
-      _$ContentSessionCopyWithImpl<$Res, ContentSession>;
+abstract class $TimeLineArgsCopyWith<$Res> {
+  factory $TimeLineArgsCopyWith(
+          TimeLineArgs value, $Res Function(TimeLineArgs) then) =
+      _$TimeLineArgsCopyWithImpl<$Res, TimeLineArgs>;
   @useResult
-  $Res call({ContentAPI type, String? args, String? args2});
+  $Res call({String? cursor});
 }
 
 /// @nodoc
-class _$ContentSessionCopyWithImpl<$Res, $Val extends ContentSession>
-    implements $ContentSessionCopyWith<$Res> {
-  _$ContentSessionCopyWithImpl(this._value, this._then);
+class _$TimeLineArgsCopyWithImpl<$Res, $Val extends TimeLineArgs>
+    implements $TimeLineArgsCopyWith<$Res> {
+  _$TimeLineArgsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -47,65 +45,45 @@ class _$ContentSessionCopyWithImpl<$Res, $Val extends ContentSession>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? args = freezed,
-    Object? args2 = freezed,
+    Object? cursor = freezed,
   }) {
     return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ContentAPI,
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as String?,
-      args2: freezed == args2
-          ? _value.args2
-          : args2 // ignore: cast_nullable_to_non_nullable
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ContentSessionCopyWith<$Res>
-    implements $ContentSessionCopyWith<$Res> {
-  factory _$$_ContentSessionCopyWith(
-          _$_ContentSession value, $Res Function(_$_ContentSession) then) =
-      __$$_ContentSessionCopyWithImpl<$Res>;
+abstract class _$$_TimeLineArgsCopyWith<$Res>
+    implements $TimeLineArgsCopyWith<$Res> {
+  factory _$$_TimeLineArgsCopyWith(
+          _$_TimeLineArgs value, $Res Function(_$_TimeLineArgs) then) =
+      __$$_TimeLineArgsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ContentAPI type, String? args, String? args2});
+  $Res call({String? cursor});
 }
 
 /// @nodoc
-class __$$_ContentSessionCopyWithImpl<$Res>
-    extends _$ContentSessionCopyWithImpl<$Res, _$_ContentSession>
-    implements _$$_ContentSessionCopyWith<$Res> {
-  __$$_ContentSessionCopyWithImpl(
-      _$_ContentSession _value, $Res Function(_$_ContentSession) _then)
+class __$$_TimeLineArgsCopyWithImpl<$Res>
+    extends _$TimeLineArgsCopyWithImpl<$Res, _$_TimeLineArgs>
+    implements _$$_TimeLineArgsCopyWith<$Res> {
+  __$$_TimeLineArgsCopyWithImpl(
+      _$_TimeLineArgs _value, $Res Function(_$_TimeLineArgs) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? args = freezed,
-    Object? args2 = freezed,
+    Object? cursor = freezed,
   }) {
-    return _then(_$_ContentSession(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ContentAPI,
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as String?,
-      args2: freezed == args2
-          ? _value.args2
-          : args2 // ignore: cast_nullable_to_non_nullable
+    return _then(_$_TimeLineArgs(
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -113,84 +91,69 @@ class __$$_ContentSessionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ContentSession implements _ContentSession {
-  const _$_ContentSession({required this.type, this.args, this.args2});
+class _$_TimeLineArgs implements _TimeLineArgs {
+  const _$_TimeLineArgs({required this.cursor});
 
   @override
-  final ContentAPI type;
-  @override
-  final String? args;
-  @override
-  final String? args2;
+  final String? cursor;
 
   @override
   String toString() {
-    return 'ContentSession(type: $type, args: $args, args2: $args2)';
+    return 'TimeLineArgs(cursor: $cursor)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentSession &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.args, args) || other.args == args) &&
-            (identical(other.args2, args2) || other.args2 == args2));
+            other is _$_TimeLineArgs &&
+            (identical(other.cursor, cursor) || other.cursor == cursor));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, args, args2);
+  int get hashCode => Object.hash(runtimeType, cursor);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentSessionCopyWith<_$_ContentSession> get copyWith =>
-      __$$_ContentSessionCopyWithImpl<_$_ContentSession>(this, _$identity);
+  _$$_TimeLineArgsCopyWith<_$_TimeLineArgs> get copyWith =>
+      __$$_TimeLineArgsCopyWithImpl<_$_TimeLineArgs>(this, _$identity);
 }
 
-abstract class _ContentSession implements ContentSession {
-  const factory _ContentSession(
-      {required final ContentAPI type,
-      final String? args,
-      final String? args2}) = _$_ContentSession;
+abstract class _TimeLineArgs implements TimeLineArgs {
+  const factory _TimeLineArgs({required final String? cursor}) =
+      _$_TimeLineArgs;
 
   @override
-  ContentAPI get type;
-  @override
-  String? get args;
-  @override
-  String? get args2;
+  String? get cursor;
   @override
   @JsonKey(ignore: true)
-  _$$_ContentSessionCopyWith<_$_ContentSession> get copyWith =>
+  _$$_TimeLineArgsCopyWith<_$_TimeLineArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ContentCursor {
-  String? get value => throw _privateConstructorUsedError;
-  ContentSession get session => throw _privateConstructorUsedError;
+mixin _$TimelineLatestArgs {
+  String? get cursor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ContentCursorCopyWith<ContentCursor> get copyWith =>
+  $TimelineLatestArgsCopyWith<TimelineLatestArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContentCursorCopyWith<$Res> {
-  factory $ContentCursorCopyWith(
-          ContentCursor value, $Res Function(ContentCursor) then) =
-      _$ContentCursorCopyWithImpl<$Res, ContentCursor>;
+abstract class $TimelineLatestArgsCopyWith<$Res> {
+  factory $TimelineLatestArgsCopyWith(
+          TimelineLatestArgs value, $Res Function(TimelineLatestArgs) then) =
+      _$TimelineLatestArgsCopyWithImpl<$Res, TimelineLatestArgs>;
   @useResult
-  $Res call({String? value, ContentSession session});
-
-  $ContentSessionCopyWith<$Res> get session;
+  $Res call({String? cursor});
 }
 
 /// @nodoc
-class _$ContentCursorCopyWithImpl<$Res, $Val extends ContentCursor>
-    implements $ContentCursorCopyWith<$Res> {
-  _$ContentCursorCopyWithImpl(this._value, this._then);
+class _$TimelineLatestArgsCopyWithImpl<$Res, $Val extends TimelineLatestArgs>
+    implements $TimelineLatestArgsCopyWith<$Res> {
+  _$TimelineLatestArgsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -200,281 +163,117 @@ class _$ContentCursorCopyWithImpl<$Res, $Val extends ContentCursor>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
-    Object? session = null,
+    Object? cursor = freezed,
   }) {
     return _then(_value.copyWith(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
-      session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as ContentSession,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ContentSessionCopyWith<$Res> get session {
-    return $ContentSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_ContentCursorCopyWith<$Res>
-    implements $ContentCursorCopyWith<$Res> {
-  factory _$$_ContentCursorCopyWith(
-          _$_ContentCursor value, $Res Function(_$_ContentCursor) then) =
-      __$$_ContentCursorCopyWithImpl<$Res>;
+abstract class _$$_TimelineLatestArgsCopyWith<$Res>
+    implements $TimelineLatestArgsCopyWith<$Res> {
+  factory _$$_TimelineLatestArgsCopyWith(_$_TimelineLatestArgs value,
+          $Res Function(_$_TimelineLatestArgs) then) =
+      __$$_TimelineLatestArgsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? value, ContentSession session});
-
-  @override
-  $ContentSessionCopyWith<$Res> get session;
+  $Res call({String? cursor});
 }
 
 /// @nodoc
-class __$$_ContentCursorCopyWithImpl<$Res>
-    extends _$ContentCursorCopyWithImpl<$Res, _$_ContentCursor>
-    implements _$$_ContentCursorCopyWith<$Res> {
-  __$$_ContentCursorCopyWithImpl(
-      _$_ContentCursor _value, $Res Function(_$_ContentCursor) _then)
+class __$$_TimelineLatestArgsCopyWithImpl<$Res>
+    extends _$TimelineLatestArgsCopyWithImpl<$Res, _$_TimelineLatestArgs>
+    implements _$$_TimelineLatestArgsCopyWith<$Res> {
+  __$$_TimelineLatestArgsCopyWithImpl(
+      _$_TimelineLatestArgs _value, $Res Function(_$_TimelineLatestArgs) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
-    Object? session = null,
+    Object? cursor = freezed,
   }) {
-    return _then(_$_ContentCursor(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+    return _then(_$_TimelineLatestArgs(
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
-      session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as ContentSession,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ContentCursor implements _ContentCursor {
-  const _$_ContentCursor({this.value, required this.session});
+class _$_TimelineLatestArgs implements _TimelineLatestArgs {
+  const _$_TimelineLatestArgs({required this.cursor});
 
   @override
-  final String? value;
-  @override
-  final ContentSession session;
+  final String? cursor;
 
   @override
   String toString() {
-    return 'ContentCursor(value: $value, session: $session)';
+    return 'TimelineLatestArgs(cursor: $cursor)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContentCursor &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.session, session) || other.session == session));
+            other is _$_TimelineLatestArgs &&
+            (identical(other.cursor, cursor) || other.cursor == cursor));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, session);
+  int get hashCode => Object.hash(runtimeType, cursor);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContentCursorCopyWith<_$_ContentCursor> get copyWith =>
-      __$$_ContentCursorCopyWithImpl<_$_ContentCursor>(this, _$identity);
-}
-
-abstract class _ContentCursor implements ContentCursor {
-  const factory _ContentCursor(
-      {final String? value,
-      required final ContentSession session}) = _$_ContentCursor;
-
-  @override
-  String? get value;
-  @override
-  ContentSession get session;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ContentCursorCopyWith<_$_ContentCursor> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ItemContentSession {
-  String? get args => throw _privateConstructorUsedError;
-  ItemsContentAPI get type => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ItemContentSessionCopyWith<ItemContentSession> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ItemContentSessionCopyWith<$Res> {
-  factory $ItemContentSessionCopyWith(
-          ItemContentSession value, $Res Function(ItemContentSession) then) =
-      _$ItemContentSessionCopyWithImpl<$Res, ItemContentSession>;
-  @useResult
-  $Res call({String? args, ItemsContentAPI type});
-}
-
-/// @nodoc
-class _$ItemContentSessionCopyWithImpl<$Res, $Val extends ItemContentSession>
-    implements $ItemContentSessionCopyWith<$Res> {
-  _$ItemContentSessionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? args = freezed,
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ItemsContentAPI,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_ItemContentSessionCopyWith<$Res>
-    implements $ItemContentSessionCopyWith<$Res> {
-  factory _$$_ItemContentSessionCopyWith(_$_ItemContentSession value,
-          $Res Function(_$_ItemContentSession) then) =
-      __$$_ItemContentSessionCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? args, ItemsContentAPI type});
-}
-
-/// @nodoc
-class __$$_ItemContentSessionCopyWithImpl<$Res>
-    extends _$ItemContentSessionCopyWithImpl<$Res, _$_ItemContentSession>
-    implements _$$_ItemContentSessionCopyWith<$Res> {
-  __$$_ItemContentSessionCopyWithImpl(
-      _$_ItemContentSession _value, $Res Function(_$_ItemContentSession) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? args = freezed,
-    Object? type = null,
-  }) {
-    return _then(_$_ItemContentSession(
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ItemsContentAPI,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_ItemContentSession implements _ItemContentSession {
-  const _$_ItemContentSession({this.args, required this.type});
-
-  @override
-  final String? args;
-  @override
-  final ItemsContentAPI type;
-
-  @override
-  String toString() {
-    return 'ItemContentSession(args: $args, type: $type)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ItemContentSession &&
-            (identical(other.args, args) || other.args == args) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, args, type);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ItemContentSessionCopyWith<_$_ItemContentSession> get copyWith =>
-      __$$_ItemContentSessionCopyWithImpl<_$_ItemContentSession>(
+  _$$_TimelineLatestArgsCopyWith<_$_TimelineLatestArgs> get copyWith =>
+      __$$_TimelineLatestArgsCopyWithImpl<_$_TimelineLatestArgs>(
           this, _$identity);
 }
 
-abstract class _ItemContentSession implements ItemContentSession {
-  const factory _ItemContentSession(
-      {final String? args,
-      required final ItemsContentAPI type}) = _$_ItemContentSession;
+abstract class _TimelineLatestArgs implements TimelineLatestArgs {
+  const factory _TimelineLatestArgs({required final String? cursor}) =
+      _$_TimelineLatestArgs;
 
   @override
-  String? get args;
-  @override
-  ItemsContentAPI get type;
+  String? get cursor;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemContentSessionCopyWith<_$_ItemContentSession> get copyWith =>
+  _$$_TimelineLatestArgsCopyWith<_$_TimelineLatestArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ItemContentCursor {
-  String? get value => throw _privateConstructorUsedError;
-  ItemContentSession get session => throw _privateConstructorUsedError;
+mixin _$TweetDetailArgs {
+  String? get cursor => throw _privateConstructorUsedError;
+  String get focalTweetId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ItemContentCursorCopyWith<ItemContentCursor> get copyWith =>
+  $TweetDetailArgsCopyWith<TweetDetailArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemContentCursorCopyWith<$Res> {
-  factory $ItemContentCursorCopyWith(
-          ItemContentCursor value, $Res Function(ItemContentCursor) then) =
-      _$ItemContentCursorCopyWithImpl<$Res, ItemContentCursor>;
+abstract class $TweetDetailArgsCopyWith<$Res> {
+  factory $TweetDetailArgsCopyWith(
+          TweetDetailArgs value, $Res Function(TweetDetailArgs) then) =
+      _$TweetDetailArgsCopyWithImpl<$Res, TweetDetailArgs>;
   @useResult
-  $Res call({String? value, ItemContentSession session});
-
-  $ItemContentSessionCopyWith<$Res> get session;
+  $Res call({String? cursor, String focalTweetId});
 }
 
 /// @nodoc
-class _$ItemContentCursorCopyWithImpl<$Res, $Val extends ItemContentCursor>
-    implements $ItemContentCursorCopyWith<$Res> {
-  _$ItemContentCursorCopyWithImpl(this._value, this._then);
+class _$TweetDetailArgsCopyWithImpl<$Res, $Val extends TweetDetailArgs>
+    implements $TweetDetailArgsCopyWith<$Res> {
+  _$TweetDetailArgsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -484,117 +283,362 @@ class _$ItemContentCursorCopyWithImpl<$Res, $Val extends ItemContentCursor>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
-    Object? session = null,
+    Object? cursor = freezed,
+    Object? focalTweetId = null,
   }) {
     return _then(_value.copyWith(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
-      session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as ItemContentSession,
+      focalTweetId: null == focalTweetId
+          ? _value.focalTweetId
+          : focalTweetId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ItemContentSessionCopyWith<$Res> get session {
-    return $ItemContentSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_ItemContentCursorCopyWith<$Res>
-    implements $ItemContentCursorCopyWith<$Res> {
-  factory _$$_ItemContentCursorCopyWith(_$_ItemContentCursor value,
-          $Res Function(_$_ItemContentCursor) then) =
-      __$$_ItemContentCursorCopyWithImpl<$Res>;
+abstract class _$$_TweetDetailArgsCopyWith<$Res>
+    implements $TweetDetailArgsCopyWith<$Res> {
+  factory _$$_TweetDetailArgsCopyWith(
+          _$_TweetDetailArgs value, $Res Function(_$_TweetDetailArgs) then) =
+      __$$_TweetDetailArgsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? value, ItemContentSession session});
-
-  @override
-  $ItemContentSessionCopyWith<$Res> get session;
+  $Res call({String? cursor, String focalTweetId});
 }
 
 /// @nodoc
-class __$$_ItemContentCursorCopyWithImpl<$Res>
-    extends _$ItemContentCursorCopyWithImpl<$Res, _$_ItemContentCursor>
-    implements _$$_ItemContentCursorCopyWith<$Res> {
-  __$$_ItemContentCursorCopyWithImpl(
-      _$_ItemContentCursor _value, $Res Function(_$_ItemContentCursor) _then)
+class __$$_TweetDetailArgsCopyWithImpl<$Res>
+    extends _$TweetDetailArgsCopyWithImpl<$Res, _$_TweetDetailArgs>
+    implements _$$_TweetDetailArgsCopyWith<$Res> {
+  __$$_TweetDetailArgsCopyWithImpl(
+      _$_TweetDetailArgs _value, $Res Function(_$_TweetDetailArgs) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
-    Object? session = null,
+    Object? cursor = freezed,
+    Object? focalTweetId = null,
   }) {
-    return _then(_$_ItemContentCursor(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+    return _then(_$_TweetDetailArgs(
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
-      session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as ItemContentSession,
+      focalTweetId: null == focalTweetId
+          ? _value.focalTweetId
+          : focalTweetId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ItemContentCursor implements _ItemContentCursor {
-  const _$_ItemContentCursor({this.value, required this.session});
+class _$_TweetDetailArgs implements _TweetDetailArgs {
+  const _$_TweetDetailArgs({required this.cursor, required this.focalTweetId});
 
   @override
-  final String? value;
+  final String? cursor;
   @override
-  final ItemContentSession session;
+  final String focalTweetId;
 
   @override
   String toString() {
-    return 'ItemContentCursor(value: $value, session: $session)';
+    return 'TweetDetailArgs(cursor: $cursor, focalTweetId: $focalTweetId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemContentCursor &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.session, session) || other.session == session));
+            other is _$_TweetDetailArgs &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
+            (identical(other.focalTweetId, focalTweetId) ||
+                other.focalTweetId == focalTweetId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, session);
+  int get hashCode => Object.hash(runtimeType, cursor, focalTweetId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemContentCursorCopyWith<_$_ItemContentCursor> get copyWith =>
-      __$$_ItemContentCursorCopyWithImpl<_$_ItemContentCursor>(
+  _$$_TweetDetailArgsCopyWith<_$_TweetDetailArgs> get copyWith =>
+      __$$_TweetDetailArgsCopyWithImpl<_$_TweetDetailArgs>(this, _$identity);
+}
+
+abstract class _TweetDetailArgs implements TweetDetailArgs {
+  const factory _TweetDetailArgs(
+      {required final String? cursor,
+      required final String focalTweetId}) = _$_TweetDetailArgs;
+
+  @override
+  String? get cursor;
+  @override
+  String get focalTweetId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TweetDetailArgsCopyWith<_$_TweetDetailArgs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UserTweetsArgs {
+  String? get cursor => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserTweetsArgsCopyWith<UserTweetsArgs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserTweetsArgsCopyWith<$Res> {
+  factory $UserTweetsArgsCopyWith(
+          UserTweetsArgs value, $Res Function(UserTweetsArgs) then) =
+      _$UserTweetsArgsCopyWithImpl<$Res, UserTweetsArgs>;
+  @useResult
+  $Res call({String? cursor, String userId});
+}
+
+/// @nodoc
+class _$UserTweetsArgsCopyWithImpl<$Res, $Val extends UserTweetsArgs>
+    implements $UserTweetsArgsCopyWith<$Res> {
+  _$UserTweetsArgsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cursor = freezed,
+    Object? userId = null,
+  }) {
+    return _then(_value.copyWith(
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserTweetsArgsCopyWith<$Res>
+    implements $UserTweetsArgsCopyWith<$Res> {
+  factory _$$_UserTweetsArgsCopyWith(
+          _$_UserTweetsArgs value, $Res Function(_$_UserTweetsArgs) then) =
+      __$$_UserTweetsArgsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? cursor, String userId});
+}
+
+/// @nodoc
+class __$$_UserTweetsArgsCopyWithImpl<$Res>
+    extends _$UserTweetsArgsCopyWithImpl<$Res, _$_UserTweetsArgs>
+    implements _$$_UserTweetsArgsCopyWith<$Res> {
+  __$$_UserTweetsArgsCopyWithImpl(
+      _$_UserTweetsArgs _value, $Res Function(_$_UserTweetsArgs) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cursor = freezed,
+    Object? userId = null,
+  }) {
+    return _then(_$_UserTweetsArgs(
+      cursor: freezed == cursor
+          ? _value.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserTweetsArgs implements _UserTweetsArgs {
+  const _$_UserTweetsArgs({required this.cursor, required this.userId});
+
+  @override
+  final String? cursor;
+  @override
+  final String userId;
+
+  @override
+  String toString() {
+    return 'UserTweetsArgs(cursor: $cursor, userId: $userId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserTweetsArgs &&
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cursor, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserTweetsArgsCopyWith<_$_UserTweetsArgs> get copyWith =>
+      __$$_UserTweetsArgsCopyWithImpl<_$_UserTweetsArgs>(this, _$identity);
+}
+
+abstract class _UserTweetsArgs implements UserTweetsArgs {
+  const factory _UserTweetsArgs(
+      {required final String? cursor,
+      required final String userId}) = _$_UserTweetsArgs;
+
+  @override
+  String? get cursor;
+  @override
+  String get userId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserTweetsArgsCopyWith<_$_UserTweetsArgs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UserByScreenNameArgs {
+  String get screenName => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserByScreenNameArgsCopyWith<UserByScreenNameArgs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserByScreenNameArgsCopyWith<$Res> {
+  factory $UserByScreenNameArgsCopyWith(UserByScreenNameArgs value,
+          $Res Function(UserByScreenNameArgs) then) =
+      _$UserByScreenNameArgsCopyWithImpl<$Res, UserByScreenNameArgs>;
+  @useResult
+  $Res call({String screenName});
+}
+
+/// @nodoc
+class _$UserByScreenNameArgsCopyWithImpl<$Res,
+        $Val extends UserByScreenNameArgs>
+    implements $UserByScreenNameArgsCopyWith<$Res> {
+  _$UserByScreenNameArgsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? screenName = null,
+  }) {
+    return _then(_value.copyWith(
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserByScreenNameArgsCopyWith<$Res>
+    implements $UserByScreenNameArgsCopyWith<$Res> {
+  factory _$$_UserByScreenNameArgsCopyWith(_$_UserByScreenNameArgs value,
+          $Res Function(_$_UserByScreenNameArgs) then) =
+      __$$_UserByScreenNameArgsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String screenName});
+}
+
+/// @nodoc
+class __$$_UserByScreenNameArgsCopyWithImpl<$Res>
+    extends _$UserByScreenNameArgsCopyWithImpl<$Res, _$_UserByScreenNameArgs>
+    implements _$$_UserByScreenNameArgsCopyWith<$Res> {
+  __$$_UserByScreenNameArgsCopyWithImpl(_$_UserByScreenNameArgs _value,
+      $Res Function(_$_UserByScreenNameArgs) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? screenName = null,
+  }) {
+    return _then(_$_UserByScreenNameArgs(
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserByScreenNameArgs implements _UserByScreenNameArgs {
+  const _$_UserByScreenNameArgs({required this.screenName});
+
+  @override
+  final String screenName;
+
+  @override
+  String toString() {
+    return 'UserByScreenNameArgs(screenName: $screenName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserByScreenNameArgs &&
+            (identical(other.screenName, screenName) ||
+                other.screenName == screenName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, screenName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserByScreenNameArgsCopyWith<_$_UserByScreenNameArgs> get copyWith =>
+      __$$_UserByScreenNameArgsCopyWithImpl<_$_UserByScreenNameArgs>(
           this, _$identity);
 }
 
-abstract class _ItemContentCursor implements ItemContentCursor {
-  const factory _ItemContentCursor(
-      {final String? value,
-      required final ItemContentSession session}) = _$_ItemContentCursor;
+abstract class _UserByScreenNameArgs implements UserByScreenNameArgs {
+  const factory _UserByScreenNameArgs({required final String screenName}) =
+      _$_UserByScreenNameArgs;
 
   @override
-  String? get value;
-  @override
-  ItemContentSession get session;
+  String get screenName;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemContentCursorCopyWith<_$_ItemContentCursor> get copyWith =>
+  _$$_UserByScreenNameArgsCopyWith<_$_UserByScreenNameArgs> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,19 +11,18 @@ import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
-import 'package:twitter_river/provider/api/model/enum.dart';
-import 'package:twitter_river/widget/contents.dart';
 import 'package:twitter_river/widget/tweet.dart';
 
-class TwitterRiverTweetFromFocalTweetId extends ConsumerWidget {
-  final String focalTweetId;
-  const TwitterRiverTweetFromFocalTweetId({super.key, required this.focalTweetId});
+final tweetProxyProvider = FutureProvider.family<void, TweetDetailArgs>((ref, args) async {
+  final data = await ref.watch(tweetDetailProvider(args).future);
+  final session = args.copyWith(cursor: null);
+  if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 10));
+  ref.read(cursorProvider(session).notifier).state = data.bottomCursor?.value;
+  ref.read(contentsProvider(session).notifier).add(data.contents);
+});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
-  }
-}
+final contentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TweetDetailArgs>((ref, _) => ContentListNotifier());
+final cursorProvider = StateProvider.family<String?, TweetDetailArgs>((ref, _) => null);
 
 class TwitterRiverTweet extends ConsumerWidget {
   final TweetResult tweet;
@@ -31,9 +30,11 @@ class TwitterRiverTweet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final session = ContentSession(type: ContentAPI.tweetDetail, args: tweet.legacy.idStr);
-    final init = ref.watch(contentsInitProvider(session));
+    final session = TweetDetailArgs(cursor: null, focalTweetId: tweet.legacy.idStr);
+    ref.watch(contentsProvider(session));
+    final init = ref.read(tweetProxyProvider(session));
     final child = TweetWidget(tweet: tweet);
+
     return Scaffold(
       appBar: AppBar(),
       body: init.when(
@@ -41,14 +42,37 @@ class TwitterRiverTweet extends ConsumerWidget {
         error: (e, trace) {
           logger.w(e, e, trace);
           return ScrollWidget(
-            onRefresh: () => ref.refresh(contentsInitProvider(session).future),
+            onRefresh: () => ref.refresh(tweetProxyProvider(session).future),
             child: Container(),
           );
         },
-        data: (_) => RefreshIndicator(
-          onRefresh: () => ref.refresh(contentsInitProvider(session).future),
-          child: ContentListViewWidget(session: session),
-        ),
+        data: (_) {
+          final contents = ref.watch(contentsProvider(session));
+          final cursor = ref.watch(cursorProvider(session));
+          return RefreshIndicator(
+            onRefresh: () => ref.refresh(tweetDetailProvider(session).future),
+            child: ListView.builder(
+              itemCount: cursor == null ? contents.length : null,
+              itemBuilder: (context, i) {
+                if (cursor != null && contents.length - 20 < i) ref.read(tweetProxyProvider(session.copyWith(cursor: cursor)).future);
+                if (contents.length <= i) {
+                  if (cursor == null) {
+                    return const SizedBox(width: 100, height: 100);
+                  } else {
+                    return Container(
+                      alignment: Alignment.topCenter,
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 50),
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                }
+                return ContentWidget(content: contents[i]);
+              },
+            ),
+          );
+        },
       ),
     );
   }

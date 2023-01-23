@@ -16,6 +16,6 @@ class UiCore {
     if (difference.inDays > 0) return AppLocalizations.of(context)!.dateFormat2(difference.inDays, difference.inHours % 24);
     if (difference.inHours > 0) return AppLocalizations.of(context)!.dateFormat3(difference.inHours, difference.inMinutes % 60);
     if (difference.inMinutes > 0) return AppLocalizations.of(context)!.dateFormat4(difference.inMinutes);
-    return AppLocalizations.of(context)!.dateFormat4(difference.inSeconds);
+    return AppLocalizations.of(context)!.dateFormat5(difference.inSeconds);
   }
 }

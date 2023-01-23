@@ -15,6 +15,35 @@ import 'package:twitter_river/ui_core/date.dart';
 import 'package:twitter_river/view/sub/tweet.dart';
 import 'package:twitter_river/view/sub/user.dart';
 
+class ContentWidget extends ConsumerWidget {
+  final Content content;
+  const ContentWidget({super.key, required this.content});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (content.entryType == EntryType.timelineTimelineItem) {
+      final tweet = content.timelineTimelineItem!.itemContent;
+      if (tweet.entryType == ItemType.timelineTweet) {
+        return TweetWidget(tweet: tweet.timelineTweet!.tweet);
+      }
+    } else if (content.entryType == EntryType.timelineTimelineModule) {
+      final tweets = content.timelineTimelineModule!.itemContent
+          .where((e) => e.item.itemContent.entryType == ItemType.timelineTweet)
+          .map((e) => e.item.itemContent.timelineTweet!.tweet)
+          .toList();
+
+      return TweetCard(
+        child: Column(
+          children: [
+            for (final tweet in tweets) TweetWidget(tweet: tweet, card: false),
+          ],
+        ),
+      );
+    }
+    return const Text("Error");
+  }
+}
+
 class TweetCard extends ConsumerWidget {
   final Widget child;
   const TweetCard({super.key, required this.child});
