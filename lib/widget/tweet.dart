@@ -24,7 +24,7 @@ class ContentWidget extends ConsumerWidget {
     if (content.entryType == EntryType.timelineTimelineItem) {
       final tweet = content.timelineTimelineItem!.itemContent;
       if (tweet.entryType == ItemType.timelineTweet) {
-        return TweetWidget(tweet: tweet.timelineTweet!.tweet);
+        return TweetCard(child: TweetWidget(tweet: tweet.timelineTweet!.tweet));
       }
     } else if (content.entryType == EntryType.timelineTimelineModule) {
       final tweets = content.timelineTimelineModule!.itemContent
@@ -35,7 +35,7 @@ class ContentWidget extends ConsumerWidget {
       return TweetCard(
         child: Column(
           children: [
-            for (final tweet in tweets) TweetWidget(tweet: tweet, card: false),
+            for (final tweet in tweets) TweetWidget(tweet: tweet),
           ],
         ),
       );
@@ -50,9 +50,7 @@ class TweetCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
-      child: child,
-    );
+    return Card(child: child);
   }
 }
 
@@ -108,49 +106,13 @@ class UserInkWell extends ConsumerWidget {
   }
 }
 
-class ItemContentWidget extends ConsumerWidget {
-  final List<ItemContent> contents;
-  const ItemContentWidget({super.key, required this.contents});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final cursor = contents.where((e) => (e.entryType == ItemType.timelineTimelineCursor)).map((e) => e.timelineTimelineCursor!).toList();
-    final topCursor = cursor.where((e) => e.cursorType == CursorType.top);
-    final bottomCursor = cursor.where((e) => e.cursorType == CursorType.bottom);
-
-    return Column(
-      children: [
-        if (topCursor.isEmpty)
-          TextButton(
-            onPressed: () {},
-            child: const Text('Button'),
-          ),
-        for (final content in contents) ...[
-          if (content.entryType == ItemType.timelineUser) Container(),
-          if (content.entryType == ItemType.timelineTweet) Container(),
-        ],
-        if (bottomCursor.isEmpty)
-          TextButton(
-            onPressed: () {},
-            child: const Text('Button'),
-          ),
-      ],
-    );
-  }
-}
-
 class TweetWidget extends ConsumerWidget {
   final TweetResult tweet;
-  final bool card;
-  const TweetWidget({
-    super.key,
-    required this.tweet,
-    this.card = true,
-  });
+  const TweetWidget({super.key, required this.tweet});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final child = TweetInkWell(
+    return TweetInkWell(
       tweet: tweet,
       child: Padding(
         padding: const EdgeInsets.all(5),
@@ -191,18 +153,13 @@ class TweetWidget extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 2),
-                            child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 2),
-                            child: Text(UiCore.of(context).generalDateDifference(tweet.legacy.createdAt)),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                        child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                        child: Text(UiCore.of(context).generalDateDifference(tweet.legacy.createdAt), style: Theme.of(context).textTheme.bodySmall),
                       ),
                     ],
                   ),
@@ -243,10 +200,6 @@ class TweetWidget extends ConsumerWidget {
           ],
         ),
       ),
-    );
-    if (!card) return child;
-    return TweetCard(
-      child: child,
     );
   }
 }
