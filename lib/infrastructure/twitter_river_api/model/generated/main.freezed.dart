@@ -2250,7 +2250,11 @@ mixin _$TimelineTweet {
   @JsonKey(name: 'tweet_results')
   TweetResults get tweetResults => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweetDisplayType')
-  String get tweetDisplayType => throw _privateConstructorUsedError;
+  String get tweetDisplayType => throw _privateConstructorUsedError; // enum
+  @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+  bool get hasModeratedReplies => throw _privateConstructorUsedError;
+  @JsonKey(name: 'socialContext')
+  SocialContext? get socialContext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2265,11 +2269,20 @@ abstract class $TimelineTweetCopyWith<$Res> {
       _$TimelineTweetCopyWithImpl<$Res, TimelineTweet>;
   @useResult
   $Res call(
-      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
-      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
+          Typename typename,
+      @JsonKey(name: 'tweet_results')
+          TweetResults tweetResults,
+      @JsonKey(name: 'tweetDisplayType')
+          String tweetDisplayType,
+      @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+          bool hasModeratedReplies,
+      @JsonKey(name: 'socialContext')
+          SocialContext? socialContext});
 
   $TweetResultsCopyWith<$Res> get tweetResults;
+  $SocialContextCopyWith<$Res>? get socialContext;
 }
 
 /// @nodoc
@@ -2288,6 +2301,8 @@ class _$TimelineTweetCopyWithImpl<$Res, $Val extends TimelineTweet>
     Object? typename = null,
     Object? tweetResults = null,
     Object? tweetDisplayType = null,
+    Object? hasModeratedReplies = null,
+    Object? socialContext = freezed,
   }) {
     return _then(_value.copyWith(
       typename: null == typename
@@ -2302,6 +2317,14 @@ class _$TimelineTweetCopyWithImpl<$Res, $Val extends TimelineTweet>
           ? _value.tweetDisplayType
           : tweetDisplayType // ignore: cast_nullable_to_non_nullable
               as String,
+      hasModeratedReplies: null == hasModeratedReplies
+          ? _value.hasModeratedReplies
+          : hasModeratedReplies // ignore: cast_nullable_to_non_nullable
+              as bool,
+      socialContext: freezed == socialContext
+          ? _value.socialContext
+          : socialContext // ignore: cast_nullable_to_non_nullable
+              as SocialContext?,
     ) as $Val);
   }
 
@@ -2310,6 +2333,18 @@ class _$TimelineTweetCopyWithImpl<$Res, $Val extends TimelineTweet>
   $TweetResultsCopyWith<$Res> get tweetResults {
     return $TweetResultsCopyWith<$Res>(_value.tweetResults, (value) {
       return _then(_value.copyWith(tweetResults: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SocialContextCopyWith<$Res>? get socialContext {
+    if (_value.socialContext == null) {
+      return null;
+    }
+
+    return $SocialContextCopyWith<$Res>(_value.socialContext!, (value) {
+      return _then(_value.copyWith(socialContext: value) as $Val);
     });
   }
 }
@@ -2323,12 +2358,22 @@ abstract class _$$_TimelineTweetCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '__typename') @TypenameConverter() Typename typename,
-      @JsonKey(name: 'tweet_results') TweetResults tweetResults,
-      @JsonKey(name: 'tweetDisplayType') String tweetDisplayType});
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
+          Typename typename,
+      @JsonKey(name: 'tweet_results')
+          TweetResults tweetResults,
+      @JsonKey(name: 'tweetDisplayType')
+          String tweetDisplayType,
+      @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+          bool hasModeratedReplies,
+      @JsonKey(name: 'socialContext')
+          SocialContext? socialContext});
 
   @override
   $TweetResultsCopyWith<$Res> get tweetResults;
+  @override
+  $SocialContextCopyWith<$Res>? get socialContext;
 }
 
 /// @nodoc
@@ -2345,6 +2390,8 @@ class __$$_TimelineTweetCopyWithImpl<$Res>
     Object? typename = null,
     Object? tweetResults = null,
     Object? tweetDisplayType = null,
+    Object? hasModeratedReplies = null,
+    Object? socialContext = freezed,
   }) {
     return _then(_$_TimelineTweet(
       typename: null == typename
@@ -2359,6 +2406,14 @@ class __$$_TimelineTweetCopyWithImpl<$Res>
           ? _value.tweetDisplayType
           : tweetDisplayType // ignore: cast_nullable_to_non_nullable
               as String,
+      hasModeratedReplies: null == hasModeratedReplies
+          ? _value.hasModeratedReplies
+          : hasModeratedReplies // ignore: cast_nullable_to_non_nullable
+              as bool,
+      socialContext: freezed == socialContext
+          ? _value.socialContext
+          : socialContext // ignore: cast_nullable_to_non_nullable
+              as SocialContext?,
     ));
   }
 }
@@ -2367,9 +2422,17 @@ class __$$_TimelineTweetCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TimelineTweet extends _TimelineTweet {
   const _$_TimelineTweet(
-      {@JsonKey(name: '__typename') @TypenameConverter() required this.typename,
-      @JsonKey(name: 'tweet_results') required this.tweetResults,
-      @JsonKey(name: 'tweetDisplayType') required this.tweetDisplayType})
+      {@JsonKey(name: '__typename')
+      @TypenameConverter()
+          required this.typename,
+      @JsonKey(name: 'tweet_results')
+          required this.tweetResults,
+      @JsonKey(name: 'tweetDisplayType')
+          required this.tweetDisplayType,
+      @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+          required this.hasModeratedReplies,
+      @JsonKey(name: 'socialContext')
+          required this.socialContext})
       : super._();
 
   factory _$_TimelineTweet.fromJson(Map<String, dynamic> json) =>
@@ -2385,10 +2448,17 @@ class _$_TimelineTweet extends _TimelineTweet {
   @override
   @JsonKey(name: 'tweetDisplayType')
   final String tweetDisplayType;
+// enum
+  @override
+  @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+  final bool hasModeratedReplies;
+  @override
+  @JsonKey(name: 'socialContext')
+  final SocialContext? socialContext;
 
   @override
   String toString() {
-    return 'TimelineTweet(typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType)';
+    return 'TimelineTweet(typename: $typename, tweetResults: $tweetResults, tweetDisplayType: $tweetDisplayType, hasModeratedReplies: $hasModeratedReplies, socialContext: $socialContext)';
   }
 
   @override
@@ -2401,13 +2471,17 @@ class _$_TimelineTweet extends _TimelineTweet {
             (identical(other.tweetResults, tweetResults) ||
                 other.tweetResults == tweetResults) &&
             (identical(other.tweetDisplayType, tweetDisplayType) ||
-                other.tweetDisplayType == tweetDisplayType));
+                other.tweetDisplayType == tweetDisplayType) &&
+            (identical(other.hasModeratedReplies, hasModeratedReplies) ||
+                other.hasModeratedReplies == hasModeratedReplies) &&
+            (identical(other.socialContext, socialContext) ||
+                other.socialContext == socialContext));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, typename, tweetResults, tweetDisplayType);
+  int get hashCode => Object.hash(runtimeType, typename, tweetResults,
+      tweetDisplayType, hasModeratedReplies, socialContext);
 
   @JsonKey(ignore: true)
   @override
@@ -2431,7 +2505,11 @@ abstract class _TimelineTweet extends TimelineTweet {
       @JsonKey(name: 'tweet_results')
           required final TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType')
-          required final String tweetDisplayType}) = _$_TimelineTweet;
+          required final String tweetDisplayType,
+      @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+          required final bool hasModeratedReplies,
+      @JsonKey(name: 'socialContext')
+          required final SocialContext? socialContext}) = _$_TimelineTweet;
   const _TimelineTweet._() : super._();
 
   factory _TimelineTweet.fromJson(Map<String, dynamic> json) =
@@ -2447,9 +2525,256 @@ abstract class _TimelineTweet extends TimelineTweet {
   @override
   @JsonKey(name: 'tweetDisplayType')
   String get tweetDisplayType;
+  @override // enum
+  @JsonKey(name: 'hasModeratedReplies', defaultValue: false)
+  bool get hasModeratedReplies;
+  @override
+  @JsonKey(name: 'socialContext')
+  SocialContext? get socialContext;
   @override
   @JsonKey(ignore: true)
   _$$_TimelineTweetCopyWith<_$_TimelineTweet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SocialContext _$SocialContextFromJson(Map<String, dynamic> json) {
+  return _SocialContext.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SocialContext {
+  @JsonKey(name: 'type')
+  String get type => throw _privateConstructorUsedError; //enum
+  @JsonKey(name: 'contextType')
+  String? get contextType => throw _privateConstructorUsedError; //enum
+  @JsonKey(name: 'text')
+  String? get text => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'landingUrl')
+  dynamic get landingUrl => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SocialContextCopyWith<SocialContext> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SocialContextCopyWith<$Res> {
+  factory $SocialContextCopyWith(
+          SocialContext value, $Res Function(SocialContext) then) =
+      _$SocialContextCopyWithImpl<$Res, SocialContext>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'type') String type,
+      @JsonKey(name: 'contextType') String? contextType,
+      @JsonKey(name: 'text') String? text,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'landingUrl') dynamic landingUrl});
+}
+
+/// @nodoc
+class _$SocialContextCopyWithImpl<$Res, $Val extends SocialContext>
+    implements $SocialContextCopyWith<$Res> {
+  _$SocialContextCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? contextType = freezed,
+    Object? text = freezed,
+    Object? name = freezed,
+    Object? landingUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      contextType: freezed == contextType
+          ? _value.contextType
+          : contextType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      landingUrl: freezed == landingUrl
+          ? _value.landingUrl
+          : landingUrl // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_SocialContextCopyWith<$Res>
+    implements $SocialContextCopyWith<$Res> {
+  factory _$$_SocialContextCopyWith(
+          _$_SocialContext value, $Res Function(_$_SocialContext) then) =
+      __$$_SocialContextCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'type') String type,
+      @JsonKey(name: 'contextType') String? contextType,
+      @JsonKey(name: 'text') String? text,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'landingUrl') dynamic landingUrl});
+}
+
+/// @nodoc
+class __$$_SocialContextCopyWithImpl<$Res>
+    extends _$SocialContextCopyWithImpl<$Res, _$_SocialContext>
+    implements _$$_SocialContextCopyWith<$Res> {
+  __$$_SocialContextCopyWithImpl(
+      _$_SocialContext _value, $Res Function(_$_SocialContext) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? contextType = freezed,
+    Object? text = freezed,
+    Object? name = freezed,
+    Object? landingUrl = freezed,
+  }) {
+    return _then(_$_SocialContext(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      contextType: freezed == contextType
+          ? _value.contextType
+          : contextType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      landingUrl: freezed == landingUrl
+          ? _value.landingUrl
+          : landingUrl // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SocialContext implements _SocialContext {
+  const _$_SocialContext(
+      {@JsonKey(name: 'type') required this.type,
+      @JsonKey(name: 'contextType') required this.contextType,
+      @JsonKey(name: 'text') required this.text,
+      @JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'landingUrl') required this.landingUrl});
+
+  factory _$_SocialContext.fromJson(Map<String, dynamic> json) =>
+      _$$_SocialContextFromJson(json);
+
+  @override
+  @JsonKey(name: 'type')
+  final String type;
+//enum
+  @override
+  @JsonKey(name: 'contextType')
+  final String? contextType;
+//enum
+  @override
+  @JsonKey(name: 'text')
+  final String? text;
+  @override
+  @JsonKey(name: 'name')
+  final String? name;
+  @override
+  @JsonKey(name: 'landingUrl')
+  final dynamic landingUrl;
+
+  @override
+  String toString() {
+    return 'SocialContext(type: $type, contextType: $contextType, text: $text, name: $name, landingUrl: $landingUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SocialContext &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contextType, contextType) ||
+                other.contextType == contextType) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other.landingUrl, landingUrl));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, contextType, text, name,
+      const DeepCollectionEquality().hash(landingUrl));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SocialContextCopyWith<_$_SocialContext> get copyWith =>
+      __$$_SocialContextCopyWithImpl<_$_SocialContext>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SocialContextToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SocialContext implements SocialContext {
+  const factory _SocialContext(
+          {@JsonKey(name: 'type') required final String type,
+          @JsonKey(name: 'contextType') required final String? contextType,
+          @JsonKey(name: 'text') required final String? text,
+          @JsonKey(name: 'name') required final String? name,
+          @JsonKey(name: 'landingUrl') required final dynamic landingUrl}) =
+      _$_SocialContext;
+
+  factory _SocialContext.fromJson(Map<String, dynamic> json) =
+      _$_SocialContext.fromJson;
+
+  @override
+  @JsonKey(name: 'type')
+  String get type;
+  @override //enum
+  @JsonKey(name: 'contextType')
+  String? get contextType;
+  @override //enum
+  @JsonKey(name: 'text')
+  String? get text;
+  @override
+  @JsonKey(name: 'name')
+  String? get name;
+  @override
+  @JsonKey(name: 'landingUrl')
+  dynamic get landingUrl;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SocialContextCopyWith<_$_SocialContext> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2850,7 +3175,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TweetResult extends _TweetResult {
+class _$_TweetResult implements _TweetResult {
   const _$_TweetResult(
       {@JsonKey(name: 'rest_id')
           required this.restId,
@@ -2869,8 +3194,7 @@ class _$_TweetResult extends _TweetResult {
       @JsonKey(name: 'quick_promote_eligibility')
           required this.quickPromoteEligibility,
       @JsonKey(name: 'views')
-          required this.views})
-      : super._();
+          required this.views});
 
   factory _$_TweetResult.fromJson(Map<String, dynamic> json) =>
       _$$_TweetResultFromJson(json);
@@ -2957,7 +3281,7 @@ class _$_TweetResult extends _TweetResult {
   }
 }
 
-abstract class _TweetResult extends TweetResult {
+abstract class _TweetResult implements TweetResult {
   const factory _TweetResult(
       {@JsonKey(name: 'rest_id')
           required final String restId,
@@ -2977,7 +3301,6 @@ abstract class _TweetResult extends TweetResult {
           required final dynamic quickPromoteEligibility,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
-  const _TweetResult._() : super._();
 
   factory _TweetResult.fromJson(Map<String, dynamic> json) =
       _$_TweetResult.fromJson;
@@ -3013,6 +3336,153 @@ abstract class _TweetResult extends TweetResult {
   @JsonKey(ignore: true)
   _$$_TweetResultCopyWith<_$_TweetResult> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+QuickPromoteEligibility _$QuickPromoteEligibilityFromJson(
+    Map<String, dynamic> json) {
+  return _QuickPromoteEligibility.fromJson(json);
+}
+
+/// @nodoc
+mixin _$QuickPromoteEligibility {
+  @JsonKey(name: 'eligibility')
+  String get restId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuickPromoteEligibilityCopyWith<QuickPromoteEligibility> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuickPromoteEligibilityCopyWith<$Res> {
+  factory $QuickPromoteEligibilityCopyWith(QuickPromoteEligibility value,
+          $Res Function(QuickPromoteEligibility) then) =
+      _$QuickPromoteEligibilityCopyWithImpl<$Res, QuickPromoteEligibility>;
+  @useResult
+  $Res call({@JsonKey(name: 'eligibility') String restId});
+}
+
+/// @nodoc
+class _$QuickPromoteEligibilityCopyWithImpl<$Res,
+        $Val extends QuickPromoteEligibility>
+    implements $QuickPromoteEligibilityCopyWith<$Res> {
+  _$QuickPromoteEligibilityCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? restId = null,
+  }) {
+    return _then(_value.copyWith(
+      restId: null == restId
+          ? _value.restId
+          : restId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_QuickPromoteEligibilityCopyWith<$Res>
+    implements $QuickPromoteEligibilityCopyWith<$Res> {
+  factory _$$_QuickPromoteEligibilityCopyWith(_$_QuickPromoteEligibility value,
+          $Res Function(_$_QuickPromoteEligibility) then) =
+      __$$_QuickPromoteEligibilityCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'eligibility') String restId});
+}
+
+/// @nodoc
+class __$$_QuickPromoteEligibilityCopyWithImpl<$Res>
+    extends _$QuickPromoteEligibilityCopyWithImpl<$Res,
+        _$_QuickPromoteEligibility>
+    implements _$$_QuickPromoteEligibilityCopyWith<$Res> {
+  __$$_QuickPromoteEligibilityCopyWithImpl(_$_QuickPromoteEligibility _value,
+      $Res Function(_$_QuickPromoteEligibility) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? restId = null,
+  }) {
+    return _then(_$_QuickPromoteEligibility(
+      restId: null == restId
+          ? _value.restId
+          : restId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_QuickPromoteEligibility implements _QuickPromoteEligibility {
+  const _$_QuickPromoteEligibility(
+      {@JsonKey(name: 'eligibility') required this.restId});
+
+  factory _$_QuickPromoteEligibility.fromJson(Map<String, dynamic> json) =>
+      _$$_QuickPromoteEligibilityFromJson(json);
+
+  @override
+  @JsonKey(name: 'eligibility')
+  final String restId;
+
+  @override
+  String toString() {
+    return 'QuickPromoteEligibility(restId: $restId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_QuickPromoteEligibility &&
+            (identical(other.restId, restId) || other.restId == restId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, restId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_QuickPromoteEligibilityCopyWith<_$_QuickPromoteEligibility>
+      get copyWith =>
+          __$$_QuickPromoteEligibilityCopyWithImpl<_$_QuickPromoteEligibility>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_QuickPromoteEligibilityToJson(
+      this,
+    );
+  }
+}
+
+abstract class _QuickPromoteEligibility implements QuickPromoteEligibility {
+  const factory _QuickPromoteEligibility(
+          {@JsonKey(name: 'eligibility') required final String restId}) =
+      _$_QuickPromoteEligibility;
+
+  factory _QuickPromoteEligibility.fromJson(Map<String, dynamic> json) =
+      _$_QuickPromoteEligibility.fromJson;
+
+  @override
+  @JsonKey(name: 'eligibility')
+  String get restId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_QuickPromoteEligibilityCopyWith<_$_QuickPromoteEligibility>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 Core _$CoreFromJson(Map<String, dynamic> json) {
@@ -5104,7 +5574,7 @@ mixin _$TweetLegacy {
   @JsonKey(name: 'id_str')
   String get idStr => throw _privateConstructorUsedError;
   @JsonKey(name: 'retweeted_status_result')
-  dynamic get retweetedStatusResult => throw _privateConstructorUsedError;
+  TweetResults? get retweetedStatusResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -5158,7 +5628,9 @@ abstract class $TweetLegacyCopyWith<$Res> {
       @JsonKey(name: 'id_str')
           String idStr,
       @JsonKey(name: 'retweeted_status_result')
-          dynamic retweetedStatusResult});
+          TweetResults? retweetedStatusResult});
+
+  $TweetResultsCopyWith<$Res>? get retweetedStatusResult;
 }
 
 /// @nodoc
@@ -5270,8 +5742,20 @@ class _$TweetLegacyCopyWithImpl<$Res, $Val extends TweetLegacy>
       retweetedStatusResult: freezed == retweetedStatusResult
           ? _value.retweetedStatusResult
           : retweetedStatusResult // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as TweetResults?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TweetResultsCopyWith<$Res>? get retweetedStatusResult {
+    if (_value.retweetedStatusResult == null) {
+      return null;
+    }
+
+    return $TweetResultsCopyWith<$Res>(_value.retweetedStatusResult!, (value) {
+      return _then(_value.copyWith(retweetedStatusResult: value) as $Val);
+    });
   }
 }
 
@@ -5323,7 +5807,10 @@ abstract class _$$_TweetLegacyCopyWith<$Res>
       @JsonKey(name: 'id_str')
           String idStr,
       @JsonKey(name: 'retweeted_status_result')
-          dynamic retweetedStatusResult});
+          TweetResults? retweetedStatusResult});
+
+  @override
+  $TweetResultsCopyWith<$Res>? get retweetedStatusResult;
 }
 
 /// @nodoc
@@ -5433,7 +5920,7 @@ class __$$_TweetLegacyCopyWithImpl<$Res>
       retweetedStatusResult: freezed == retweetedStatusResult
           ? _value.retweetedStatusResult
           : retweetedStatusResult // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as TweetResults?,
     ));
   }
 }
@@ -5551,7 +6038,7 @@ class _$_TweetLegacy implements _TweetLegacy {
   final String idStr;
   @override
   @JsonKey(name: 'retweeted_status_result')
-  final dynamic retweetedStatusResult;
+  final TweetResults? retweetedStatusResult;
 
   @override
   String toString() {
@@ -5596,8 +6083,8 @@ class _$_TweetLegacy implements _TweetLegacy {
             (identical(other.userIdStr, userIdStr) ||
                 other.userIdStr == userIdStr) &&
             (identical(other.idStr, idStr) || other.idStr == idStr) &&
-            const DeepCollectionEquality()
-                .equals(other.retweetedStatusResult, retweetedStatusResult));
+            (identical(other.retweetedStatusResult, retweetedStatusResult) ||
+                other.retweetedStatusResult == retweetedStatusResult));
   }
 
   @JsonKey(ignore: true)
@@ -5622,7 +6109,7 @@ class _$_TweetLegacy implements _TweetLegacy {
         retweeted,
         userIdStr,
         idStr,
-        const DeepCollectionEquality().hash(retweetedStatusResult)
+        retweetedStatusResult
       ]);
 
   @JsonKey(ignore: true)
@@ -5680,7 +6167,7 @@ abstract class _TweetLegacy implements TweetLegacy {
       @JsonKey(name: 'id_str')
           required final String idStr,
       @JsonKey(name: 'retweeted_status_result')
-          required final dynamic retweetedStatusResult}) = _$_TweetLegacy;
+          required final TweetResults? retweetedStatusResult}) = _$_TweetLegacy;
 
   factory _TweetLegacy.fromJson(Map<String, dynamic> json) =
       _$_TweetLegacy.fromJson;
@@ -5743,7 +6230,7 @@ abstract class _TweetLegacy implements TweetLegacy {
   String get idStr;
   @override
   @JsonKey(name: 'retweeted_status_result')
-  dynamic get retweetedStatusResult;
+  TweetResults? get retweetedStatusResult;
   @override
   @JsonKey(ignore: true)
   _$$_TweetLegacyCopyWith<_$_TweetLegacy> get copyWith =>

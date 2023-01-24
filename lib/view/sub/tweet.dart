@@ -25,15 +25,15 @@ final contentsProvider = StateNotifierProvider.family<ContentListNotifier, List<
 final cursorProvider = StateProvider.family<String?, TweetDetailArgs>((ref, _) => null);
 
 class TwitterRiverTweet extends ConsumerWidget {
-  final TweetResult tweet;
+  final TimelineTweet tweet;
   const TwitterRiverTweet({super.key, required this.tweet});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final session = TweetDetailArgs(cursor: null, focalTweetId: tweet.legacy.idStr);
+    final session = TweetDetailArgs(cursor: null, focalTweetId: tweet.tweet.legacy.idStr);
     ref.watch(contentsProvider(session));
     final init = ref.read(tweetProxyProvider(session));
-    final child = TweetWidget(tweet: tweet);
+    final child = Card(child: TweetWidget(tweet: tweet));
 
     return Scaffold(
       appBar: AppBar(),

@@ -185,6 +185,11 @@ _$_TimelineTweet _$$_TimelineTweetFromJson(Map<String, dynamic> json) =>
       tweetResults:
           TweetResults.fromJson(json['tweet_results'] as Map<String, dynamic>),
       tweetDisplayType: json['tweetDisplayType'] as String,
+      hasModeratedReplies: json['hasModeratedReplies'] as bool? ?? false,
+      socialContext: json['socialContext'] == null
+          ? null
+          : SocialContext.fromJson(
+              json['socialContext'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TimelineTweetToJson(_$_TimelineTweet instance) =>
@@ -192,6 +197,26 @@ Map<String, dynamic> _$$_TimelineTweetToJson(_$_TimelineTweet instance) =>
       '__typename': const TypenameConverter().toJson(instance.typename),
       'tweet_results': instance.tweetResults,
       'tweetDisplayType': instance.tweetDisplayType,
+      'hasModeratedReplies': instance.hasModeratedReplies,
+      'socialContext': instance.socialContext,
+    };
+
+_$_SocialContext _$$_SocialContextFromJson(Map<String, dynamic> json) =>
+    _$_SocialContext(
+      type: json['type'] as String,
+      contextType: json['contextType'] as String?,
+      text: json['text'] as String?,
+      name: json['name'] as String?,
+      landingUrl: json['landingUrl'],
+    );
+
+Map<String, dynamic> _$$_SocialContextToJson(_$_SocialContext instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'contextType': instance.contextType,
+      'text': instance.text,
+      'name': instance.name,
+      'landingUrl': instance.landingUrl,
     };
 
 _$_TweetResults _$$_TweetResultsFromJson(Map<String, dynamic> json) =>
@@ -230,6 +255,18 @@ Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
       'legacy': instance.legacy,
       'quick_promote_eligibility': instance.quickPromoteEligibility,
       'views': instance.views,
+    };
+
+_$_QuickPromoteEligibility _$$_QuickPromoteEligibilityFromJson(
+        Map<String, dynamic> json) =>
+    _$_QuickPromoteEligibility(
+      restId: json['eligibility'] as String,
+    );
+
+Map<String, dynamic> _$$_QuickPromoteEligibilityToJson(
+        _$_QuickPromoteEligibility instance) =>
+    <String, dynamic>{
+      'eligibility': instance.restId,
     };
 
 _$_Core _$$_CoreFromJson(Map<String, dynamic> json) => _$_Core(
@@ -395,7 +432,10 @@ _$_TweetLegacy _$$_TweetLegacyFromJson(Map<String, dynamic> json) =>
       retweeted: json['retweeted'] as bool,
       userIdStr: json['user_id_str'] as String,
       idStr: json['id_str'] as String,
-      retweetedStatusResult: json['retweeted_status_result'],
+      retweetedStatusResult: json['retweeted_status_result'] == null
+          ? null
+          : TweetResults.fromJson(
+              json['retweeted_status_result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetLegacyToJson(_$_TweetLegacy instance) =>

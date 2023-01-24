@@ -24,12 +24,12 @@ class ContentWidget extends ConsumerWidget {
     if (content.entryType == EntryType.timelineTimelineItem) {
       final tweet = content.timelineTimelineItem!.itemContent;
       if (tweet.entryType == ItemType.timelineTweet) {
-        return TweetCard(child: TweetWidget(tweet: tweet.timelineTweet!.tweet));
+        return TweetCard(child: TweetWidget(tweet: tweet.timelineTweet!));
       }
     } else if (content.entryType == EntryType.timelineTimelineModule) {
       final tweets = content.timelineTimelineModule!.itemContent
           .where((e) => e.item.itemContent.entryType == ItemType.timelineTweet)
-          .map((e) => e.item.itemContent.timelineTweet!.tweet)
+          .map((e) => e.item.itemContent.timelineTweet!)
           .toList();
 
       return TweetCard(
@@ -56,7 +56,7 @@ class TweetCard extends ConsumerWidget {
 
 class TweetInkWell extends ConsumerWidget {
   final Widget child;
-  final TweetResult tweet;
+  final TimelineTweet tweet;
   const TweetInkWell({super.key, required this.child, required this.tweet});
 
   @override
@@ -107,95 +107,108 @@ class UserInkWell extends ConsumerWidget {
 }
 
 class TweetWidget extends ConsumerWidget {
-  final TweetResult tweet;
+  final TimelineTweet tweet;
   const TweetWidget({super.key, required this.tweet});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final topic = tweet.socialContext?.text ?? tweet.socialContext?.name;
     return TweetInkWell(
       tweet: tweet,
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Row(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UserInkWell(
-              user: tweet.user,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                child: CachedNetworkImage(
-                  imageUrl: tweet.user.legacy.profileImageUrlHttps,
-                  progressIndicatorBuilder: (context, url, progress) => CircleAvatar(backgroundColor: Colors.black.withAlpha(0)),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                  fit: BoxFit.fill,
-                  imageBuilder: (context, imageProvider) {
-                    return CircleAvatar(backgroundImage: imageProvider);
-                  },
-                ),
+            if (topic != null)
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Text(topic, style: Theme.of(context).textTheme.bodySmall),
               ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UserInkWell(
+                  user: tweet.user,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    child: CachedNetworkImage(
+                      imageUrl: tweet.user.legacy.profileImageUrlHttps,
+                      progressIndicatorBuilder: (context, url, progress) => CircleAvatar(backgroundColor: Colors.black.withAlpha(0)),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      fit: BoxFit.fill,
+                      width: 40,
+                      height: 40,
+                      imageBuilder: (context, imageProvider) {
+                        return CircleAvatar(backgroundImage: imageProvider);
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: UserInkWell(
-                          user: tweet.user,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2),
-                            child: Text(
-                              overflow: TextOverflow.ellipsis,
-                              tweet.user.legacy.name,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: UserInkWell(
+                              user: tweet.user,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 2),
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  tweet.user.legacy.name,
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 2),
+                            child: Text(UiCore.of(context).generalDateDifference(tweet.tweet.legacy.createdAt), style: Theme.of(context).textTheme.bodySmall),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                        child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                        child: Text(UiCore.of(context).generalDateDifference(tweet.legacy.createdAt), style: Theme.of(context).textTheme.bodySmall),
+                      Text(tweet.tweet.legacy.fullText),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Row(
+                              children: [
+                                const Icon(Icons.comment, size: 16),
+                                Text(tweet.tweet.legacy.replyCount.toString()),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                const Icon(Icons.recycling, size: 16),
+                                Text(tweet.tweet.legacy.retweetCount.toString()),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                const Icon(Icons.favorite, size: 16),
+                                Text(tweet.tweet.legacy.favoriteCount.toString()),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Text(tweet.legacy.fullText),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Icon(Icons.comment, size: 16),
-                            Text(tweet.legacy.replyCount.toString()),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Icon(Icons.recycling, size: 16),
-                            Text(tweet.legacy.retweetCount.toString()),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Icon(Icons.favorite, size: 16),
-                            Text(tweet.legacy.favoriteCount.toString()),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

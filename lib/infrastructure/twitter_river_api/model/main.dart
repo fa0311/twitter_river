@@ -158,14 +158,27 @@ class TimelineTweet with _$TimelineTweet {
     @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'tweet_results') required TweetResults tweetResults,
     @JsonKey(name: 'tweetDisplayType') required String tweetDisplayType, // enum
-    // @JsonKey(name: 'hasModeratedReplies') required bool hasModeratedReplies,
+    @JsonKey(name: 'hasModeratedReplies', defaultValue: false) required bool hasModeratedReplies,
+    @JsonKey(name: 'socialContext') required SocialContext? socialContext,
   }) = _TimelineTweet;
 
-  bool get hidden => tweetResults.result?.core.userResults.result == null;
-
   TweetResult get tweet => tweetResults.result!;
+  Result get user => tweetResults.result!.core.userResults.result;
 
   factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));
+}
+
+@freezed
+class SocialContext with _$SocialContext {
+  const factory SocialContext({
+    @JsonKey(name: 'type') required String type, //enum
+    @JsonKey(name: 'contextType') required String? contextType, //enum
+    @JsonKey(name: 'text') required String? text,
+    @JsonKey(name: 'name') required String? name,
+    @JsonKey(name: 'landingUrl') required dynamic landingUrl,
+  }) = _SocialContext;
+
+  factory SocialContext.fromJson(Map<String, dynamic> json) => _$SocialContextFromJson(fromJsonProxy(printJson(json)));
 }
 
 // ==================== TweetResults ====================
@@ -176,12 +189,11 @@ class TweetResults with _$TweetResults {
     @JsonKey(name: 'result') required TweetResult? result,
   }) = _TweetResults;
 
-  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(printJson(json)));
+  factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(json));
 }
 
 @freezed
 class TweetResult with _$TweetResult {
-  const TweetResult._();
   const factory TweetResult({
     @JsonKey(name: 'rest_id') required String restId,
     @JsonKey(name: 'core') required Core core,
@@ -194,9 +206,16 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
-  Result get user => core.userResults.result;
-
   factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(json));
+}
+
+@freezed
+class QuickPromoteEligibility with _$QuickPromoteEligibility {
+  const factory QuickPromoteEligibility({
+    @JsonKey(name: 'eligibility') required String restId, //enum
+  }) = _QuickPromoteEligibility;
+
+  factory QuickPromoteEligibility.fromJson(Map<String, dynamic> json) => _$QuickPromoteEligibilityFromJson(fromJsonProxy(json));
 }
 
 @freezed
@@ -308,7 +327,7 @@ class TweetLegacy with _$TweetLegacy {
     @JsonKey(name: 'retweeted') required bool retweeted,
     @JsonKey(name: 'user_id_str') required String userIdStr,
     @JsonKey(name: 'id_str') required String idStr,
-    @JsonKey(name: 'retweeted_status_result') required dynamic retweetedStatusResult,
+    @JsonKey(name: 'retweeted_status_result') required TweetResults? retweetedStatusResult,
   }) = _TweetLegacy;
 
   factory TweetLegacy.fromJson(Map<String, dynamic> json) => _$TweetLegacyFromJson(fromJsonProxy(json));
