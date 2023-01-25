@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:infinite_listview/infinite_listview.dart';
 
 // Project imports:
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 import 'package:twitter_river/provider/api/contents.dart';
 import 'package:twitter_river/provider/api/model/cursor.dart';
@@ -16,13 +18,25 @@ import 'package:twitter_river/widget/tweet.dart';
 final tweetProxyProvider = FutureProvider.family<void, TweetDetailArgs>((ref, args) async {
   final data = await ref.watch(tweetDetailProvider(args).future);
   final session = args.copyWith(cursor: null);
-  if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 10));
   ref.read(cursorProvider(session).notifier).state = data.bottomCursor?.value;
-  ref.read(contentsProvider(session).notifier).add(data.contents);
+
+  final restIdList = data.contents
+      .where((e) => e.entryType == EntryType.timelineTimelineItem)
+      .map((e) => e.timelineTimelineItem!.itemContent)
+      .where((e) => e.entryType == ItemType.timelineTweet)
+      .map((e) => e.timelineTweet!.tweet.restId)
+      .toList();
+  final key = restIdList.indexWhere((e) => e.contains(args.focalTweetId));
+
+  ref.read(topContentsProvider(session).notifier).add(data.contents.take(key > 0 ? key : 0).toList());
+  ref.read(bottomContentsProvider(session).notifier).add(data.contents.skip(key > 0 ? key : 0).toList());
 });
 
-final contentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TweetDetailArgs>((ref, _) => ContentListNotifier());
+final topContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TweetDetailArgs>((ref, _) => ContentListNotifier());
+final bottomContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TweetDetailArgs>((ref, _) => ContentListNotifier());
 final cursorProvider = StateProvider.family<String?, TweetDetailArgs>((ref, _) => null);
+
+final scrollProvider = StateProvider.autoDispose<ScrollController>((ref) => ScrollController());
 
 class TwitterRiverTweet extends ConsumerWidget {
   final TimelineTweet tweet;
@@ -31,9 +45,9 @@ class TwitterRiverTweet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final session = TweetDetailArgs(cursor: null, focalTweetId: tweet.tweet.legacy.idStr);
-    ref.watch(contentsProvider(session));
+    ref.watch(bottomContentsProvider(session));
     final init = ref.read(tweetProxyProvider(session));
-    final child = Card(child: TweetWidget(tweet: tweet));
+    final child = Card(child: TweetDetailsWidget(tweet: tweet));
 
     return Scaffold(
       appBar: AppBar(),
@@ -47,15 +61,19 @@ class TwitterRiverTweet extends ConsumerWidget {
           );
         },
         data: (_) {
-          final contents = ref.watch(contentsProvider(session));
+          final topContents = ref.watch(topContentsProvider(session));
+          final bottomContents = ref.watch(bottomContentsProvider(session));
           final cursor = ref.watch(cursorProvider(session));
+
           return RefreshIndicator(
             onRefresh: () => ref.refresh(tweetDetailProvider(session).future),
-            child: ListView.builder(
-              itemCount: cursor == null ? contents.length : null,
+            child: InfiniteListView.builder(
               itemBuilder: (context, i) {
-                if (cursor != null && contents.length - 20 < i) ref.read(tweetProxyProvider(session.copyWith(cursor: cursor)).future);
-                if (contents.length <= i) {
+                final contents = i < 0 ? topContents : bottomContents;
+                final contentsKey = i.abs() - (i < 0 ? 1 : 0);
+
+                if (cursor != null && contents.length - 20 < contentsKey) ref.read(tweetProxyProvider(session.copyWith(cursor: cursor)).future);
+                if (contents.length <= contentsKey) {
                   if (cursor == null) {
                     return const SizedBox(width: 100, height: 100);
                   } else {
@@ -68,7 +86,7 @@ class TwitterRiverTweet extends ConsumerWidget {
                     );
                   }
                 }
-                return ContentWidget(content: contents[i]);
+                return ContentWidget(content: contents[contentsKey], details: contentsKey == 0);
               },
             ),
           );

@@ -178,7 +178,7 @@ class SocialContext with _$SocialContext {
     @JsonKey(name: 'landingUrl') required dynamic landingUrl,
   }) = _SocialContext;
 
-  factory SocialContext.fromJson(Map<String, dynamic> json) => _$SocialContextFromJson(fromJsonProxy(printJson(json)));
+  factory SocialContext.fromJson(Map<String, dynamic> json) => _$SocialContextFromJson(fromJsonProxy(json));
 }
 
 // ==================== TweetResults ====================
@@ -201,6 +201,7 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
     @JsonKey(name: 'is_translatable', defaultValue: false) required bool isTranslatable,
+    @JsonKey(name: 'source') required String source,
     @JsonKey(name: 'legacy') required TweetLegacy legacy,
     @JsonKey(name: 'quick_promote_eligibility') required dynamic quickPromoteEligibility,
     @JsonKey(name: 'views') required dynamic views,

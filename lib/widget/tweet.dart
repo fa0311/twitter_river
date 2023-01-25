@@ -1,5 +1,7 @@
 // Flutter imports:
 
+// Dart imports:
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
@@ -17,14 +20,19 @@ import 'package:twitter_river/view/sub/user.dart';
 
 class ContentWidget extends ConsumerWidget {
   final Content content;
-  const ContentWidget({super.key, required this.content});
+  final bool details;
+  const ContentWidget({super.key, required this.content, this.details = false});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (content.entryType == EntryType.timelineTimelineItem) {
       final tweet = content.timelineTimelineItem!.itemContent;
-      if (tweet.entryType == ItemType.timelineTweet) {
-        return TweetCard(child: TweetWidget(tweet: tweet.timelineTweet!));
+      if (tweet.timelineTweet?.tweet.legacy.retweetedStatusResult != null) {
+        final timelineTweet = tweet.timelineTweet!.copyWith(tweetResults: tweet.timelineTweet!.tweet.legacy.retweetedStatusResult!);
+        return TweetCard(child: details ? TweetDetailsWidget(tweet: timelineTweet) : TweetWidget(tweet: timelineTweet));
+      } else if (tweet.entryType == ItemType.timelineTweet) {
+        final timelineTweet = tweet.timelineTweet!;
+        return TweetCard(child: details ? TweetDetailsWidget(tweet: timelineTweet) : TweetWidget(tweet: timelineTweet));
       }
     } else if (content.entryType == EntryType.timelineTimelineModule) {
       final tweets = content.timelineTimelineModule!.itemContent
@@ -35,7 +43,8 @@ class ContentWidget extends ConsumerWidget {
       return TweetCard(
         child: Column(
           children: [
-            for (final tweet in tweets) TweetWidget(tweet: tweet),
+            details ? TweetDetailsWidget(tweet: tweets.first) : TweetWidget(tweet: tweets.first),
+            for (final tweet in tweets..remove(tweets.first)) TweetWidget(tweet: tweet),
           ],
         ),
       );
@@ -175,40 +184,141 @@ class TweetWidget extends ConsumerWidget {
                         ],
                       ),
                       Text(tweet.tweet.legacy.fullText),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Row(
-                              children: [
-                                const Icon(Icons.comment, size: 16),
-                                Text(tweet.tweet.legacy.replyCount.toString()),
-                              ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.comment, size: 16),
+                                  Text(tweet.tweet.legacy.replyCount.toString()),
+                                ],
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                const Icon(Icons.recycling, size: 16),
-                                Text(tweet.tweet.legacy.retweetCount.toString()),
-                              ],
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.recycling, size: 16),
+                                  Text(tweet.tweet.legacy.retweetCount.toString()),
+                                ],
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                const Icon(Icons.favorite, size: 16),
-                                Text(tweet.tweet.legacy.favoriteCount.toString()),
-                              ],
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.favorite, size: 16),
+                                  Text(tweet.tweet.legacy.favoriteCount.toString()),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TweetDetailsWidget extends ConsumerWidget {
+  final TimelineTweet tweet;
+  const TweetDetailsWidget({super.key, required this.tweet});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return TweetInkWell(
+      tweet: tweet,
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            UserInkWell(
+              user: tweet.user,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    child: CachedNetworkImage(
+                      imageUrl: tweet.user.legacy.profileImageUrlHttps,
+                      progressIndicatorBuilder: (context, url, progress) => CircleAvatar(backgroundColor: Colors.black.withAlpha(0)),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      fit: BoxFit.fill,
+                      width: 40,
+                      height: 40,
+                      imageBuilder: (context, imageProvider) {
+                        return CircleAvatar(backgroundImage: imageProvider);
+                      },
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        overflow: TextOverflow.ellipsis,
+                        tweet.user.legacy.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(tweet.tweet.legacy.fullText),
+                  Text(
+                    DateFormat.yMMMMEEEEd(AppLocalizations.of(context)!.localeName).format(tweet.tweet.legacy.createdAt),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Icon(Icons.comment, size: 16),
+                              Text(tweet.tweet.legacy.replyCount.toString()),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Icon(Icons.recycling, size: 16),
+                              Text(tweet.tweet.legacy.retweetCount.toString()),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Icon(Icons.favorite, size: 16),
+                              Text(tweet.tweet.legacy.favoriteCount.toString()),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

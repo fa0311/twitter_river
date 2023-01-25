@@ -51,42 +51,43 @@ class TwitterRiverLatestTimeline extends ConsumerWidget {
     const session = TimelineLatestArgs(cursor: null);
     final init = ref.watch(timelineLatestInitProvider(session));
     return init.when(
-        loading: () => const Loading(),
-        error: (e, trace) {
-          logger.w(e, e, trace);
-          return ScrollWidget(
-            onRefresh: () => ref.refresh(timelineLatestInitProvider(session).future),
-            child: Container(),
-          );
-        },
-        data: (_) {
-          final topContents = ref.watch(topContentsProvider(session));
-          final bottomContents = ref.watch(bottomContentsProvider(session));
-          return InfiniteListView.builder(
-            itemBuilder: (context, i) {
-              final contents = i < 0 ? topContents : bottomContents;
-              final contentsKey = i.abs() - (i < 0 ? 1 : 0);
-              final cursor = i < 0 ? ref.read(topCursorProvider(session)) : ref.read(bottomCursorProvider(session));
-              if (cursor != null && contents.length - 20 < contentsKey) {
-                if (i < 0) ref.read(topUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
-                if (i >= 0) ref.read(bottomUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
+      loading: () => const Loading(),
+      error: (e, trace) {
+        logger.w(e, e, trace);
+        return ScrollWidget(
+          onRefresh: () => ref.refresh(timelineLatestInitProvider(session).future),
+          child: Container(),
+        );
+      },
+      data: (_) {
+        final topContents = ref.watch(topContentsProvider(session));
+        final bottomContents = ref.watch(bottomContentsProvider(session));
+        return InfiniteListView.builder(
+          itemBuilder: (context, i) {
+            final contents = i < 0 ? topContents : bottomContents;
+            final contentsKey = i.abs() - (i < 0 ? 1 : 0);
+            final cursor = i < 0 ? ref.read(topCursorProvider(session)) : ref.read(bottomCursorProvider(session));
+            if (cursor != null && contents.length - 20 < contentsKey) {
+              if (i < 0) ref.read(topUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
+              if (i >= 0) ref.read(bottomUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
+            }
+            if (contents.length <= contentsKey) {
+              if (cursor == null) {
+                return const SizedBox(width: 100, height: 100);
+              } else {
+                return Container(
+                  alignment: Alignment.topCenter,
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 50),
+                    child: CircularProgressIndicator(),
+                  ),
+                );
               }
-              if (contents.length <= contentsKey) {
-                if (cursor == null) {
-                  return const SizedBox(width: 100, height: 100);
-                } else {
-                  return Container(
-                    alignment: Alignment.topCenter,
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 50),
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-              }
-              return ContentWidget(content: contents[contentsKey]);
-            },
-          );
-        });
+            }
+            return ContentWidget(content: contents[contentsKey]);
+          },
+        );
+      },
+    );
   }
 }

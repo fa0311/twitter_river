@@ -2954,6 +2954,8 @@ mixin _$TweetResult {
   dynamic get editPerspective => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_translatable', defaultValue: false)
   bool get isTranslatable => throw _privateConstructorUsedError;
+  @JsonKey(name: 'source')
+  String? get source => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy => throw _privateConstructorUsedError;
   @JsonKey(name: 'quick_promote_eligibility')
@@ -2986,6 +2988,8 @@ abstract class $TweetResultCopyWith<$Res> {
           dynamic editPerspective,
       @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
+      @JsonKey(name: 'source')
+          String? source,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
       @JsonKey(name: 'quick_promote_eligibility')
@@ -3016,6 +3020,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
     Object? editControl = freezed,
     Object? editPerspective = freezed,
     Object? isTranslatable = null,
+    Object? source = freezed,
     Object? legacy = null,
     Object? quickPromoteEligibility = freezed,
     Object? views = freezed,
@@ -3045,6 +3050,10 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
           ? _value.isTranslatable
           : isTranslatable // ignore: cast_nullable_to_non_nullable
               as bool,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String?,
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
@@ -3098,6 +3107,8 @@ abstract class _$$_TweetResultCopyWith<$Res>
           dynamic editPerspective,
       @JsonKey(name: 'is_translatable', defaultValue: false)
           bool isTranslatable,
+      @JsonKey(name: 'source')
+          String? source,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
       @JsonKey(name: 'quick_promote_eligibility')
@@ -3128,6 +3139,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
     Object? editControl = freezed,
     Object? editPerspective = freezed,
     Object? isTranslatable = null,
+    Object? source = freezed,
     Object? legacy = null,
     Object? quickPromoteEligibility = freezed,
     Object? views = freezed,
@@ -3157,6 +3169,10 @@ class __$$_TweetResultCopyWithImpl<$Res>
           ? _value.isTranslatable
           : isTranslatable // ignore: cast_nullable_to_non_nullable
               as bool,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String?,
       legacy: null == legacy
           ? _value.legacy
           : legacy // ignore: cast_nullable_to_non_nullable
@@ -3189,6 +3205,8 @@ class _$_TweetResult implements _TweetResult {
           required this.editPerspective,
       @JsonKey(name: 'is_translatable', defaultValue: false)
           required this.isTranslatable,
+      @JsonKey(name: 'source')
+          required this.source,
       @JsonKey(name: 'legacy')
           required this.legacy,
       @JsonKey(name: 'quick_promote_eligibility')
@@ -3218,6 +3236,9 @@ class _$_TweetResult implements _TweetResult {
   @JsonKey(name: 'is_translatable', defaultValue: false)
   final bool isTranslatable;
   @override
+  @JsonKey(name: 'source')
+  final String? source;
+  @override
   @JsonKey(name: 'legacy')
   final TweetLegacy legacy;
   @override
@@ -3229,7 +3250,7 @@ class _$_TweetResult implements _TweetResult {
 
   @override
   String toString() {
-    return 'TweetResult(restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, legacy: $legacy, quickPromoteEligibility: $quickPromoteEligibility, views: $views)';
+    return 'TweetResult(restId: $restId, core: $core, unmentionData: $unmentionData, editControl: $editControl, editPerspective: $editPerspective, isTranslatable: $isTranslatable, source: $source, legacy: $legacy, quickPromoteEligibility: $quickPromoteEligibility, views: $views)';
   }
 
   @override
@@ -3247,6 +3268,7 @@ class _$_TweetResult implements _TweetResult {
                 .equals(other.editPerspective, editPerspective) &&
             (identical(other.isTranslatable, isTranslatable) ||
                 other.isTranslatable == isTranslatable) &&
+            (identical(other.source, source) || other.source == source) &&
             (identical(other.legacy, legacy) || other.legacy == legacy) &&
             const DeepCollectionEquality().equals(
                 other.quickPromoteEligibility, quickPromoteEligibility) &&
@@ -3263,6 +3285,7 @@ class _$_TweetResult implements _TweetResult {
       const DeepCollectionEquality().hash(editControl),
       const DeepCollectionEquality().hash(editPerspective),
       isTranslatable,
+      source,
       legacy,
       const DeepCollectionEquality().hash(quickPromoteEligibility),
       const DeepCollectionEquality().hash(views));
@@ -3295,6 +3318,8 @@ abstract class _TweetResult implements TweetResult {
           required final dynamic editPerspective,
       @JsonKey(name: 'is_translatable', defaultValue: false)
           required final bool isTranslatable,
+      @JsonKey(name: 'source')
+          required final String? source,
       @JsonKey(name: 'legacy')
           required final TweetLegacy legacy,
       @JsonKey(name: 'quick_promote_eligibility')
@@ -3323,6 +3348,9 @@ abstract class _TweetResult implements TweetResult {
   @override
   @JsonKey(name: 'is_translatable', defaultValue: false)
   bool get isTranslatable;
+  @override
+  @JsonKey(name: 'source')
+  String? get source;
   @override
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy;
