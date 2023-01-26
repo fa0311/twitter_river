@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infinite_listview/infinite_listview.dart';
+import 'package:twitter_river/component/infinite_scroll.dart';
 
 // Project imports:
 import 'package:twitter_river/component/loading.dart';
@@ -18,31 +18,31 @@ import 'package:twitter_river/widget/tweet.dart';
 
 final timelineLatestInitProvider = FutureProvider.family<void, TimelineLatestArgs>((ref, session) async {
   final data = await ref.watch(timelineLatestProvider(session).future);
-  ref.read(topCursorProvider(session).notifier).state = data.topCursor?.value;
-  ref.read(bottomCursorProvider(session).notifier).state = data.bottomCursor?.value;
-  ref.read(bottomContentsProvider(session).notifier).add(data.contents);
+  ref.read(negativeCursorProvider(session).notifier).state = data.negativeCursor?.value;
+  ref.read(positiveCursorProvider(session).notifier).state = data.positiveCursor?.value;
+  ref.read(positiveContentsProvider(session).notifier).add(data.contents);
 });
 
 final topUserTweetsProxyProvider = FutureProvider.family<void, TimelineLatestArgs>((ref, args) async {
   final data = await ref.read(timelineLatestProvider(args).future);
   final session = args.copyWith(cursor: null);
   if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 5));
-  ref.read(topCursorProvider(session).notifier).state = data.topCursor?.value;
-  ref.read(topContentsProvider(session).notifier).add(data.contents);
+  ref.read(negativeCursorProvider(session).notifier).state = data.negativeCursor?.value;
+  ref.read(negativeContentsProvider(session).notifier).add(data.contents);
 });
 
 final bottomUserTweetsProxyProvider = FutureProvider.family<void, TimelineLatestArgs>((ref, args) async {
   final data = await ref.read(timelineLatestProvider(args).future);
   final session = args.copyWith(cursor: null);
   if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 5));
-  ref.read(bottomCursorProvider(session).notifier).state = data.bottomCursor?.value;
-  ref.read(bottomContentsProvider(session).notifier).add(data.contents);
+  ref.read(positiveCursorProvider(session).notifier).state = data.positiveCursor?.value;
+  ref.read(positiveContentsProvider(session).notifier).add(data.contents);
 });
 
-final topContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TimelineLatestArgs>((ref, _) => ContentListNotifier());
-final bottomContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TimelineLatestArgs>((ref, _) => ContentListNotifier());
-final topCursorProvider = StateProvider.family<String?, TimelineLatestArgs>((ref, _) => null);
-final bottomCursorProvider = StateProvider.family<String?, TimelineLatestArgs>((ref, _) => null);
+final negativeContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TimelineLatestArgs>((ref, _) => ContentListNotifier());
+final positiveContentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, TimelineLatestArgs>((ref, _) => ContentListNotifier());
+final negativeCursorProvider = StateProvider.family<String?, TimelineLatestArgs>((ref, _) => null);
+final positiveCursorProvider = StateProvider.family<String?, TimelineLatestArgs>((ref, _) => null);
 
 class TwitterRiverLatestTimeline extends ConsumerWidget {
   const TwitterRiverLatestTimeline({super.key});
@@ -60,19 +60,19 @@ class TwitterRiverLatestTimeline extends ConsumerWidget {
         );
       },
       data: (_) {
-        final topContents = ref.watch(topContentsProvider(session));
-        final bottomContents = ref.watch(bottomContentsProvider(session));
-        return InfiniteListView.builder(
+        final positiveContents = ref.watch(positiveContentsProvider(session));
+        final positiveCursor = ref.read(positiveCursorProvider(session));
+        final negativeContents = ref.watch(negativeContentsProvider(session));
+        final negativeCursor = ref.read(negativeCursorProvider(session));
+        return InfiniteScroll.builder(
+          itemCount: positiveCursor == null ? positiveContents.length : null,
+          negativeItemCount: negativeCursor == null ? negativeContents.length : null,
           itemBuilder: (context, i) {
-            final contents = i < 0 ? topContents : bottomContents;
-            final contentsKey = i.abs() - (i < 0 ? 1 : 0);
-            final cursor = i < 0 ? ref.read(topCursorProvider(session)) : ref.read(bottomCursorProvider(session));
-            if (cursor != null && contents.length - 20 < contentsKey) {
-              if (i < 0) ref.read(topUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
-              if (i >= 0) ref.read(bottomUserTweetsProxyProvider(session.copyWith(cursor: cursor)));
+            if (positiveCursor != null && positiveContents.length - 20 < i) {
+              ref.read(bottomUserTweetsProxyProvider(session.copyWith(cursor: positiveCursor)));
             }
-            if (contents.length <= contentsKey) {
-              if (cursor == null) {
+            if (positiveContents.length <= i) {
+              if (positiveCursor == null) {
                 return const SizedBox(width: 100, height: 100);
               } else {
                 return Container(
@@ -84,7 +84,26 @@ class TwitterRiverLatestTimeline extends ConsumerWidget {
                 );
               }
             }
-            return ContentWidget(content: contents[contentsKey]);
+            return ContentWidget(content: positiveContents[i]);
+          },
+          negativeItemBuilder: (context, i) {
+            if (negativeCursor != null && negativeContents.length - 20 < i) {
+              ref.read(topUserTweetsProxyProvider(session.copyWith(cursor: negativeCursor)));
+            }
+            if (negativeContents.length <= i) {
+              if (negativeCursor == null) {
+                return const SizedBox(width: 100, height: 100);
+              } else {
+                return Container(
+                  alignment: Alignment.topCenter,
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 50),
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            }
+            return ContentWidget(content: negativeContents[i]);
           },
         );
       },

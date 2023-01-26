@@ -18,9 +18,9 @@ import 'package:twitter_river/widget/user.dart';
 
 final userTweetsInitProvider = FutureProvider.family<void, UserTweetsArgs>((ref, session) async {
   final initData = await ref.watch(userTweetsProvider(session).future);
-  ref.read(topCursorProvider(session).notifier).state = initData.topCursor?.value;
-  ref.read(bottomCursorProvider(session).notifier).state = initData.bottomCursor?.value;
-  final args = session.copyWith(cursor: initData.topCursor?.value);
+  ref.read(negativeCursorProvider(session).notifier).state = initData.negativeCursor?.value;
+  ref.read(positiveCursorProvider(session).notifier).state = initData.positiveCursor?.value;
+  final args = session.copyWith(cursor: initData.negativeCursor?.value);
   final topData = await ref.watch(userTweetsProvider(args).future);
   ref.read(contentsProvider(session).notifier).set([...topData.contents, ...initData.contents]);
 });
@@ -29,7 +29,7 @@ final topUserTweetsProxyProvider = FutureProvider.family<void, UserTweetsArgs>((
   final data = await ref.read(userTweetsProvider(args).future);
   final session = args.copyWith(cursor: null);
   if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 5));
-  ref.read(bottomCursorProvider(session).notifier).state = data.bottomCursor?.value;
+  ref.read(positiveCursorProvider(session).notifier).state = data.positiveCursor?.value;
   ref.read(contentsProvider(session).notifier).add(data.contents);
 });
 
@@ -37,13 +37,13 @@ final bottomUserTweetsProxyProvider = FutureProvider.family<void, UserTweetsArgs
   final data = await ref.read(userTweetsProvider(args).future);
   final session = args.copyWith(cursor: null);
   if (data.contents.isEmpty) await Future.delayed(const Duration(seconds: 5));
-  ref.read(topCursorProvider(session).notifier).state = data.topCursor?.value;
+  ref.read(negativeCursorProvider(session).notifier).state = data.negativeCursor?.value;
   ref.read(contentsProvider(session).notifier).insertFirst(data.contents);
 });
 
 final contentsProvider = StateNotifierProvider.family<ContentListNotifier, List<Content>, UserTweetsArgs>((ref, _) => ContentListNotifier());
-final topCursorProvider = StateProvider.family<String?, UserTweetsArgs>((ref, _) => null);
-final bottomCursorProvider = StateProvider.family<String?, UserTweetsArgs>((ref, _) => null);
+final negativeCursorProvider = StateProvider.family<String?, UserTweetsArgs>((ref, _) => null);
+final positiveCursorProvider = StateProvider.family<String?, UserTweetsArgs>((ref, _) => null);
 
 class TwitterRiverUserProfile extends ConsumerWidget {
   final Result user;
@@ -70,7 +70,7 @@ class TwitterRiverUserProfile extends ConsumerWidget {
         },
         data: (_) {
           final contents = ref.watch(contentsProvider(session));
-          final cursor = ref.watch(bottomCursorProvider(session));
+          final cursor = ref.watch(positiveCursorProvider(session));
           return RefreshIndicator(
             onRefresh: () => ref.refresh(userTweetsProvider(session).future),
             child: ListView.builder(

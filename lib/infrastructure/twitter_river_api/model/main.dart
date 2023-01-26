@@ -49,8 +49,9 @@ class TimelineAddEntries with _$TimelineAddEntries {
             .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
       ].toList();
 
-  TimelineTimelineCursor? get topCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
-  TimelineTimelineCursor? get bottomCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
+  TimelineTimelineCursor? get negativeCursor => cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.top, orElse: () => null);
+  TimelineTimelineCursor? get positiveCursor =>
+      cursor.cast<TimelineTimelineCursor?>().firstWhere((e) => e!.cursorType == CursorType.bottom, orElse: () => null);
 
   List<TimelineTimelineModule> get timelineModule =>
       entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();

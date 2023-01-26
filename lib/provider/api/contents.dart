@@ -52,59 +52,6 @@ final userByScreenNameProvider = FutureProvider.family<UserByScreenNameResponse,
   return await session.getUserByScreenName(screenName: args.screenName);
 });
 
-/*
-
-final contentsInitProvider = FutureProvider.family<void, ContentSession>((ref, session) async {
-  final data = await () {
-    switch (session.type) {
-      case ContentAPI.getTimeLine:
-        return ref.watch(timeLineProvider(ContentCursor(session: session)).future);
-      case ContentAPI.getHomeLatestTimeline:
-        return ref.watch(homeLatestTimelineLatestProvider(ContentCursor(session: session)).future);
-      case ContentAPI.tweetDetail:
-        return ref.watch(tweetDetailProvider(ContentCursor(session: session)).future);
-      case ContentAPI.userTweets:
-        return ref.watch(userTweetsProvider(ContentCursor(session: session)).future).then((e) => e.timelineAddEntries);
-    }
-  }();
-
-  final contents = data.contents;
-  final newTopCursor = ContentCursor(session: session, value: data.topCursor?.value);
-  final newBottomCursor = ContentCursor(session: session, value: data.bottomCursor?.value);
-  ref.read(topContentsCursorProvider(session).notifier).state = newTopCursor;
-  ref.read(bottomContentsCursorProvider(session).notifier).state = newBottomCursor;
-  ref.read(bottomContentsProvider(session).notifier).add(contents);
-});
-
-final contentsProxyProvider = FutureProvider.family<void, ContentCursor>((ref, cursor) async {
-  final data = await () {
-    switch (cursor.session.type) {
-      case ContentAPI.getTimeLine:
-        return ref.watch(timeLineProvider(cursor).future);
-      case ContentAPI.getHomeLatestTimeline:
-        return ref.watch(homeLatestTimelineLatestProvider(cursor).future);
-      case ContentAPI.tweetDetail:
-        return ref.watch(tweetDetailProvider(cursor).future);
-      case ContentAPI.userTweets:
-        return ref.watch(userTweetsProvider(cursor).future).then((e) => e.timelineAddEntries);
-    }
-  }();
-
-  final contents = data.contents;
-  if (contents.isEmpty) await Future.delayed(const Duration(seconds: 10));
-
-  if (cursor.value == ref.read(topContentsCursorProvider(cursor.session))?.value) {
-    final newTopCursor = cursor.copyWith(value: data.topCursor?.value);
-    ref.read(topContentsCursorProvider(cursor.session).notifier).state = newTopCursor;
-    ref.read(topContentsProvider(cursor.session).notifier).add(contents);
-  } else if (cursor.value == ref.read(bottomContentsCursorProvider(cursor.session))?.value) {
-    final newBottomCursor = cursor.copyWith(value: data.bottomCursor?.value);
-    ref.read(bottomContentsCursorProvider(cursor.session).notifier).state = newBottomCursor;
-    ref.read(bottomContentsProvider(cursor.session).notifier).add(contents);
-  }
-});
-*/
-
 class ContentListNotifier extends StateNotifier<List<Content>> {
   ContentListNotifier() : super([]);
   void refresh() {
@@ -123,6 +70,3 @@ class ContentListNotifier extends StateNotifier<List<Content>> {
     state = [...entries, ...state];
   }
 }
-
-// ======================
-
