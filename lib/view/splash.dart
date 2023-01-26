@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -18,6 +19,9 @@ enum SplashData {
 
 final splashProvider = FutureProvider<SplashData>((ref) async {
   final session = await ref.watch(loginSessionProvider.future);
+  if (kDebugMode) {
+    return SplashData.top;
+  }
   try {
     await session.getTimeLine(cursor: null);
   } catch (e, trace) {

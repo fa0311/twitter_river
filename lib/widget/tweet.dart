@@ -3,11 +3,13 @@
 // Dart imports:
 
 // Flutter imports:
+import 'dart:developer';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -29,7 +31,14 @@ class ContentWidget extends ConsumerWidget {
       final tweet = content.timelineTimelineItem!.itemContent;
       if (tweet.timelineTweet?.tweet.legacy.retweetedStatusResult != null) {
         final timelineTweet = tweet.timelineTweet!.copyWith(tweetResults: tweet.timelineTweet!.tweet.legacy.retweetedStatusResult!);
-        return TweetCard(child: details ? TweetDetailsWidget(tweet: timelineTweet) : TweetWidget(tweet: timelineTweet));
+        return TweetCard(
+          child: details
+              ? TweetDetailsWidget(tweet: timelineTweet)
+              : TweetWidget(
+                  tweet: timelineTweet,
+                  label: AppLocalizations.of(context)!.rtBy(tweet.timelineTweet!.user.legacy.name),
+                ),
+        );
       } else if (tweet.entryType == ItemType.timelineTweet) {
         final timelineTweet = tweet.timelineTweet!;
         return TweetCard(child: details ? TweetDetailsWidget(tweet: timelineTweet) : TweetWidget(tweet: timelineTweet));
@@ -117,11 +126,12 @@ class UserInkWell extends ConsumerWidget {
 
 class TweetWidget extends ConsumerWidget {
   final TimelineTweet tweet;
-  const TweetWidget({super.key, required this.tweet});
+  final String? label;
+  const TweetWidget({super.key, required this.tweet, this.label});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final topic = tweet.socialContext?.text ?? tweet.socialContext?.name;
+    final headText = label ?? tweet.socialContext?.text ?? tweet.socialContext?.name;
     return TweetInkWell(
       tweet: tweet,
       child: Padding(
@@ -129,10 +139,10 @@ class TweetWidget extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (topic != null)
+            if (headText != null)
               Padding(
                 padding: const EdgeInsets.only(left: 50),
-                child: Text(topic, style: Theme.of(context).textTheme.bodySmall),
+                child: Text(headText, style: Theme.of(context).textTheme.bodySmall),
               ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

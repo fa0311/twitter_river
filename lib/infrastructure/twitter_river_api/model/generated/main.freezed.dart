@@ -2001,6 +2001,7 @@ mixin _$ItemContent {
   @ItemTypeConverter()
   ItemType get entryType => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTweet')
+  @SafetyObjectConverter()
   TimelineTweet? get timelineTweet => throw _privateConstructorUsedError;
   @JsonKey(name: 'timelineTimelineCursor')
   TimelineTimelineCursor? get timelineTimelineCursor =>
@@ -2023,6 +2024,7 @@ abstract class $ItemContentCopyWith<$Res> {
       @ItemTypeConverter()
           ItemType entryType,
       @JsonKey(name: 'timelineTweet')
+      @SafetyObjectConverter()
           TimelineTweet? timelineTweet,
       @JsonKey(name: 'timelineTimelineCursor')
           TimelineTimelineCursor? timelineTimelineCursor});
@@ -2103,6 +2105,7 @@ abstract class _$$_ItemContentCopyWith<$Res>
       @ItemTypeConverter()
           ItemType entryType,
       @JsonKey(name: 'timelineTweet')
+      @SafetyObjectConverter()
           TimelineTweet? timelineTweet,
       @JsonKey(name: 'timelineTimelineCursor')
           TimelineTimelineCursor? timelineTimelineCursor});
@@ -2153,6 +2156,7 @@ class _$_ItemContent implements _ItemContent {
       @ItemTypeConverter()
           required this.entryType,
       @JsonKey(name: 'timelineTweet')
+      @SafetyObjectConverter()
           required this.timelineTweet,
       @JsonKey(name: 'timelineTimelineCursor')
           required this.timelineTimelineCursor});
@@ -2166,6 +2170,7 @@ class _$_ItemContent implements _ItemContent {
   final ItemType entryType;
   @override
   @JsonKey(name: 'timelineTweet')
+  @SafetyObjectConverter()
   final TimelineTweet? timelineTweet;
   @override
   @JsonKey(name: 'timelineTimelineCursor')
@@ -2214,6 +2219,7 @@ abstract class _ItemContent implements ItemContent {
           @ItemTypeConverter()
               required final ItemType entryType,
           @JsonKey(name: 'timelineTweet')
+          @SafetyObjectConverter()
               required final TimelineTweet? timelineTweet,
           @JsonKey(name: 'timelineTimelineCursor')
               required final TimelineTimelineCursor? timelineTimelineCursor}) =
@@ -2228,6 +2234,7 @@ abstract class _ItemContent implements ItemContent {
   ItemType get entryType;
   @override
   @JsonKey(name: 'timelineTweet')
+  @SafetyObjectConverter()
   TimelineTweet? get timelineTweet;
   @override
   @JsonKey(name: 'timelineTimelineCursor')
@@ -2248,6 +2255,7 @@ mixin _$TimelineTweet {
   @TypenameConverter()
   Typename get typename => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweet_results')
+  @SafetyObjectConverter()
   TweetResults get tweetResults => throw _privateConstructorUsedError;
   @JsonKey(name: 'tweetDisplayType')
   String get tweetDisplayType => throw _privateConstructorUsedError; // enum
@@ -2273,6 +2281,7 @@ abstract class $TimelineTweetCopyWith<$Res> {
       @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'tweet_results')
+      @SafetyObjectConverter()
           TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType')
           String tweetDisplayType,
@@ -2362,6 +2371,7 @@ abstract class _$$_TimelineTweetCopyWith<$Res>
       @TypenameConverter()
           Typename typename,
       @JsonKey(name: 'tweet_results')
+      @SafetyObjectConverter()
           TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType')
           String tweetDisplayType,
@@ -2426,6 +2436,7 @@ class _$_TimelineTweet extends _TimelineTweet {
       @TypenameConverter()
           required this.typename,
       @JsonKey(name: 'tweet_results')
+      @SafetyObjectConverter()
           required this.tweetResults,
       @JsonKey(name: 'tweetDisplayType')
           required this.tweetDisplayType,
@@ -2444,6 +2455,7 @@ class _$_TimelineTweet extends _TimelineTweet {
   final Typename typename;
   @override
   @JsonKey(name: 'tweet_results')
+  @SafetyObjectConverter()
   final TweetResults tweetResults;
   @override
   @JsonKey(name: 'tweetDisplayType')
@@ -2503,6 +2515,7 @@ abstract class _TimelineTweet extends TimelineTweet {
       @TypenameConverter()
           required final Typename typename,
       @JsonKey(name: 'tweet_results')
+      @SafetyObjectConverter()
           required final TweetResults tweetResults,
       @JsonKey(name: 'tweetDisplayType')
           required final String tweetDisplayType,
@@ -2521,6 +2534,7 @@ abstract class _TimelineTweet extends TimelineTweet {
   Typename get typename;
   @override
   @JsonKey(name: 'tweet_results')
+  @SafetyObjectConverter()
   TweetResults get tweetResults;
   @override
   @JsonKey(name: 'tweetDisplayType')
@@ -2785,7 +2799,7 @@ TweetResults _$TweetResultsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TweetResults {
   @JsonKey(name: 'result')
-  TweetResult? get result => throw _privateConstructorUsedError;
+  TweetResult get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2799,9 +2813,9 @@ abstract class $TweetResultsCopyWith<$Res> {
           TweetResults value, $Res Function(TweetResults) then) =
       _$TweetResultsCopyWithImpl<$Res, TweetResults>;
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult? result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
-  $TweetResultCopyWith<$Res>? get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -2817,24 +2831,20 @@ class _$TweetResultsCopyWithImpl<$Res, $Val extends TweetResults>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_value.copyWith(
-      result: freezed == result
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult?,
+              as TweetResult,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TweetResultCopyWith<$Res>? get result {
-    if (_value.result == null) {
-      return null;
-    }
-
-    return $TweetResultCopyWith<$Res>(_value.result!, (value) {
+  $TweetResultCopyWith<$Res> get result {
+    return $TweetResultCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value) as $Val);
     });
   }
@@ -2848,10 +2858,10 @@ abstract class _$$_TweetResultsCopyWith<$Res>
       __$$_TweetResultsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'result') TweetResult? result});
+  $Res call({@JsonKey(name: 'result') TweetResult result});
 
   @override
-  $TweetResultCopyWith<$Res>? get result;
+  $TweetResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -2865,13 +2875,13 @@ class __$$_TweetResultsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$_TweetResults(
-      result: freezed == result
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as TweetResult?,
+              as TweetResult,
     ));
   }
 }
@@ -2886,7 +2896,7 @@ class _$_TweetResults implements _TweetResults {
 
   @override
   @JsonKey(name: 'result')
-  final TweetResult? result;
+  final TweetResult result;
 
   @override
   String toString() {
@@ -2921,7 +2931,7 @@ class _$_TweetResults implements _TweetResults {
 
 abstract class _TweetResults implements TweetResults {
   const factory _TweetResults(
-          {@JsonKey(name: 'result') required final TweetResult? result}) =
+          {@JsonKey(name: 'result') required final TweetResult result}) =
       _$_TweetResults;
 
   factory _TweetResults.fromJson(Map<String, dynamic> json) =
@@ -2929,7 +2939,7 @@ abstract class _TweetResults implements TweetResults {
 
   @override
   @JsonKey(name: 'result')
-  TweetResult? get result;
+  TweetResult get result;
   @override
   @JsonKey(ignore: true)
   _$$_TweetResultsCopyWith<_$_TweetResults> get copyWith =>
@@ -2958,8 +2968,9 @@ mixin _$TweetResult {
   String? get source => throw _privateConstructorUsedError;
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'quick_promote_eligibility')
-  dynamic get quickPromoteEligibility => throw _privateConstructorUsedError;
+  @JsonKey(name: 'professional')
+  Professional? get quickPromoteEligibility =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'views')
   dynamic get views => throw _privateConstructorUsedError;
 
@@ -2992,13 +3003,14 @@ abstract class $TweetResultCopyWith<$Res> {
           String? source,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
-      @JsonKey(name: 'quick_promote_eligibility')
-          dynamic quickPromoteEligibility,
+      @JsonKey(name: 'professional')
+          Professional? quickPromoteEligibility,
       @JsonKey(name: 'views')
           dynamic views});
 
   $CoreCopyWith<$Res> get core;
   $TweetLegacyCopyWith<$Res> get legacy;
+  $ProfessionalCopyWith<$Res>? get quickPromoteEligibility;
 }
 
 /// @nodoc
@@ -3061,7 +3073,7 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
       quickPromoteEligibility: freezed == quickPromoteEligibility
           ? _value.quickPromoteEligibility
           : quickPromoteEligibility // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Professional?,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -3082,6 +3094,19 @@ class _$TweetResultCopyWithImpl<$Res, $Val extends TweetResult>
   $TweetLegacyCopyWith<$Res> get legacy {
     return $TweetLegacyCopyWith<$Res>(_value.legacy, (value) {
       return _then(_value.copyWith(legacy: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfessionalCopyWith<$Res>? get quickPromoteEligibility {
+    if (_value.quickPromoteEligibility == null) {
+      return null;
+    }
+
+    return $ProfessionalCopyWith<$Res>(_value.quickPromoteEligibility!,
+        (value) {
+      return _then(_value.copyWith(quickPromoteEligibility: value) as $Val);
     });
   }
 }
@@ -3111,8 +3136,8 @@ abstract class _$$_TweetResultCopyWith<$Res>
           String? source,
       @JsonKey(name: 'legacy')
           TweetLegacy legacy,
-      @JsonKey(name: 'quick_promote_eligibility')
-          dynamic quickPromoteEligibility,
+      @JsonKey(name: 'professional')
+          Professional? quickPromoteEligibility,
       @JsonKey(name: 'views')
           dynamic views});
 
@@ -3120,6 +3145,8 @@ abstract class _$$_TweetResultCopyWith<$Res>
   $CoreCopyWith<$Res> get core;
   @override
   $TweetLegacyCopyWith<$Res> get legacy;
+  @override
+  $ProfessionalCopyWith<$Res>? get quickPromoteEligibility;
 }
 
 /// @nodoc
@@ -3180,7 +3207,7 @@ class __$$_TweetResultCopyWithImpl<$Res>
       quickPromoteEligibility: freezed == quickPromoteEligibility
           ? _value.quickPromoteEligibility
           : quickPromoteEligibility // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Professional?,
       views: freezed == views
           ? _value.views
           : views // ignore: cast_nullable_to_non_nullable
@@ -3209,7 +3236,7 @@ class _$_TweetResult implements _TweetResult {
           required this.source,
       @JsonKey(name: 'legacy')
           required this.legacy,
-      @JsonKey(name: 'quick_promote_eligibility')
+      @JsonKey(name: 'professional')
           required this.quickPromoteEligibility,
       @JsonKey(name: 'views')
           required this.views});
@@ -3242,8 +3269,8 @@ class _$_TweetResult implements _TweetResult {
   @JsonKey(name: 'legacy')
   final TweetLegacy legacy;
   @override
-  @JsonKey(name: 'quick_promote_eligibility')
-  final dynamic quickPromoteEligibility;
+  @JsonKey(name: 'professional')
+  final Professional? quickPromoteEligibility;
   @override
   @JsonKey(name: 'views')
   final dynamic views;
@@ -3270,8 +3297,9 @@ class _$_TweetResult implements _TweetResult {
                 other.isTranslatable == isTranslatable) &&
             (identical(other.source, source) || other.source == source) &&
             (identical(other.legacy, legacy) || other.legacy == legacy) &&
-            const DeepCollectionEquality().equals(
-                other.quickPromoteEligibility, quickPromoteEligibility) &&
+            (identical(
+                    other.quickPromoteEligibility, quickPromoteEligibility) ||
+                other.quickPromoteEligibility == quickPromoteEligibility) &&
             const DeepCollectionEquality().equals(other.views, views));
   }
 
@@ -3287,7 +3315,7 @@ class _$_TweetResult implements _TweetResult {
       isTranslatable,
       source,
       legacy,
-      const DeepCollectionEquality().hash(quickPromoteEligibility),
+      quickPromoteEligibility,
       const DeepCollectionEquality().hash(views));
 
   @JsonKey(ignore: true)
@@ -3322,8 +3350,8 @@ abstract class _TweetResult implements TweetResult {
           required final String? source,
       @JsonKey(name: 'legacy')
           required final TweetLegacy legacy,
-      @JsonKey(name: 'quick_promote_eligibility')
-          required final dynamic quickPromoteEligibility,
+      @JsonKey(name: 'professional')
+          required final Professional? quickPromoteEligibility,
       @JsonKey(name: 'views')
           required final dynamic views}) = _$_TweetResult;
 
@@ -3355,8 +3383,8 @@ abstract class _TweetResult implements TweetResult {
   @JsonKey(name: 'legacy')
   TweetLegacy get legacy;
   @override
-  @JsonKey(name: 'quick_promote_eligibility')
-  dynamic get quickPromoteEligibility;
+  @JsonKey(name: 'professional')
+  Professional? get quickPromoteEligibility;
   @override
   @JsonKey(name: 'views')
   dynamic get views;
@@ -3366,36 +3394,41 @@ abstract class _TweetResult implements TweetResult {
       throw _privateConstructorUsedError;
 }
 
-QuickPromoteEligibility _$QuickPromoteEligibilityFromJson(
-    Map<String, dynamic> json) {
-  return _QuickPromoteEligibility.fromJson(json);
+Professional _$ProfessionalFromJson(Map<String, dynamic> json) {
+  return _Professional.fromJson(json);
 }
 
 /// @nodoc
-mixin _$QuickPromoteEligibility {
-  @JsonKey(name: 'eligibility')
+mixin _$Professional {
+  @JsonKey(name: 'rest_id')
   String get restId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'professional_type')
+  String get professionalType => throw _privateConstructorUsedError; //enum
+  @JsonKey(name: 'category')
+  List<ProfessionalCategory> get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $QuickPromoteEligibilityCopyWith<QuickPromoteEligibility> get copyWith =>
+  $ProfessionalCopyWith<Professional> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $QuickPromoteEligibilityCopyWith<$Res> {
-  factory $QuickPromoteEligibilityCopyWith(QuickPromoteEligibility value,
-          $Res Function(QuickPromoteEligibility) then) =
-      _$QuickPromoteEligibilityCopyWithImpl<$Res, QuickPromoteEligibility>;
+abstract class $ProfessionalCopyWith<$Res> {
+  factory $ProfessionalCopyWith(
+          Professional value, $Res Function(Professional) then) =
+      _$ProfessionalCopyWithImpl<$Res, Professional>;
   @useResult
-  $Res call({@JsonKey(name: 'eligibility') String restId});
+  $Res call(
+      {@JsonKey(name: 'rest_id') String restId,
+      @JsonKey(name: 'professional_type') String professionalType,
+      @JsonKey(name: 'category') List<ProfessionalCategory> category});
 }
 
 /// @nodoc
-class _$QuickPromoteEligibilityCopyWithImpl<$Res,
-        $Val extends QuickPromoteEligibility>
-    implements $QuickPromoteEligibilityCopyWith<$Res> {
-  _$QuickPromoteEligibilityCopyWithImpl(this._value, this._then);
+class _$ProfessionalCopyWithImpl<$Res, $Val extends Professional>
+    implements $ProfessionalCopyWith<$Res> {
+  _$ProfessionalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -3406,45 +3439,274 @@ class _$QuickPromoteEligibilityCopyWithImpl<$Res,
   @override
   $Res call({
     Object? restId = null,
+    Object? professionalType = null,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as String,
+      professionalType: null == professionalType
+          ? _value.professionalType
+          : professionalType // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as List<ProfessionalCategory>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_QuickPromoteEligibilityCopyWith<$Res>
-    implements $QuickPromoteEligibilityCopyWith<$Res> {
-  factory _$$_QuickPromoteEligibilityCopyWith(_$_QuickPromoteEligibility value,
-          $Res Function(_$_QuickPromoteEligibility) then) =
-      __$$_QuickPromoteEligibilityCopyWithImpl<$Res>;
+abstract class _$$_ProfessionalCopyWith<$Res>
+    implements $ProfessionalCopyWith<$Res> {
+  factory _$$_ProfessionalCopyWith(
+          _$_Professional value, $Res Function(_$_Professional) then) =
+      __$$_ProfessionalCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'eligibility') String restId});
+  $Res call(
+      {@JsonKey(name: 'rest_id') String restId,
+      @JsonKey(name: 'professional_type') String professionalType,
+      @JsonKey(name: 'category') List<ProfessionalCategory> category});
 }
 
 /// @nodoc
-class __$$_QuickPromoteEligibilityCopyWithImpl<$Res>
-    extends _$QuickPromoteEligibilityCopyWithImpl<$Res,
-        _$_QuickPromoteEligibility>
-    implements _$$_QuickPromoteEligibilityCopyWith<$Res> {
-  __$$_QuickPromoteEligibilityCopyWithImpl(_$_QuickPromoteEligibility _value,
-      $Res Function(_$_QuickPromoteEligibility) _then)
+class __$$_ProfessionalCopyWithImpl<$Res>
+    extends _$ProfessionalCopyWithImpl<$Res, _$_Professional>
+    implements _$$_ProfessionalCopyWith<$Res> {
+  __$$_ProfessionalCopyWithImpl(
+      _$_Professional _value, $Res Function(_$_Professional) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? restId = null,
+    Object? professionalType = null,
+    Object? category = null,
   }) {
-    return _then(_$_QuickPromoteEligibility(
+    return _then(_$_Professional(
       restId: null == restId
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
+              as String,
+      professionalType: null == professionalType
+          ? _value.professionalType
+          : professionalType // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value._category
+          : category // ignore: cast_nullable_to_non_nullable
+              as List<ProfessionalCategory>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Professional implements _Professional {
+  const _$_Professional(
+      {@JsonKey(name: 'rest_id')
+          required this.restId,
+      @JsonKey(name: 'professional_type')
+          required this.professionalType,
+      @JsonKey(name: 'category')
+          required final List<ProfessionalCategory> category})
+      : _category = category;
+
+  factory _$_Professional.fromJson(Map<String, dynamic> json) =>
+      _$$_ProfessionalFromJson(json);
+
+  @override
+  @JsonKey(name: 'rest_id')
+  final String restId;
+  @override
+  @JsonKey(name: 'professional_type')
+  final String professionalType;
+//enum
+  final List<ProfessionalCategory> _category;
+//enum
+  @override
+  @JsonKey(name: 'category')
+  List<ProfessionalCategory> get category {
+    if (_category is EqualUnmodifiableListView) return _category;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_category);
+  }
+
+  @override
+  String toString() {
+    return 'Professional(restId: $restId, professionalType: $professionalType, category: $category)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Professional &&
+            (identical(other.restId, restId) || other.restId == restId) &&
+            (identical(other.professionalType, professionalType) ||
+                other.professionalType == professionalType) &&
+            const DeepCollectionEquality().equals(other._category, _category));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, restId, professionalType,
+      const DeepCollectionEquality().hash(_category));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ProfessionalCopyWith<_$_Professional> get copyWith =>
+      __$$_ProfessionalCopyWithImpl<_$_Professional>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProfessionalToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Professional implements Professional {
+  const factory _Professional(
+          {@JsonKey(name: 'rest_id')
+              required final String restId,
+          @JsonKey(name: 'professional_type')
+              required final String professionalType,
+          @JsonKey(name: 'category')
+              required final List<ProfessionalCategory> category}) =
+      _$_Professional;
+
+  factory _Professional.fromJson(Map<String, dynamic> json) =
+      _$_Professional.fromJson;
+
+  @override
+  @JsonKey(name: 'rest_id')
+  String get restId;
+  @override
+  @JsonKey(name: 'professional_type')
+  String get professionalType;
+  @override //enum
+  @JsonKey(name: 'category')
+  List<ProfessionalCategory> get category;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ProfessionalCopyWith<_$_Professional> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ProfessionalCategory _$ProfessionalCategoryFromJson(Map<String, dynamic> json) {
+  return _ProfessionalCategory.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ProfessionalCategory {
+  @JsonKey(name: 'rest_id')
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError; //enum
+  @JsonKey(name: 'icon_name')
+  String get iconName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ProfessionalCategoryCopyWith<ProfessionalCategory> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProfessionalCategoryCopyWith<$Res> {
+  factory $ProfessionalCategoryCopyWith(ProfessionalCategory value,
+          $Res Function(ProfessionalCategory) then) =
+      _$ProfessionalCategoryCopyWithImpl<$Res, ProfessionalCategory>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'rest_id') int id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'icon_name') String iconName});
+}
+
+/// @nodoc
+class _$ProfessionalCategoryCopyWithImpl<$Res,
+        $Val extends ProfessionalCategory>
+    implements $ProfessionalCategoryCopyWith<$Res> {
+  _$ProfessionalCategoryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? iconName = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconName: null == iconName
+          ? _value.iconName
+          : iconName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ProfessionalCategoryCopyWith<$Res>
+    implements $ProfessionalCategoryCopyWith<$Res> {
+  factory _$$_ProfessionalCategoryCopyWith(_$_ProfessionalCategory value,
+          $Res Function(_$_ProfessionalCategory) then) =
+      __$$_ProfessionalCategoryCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'rest_id') int id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'icon_name') String iconName});
+}
+
+/// @nodoc
+class __$$_ProfessionalCategoryCopyWithImpl<$Res>
+    extends _$ProfessionalCategoryCopyWithImpl<$Res, _$_ProfessionalCategory>
+    implements _$$_ProfessionalCategoryCopyWith<$Res> {
+  __$$_ProfessionalCategoryCopyWithImpl(_$_ProfessionalCategory _value,
+      $Res Function(_$_ProfessionalCategory) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? iconName = null,
+  }) {
+    return _then(_$_ProfessionalCategory(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconName: null == iconName
+          ? _value.iconName
+          : iconName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -3452,65 +3714,84 @@ class __$$_QuickPromoteEligibilityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_QuickPromoteEligibility implements _QuickPromoteEligibility {
-  const _$_QuickPromoteEligibility(
-      {@JsonKey(name: 'eligibility') required this.restId});
+class _$_ProfessionalCategory implements _ProfessionalCategory {
+  const _$_ProfessionalCategory(
+      {@JsonKey(name: 'rest_id') required this.id,
+      @JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'icon_name') required this.iconName});
 
-  factory _$_QuickPromoteEligibility.fromJson(Map<String, dynamic> json) =>
-      _$$_QuickPromoteEligibilityFromJson(json);
+  factory _$_ProfessionalCategory.fromJson(Map<String, dynamic> json) =>
+      _$$_ProfessionalCategoryFromJson(json);
 
   @override
-  @JsonKey(name: 'eligibility')
-  final String restId;
+  @JsonKey(name: 'rest_id')
+  final int id;
+  @override
+  @JsonKey(name: 'name')
+  final String name;
+//enum
+  @override
+  @JsonKey(name: 'icon_name')
+  final String iconName;
 
   @override
   String toString() {
-    return 'QuickPromoteEligibility(restId: $restId)';
+    return 'ProfessionalCategory(id: $id, name: $name, iconName: $iconName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_QuickPromoteEligibility &&
-            (identical(other.restId, restId) || other.restId == restId));
+            other is _$_ProfessionalCategory &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.iconName, iconName) ||
+                other.iconName == iconName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, restId);
+  int get hashCode => Object.hash(runtimeType, id, name, iconName);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_QuickPromoteEligibilityCopyWith<_$_QuickPromoteEligibility>
-      get copyWith =>
-          __$$_QuickPromoteEligibilityCopyWithImpl<_$_QuickPromoteEligibility>(
-              this, _$identity);
+  _$$_ProfessionalCategoryCopyWith<_$_ProfessionalCategory> get copyWith =>
+      __$$_ProfessionalCategoryCopyWithImpl<_$_ProfessionalCategory>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QuickPromoteEligibilityToJson(
+    return _$$_ProfessionalCategoryToJson(
       this,
     );
   }
 }
 
-abstract class _QuickPromoteEligibility implements QuickPromoteEligibility {
-  const factory _QuickPromoteEligibility(
-          {@JsonKey(name: 'eligibility') required final String restId}) =
-      _$_QuickPromoteEligibility;
+abstract class _ProfessionalCategory implements ProfessionalCategory {
+  const factory _ProfessionalCategory(
+          {@JsonKey(name: 'rest_id') required final int id,
+          @JsonKey(name: 'name') required final String name,
+          @JsonKey(name: 'icon_name') required final String iconName}) =
+      _$_ProfessionalCategory;
 
-  factory _QuickPromoteEligibility.fromJson(Map<String, dynamic> json) =
-      _$_QuickPromoteEligibility.fromJson;
+  factory _ProfessionalCategory.fromJson(Map<String, dynamic> json) =
+      _$_ProfessionalCategory.fromJson;
 
   @override
-  @JsonKey(name: 'eligibility')
-  String get restId;
+  @JsonKey(name: 'rest_id')
+  int get id;
+  @override
+  @JsonKey(name: 'name')
+  String get name;
+  @override //enum
+  @JsonKey(name: 'icon_name')
+  String get iconName;
   @override
   @JsonKey(ignore: true)
-  _$$_QuickPromoteEligibilityCopyWith<_$_QuickPromoteEligibility>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_ProfessionalCategoryCopyWith<_$_ProfessionalCategory> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Core _$CoreFromJson(Map<String, dynamic> json) {

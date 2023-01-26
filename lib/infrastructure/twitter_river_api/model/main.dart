@@ -144,7 +144,7 @@ class Item with _$Item {
 class ItemContent with _$ItemContent {
   const factory ItemContent({
     @JsonKey(name: 'itemType') @ItemTypeConverter() required ItemType entryType,
-    @JsonKey(name: 'timelineTweet') required TimelineTweet? timelineTweet,
+    @JsonKey(name: 'timelineTweet') @SafetyObjectConverter() required TimelineTweet? timelineTweet,
     @JsonKey(name: 'timelineTimelineCursor') required TimelineTimelineCursor? timelineTimelineCursor,
   }) = _ItemContent;
 
@@ -157,14 +157,14 @@ class TimelineTweet with _$TimelineTweet {
   const TimelineTweet._();
   const factory TimelineTweet({
     @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
-    @JsonKey(name: 'tweet_results') required TweetResults tweetResults,
+    @JsonKey(name: 'tweet_results') @SafetyObjectConverter() required TweetResults tweetResults,
     @JsonKey(name: 'tweetDisplayType') required String tweetDisplayType, // enum
     @JsonKey(name: 'hasModeratedReplies', defaultValue: false) required bool hasModeratedReplies,
     @JsonKey(name: 'socialContext') required SocialContext? socialContext,
   }) = _TimelineTweet;
 
-  TweetResult get tweet => tweetResults.result!;
-  Result get user => tweetResults.result!.core.userResults.result;
+  TweetResult get tweet => tweetResults.result;
+  Result get user => tweetResults.result.core.userResults.result;
 
   factory TimelineTweet.fromJson(Map<String, dynamic> json) => _$TimelineTweetFromJson(fromJsonProxy(json));
 }
@@ -187,7 +187,7 @@ class SocialContext with _$SocialContext {
 @freezed
 class TweetResults with _$TweetResults {
   const factory TweetResults({
-    @JsonKey(name: 'result') required TweetResult? result,
+    @JsonKey(name: 'result') required TweetResult result,
   }) = _TweetResults;
 
   factory TweetResults.fromJson(Map<String, dynamic> json) => _$TweetResultsFromJson(fromJsonProxy(json));
@@ -202,22 +202,49 @@ class TweetResult with _$TweetResult {
     @JsonKey(name: 'edit_control') required dynamic editControl,
     @JsonKey(name: 'edit_perspective') required dynamic editPerspective,
     @JsonKey(name: 'is_translatable', defaultValue: false) required bool isTranslatable,
-    @JsonKey(name: 'source') required String source,
+    @JsonKey(name: 'source') required String? source,
     @JsonKey(name: 'legacy') required TweetLegacy legacy,
-    @JsonKey(name: 'quick_promote_eligibility') required dynamic quickPromoteEligibility,
+    @JsonKey(name: 'professional') required Professional? quickPromoteEligibility,
     @JsonKey(name: 'views') required dynamic views,
   }) = _TweetResult;
 
-  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(json));
+  factory TweetResult.fromJson(Map<String, dynamic> json) => _$TweetResultFromJson(fromJsonProxy(printJson(json)));
+}
+
+/*
+"professional": {
+          "rest_id": "1470562314852405248",
+          "professional_type": "Business",
+          "category": [
+              {
+                  "id": 801,
+                  "name": "アウトドア・スポーツ用品会社",
+                  "icon_name": "IconBriefcaseStroke"
+              }
+          ]
+      },
+*/
+
+@freezed
+class Professional with _$Professional {
+  const factory Professional({
+    @JsonKey(name: 'rest_id') required String restId,
+    @JsonKey(name: 'professional_type') required String professionalType, //enum
+    @JsonKey(name: 'category') required List<ProfessionalCategory> category,
+  }) = _Professional;
+
+  factory Professional.fromJson(Map<String, dynamic> json) => _$ProfessionalFromJson(fromJsonProxy(json));
 }
 
 @freezed
-class QuickPromoteEligibility with _$QuickPromoteEligibility {
-  const factory QuickPromoteEligibility({
-    @JsonKey(name: 'eligibility') required String restId, //enum
-  }) = _QuickPromoteEligibility;
+class ProfessionalCategory with _$ProfessionalCategory {
+  const factory ProfessionalCategory({
+    @JsonKey(name: 'rest_id') required int id,
+    @JsonKey(name: 'name') required String name, //enum
+    @JsonKey(name: 'icon_name') required String iconName,
+  }) = _ProfessionalCategory;
 
-  factory QuickPromoteEligibility.fromJson(Map<String, dynamic> json) => _$QuickPromoteEligibilityFromJson(fromJsonProxy(json));
+  factory ProfessionalCategory.fromJson(Map<String, dynamic> json) => _$ProfessionalCategoryFromJson(fromJsonProxy(json));
 }
 
 @freezed

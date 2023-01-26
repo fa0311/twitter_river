@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class InfiniteScroll extends ScrollablePositionedList {

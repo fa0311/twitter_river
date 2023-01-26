@@ -15,6 +15,6 @@ Map<String, dynamic> fromJsonProxy(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> printJson(Map<String, dynamic> json) {
-  inspect(json);
+  print(json['professional']);
   return json;
 }

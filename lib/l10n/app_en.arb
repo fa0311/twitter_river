@@ -11,6 +11,9 @@
     "close": "close",
     "setting": "setting",
     "help": "help",
+    "@____________________TWEET____________________": {},
+    "rtBy": "RT By {name}",
+    "adSense": "AdSense",
     "@____________________DATE____________________": {},
     "dateFormat1": "{inMonth}m{inDays}d",
     "dateFormat2": "{inDays}d{inHours}h",
@@ -21,6 +24,12 @@
     "license": "license",
     "licenseDetails": "View licence",
     "@____________________PLACEHOLDER____________________": {},
+    "@__TWEET__": {},
+    "@rtBy": {
+        "placeholders": {
+            "name": {}
+        }
+    },
     "@__PLACEHOLDER_DATE__": {},
     "@dateFormat1": {
         "placeholders": {

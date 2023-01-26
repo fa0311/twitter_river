@@ -221,9 +221,7 @@ Map<String, dynamic> _$$_SocialContextToJson(_$_SocialContext instance) =>
 
 _$_TweetResults _$$_TweetResultsFromJson(Map<String, dynamic> json) =>
     _$_TweetResults(
-      result: json['result'] == null
-          ? null
-          : TweetResult.fromJson(json['result'] as Map<String, dynamic>),
+      result: TweetResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_TweetResultsToJson(_$_TweetResults instance) =>
@@ -241,7 +239,9 @@ _$_TweetResult _$$_TweetResultFromJson(Map<String, dynamic> json) =>
       isTranslatable: json['is_translatable'] as bool? ?? false,
       source: json['source'] as String?,
       legacy: TweetLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
-      quickPromoteEligibility: json['quick_promote_eligibility'],
+      quickPromoteEligibility: json['professional'] == null
+          ? null
+          : Professional.fromJson(json['professional'] as Map<String, dynamic>),
       views: json['views'],
     );
 
@@ -255,20 +255,40 @@ Map<String, dynamic> _$$_TweetResultToJson(_$_TweetResult instance) =>
       'is_translatable': instance.isTranslatable,
       'source': instance.source,
       'legacy': instance.legacy,
-      'quick_promote_eligibility': instance.quickPromoteEligibility,
+      'professional': instance.quickPromoteEligibility,
       'views': instance.views,
     };
 
-_$_QuickPromoteEligibility _$$_QuickPromoteEligibilityFromJson(
-        Map<String, dynamic> json) =>
-    _$_QuickPromoteEligibility(
-      restId: json['eligibility'] as String,
+_$_Professional _$$_ProfessionalFromJson(Map<String, dynamic> json) =>
+    _$_Professional(
+      restId: json['rest_id'] as String,
+      professionalType: json['professional_type'] as String,
+      category: (json['category'] as List<dynamic>)
+          .map((e) => ProfessionalCategory.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_QuickPromoteEligibilityToJson(
-        _$_QuickPromoteEligibility instance) =>
+Map<String, dynamic> _$$_ProfessionalToJson(_$_Professional instance) =>
     <String, dynamic>{
-      'eligibility': instance.restId,
+      'rest_id': instance.restId,
+      'professional_type': instance.professionalType,
+      'category': instance.category,
+    };
+
+_$_ProfessionalCategory _$$_ProfessionalCategoryFromJson(
+        Map<String, dynamic> json) =>
+    _$_ProfessionalCategory(
+      id: json['rest_id'] as int,
+      name: json['name'] as String,
+      iconName: json['icon_name'] as String,
+    );
+
+Map<String, dynamic> _$$_ProfessionalCategoryToJson(
+        _$_ProfessionalCategory instance) =>
+    <String, dynamic>{
+      'rest_id': instance.id,
+      'name': instance.name,
+      'icon_name': instance.iconName,
     };
 
 _$_Core _$$_CoreFromJson(Map<String, dynamic> json) => _$_Core(

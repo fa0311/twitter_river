@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_river/component/infinite_scroll.dart';
 
 // Project imports:
+import 'package:twitter_river/component/infinite_scroll.dart';
 import 'package:twitter_river/component/loading.dart';
 import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/core/logger.dart';
