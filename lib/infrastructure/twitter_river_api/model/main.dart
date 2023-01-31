@@ -11,11 +11,12 @@ part 'generated/main.freezed.dart';
 part 'generated/main.g.dart';
 
 // ===== UNION =====
+/*
 @freezed
 class Instruction with _$Instruction {
   const factory Instruction({
     @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
-    @JsonKey(name: 'timelineAddEntries') required TimelineAddEntries? timelineAddEntries,
+    @JsonKey(name: 'timelineAddEntries') required Union timelineAddEntries,
     @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
     @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
     @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
@@ -24,7 +25,94 @@ class Instruction with _$Instruction {
   factory Instruction.fromJson(Map<String, dynamic> json) =>
       _$InstructionFromJson({...json, InstructionsType.values.firstWhere((e) => e.toUpperCamelCase() == json['type']).name: json});
 }
+*/
 
+@freezed
+class Instruction with _$Instruction {
+  const factory Instruction({
+    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
+  }) = _Instruction;
+
+  const factory Instruction.timelineAddEntry({
+    @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
+  }) = TimelineAddEntries;
+
+  factory Instruction.fromJson(Map<String, dynamic> json) => _$InstructionFromJson(json);
+
+  /*
+    @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
+    @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
+    @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
+    */
+}
+
+extension _TimelineAddEntriesMethods on TimelineAddEntries {
+  List<Content> contents() {
+    return [
+      ...entries
+          .map((e) => e.content)
+          .where((e) => e.entryType == EntryType.timelineTimelineItem)
+          .where((e) => e.timelineTimelineItem!.itemContent.entryType != ItemType.timelineTimelineCursor),
+      ...entries.map((e) => e.content).where((e) => e.entryType == EntryType.timelineTimelineModule)
+    ].toList();
+  }
+
+  List<TimelineTimelineCursor> cursor() {
+    return [
+      ...entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!),
+      ...entries
+          .where((e) => e.content.entryType == EntryType.timelineTimelineItem)
+          .where((e) => e.content.timelineTimelineItem!.itemContent.entryType == ItemType.timelineTimelineCursor)
+          .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
+    ].toList();
+  }
+
+  TimelineTimelineCursor? negativeCursor() {
+    return cursor().firstWhere((e) => e.cursorType == CursorType.top, orElse: () => null);
+  }
+
+  TimelineTimelineCursor? positiveCursor() {
+    return cursor().firstWhere((e) => e.cursorType == CursorType.bottom, orElse: () => null);
+  }
+
+  List<TimelineTimelineModule> timelineModule() {
+    return entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
+  }
+}
+
+/*
+@freezed
+class Instruction with _$Instruction {
+  const factory Instruction(int value) = _Data;
+
+  const factory Instruction.timelineAddEntries(
+    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
+    @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
+  ) = _TimelineAddEntries;
+
+  factory Instruction.fromJson(Map<String, Object?> json) => _$InstructionFromJson(json);
+}
+*/
+/*
+@freezed
+class Aaaaaaaaa with _$Aaaaaaaaa {
+  const factory Aaaaaaaaa(
+    @JsonKey(name: 'type') @InstructionsTypeConverter() InstructionsType type,
+    @JsonKey(name: 'entries') List<TimelineAddEntry> entries,
+  ) = Data;
+  const factory Aaaaaaaaa.loading() = _Loading;
+  const factory Aaaaaaaaa.error([String? message]) = ErrorDetails;
+  const factory Aaaaaaaaa.complex(int a, String b) = Complex;
+
+  factory Aaaaaaaaa.fromJson(Map<String, Object?> json) => _$AaaaaaaaaFromJson(json);
+}
+
+extension Loading on _Loading {
+  void method() {}
+}
+*/
+
+/*
 @freezed
 class TimelineAddEntries with _$TimelineAddEntries {
   const TimelineAddEntries._();
@@ -58,6 +146,7 @@ class TimelineAddEntries with _$TimelineAddEntries {
 
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) => _$TimelineAddEntriesFromJson(fromJsonProxy(json));
 }
+*/
 
 @freezed
 class TimelineAddEntry with _$TimelineAddEntry {

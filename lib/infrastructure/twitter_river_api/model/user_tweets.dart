@@ -2,7 +2,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 part 'generated/user_tweets.freezed.dart';
@@ -15,8 +14,9 @@ class UserTweetsResponse with _$UserTweetsResponse {
     @JsonKey(name: 'data') required UserTweetsData data,
   }) = _UserTweetsResponse;
 
-  TimelineAddEntries get timelineAddEntries =>
-      data.user.result.timelineV2.timeline.instructions.firstWhere((e) => e.type == InstructionsType.timelineAddEntries).timelineAddEntries!;
+  List<TimelineAddEntry>? get timelineAddEntries => data.user.result.timelineV2.timeline.instructions
+      .firstWhere((e) => e.when((type) => null, timelineAddEntry: (entries) => entries) != null)
+      .when((type) => null, timelineAddEntry: (e) => e);
 
   factory UserTweetsResponse.fromJson(Map<String, dynamic> json) => _$UserTweetsResponseFromJson(json);
 }

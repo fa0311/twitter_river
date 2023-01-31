@@ -15,28 +15,75 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Instruction _$InstructionFromJson(Map<String, dynamic> json) {
-  return _Instruction.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'default':
+      return _Instruction.fromJson(json);
+    case 'timelineAddEntry':
+      return TimelineAddEntries.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'Instruction',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$Instruction {
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  InstructionsType get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'timelineAddEntries')
-  TimelineAddEntries? get timelineAddEntries =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)
+        $default, {
+    required TResult Function(
+            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
+        timelineAddEntry,
+  }) =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: 'timelineAddToModule')
-  dynamic get timelineAddToModule => throw _privateConstructorUsedError;
-  @JsonKey(name: 'timelineTerminateTimeline')
-  dynamic get timelineTerminateTimeline => throw _privateConstructorUsedError;
-  @JsonKey(name: 'timelineShowAlert')
-  dynamic get timelineShowAlert => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Instruction value) $default, {
+    required TResult Function(TimelineAddEntries value) timelineAddEntry,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Instruction value)? $default, {
+    TResult? Function(TimelineAddEntries value)? timelineAddEntry,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Instruction value)? $default, {
+    TResult Function(TimelineAddEntries value)? timelineAddEntry,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $InstructionCopyWith<Instruction> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -44,21 +91,6 @@ abstract class $InstructionCopyWith<$Res> {
   factory $InstructionCopyWith(
           Instruction value, $Res Function(Instruction) then) =
       _$InstructionCopyWithImpl<$Res, Instruction>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          InstructionsType type,
-      @JsonKey(name: 'timelineAddEntries')
-          TimelineAddEntries? timelineAddEntries,
-      @JsonKey(name: 'timelineAddToModule')
-          dynamic timelineAddToModule,
-      @JsonKey(name: 'timelineTerminateTimeline')
-          dynamic timelineTerminateTimeline,
-      @JsonKey(name: 'timelineShowAlert')
-          dynamic timelineShowAlert});
-
-  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries;
 }
 
 /// @nodoc
@@ -70,77 +102,18 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? timelineAddEntries = freezed,
-    Object? timelineAddToModule = freezed,
-    Object? timelineTerminateTimeline = freezed,
-    Object? timelineShowAlert = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as InstructionsType,
-      timelineAddEntries: freezed == timelineAddEntries
-          ? _value.timelineAddEntries
-          : timelineAddEntries // ignore: cast_nullable_to_non_nullable
-              as TimelineAddEntries?,
-      timelineAddToModule: freezed == timelineAddToModule
-          ? _value.timelineAddToModule
-          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      timelineTerminateTimeline: freezed == timelineTerminateTimeline
-          ? _value.timelineTerminateTimeline
-          : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      timelineShowAlert: freezed == timelineShowAlert
-          ? _value.timelineShowAlert
-          : timelineShowAlert // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries {
-    if (_value.timelineAddEntries == null) {
-      return null;
-    }
-
-    return $TimelineAddEntriesCopyWith<$Res>(_value.timelineAddEntries!,
-        (value) {
-      return _then(_value.copyWith(timelineAddEntries: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_InstructionCopyWith<$Res>
-    implements $InstructionCopyWith<$Res> {
+abstract class _$$_InstructionCopyWith<$Res> {
   factory _$$_InstructionCopyWith(
           _$_Instruction value, $Res Function(_$_Instruction) then) =
       __$$_InstructionCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {@JsonKey(name: 'type')
       @InstructionsTypeConverter()
-          InstructionsType type,
-      @JsonKey(name: 'timelineAddEntries')
-          TimelineAddEntries? timelineAddEntries,
-      @JsonKey(name: 'timelineAddToModule')
-          dynamic timelineAddToModule,
-      @JsonKey(name: 'timelineTerminateTimeline')
-          dynamic timelineTerminateTimeline,
-      @JsonKey(name: 'timelineShowAlert')
-          dynamic timelineShowAlert});
-
-  @override
-  $TimelineAddEntriesCopyWith<$Res>? get timelineAddEntries;
+          InstructionsType type});
 }
 
 /// @nodoc
@@ -155,32 +128,12 @@ class __$$_InstructionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = null,
-    Object? timelineAddEntries = freezed,
-    Object? timelineAddToModule = freezed,
-    Object? timelineTerminateTimeline = freezed,
-    Object? timelineShowAlert = freezed,
   }) {
     return _then(_$_Instruction(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as InstructionsType,
-      timelineAddEntries: freezed == timelineAddEntries
-          ? _value.timelineAddEntries
-          : timelineAddEntries // ignore: cast_nullable_to_non_nullable
-              as TimelineAddEntries?,
-      timelineAddToModule: freezed == timelineAddToModule
-          ? _value.timelineAddToModule
-          : timelineAddToModule // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      timelineTerminateTimeline: freezed == timelineTerminateTimeline
-          ? _value.timelineTerminateTimeline
-          : timelineTerminateTimeline // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      timelineShowAlert: freezed == timelineShowAlert
-          ? _value.timelineShowAlert
-          : timelineShowAlert // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
@@ -189,17 +142,9 @@ class __$$_InstructionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Instruction implements _Instruction {
   const _$_Instruction(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          required this.type,
-      @JsonKey(name: 'timelineAddEntries')
-          required this.timelineAddEntries,
-      @JsonKey(name: 'timelineAddToModule')
-          required this.timelineAddToModule,
-      @JsonKey(name: 'timelineTerminateTimeline')
-          required this.timelineTerminateTimeline,
-      @JsonKey(name: 'timelineShowAlert')
-          required this.timelineShowAlert});
+      {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
+      final String? $type})
+      : $type = $type ?? 'default';
 
   factory _$_Instruction.fromJson(Map<String, dynamic> json) =>
       _$$_InstructionFromJson(json);
@@ -208,22 +153,13 @@ class _$_Instruction implements _Instruction {
   @JsonKey(name: 'type')
   @InstructionsTypeConverter()
   final InstructionsType type;
-  @override
-  @JsonKey(name: 'timelineAddEntries')
-  final TimelineAddEntries? timelineAddEntries;
-  @override
-  @JsonKey(name: 'timelineAddToModule')
-  final dynamic timelineAddToModule;
-  @override
-  @JsonKey(name: 'timelineTerminateTimeline')
-  final dynamic timelineTerminateTimeline;
-  @override
-  @JsonKey(name: 'timelineShowAlert')
-  final dynamic timelineShowAlert;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'Instruction(type: $type, timelineAddEntries: $timelineAddEntries, timelineAddToModule: $timelineAddToModule, timelineTerminateTimeline: $timelineTerminateTimeline, timelineShowAlert: $timelineShowAlert)';
+    return 'Instruction(type: $type)';
   }
 
   @override
@@ -231,32 +167,96 @@ class _$_Instruction implements _Instruction {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Instruction &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.timelineAddEntries, timelineAddEntries) ||
-                other.timelineAddEntries == timelineAddEntries) &&
-            const DeepCollectionEquality()
-                .equals(other.timelineAddToModule, timelineAddToModule) &&
-            const DeepCollectionEquality().equals(
-                other.timelineTerminateTimeline, timelineTerminateTimeline) &&
-            const DeepCollectionEquality()
-                .equals(other.timelineShowAlert, timelineShowAlert));
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      type,
-      timelineAddEntries,
-      const DeepCollectionEquality().hash(timelineAddToModule),
-      const DeepCollectionEquality().hash(timelineTerminateTimeline),
-      const DeepCollectionEquality().hash(timelineShowAlert));
+  int get hashCode => Object.hash(runtimeType, type);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_InstructionCopyWith<_$_Instruction> get copyWith =>
       __$$_InstructionCopyWithImpl<_$_Instruction>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)
+        $default, {
+    required TResult Function(
+            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
+        timelineAddEntry,
+  }) {
+    return $default(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+  }) {
+    return $default?.call(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Instruction value) $default, {
+    required TResult Function(TimelineAddEntries value) timelineAddEntry,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Instruction value)? $default, {
+    TResult? Function(TimelineAddEntries value)? timelineAddEntry,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Instruction value)? $default, {
+    TResult Function(TimelineAddEntries value)? timelineAddEntry,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -270,137 +270,42 @@ abstract class _Instruction implements Instruction {
   const factory _Instruction(
       {@JsonKey(name: 'type')
       @InstructionsTypeConverter()
-          required final InstructionsType type,
-      @JsonKey(name: 'timelineAddEntries')
-          required final TimelineAddEntries? timelineAddEntries,
-      @JsonKey(name: 'timelineAddToModule')
-          required final dynamic timelineAddToModule,
-      @JsonKey(name: 'timelineTerminateTimeline')
-          required final dynamic timelineTerminateTimeline,
-      @JsonKey(name: 'timelineShowAlert')
-          required final dynamic timelineShowAlert}) = _$_Instruction;
+          required final InstructionsType type}) = _$_Instruction;
 
   factory _Instruction.fromJson(Map<String, dynamic> json) =
       _$_Instruction.fromJson;
 
-  @override
   @JsonKey(name: 'type')
   @InstructionsTypeConverter()
   InstructionsType get type;
-  @override
-  @JsonKey(name: 'timelineAddEntries')
-  TimelineAddEntries? get timelineAddEntries;
-  @override
-  @JsonKey(name: 'timelineAddToModule')
-  dynamic get timelineAddToModule;
-  @override
-  @JsonKey(name: 'timelineTerminateTimeline')
-  dynamic get timelineTerminateTimeline;
-  @override
-  @JsonKey(name: 'timelineShowAlert')
-  dynamic get timelineShowAlert;
-  @override
   @JsonKey(ignore: true)
   _$$_InstructionCopyWith<_$_Instruction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-TimelineAddEntries _$TimelineAddEntriesFromJson(Map<String, dynamic> json) {
-  return _TimelineAddEntries.fromJson(json);
-}
-
 /// @nodoc
-mixin _$TimelineAddEntries {
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  InstructionsType get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'entries')
-  List<TimelineAddEntry> get entries => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TimelineAddEntriesCopyWith<TimelineAddEntries> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TimelineAddEntriesCopyWith<$Res> {
-  factory $TimelineAddEntriesCopyWith(
-          TimelineAddEntries value, $Res Function(TimelineAddEntries) then) =
-      _$TimelineAddEntriesCopyWithImpl<$Res, TimelineAddEntries>;
+abstract class _$$TimelineAddEntriesCopyWith<$Res> {
+  factory _$$TimelineAddEntriesCopyWith(_$TimelineAddEntries value,
+          $Res Function(_$TimelineAddEntries) then) =
+      __$$TimelineAddEntriesCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          InstructionsType type,
-      @JsonKey(name: 'entries')
-          List<TimelineAddEntry> entries});
+  $Res call({@JsonKey(name: 'entries') List<TimelineAddEntry> entries});
 }
 
 /// @nodoc
-class _$TimelineAddEntriesCopyWithImpl<$Res, $Val extends TimelineAddEntries>
-    implements $TimelineAddEntriesCopyWith<$Res> {
-  _$TimelineAddEntriesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? entries = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as InstructionsType,
-      entries: null == entries
-          ? _value.entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as List<TimelineAddEntry>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_TimelineAddEntriesCopyWith<$Res>
-    implements $TimelineAddEntriesCopyWith<$Res> {
-  factory _$$_TimelineAddEntriesCopyWith(_$_TimelineAddEntries value,
-          $Res Function(_$_TimelineAddEntries) then) =
-      __$$_TimelineAddEntriesCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          InstructionsType type,
-      @JsonKey(name: 'entries')
-          List<TimelineAddEntry> entries});
-}
-
-/// @nodoc
-class __$$_TimelineAddEntriesCopyWithImpl<$Res>
-    extends _$TimelineAddEntriesCopyWithImpl<$Res, _$_TimelineAddEntries>
-    implements _$$_TimelineAddEntriesCopyWith<$Res> {
-  __$$_TimelineAddEntriesCopyWithImpl(
-      _$_TimelineAddEntries _value, $Res Function(_$_TimelineAddEntries) _then)
+class __$$TimelineAddEntriesCopyWithImpl<$Res>
+    extends _$InstructionCopyWithImpl<$Res, _$TimelineAddEntries>
+    implements _$$TimelineAddEntriesCopyWith<$Res> {
+  __$$TimelineAddEntriesCopyWithImpl(
+      _$TimelineAddEntries _value, $Res Function(_$TimelineAddEntries) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? entries = null,
   }) {
-    return _then(_$_TimelineAddEntries(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as InstructionsType,
+    return _then(_$TimelineAddEntries(
       entries: null == entries
           ? _value._entries
           : entries // ignore: cast_nullable_to_non_nullable
@@ -411,20 +316,16 @@ class __$$_TimelineAddEntriesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TimelineAddEntries extends _TimelineAddEntries {
-  const _$_TimelineAddEntries(
-      {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
-      @JsonKey(name: 'entries') required final List<TimelineAddEntry> entries})
+class _$TimelineAddEntries implements TimelineAddEntries {
+  const _$TimelineAddEntries(
+      {@JsonKey(name: 'entries') required final List<TimelineAddEntry> entries,
+      final String? $type})
       : _entries = entries,
-        super._();
+        $type = $type ?? 'timelineAddEntry';
 
-  factory _$_TimelineAddEntries.fromJson(Map<String, dynamic> json) =>
-      _$$_TimelineAddEntriesFromJson(json);
+  factory _$TimelineAddEntries.fromJson(Map<String, dynamic> json) =>
+      _$$TimelineAddEntriesFromJson(json);
 
-  @override
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  final InstructionsType type;
   final List<TimelineAddEntry> _entries;
   @override
   @JsonKey(name: 'entries')
@@ -434,63 +335,133 @@ class _$_TimelineAddEntries extends _TimelineAddEntries {
     return EqualUnmodifiableListView(_entries);
   }
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'TimelineAddEntries(type: $type, entries: $entries)';
+    return 'Instruction.timelineAddEntry(entries: $entries)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimelineAddEntries &&
-            (identical(other.type, type) || other.type == type) &&
+            other is _$TimelineAddEntries &&
             const DeepCollectionEquality().equals(other._entries, _entries));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, type, const DeepCollectionEquality().hash(_entries));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_entries));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimelineAddEntriesCopyWith<_$_TimelineAddEntries> get copyWith =>
-      __$$_TimelineAddEntriesCopyWithImpl<_$_TimelineAddEntries>(
+  _$$TimelineAddEntriesCopyWith<_$TimelineAddEntries> get copyWith =>
+      __$$TimelineAddEntriesCopyWithImpl<_$TimelineAddEntries>(
           this, _$identity);
 
   @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)
+        $default, {
+    required TResult Function(
+            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
+        timelineAddEntry,
+  }) {
+    return timelineAddEntry(entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+  }) {
+    return timelineAddEntry?.call(entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'type')
+            @InstructionsTypeConverter()
+                InstructionsType type)?
+        $default, {
+    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+        timelineAddEntry,
+    required TResult orElse(),
+  }) {
+    if (timelineAddEntry != null) {
+      return timelineAddEntry(entries);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Instruction value) $default, {
+    required TResult Function(TimelineAddEntries value) timelineAddEntry,
+  }) {
+    return timelineAddEntry(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Instruction value)? $default, {
+    TResult? Function(TimelineAddEntries value)? timelineAddEntry,
+  }) {
+    return timelineAddEntry?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Instruction value)? $default, {
+    TResult Function(TimelineAddEntries value)? timelineAddEntry,
+    required TResult orElse(),
+  }) {
+    if (timelineAddEntry != null) {
+      return timelineAddEntry(this);
+    }
+    return orElse();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
-    return _$$_TimelineAddEntriesToJson(
+    return _$$TimelineAddEntriesToJson(
       this,
     );
   }
 }
 
-abstract class _TimelineAddEntries extends TimelineAddEntries {
-  const factory _TimelineAddEntries(
-          {@JsonKey(name: 'type')
-          @InstructionsTypeConverter()
-              required final InstructionsType type,
-          @JsonKey(name: 'entries')
+abstract class TimelineAddEntries implements Instruction {
+  const factory TimelineAddEntries(
+          {@JsonKey(name: 'entries')
               required final List<TimelineAddEntry> entries}) =
-      _$_TimelineAddEntries;
-  const _TimelineAddEntries._() : super._();
+      _$TimelineAddEntries;
 
-  factory _TimelineAddEntries.fromJson(Map<String, dynamic> json) =
-      _$_TimelineAddEntries.fromJson;
+  factory TimelineAddEntries.fromJson(Map<String, dynamic> json) =
+      _$TimelineAddEntries.fromJson;
 
-  @override
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  InstructionsType get type;
-  @override
   @JsonKey(name: 'entries')
   List<TimelineAddEntry> get entries;
-  @override
   @JsonKey(ignore: true)
-  _$$_TimelineAddEntriesCopyWith<_$_TimelineAddEntries> get copyWith =>
+  _$$TimelineAddEntriesCopyWith<_$TimelineAddEntries> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

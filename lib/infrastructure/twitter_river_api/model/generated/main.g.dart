@@ -9,38 +9,28 @@ part of '../main.dart';
 _$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
     _$_Instruction(
       type: const InstructionsTypeConverter().fromJson(json['type'] as String),
-      timelineAddEntries: json['timelineAddEntries'] == null
-          ? null
-          : TimelineAddEntries.fromJson(
-              json['timelineAddEntries'] as Map<String, dynamic>),
-      timelineAddToModule: json['timelineAddToModule'],
-      timelineTerminateTimeline: json['timelineTerminateTimeline'],
-      timelineShowAlert: json['timelineShowAlert'],
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
     <String, dynamic>{
       'type': const InstructionsTypeConverter().toJson(instance.type),
-      'timelineAddEntries': instance.timelineAddEntries,
-      'timelineAddToModule': instance.timelineAddToModule,
-      'timelineTerminateTimeline': instance.timelineTerminateTimeline,
-      'timelineShowAlert': instance.timelineShowAlert,
+      'runtimeType': instance.$type,
     };
 
-_$_TimelineAddEntries _$$_TimelineAddEntriesFromJson(
-        Map<String, dynamic> json) =>
-    _$_TimelineAddEntries(
-      type: const InstructionsTypeConverter().fromJson(json['type'] as String),
+_$TimelineAddEntries _$$TimelineAddEntriesFromJson(Map<String, dynamic> json) =>
+    _$TimelineAddEntries(
       entries: (json['entries'] as List<dynamic>)
           .map((e) => TimelineAddEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_TimelineAddEntriesToJson(
-        _$_TimelineAddEntries instance) =>
+Map<String, dynamic> _$$TimelineAddEntriesToJson(
+        _$TimelineAddEntries instance) =>
     <String, dynamic>{
-      'type': const InstructionsTypeConverter().toJson(instance.type),
       'entries': instance.entries,
+      'runtimeType': instance.$type,
     };
 
 _$_TimelineAddEntry _$$_TimelineAddEntryFromJson(Map<String, dynamic> json) =>
