@@ -140,11 +140,12 @@ class __$$_InstructionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Instruction implements _Instruction {
+class _$_Instruction extends _Instruction {
   const _$_Instruction(
       {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
       final String? $type})
-      : $type = $type ?? 'default';
+      : $type = $type ?? 'default',
+        super._();
 
   factory _$_Instruction.fromJson(Map<String, dynamic> json) =>
       _$$_InstructionFromJson(json);
@@ -266,11 +267,12 @@ class _$_Instruction implements _Instruction {
   }
 }
 
-abstract class _Instruction implements Instruction {
+abstract class _Instruction extends Instruction {
   const factory _Instruction(
       {@JsonKey(name: 'type')
       @InstructionsTypeConverter()
           required final InstructionsType type}) = _$_Instruction;
+  const _Instruction._() : super._();
 
   factory _Instruction.fromJson(Map<String, dynamic> json) =
       _$_Instruction.fromJson;
@@ -316,12 +318,13 @@ class __$$TimelineAddEntriesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimelineAddEntries implements TimelineAddEntries {
+class _$TimelineAddEntries extends TimelineAddEntries {
   const _$TimelineAddEntries(
       {@JsonKey(name: 'entries') required final List<TimelineAddEntry> entries,
       final String? $type})
       : _entries = entries,
-        $type = $type ?? 'timelineAddEntry';
+        $type = $type ?? 'timelineAddEntry',
+        super._();
 
   factory _$TimelineAddEntries.fromJson(Map<String, dynamic> json) =>
       _$$TimelineAddEntriesFromJson(json);
@@ -449,11 +452,12 @@ class _$TimelineAddEntries implements TimelineAddEntries {
   }
 }
 
-abstract class TimelineAddEntries implements Instruction {
+abstract class TimelineAddEntries extends Instruction {
   const factory TimelineAddEntries(
           {@JsonKey(name: 'entries')
               required final List<TimelineAddEntry> entries}) =
       _$TimelineAddEntries;
+  const TimelineAddEntries._() : super._();
 
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) =
       _$TimelineAddEntries.fromJson;

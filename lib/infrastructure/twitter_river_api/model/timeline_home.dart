@@ -14,7 +14,7 @@ class HomeTimelineResponse with _$HomeTimelineResponse {
     @JsonKey(name: 'data') required HomeTimelineData data,
   }) = _HomeTimelineResponse;
 
-  List<Instruction> get instructions => data.home.homeTimelineUrt.instructions;
+  TimelineAddEntries get timelineAddEntries => data.home.homeTimelineUrt.instructions.firstWhere((e) => e is TimelineAddEntries) as TimelineAddEntries;
 
   factory HomeTimelineResponse.fromJson(Map<String, dynamic> json) => _$HomeTimelineResponseFromJson(json);
 }

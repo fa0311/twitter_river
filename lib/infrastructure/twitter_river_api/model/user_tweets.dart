@@ -14,9 +14,8 @@ class UserTweetsResponse with _$UserTweetsResponse {
     @JsonKey(name: 'data') required UserTweetsData data,
   }) = _UserTweetsResponse;
 
-  List<TimelineAddEntry>? get timelineAddEntries => data.user.result.timelineV2.timeline.instructions
-      .firstWhere((e) => e.when((type) => null, timelineAddEntry: (entries) => entries) != null)
-      .when((type) => null, timelineAddEntry: (e) => e);
+  TimelineAddEntries get timelineAddEntries =>
+      data.user.result.timelineV2.timeline.instructions.firstWhere((e) => e is TimelineAddEntries) as TimelineAddEntries;
 
   factory UserTweetsResponse.fromJson(Map<String, dynamic> json) => _$UserTweetsResponseFromJson(json);
 }

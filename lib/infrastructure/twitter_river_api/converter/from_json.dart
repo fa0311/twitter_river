@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:developer';
 
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';

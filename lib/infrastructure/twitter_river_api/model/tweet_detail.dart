@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
 
 part 'generated/tweet_detail.freezed.dart';
@@ -18,7 +17,7 @@ class TweetDetailResponse with _$TweetDetailResponse {
     @JsonKey(name: 'data') required TweetDetailData data,
   }) = _TweetDetailResponse;
 
-  List<Instruction> get instructions => data.threadedConversation.instructions;
+  TimelineAddEntries get timelineAddEntries => data.threadedConversation.instructions.firstWhere((e) => e is TimelineAddEntries) as TimelineAddEntries;
   factory TweetDetailResponse.fromJson(Map<String, dynamic> json) => _$TweetDetailResponseFromJson(json);
 }
 

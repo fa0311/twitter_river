@@ -29,6 +29,7 @@ class Instruction with _$Instruction {
 
 @freezed
 class Instruction with _$Instruction {
+  const Instruction._();
   const factory Instruction({
     @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
   }) = _Instruction;
@@ -46,38 +47,29 @@ class Instruction with _$Instruction {
     */
 }
 
-extension _TimelineAddEntriesMethods on TimelineAddEntries {
-  List<Content> contents() {
-    return [
-      ...entries
-          .map((e) => e.content)
-          .where((e) => e.entryType == EntryType.timelineTimelineItem)
-          .where((e) => e.timelineTimelineItem!.itemContent.entryType != ItemType.timelineTimelineCursor),
-      ...entries.map((e) => e.content).where((e) => e.entryType == EntryType.timelineTimelineModule)
-    ].toList();
-  }
+extension TimelineAddEntriesMethods on TimelineAddEntries {
+  List<Content> get contents => [
+        ...entries
+            .map((e) => e.content)
+            .where((e) => e.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.timelineTimelineItem!.itemContent.entryType != ItemType.timelineTimelineCursor),
+        ...entries.map((e) => e.content).where((e) => e.entryType == EntryType.timelineTimelineModule)
+      ].toList();
 
-  List<TimelineTimelineCursor> cursor() {
-    return [
-      ...entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!),
-      ...entries
-          .where((e) => e.content.entryType == EntryType.timelineTimelineItem)
-          .where((e) => e.content.timelineTimelineItem!.itemContent.entryType == ItemType.timelineTimelineCursor)
-          .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
-    ].toList();
-  }
+  List<TimelineTimelineCursor> get cursor => [
+        ...entries.where((e) => (e.content.entryType == EntryType.timelineTimelineCursor)).map((e) => e.content.timelineTimelineCursor!),
+        ...entries
+            .where((e) => e.content.entryType == EntryType.timelineTimelineItem)
+            .where((e) => e.content.timelineTimelineItem!.itemContent.entryType == ItemType.timelineTimelineCursor)
+            .map((e) => e.content.timelineTimelineItem!.itemContent.timelineTimelineCursor!),
+      ].toList();
 
-  TimelineTimelineCursor? negativeCursor() {
-    return cursor().firstWhere((e) => e.cursorType == CursorType.top, orElse: () => null);
-  }
+  TimelineTimelineCursor? get negativeCursor => cursor.where((e) => e.cursorType == CursorType.top).toList()[0];
 
-  TimelineTimelineCursor? positiveCursor() {
-    return cursor().firstWhere((e) => e.cursorType == CursorType.bottom, orElse: () => null);
-  }
+  TimelineTimelineCursor? get positiveCursor => cursor.where((e) => e.cursorType == CursorType.bottom).toList()[0];
 
-  List<TimelineTimelineModule> timelineModule() {
-    return entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
-  }
+  List<TimelineTimelineModule> get timelineModule =>
+      entries.where((e) => (e.content.entryType == EntryType.timelineTimelineModule)).map((e) => e.content.timelineTimelineModule!).toList();
 }
 
 /*

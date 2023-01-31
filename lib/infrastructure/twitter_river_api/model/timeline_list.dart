@@ -15,7 +15,8 @@ class ListTimelineResponse with _$ListTimelineResponse {
     @JsonKey(name: 'data') required ListTimelineData data,
   }) = _ListTimelineResponse;
 
-  List<Instruction> get instructions => data.list.tweetsTimeline.timeline.instructions;
+  TimelineAddEntries get timelineAddEntries => data.list.tweetsTimeline.timeline.instructions.firstWhere((e) => e is TimelineAddEntries) as TimelineAddEntries;
+
   factory ListTimelineResponse.fromJson(Map<String, dynamic> json) => _$ListTimelineResponseFromJson(json);
 }
 
