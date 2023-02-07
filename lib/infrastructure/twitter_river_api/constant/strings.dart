@@ -9,11 +9,11 @@ class TwitterAuth {
 
 class TwitterQueryId {
   /* cSpell:disable */
-  static String homeTimeline = "dHMJ8qGvXRSBfPzNMFwM7Q";
-  static String tweetDetail = "lXI2kaM2hgmbf7h42kpxuA";
-  static String homeLatestTimeline = "8Mx_JddKFD4h3cYHzSd-6A";
-  static String listLatestTweetsTimeline = "1SdxTK2oXVR_vbdsUTU5wA";
-  static String userByScreenName = "hVhfo_TquFTmgL7gYwf91Q";
-  static String userTweets = "WDLVXDT4-qiiRqKQC07C3w";
+  static String homeTimeline = "S4iaTnJcz9D0okXNpp8UMQ";
+  static String tweetDetail = "9Urn0VM6X5qXUa0UdFPFlg";
+  static String homeLatestTimeline = "uB6qU4XgrS0yKOOi-Jc4HA";
+  static String listLatestTweetsTimeline = "739-lYeTXXN3JzRHCTDQ0g";
+  static String userByScreenName = "lhB3zXD3M7e-VfBkR-5A8g";
+  static String userTweets = "CKcd91tn0Zb0oO1jHxFmxA";
   /* cSpell:enable */
 }
