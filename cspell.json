@@ -3,44 +3,36 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    /* API */
+    "birdwatch",
+    "Cupertino",
+    "dio",
     "downvote",
-    "longform",
-    "notetweets",
-    "tweetypie",
-    "unmention",
-    "rweb",
-    "misinfo",
     "favorited",
     "favourites",
-    "birdwatch",
-    /* Flutter */
-    "unfocus",
-    /* Dart */
-    "pubspec",
-    "sublist",
-    /* Library */
-    "Cupertino",
-    "diox",
-    "riverpod",
     "inappwebview",
     "listview",
-    /* Name */
-    "yuki",
-    /* Other */
-    "roadmap"
+    "longform",
+    "misinfo",
+    "MMMMEEE",
+    "notetweets",
+    "pubspec",
+    "riverpod",
+    "roadmap",
+    "rweb",
+    "sublist",
+    "tweetypie",
+    "unfocus",
+    "unmention",
+    "yuki"
   ],
   "ignorePaths": [
-    /* Flutter */
     "android/**",
     "build/**",
     "ios/**",
     "windows/**",
     "pubspec.yaml",
-    /*Freezed*/
     "*.freezed.dart",
     "*.g.dart",
-    /* l10n */
     "lib/l10n/**"
   ]
 }

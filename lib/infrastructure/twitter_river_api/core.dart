@@ -3,8 +3,9 @@ import 'dart:convert';
 
 // Package imports:
 import 'package:cookie_jar/cookie_jar.dart';
-import 'package:diox/diox.dart';
-import 'package:diox_cookie_manager/diox_cookie_manager.dart';
+import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:flutter/foundation.dart';
 
 // Project imports:
 import 'package:twitter_river/core/logger.dart';
@@ -24,7 +25,7 @@ class TwitterRiverAPI {
   TwitterRiverAPI({this.cookiePath}) {
     dio = Dio(
       BaseOptions(
-        baseUrl: TwitterGraphQL.base.toString(),
+        baseUrl: TwitterBase.base.toString(),
         connectTimeout: const Duration(seconds: 50),
         receiveTimeout: const Duration(seconds: 30),
         contentType: 'application/json',
@@ -34,6 +35,7 @@ class TwitterRiverAPI {
     dio.interceptors.addAll([
       CookieManager(cookieJar),
       HeaderAuth(cookieJar),
+      LogInterceptor(),
     ]);
   }
 
@@ -47,29 +49,29 @@ class TwitterRiverAPI {
           "includePromotedContent": true,
           "latestControlAvailable": true,
           "withCommunity": true,
-          "withSuperFollowsUserFields": true,
           "withDownvotePerspective": false,
           "withReactionsMetadata": false,
-          "withReactionsPerspective": false,
-          "withSuperFollowsTweetFields": true
+          "withReactionsPerspective": false
         }),
         "features": jsonEncode({
-          "responsive_web_twitter_blue_verified_badge_is_enabled": true,
-          "responsive_web_graphql_exclude_directive_enabled": false,
+          "blue_business_profile_image_shape_enabled": true,
+          "responsive_web_graphql_exclude_directive_enabled": true,
           "verified_phone_label_enabled": false,
           "responsive_web_graphql_timeline_navigation_enabled": true,
           "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
-          "longform_notetweets_consumption_enabled": true,
           "tweetypie_unmention_optimization_enabled": true,
           "vibe_api_enabled": true,
           "responsive_web_edit_tweet_api_enabled": true,
           "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
           "view_counts_everywhere_api_enabled": true,
-          "freedom_of_speech_not_reach_appeal_label_enabled": false,
+          "longform_notetweets_consumption_enabled": true,
+          "tweet_awards_web_tipping_enabled": false,
+          "freedom_of_speech_not_reach_fetch_enabled": false,
           "standardized_nudges_misinfo": true,
           "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": false,
           "interactive_text_enabled": true,
           "responsive_web_text_conversations_enabled": false,
+          "longform_notetweets_richtext_consumption_enabled": true,
           "responsive_web_enhance_cards_enabled": false
         }),
       },
@@ -273,7 +275,7 @@ class HeaderAuth extends Interceptor {
       options.headers.addAll({
         "authorization": "Bearer ${TwitterAuth.bearer}",
         "User-Agent": TwitterAuth.userAgent,
-        "x-csrf-token": (await cookieJar.loadForRequest(TwitterGraphQL.base)).firstWhere((element) => element.name == TwitterAuth.ct0).value,
+        "x-csrf-token": (await cookieJar.loadForRequest(TwitterBase.base)).firstWhere((element) => element.name == TwitterAuth.ct0).value,
         "x-twitter-active-user": "yes",
         "x-twitter-auth-type": "OAuth2Session",
         "x-twitter-client-language": "ja",

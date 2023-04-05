@@ -6,31 +6,19 @@ part of '../main.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Instruction _$$_InstructionFromJson(Map<String, dynamic> json) =>
-    _$_Instruction(
-      type: const InstructionsTypeConverter().fromJson(json['type'] as String),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$_InstructionToJson(_$_Instruction instance) =>
-    <String, dynamic>{
-      'type': const InstructionsTypeConverter().toJson(instance.type),
-      'runtimeType': instance.$type,
-    };
-
 _$TimelineAddEntries _$$TimelineAddEntriesFromJson(Map<String, dynamic> json) =>
     _$TimelineAddEntries(
+      type: const InstructionsTypeConverter().fromJson(json['type'] as String),
       entries: (json['entries'] as List<dynamic>)
           .map((e) => TimelineAddEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$TimelineAddEntriesToJson(
         _$TimelineAddEntries instance) =>
     <String, dynamic>{
+      'type': const InstructionsTypeConverter().toJson(instance.type),
       'entries': instance.entries,
-      'runtimeType': instance.$type,
     };
 
 _$_TimelineAddEntry _$$_TimelineAddEntryFromJson(Map<String, dynamic> json) =>
@@ -305,33 +293,24 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
           const TypenameConverter().fromJson(json['__typename'] as String),
       affiliatesHighlightedLabel: json['affiliates_highlighted_label'],
       hasGraduatedAccess: json['has_graduated_access'] as bool,
-      hasNftAvatar: json['has_nft_avatar'] as bool,
       id: json['id'] as String,
       isBlueVerified: json['is_blue_verified'] as bool,
       legacy: UserLegacy.fromJson(json['legacy'] as Map<String, dynamic>),
       restId: json['rest_id'] as String,
-      superFollowEligible: json['super_follow_eligible'] as bool,
-      superFollowedBy: json['super_followed_by'] as bool,
-      superFollowing: json['super_following'] as bool,
     );
 
 Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       '__typename': const TypenameConverter().toJson(instance.typename),
       'affiliates_highlighted_label': instance.affiliatesHighlightedLabel,
       'has_graduated_access': instance.hasGraduatedAccess,
-      'has_nft_avatar': instance.hasNftAvatar,
       'id': instance.id,
       'is_blue_verified': instance.isBlueVerified,
       'legacy': instance.legacy,
       'rest_id': instance.restId,
-      'super_follow_eligible': instance.superFollowEligible,
-      'super_followed_by': instance.superFollowedBy,
-      'super_following': instance.superFollowing,
     };
 
 _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>
     _$_UserLegacy(
-      blockedBy: json['blocked_by'] as bool,
       blocking: json['blocking'],
       canDm: json['can_dm'] as bool,
       canMediaTag: json['can_media_tag'] as bool,
@@ -342,30 +321,24 @@ _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>
       entities: json['entities'],
       fastFollowersCount: json['fast_followers_count'] as int,
       favouritesCount: json['favourites_count'] as int,
-      followRequestSent: json['follow_request_sent'] as bool,
-      followedBy: json['followed_by'] as bool,
+      followedBy: json['followed_by'] as bool? ?? false,
       followersCount: json['followers_count'] as int,
-      following: json['following'] as bool,
+      following: json['following'] as bool? ?? false,
       friendsCount: json['friends_count'] as int,
       hasCustomTimelines: json['has_custom_timelines'] as bool,
       isTranslator: json['is_translator'] as bool,
       listedCount: json['listed_count'] as int,
       location: json['location'] as String,
       mediaCount: json['media_count'] as int,
-      muting: json['muting'] as bool,
       name: json['name'] as String,
       normalFollowersCount: json['normal_followers_count'] as int,
-      notifications: json['notifications'] as bool,
       pinnedTweetIdsStr: (json['pinned_tweet_ids_str'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       possiblySensitive: json['possibly_sensitive'] as bool,
-      profileBannerExtensions: json['profile_banner_extensions'],
       profileBannerUrl: json['profile_banner_url'] as String?,
-      profileImageExtensions: json['profile_image_extensions'],
       profileImageUrlHttps: json['profile_image_url_https'] as String,
       profileInterstitialType: json['profile_interstitial_type'] as String,
-      protected: json['protected'] as bool,
       screenName: json['screen_name'] as String,
       statusesCount: json['statuses_count'] as int,
       translatorType: json['translator_type'] as String,
@@ -377,7 +350,6 @@ _$_UserLegacy _$$_UserLegacyFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
     <String, dynamic>{
-      'blocked_by': instance.blockedBy,
       'blocking': instance.blocking,
       'can_dm': instance.canDm,
       'can_media_tag': instance.canMediaTag,
@@ -388,7 +360,6 @@ Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
       'entities': instance.entities,
       'fast_followers_count': instance.fastFollowersCount,
       'favourites_count': instance.favouritesCount,
-      'follow_request_sent': instance.followRequestSent,
       'followed_by': instance.followedBy,
       'followers_count': instance.followersCount,
       'following': instance.following,
@@ -398,18 +369,13 @@ Map<String, dynamic> _$$_UserLegacyToJson(_$_UserLegacy instance) =>
       'listed_count': instance.listedCount,
       'location': instance.location,
       'media_count': instance.mediaCount,
-      'muting': instance.muting,
       'name': instance.name,
       'normal_followers_count': instance.normalFollowersCount,
-      'notifications': instance.notifications,
       'pinned_tweet_ids_str': instance.pinnedTweetIdsStr,
       'possibly_sensitive': instance.possiblySensitive,
-      'profile_banner_extensions': instance.profileBannerExtensions,
       'profile_banner_url': instance.profileBannerUrl,
-      'profile_image_extensions': instance.profileImageExtensions,
       'profile_image_url_https': instance.profileImageUrlHttps,
       'profile_interstitial_type': instance.profileInterstitialType,
-      'protected': instance.protected,
       'screen_name': instance.screenName,
       'statuses_count': instance.statusesCount,
       'translator_type': instance.translatorType,

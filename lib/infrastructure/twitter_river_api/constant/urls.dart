@@ -1,10 +1,14 @@
 // Project imports:
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
 
-class TwitterGraphQL {
-  static Uri base = Uri.https("api.twitter.com", "/");
+class TwitterBase {
+  static Uri base = Uri.https("twitter.com", "/");
   static Uri all = Uri.https(".twitter.com", "/");
-  static Uri graphQL = base.resolve("graphql/");
+  static Uri api = Uri.https("api.twitter.com", "/");
+}
+
+class TwitterGraphQL {
+  static Uri graphQL = TwitterBase.base.resolve("i/api/graphql/");
   static Uri homeTimeline = graphQL.resolve("${TwitterQueryId.homeTimeline}/HomeTimeline");
   static Uri homeLatestTimeline = graphQL.resolve("${TwitterQueryId.homeLatestTimeline}/HomeLatestTimeline");
   static Uri listLatestTweetsTimeline = graphQL.resolve("${TwitterQueryId.listLatestTweetsTimeline}/ListLatestTweetsTimeline");

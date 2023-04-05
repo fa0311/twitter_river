@@ -1,7 +1,6 @@
+import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
+
 class TwitterUris {
-  static Uri base = Uri.https("twitter.com", "/");
-  static Uri all = Uri.https(".twitter.com", "/");
-  static Uri api = Uri.https("api.twitter.com", "/");
-  static Uri home = base.resolve("home");
-  static Uri login = base.resolve("login");
+  static Uri home = TwitterBase.base.resolve("home");
+  static Uri login = TwitterBase.base.resolve("login");
 }

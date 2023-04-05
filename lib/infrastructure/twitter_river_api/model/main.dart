@@ -30,21 +30,13 @@ class Instruction with _$Instruction {
 @freezed
 class Instruction with _$Instruction {
   const Instruction._();
-  const factory Instruction({
-    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
-  }) = _Instruction;
 
   const factory Instruction.timelineAddEntry({
+    @JsonKey(name: 'type') @InstructionsTypeConverter() required InstructionsType type,
     @JsonKey(name: 'entries') required List<TimelineAddEntry> entries,
   }) = TimelineAddEntries;
 
   factory Instruction.fromJson(Map<String, dynamic> json) => _$InstructionFromJson(json);
-
-  /*
-    @JsonKey(name: 'timelineAddToModule') required dynamic timelineAddToModule,
-    @JsonKey(name: 'timelineTerminateTimeline') required dynamic timelineTerminateTimeline,
-    @JsonKey(name: 'timelineShowAlert') required dynamic timelineShowAlert,
-    */
 }
 
 extension TimelineAddEntriesMethods on TimelineAddEntries {
@@ -352,14 +344,14 @@ class Result with _$Result {
     @JsonKey(name: '__typename') @TypenameConverter() required Typename typename,
     @JsonKey(name: 'affiliates_highlighted_label') required dynamic affiliatesHighlightedLabel,
     @JsonKey(name: 'has_graduated_access') required bool hasGraduatedAccess,
-    @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
+    // @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'is_blue_verified') required bool isBlueVerified,
     @JsonKey(name: 'legacy') required UserLegacy legacy,
     @JsonKey(name: 'rest_id') required String restId,
-    @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
-    @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
-    @JsonKey(name: 'super_following') required bool superFollowing,
+    // @JsonKey(name: 'super_follow_eligible') required bool superFollowEligible,
+    // @JsonKey(name: 'super_followed_by') required bool superFollowedBy,
+    // @JsonKey(name: 'super_following') required bool superFollowing,
   }) = _Result;
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(fromJsonProxy(json));
@@ -369,39 +361,39 @@ class Result with _$Result {
 class UserLegacy with _$UserLegacy {
   const UserLegacy._();
   const factory UserLegacy({
-    @JsonKey(name: 'blocked_by') required bool blockedBy,
+    // @JsonKey(name: 'blocked_by') required bool blockedBy,
     @JsonKey(name: 'blocking') required dynamic blocking,
     @JsonKey(name: 'can_dm') required bool canDm,
     @JsonKey(name: 'can_media_tag') required bool canMediaTag,
-    @JsonKey(name: 'created_at') required String createdAt,
+    @JsonKey(name: 'created_at') required String createdAt, // Sun Sep 19 10:49:08 +0000 2021
     @JsonKey(name: 'default_profile') required bool defaultProfile,
     @JsonKey(name: 'default_profile_image') required bool defaultProfileImage,
     @JsonKey(name: 'description') required String description,
     @JsonKey(name: 'entities') required dynamic entities,
     @JsonKey(name: 'fast_followers_count') required int fastFollowersCount,
     @JsonKey(name: 'favourites_count') required int favouritesCount,
-    @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
-    @JsonKey(name: 'followed_by') required bool followedBy,
+    // @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
+    @JsonKey(name: 'followed_by', defaultValue: false) required bool followedBy, // ?
     @JsonKey(name: 'followers_count') required int followersCount,
-    @JsonKey(name: 'following') required bool following,
+    @JsonKey(name: 'following', defaultValue: false) required bool following, // ?
     @JsonKey(name: 'friends_count') required int friendsCount,
     @JsonKey(name: 'has_custom_timelines') required bool hasCustomTimelines,
     @JsonKey(name: 'is_translator') required bool isTranslator,
     @JsonKey(name: 'listed_count') required int listedCount,
     @JsonKey(name: 'location') required String location,
     @JsonKey(name: 'media_count') required int mediaCount,
-    @JsonKey(name: 'muting') required bool muting,
+    // @JsonKey(name: 'muting') required bool muting,
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'normal_followers_count') required int normalFollowersCount,
-    @JsonKey(name: 'notifications') required bool notifications,
+    // @JsonKey(name: 'notifications') required bool notifications,
     @JsonKey(name: 'pinned_tweet_ids_str') required List<String> pinnedTweetIdsStr,
     @JsonKey(name: 'possibly_sensitive') required bool possiblySensitive,
-    @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
-    @JsonKey(name: 'profile_banner_url') String? profileBannerUrl,
-    @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
+    // @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
+    @JsonKey(name: 'profile_banner_url') required String? profileBannerUrl,
+    // @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
     @JsonKey(name: 'profile_image_url_https') required String profileImageUrlHttps,
     @JsonKey(name: 'profile_interstitial_type') required String profileInterstitialType,
-    @JsonKey(name: 'protected') required bool protected,
+    // @JsonKey(name: 'protected') required bool protected,
     @JsonKey(name: 'screen_name') required String screenName,
     @JsonKey(name: 'statuses_count') required int statusesCount,
     @JsonKey(name: 'translator_type') required String translatorType,
@@ -411,6 +403,45 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
   }) = _UserLegacy;
 
+/*
+{
+    "followed_by": true,
+    "following": true,
+    "can_dm": true,
+    "can_media_tag": true,
+    "created_at": "Sun Sep 19 10:49:08 +0000 2021",
+    "default_profile": true,
+    "default_profile_image": false,
+    "description": "インターネット大好きマン\n\nCommit to @Ablaze_MIRAI\n💬English OK(But a little)\nバグ・諸問題はメンションで\n\nMisskey: @Comamoca@misskey.io\n\nhobys 💻 ⵗ 🏕 ⵗ 🚵\n\n♥ Vim&CLI\n\nおにまいときららは良いぞ👍",
+    "entities": {
+    },
+    "fast_followers_count": 0,
+    "favourites_count": 65582,
+    "followers_count": 703,
+    "friends_count": 1062,
+    "has_custom_timelines": true,
+    "is_translator": false,
+    "listed_count": 13,
+    "location": "Live in 山梨🗻",
+    "media_count": 1566,
+    "name": "こまもか🦊",
+    "normal_followers_count": 703,
+    "pinned_tweet_ids_str": [
+        "1643114515935145984"
+    ],
+    "possibly_sensitive": false,
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1439542017055342593/1651754177",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1505613048236498947/rI0hpagN_normal.png",
+    "profile_interstitial_type": "",
+    "screen_name": "Comamoca_",
+    "statuses_count": 17493,
+    "translator_type": "none",
+    "url": "https://t.co/ydEXEnUPix",
+    "verified": false,
+    "want_retweets": true,
+    "withheld_in_countries": []
+}
+ */
   String get profileImageUrlHttpsSource => profileImageUrlHttps.replaceAll(RegExp(r'_[a-zA-Z0-9]+?.jpg$'), '.jpg');
 
   factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(fromJsonProxy(json));

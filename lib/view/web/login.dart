@@ -16,6 +16,7 @@ import 'package:twitter_river/component/scroll.dart';
 import 'package:twitter_river/constant/uris.dart';
 import 'package:twitter_river/core/logger.dart';
 import 'package:twitter_river/infrastructure/twitter_river_api/constant/strings.dart';
+import 'package:twitter_river/infrastructure/twitter_river_api/constant/urls.dart';
 import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/splash.dart';
 
@@ -24,10 +25,10 @@ final webViewInitProvider = FutureProvider.autoDispose<void>((ref) async {
   await cookieManager.deleteAllCookies();
   final session = await ref.read(loginSessionProvider.future);
 
-  final ioCookies = await session.cookieJar.loadForRequest(TwitterUris.api);
+  final ioCookies = await session.cookieJar.loadForRequest(TwitterBase.base);
   for (final ioCookie in ioCookies) {
     await cookieManager.setCookie(
-      url: TwitterUris.all,
+      url: TwitterBase.all,
       name: ioCookie.name,
       value: ioCookie.value,
       isSecure: ioCookie.secure,
@@ -80,10 +81,10 @@ class TwitterRiverWebLogin extends ConsumerWidget {
               final url = await controller.getUrl();
               if (url == null) return;
               if (url.path == TwitterUris.home.path) {
-                final authToken = await cookieManager.getCookie(url: TwitterUris.all, name: TwitterAuth.authToken);
+                final authToken = await cookieManager.getCookie(url: TwitterBase.all, name: TwitterAuth.authToken);
                 logger.i(authToken);
                 if (authToken != null) {
-                  final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterUris.all);
+                  final List<Cookie> cookies = await cookieManager.getCookies(url: TwitterBase.all);
                   final ioCookies = [
                     for (final cookie in cookies)
                       io.Cookie(cookie.name, cookie.value)
@@ -97,7 +98,7 @@ class TwitterRiverWebLogin extends ConsumerWidget {
                     logger.w(e, e, trace);
                   }
                   try {
-                    await session.cookieJar.saveFromResponse(TwitterUris.api, ioCookies);
+                    await session.cookieJar.saveFromResponse(TwitterBase.base, ioCookies);
                   } catch (e, trace) {
                     logger.w(e, e, trace);
                   }

@@ -15,75 +15,70 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Instruction _$InstructionFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'default':
-      return _Instruction.fromJson(json);
-    case 'timelineAddEntry':
-      return TimelineAddEntries.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'Instruction',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return TimelineAddEntries.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Instruction {
+  @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
+  InstructionsType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'entries')
+  List<TimelineAddEntry> get entries => throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
+  TResult when<TResult extends Object?>({
+    required TResult Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)
-        $default, {
-    required TResult Function(
-            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)
         timelineAddEntry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)?
         timelineAddEntry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)?
         timelineAddEntry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Instruction value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(TimelineAddEntries value) timelineAddEntry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Instruction value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TimelineAddEntries value)? timelineAddEntry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Instruction value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(TimelineAddEntries value)? timelineAddEntry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InstructionCopyWith<Instruction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -91,6 +86,13 @@ abstract class $InstructionCopyWith<$Res> {
   factory $InstructionCopyWith(
           Instruction value, $Res Function(Instruction) then) =
       _$InstructionCopyWithImpl<$Res, Instruction>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
+          InstructionsType type,
+      @JsonKey(name: 'entries')
+          List<TimelineAddEntry> entries});
 }
 
 /// @nodoc
@@ -102,196 +104,40 @@ class _$InstructionCopyWithImpl<$Res, $Val extends Instruction>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_InstructionCopyWith<$Res> {
-  factory _$$_InstructionCopyWith(
-          _$_Instruction value, $Res Function(_$_Instruction) then) =
-      __$$_InstructionCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          InstructionsType type});
-}
-
-/// @nodoc
-class __$$_InstructionCopyWithImpl<$Res>
-    extends _$InstructionCopyWithImpl<$Res, _$_Instruction>
-    implements _$$_InstructionCopyWith<$Res> {
-  __$$_InstructionCopyWithImpl(
-      _$_Instruction _value, $Res Function(_$_Instruction) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? type = null,
+    Object? entries = null,
   }) {
-    return _then(_$_Instruction(
+    return _then(_value.copyWith(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as InstructionsType,
-    ));
+      entries: null == entries
+          ? _value.entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<TimelineAddEntry>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_Instruction extends _Instruction {
-  const _$_Instruction(
-      {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
-      final String? $type})
-      : $type = $type ?? 'default',
-        super._();
-
-  factory _$_Instruction.fromJson(Map<String, dynamic> json) =>
-      _$$_InstructionFromJson(json);
-
-  @override
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  final InstructionsType type;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'Instruction(type: $type)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Instruction &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, type);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_InstructionCopyWith<_$_Instruction> get copyWith =>
-      __$$_InstructionCopyWithImpl<_$_Instruction>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'type')
-            @InstructionsTypeConverter()
-                InstructionsType type)
-        $default, {
-    required TResult Function(
-            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
-        timelineAddEntry,
-  }) {
-    return $default(type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            @JsonKey(name: 'type')
-            @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
-        timelineAddEntry,
-  }) {
-    return $default?.call(type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'type')
-            @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
-        timelineAddEntry,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(type);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Instruction value) $default, {
-    required TResult Function(TimelineAddEntries value) timelineAddEntry,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Instruction value)? $default, {
-    TResult? Function(TimelineAddEntries value)? timelineAddEntry,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Instruction value)? $default, {
-    TResult Function(TimelineAddEntries value)? timelineAddEntry,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_InstructionToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Instruction extends Instruction {
-  const factory _Instruction(
-      {@JsonKey(name: 'type')
-      @InstructionsTypeConverter()
-          required final InstructionsType type}) = _$_Instruction;
-  const _Instruction._() : super._();
-
-  factory _Instruction.fromJson(Map<String, dynamic> json) =
-      _$_Instruction.fromJson;
-
-  @JsonKey(name: 'type')
-  @InstructionsTypeConverter()
-  InstructionsType get type;
-  @JsonKey(ignore: true)
-  _$$_InstructionCopyWith<_$_Instruction> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TimelineAddEntriesCopyWith<$Res> {
+abstract class _$$TimelineAddEntriesCopyWith<$Res>
+    implements $InstructionCopyWith<$Res> {
   factory _$$TimelineAddEntriesCopyWith(_$TimelineAddEntries value,
           $Res Function(_$TimelineAddEntries) then) =
       __$$TimelineAddEntriesCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({@JsonKey(name: 'entries') List<TimelineAddEntry> entries});
+  $Res call(
+      {@JsonKey(name: 'type')
+      @InstructionsTypeConverter()
+          InstructionsType type,
+      @JsonKey(name: 'entries')
+          List<TimelineAddEntry> entries});
 }
 
 /// @nodoc
@@ -305,9 +151,14 @@ class __$$TimelineAddEntriesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? entries = null,
   }) {
     return _then(_$TimelineAddEntries(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as InstructionsType,
       entries: null == entries
           ? _value._entries
           : entries // ignore: cast_nullable_to_non_nullable
@@ -320,15 +171,18 @@ class __$$TimelineAddEntriesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TimelineAddEntries extends TimelineAddEntries {
   const _$TimelineAddEntries(
-      {@JsonKey(name: 'entries') required final List<TimelineAddEntry> entries,
-      final String? $type})
+      {@JsonKey(name: 'type') @InstructionsTypeConverter() required this.type,
+      @JsonKey(name: 'entries') required final List<TimelineAddEntry> entries})
       : _entries = entries,
-        $type = $type ?? 'timelineAddEntry',
         super._();
 
   factory _$TimelineAddEntries.fromJson(Map<String, dynamic> json) =>
       _$$TimelineAddEntriesFromJson(json);
 
+  @override
+  @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
+  final InstructionsType type;
   final List<TimelineAddEntry> _entries;
   @override
   @JsonKey(name: 'entries')
@@ -338,12 +192,9 @@ class _$TimelineAddEntries extends TimelineAddEntries {
     return EqualUnmodifiableListView(_entries);
   }
 
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
   @override
   String toString() {
-    return 'Instruction.timelineAddEntry(entries: $entries)';
+    return 'Instruction.timelineAddEntry(type: $type, entries: $entries)';
   }
 
   @override
@@ -351,13 +202,14 @@ class _$TimelineAddEntries extends TimelineAddEntries {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TimelineAddEntries &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._entries, _entries));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_entries));
+  int get hashCode => Object.hash(
+      runtimeType, type, const DeepCollectionEquality().hash(_entries));
 
   @JsonKey(ignore: true)
   @override
@@ -368,55 +220,53 @@ class _$TimelineAddEntries extends TimelineAddEntries {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
+  TResult when<TResult extends Object?>({
+    required TResult Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)
-        $default, {
-    required TResult Function(
-            @JsonKey(name: 'entries') List<TimelineAddEntry> entries)
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)
         timelineAddEntry,
   }) {
-    return timelineAddEntry(entries);
+    return timelineAddEntry(type, entries);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult? Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)?
         timelineAddEntry,
   }) {
-    return timelineAddEntry?.call(entries);
+    return timelineAddEntry?.call(type, entries);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(name: 'type')
             @InstructionsTypeConverter()
-                InstructionsType type)?
-        $default, {
-    TResult Function(@JsonKey(name: 'entries') List<TimelineAddEntry> entries)?
+                InstructionsType type,
+            @JsonKey(name: 'entries')
+                List<TimelineAddEntry> entries)?
         timelineAddEntry,
     required TResult orElse(),
   }) {
     if (timelineAddEntry != null) {
-      return timelineAddEntry(entries);
+      return timelineAddEntry(type, entries);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Instruction value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(TimelineAddEntries value) timelineAddEntry,
   }) {
     return timelineAddEntry(this);
@@ -424,8 +274,7 @@ class _$TimelineAddEntries extends TimelineAddEntries {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Instruction value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TimelineAddEntries value)? timelineAddEntry,
   }) {
     return timelineAddEntry?.call(this);
@@ -433,8 +282,7 @@ class _$TimelineAddEntries extends TimelineAddEntries {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Instruction value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(TimelineAddEntries value)? timelineAddEntry,
     required TResult orElse(),
   }) {
@@ -454,7 +302,10 @@ class _$TimelineAddEntries extends TimelineAddEntries {
 
 abstract class TimelineAddEntries extends Instruction {
   const factory TimelineAddEntries(
-          {@JsonKey(name: 'entries')
+          {@JsonKey(name: 'type')
+          @InstructionsTypeConverter()
+              required final InstructionsType type,
+          @JsonKey(name: 'entries')
               required final List<TimelineAddEntry> entries}) =
       _$TimelineAddEntries;
   const TimelineAddEntries._() : super._();
@@ -462,8 +313,14 @@ abstract class TimelineAddEntries extends Instruction {
   factory TimelineAddEntries.fromJson(Map<String, dynamic> json) =
       _$TimelineAddEntries.fromJson;
 
+  @override
+  @JsonKey(name: 'type')
+  @InstructionsTypeConverter()
+  InstructionsType get type;
+  @override
   @JsonKey(name: 'entries')
   List<TimelineAddEntry> get entries;
+  @override
   @JsonKey(ignore: true)
   _$$TimelineAddEntriesCopyWith<_$TimelineAddEntries> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4080,9 +3937,8 @@ mixin _$Result {
   @JsonKey(name: 'affiliates_highlighted_label')
   dynamic get affiliatesHighlightedLabel => throw _privateConstructorUsedError;
   @JsonKey(name: 'has_graduated_access')
-  bool get hasGraduatedAccess => throw _privateConstructorUsedError;
-  @JsonKey(name: 'has_nft_avatar')
-  bool get hasNftAvatar => throw _privateConstructorUsedError;
+  bool get hasGraduatedAccess =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
   @JsonKey(name: 'id')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_blue_verified')
@@ -4091,12 +3947,6 @@ mixin _$Result {
   UserLegacy get legacy => throw _privateConstructorUsedError;
   @JsonKey(name: 'rest_id')
   String get restId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_follow_eligible')
-  bool get superFollowEligible => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_followed_by')
-  bool get superFollowedBy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'super_following')
-  bool get superFollowing => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -4116,8 +3966,6 @@ abstract class $ResultCopyWith<$Res> {
           dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          bool hasNftAvatar,
       @JsonKey(name: 'id')
           String id,
       @JsonKey(name: 'is_blue_verified')
@@ -4125,13 +3973,7 @@ abstract class $ResultCopyWith<$Res> {
       @JsonKey(name: 'legacy')
           UserLegacy legacy,
       @JsonKey(name: 'rest_id')
-          String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          bool superFollowing});
+          String restId});
 
   $UserLegacyCopyWith<$Res> get legacy;
 }
@@ -4152,14 +3994,10 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
     Object? typename = null,
     Object? affiliatesHighlightedLabel = freezed,
     Object? hasGraduatedAccess = null,
-    Object? hasNftAvatar = null,
     Object? id = null,
     Object? isBlueVerified = null,
     Object? legacy = null,
     Object? restId = null,
-    Object? superFollowEligible = null,
-    Object? superFollowedBy = null,
-    Object? superFollowing = null,
   }) {
     return _then(_value.copyWith(
       typename: null == typename
@@ -4173,10 +4011,6 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
       hasGraduatedAccess: null == hasGraduatedAccess
           ? _value.hasGraduatedAccess
           : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNftAvatar: null == hasNftAvatar
-          ? _value.hasNftAvatar
-          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
               as bool,
       id: null == id
           ? _value.id
@@ -4194,18 +4028,6 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as String,
-      superFollowEligible: null == superFollowEligible
-          ? _value.superFollowEligible
-          : superFollowEligible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowedBy: null == superFollowedBy
-          ? _value.superFollowedBy
-          : superFollowedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowing: null == superFollowing
-          ? _value.superFollowing
-          : superFollowing // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 
@@ -4232,8 +4054,6 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
           dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          bool hasNftAvatar,
       @JsonKey(name: 'id')
           String id,
       @JsonKey(name: 'is_blue_verified')
@@ -4241,13 +4061,7 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
       @JsonKey(name: 'legacy')
           UserLegacy legacy,
       @JsonKey(name: 'rest_id')
-          String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          bool superFollowing});
+          String restId});
 
   @override
   $UserLegacyCopyWith<$Res> get legacy;
@@ -4266,14 +4080,10 @@ class __$$_ResultCopyWithImpl<$Res>
     Object? typename = null,
     Object? affiliatesHighlightedLabel = freezed,
     Object? hasGraduatedAccess = null,
-    Object? hasNftAvatar = null,
     Object? id = null,
     Object? isBlueVerified = null,
     Object? legacy = null,
     Object? restId = null,
-    Object? superFollowEligible = null,
-    Object? superFollowedBy = null,
-    Object? superFollowing = null,
   }) {
     return _then(_$_Result(
       typename: null == typename
@@ -4287,10 +4097,6 @@ class __$$_ResultCopyWithImpl<$Res>
       hasGraduatedAccess: null == hasGraduatedAccess
           ? _value.hasGraduatedAccess
           : hasGraduatedAccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNftAvatar: null == hasNftAvatar
-          ? _value.hasNftAvatar
-          : hasNftAvatar // ignore: cast_nullable_to_non_nullable
               as bool,
       id: null == id
           ? _value.id
@@ -4308,18 +4114,6 @@ class __$$_ResultCopyWithImpl<$Res>
           ? _value.restId
           : restId // ignore: cast_nullable_to_non_nullable
               as String,
-      superFollowEligible: null == superFollowEligible
-          ? _value.superFollowEligible
-          : superFollowEligible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowedBy: null == superFollowedBy
-          ? _value.superFollowedBy
-          : superFollowedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
-      superFollowing: null == superFollowing
-          ? _value.superFollowing
-          : superFollowing // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -4335,8 +4129,6 @@ class _$_Result implements _Result {
           required this.affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           required this.hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          required this.hasNftAvatar,
       @JsonKey(name: 'id')
           required this.id,
       @JsonKey(name: 'is_blue_verified')
@@ -4344,13 +4136,7 @@ class _$_Result implements _Result {
       @JsonKey(name: 'legacy')
           required this.legacy,
       @JsonKey(name: 'rest_id')
-          required this.restId,
-      @JsonKey(name: 'super_follow_eligible')
-          required this.superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          required this.superFollowedBy,
-      @JsonKey(name: 'super_following')
-          required this.superFollowing});
+          required this.restId});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
       _$$_ResultFromJson(json);
@@ -4365,9 +4151,7 @@ class _$_Result implements _Result {
   @override
   @JsonKey(name: 'has_graduated_access')
   final bool hasGraduatedAccess;
-  @override
-  @JsonKey(name: 'has_nft_avatar')
-  final bool hasNftAvatar;
+// @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
   @override
   @JsonKey(name: 'id')
   final String id;
@@ -4380,19 +4164,10 @@ class _$_Result implements _Result {
   @override
   @JsonKey(name: 'rest_id')
   final String restId;
-  @override
-  @JsonKey(name: 'super_follow_eligible')
-  final bool superFollowEligible;
-  @override
-  @JsonKey(name: 'super_followed_by')
-  final bool superFollowedBy;
-  @override
-  @JsonKey(name: 'super_following')
-  final bool superFollowing;
 
   @override
   String toString() {
-    return 'Result(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, hasNftAvatar: $hasNftAvatar, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId, superFollowEligible: $superFollowEligible, superFollowedBy: $superFollowedBy, superFollowing: $superFollowing)';
+    return 'Result(typename: $typename, affiliatesHighlightedLabel: $affiliatesHighlightedLabel, hasGraduatedAccess: $hasGraduatedAccess, id: $id, isBlueVerified: $isBlueVerified, legacy: $legacy, restId: $restId)';
   }
 
   @override
@@ -4406,19 +4181,11 @@ class _$_Result implements _Result {
                 other.affiliatesHighlightedLabel, affiliatesHighlightedLabel) &&
             (identical(other.hasGraduatedAccess, hasGraduatedAccess) ||
                 other.hasGraduatedAccess == hasGraduatedAccess) &&
-            (identical(other.hasNftAvatar, hasNftAvatar) ||
-                other.hasNftAvatar == hasNftAvatar) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isBlueVerified, isBlueVerified) ||
                 other.isBlueVerified == isBlueVerified) &&
             (identical(other.legacy, legacy) || other.legacy == legacy) &&
-            (identical(other.restId, restId) || other.restId == restId) &&
-            (identical(other.superFollowEligible, superFollowEligible) ||
-                other.superFollowEligible == superFollowEligible) &&
-            (identical(other.superFollowedBy, superFollowedBy) ||
-                other.superFollowedBy == superFollowedBy) &&
-            (identical(other.superFollowing, superFollowing) ||
-                other.superFollowing == superFollowing));
+            (identical(other.restId, restId) || other.restId == restId));
   }
 
   @JsonKey(ignore: true)
@@ -4428,14 +4195,10 @@ class _$_Result implements _Result {
       typename,
       const DeepCollectionEquality().hash(affiliatesHighlightedLabel),
       hasGraduatedAccess,
-      hasNftAvatar,
       id,
       isBlueVerified,
       legacy,
-      restId,
-      superFollowEligible,
-      superFollowedBy,
-      superFollowing);
+      restId);
 
   @JsonKey(ignore: true)
   @override
@@ -4460,8 +4223,6 @@ abstract class _Result implements Result {
           required final dynamic affiliatesHighlightedLabel,
       @JsonKey(name: 'has_graduated_access')
           required final bool hasGraduatedAccess,
-      @JsonKey(name: 'has_nft_avatar')
-          required final bool hasNftAvatar,
       @JsonKey(name: 'id')
           required final String id,
       @JsonKey(name: 'is_blue_verified')
@@ -4469,13 +4230,7 @@ abstract class _Result implements Result {
       @JsonKey(name: 'legacy')
           required final UserLegacy legacy,
       @JsonKey(name: 'rest_id')
-          required final String restId,
-      @JsonKey(name: 'super_follow_eligible')
-          required final bool superFollowEligible,
-      @JsonKey(name: 'super_followed_by')
-          required final bool superFollowedBy,
-      @JsonKey(name: 'super_following')
-          required final bool superFollowing}) = _$_Result;
+          required final String restId}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
@@ -4489,10 +4244,7 @@ abstract class _Result implements Result {
   @override
   @JsonKey(name: 'has_graduated_access')
   bool get hasGraduatedAccess;
-  @override
-  @JsonKey(name: 'has_nft_avatar')
-  bool get hasNftAvatar;
-  @override
+  @override // @JsonKey(name: 'has_nft_avatar') required bool hasNftAvatar,
   @JsonKey(name: 'id')
   String get id;
   @override
@@ -4505,15 +4257,6 @@ abstract class _Result implements Result {
   @JsonKey(name: 'rest_id')
   String get restId;
   @override
-  @JsonKey(name: 'super_follow_eligible')
-  bool get superFollowEligible;
-  @override
-  @JsonKey(name: 'super_followed_by')
-  bool get superFollowedBy;
-  @override
-  @JsonKey(name: 'super_following')
-  bool get superFollowing;
-  @override
   @JsonKey(ignore: true)
   _$$_ResultCopyWith<_$_Result> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4525,8 +4268,7 @@ UserLegacy _$UserLegacyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserLegacy {
-  @JsonKey(name: 'blocked_by')
-  bool get blockedBy => throw _privateConstructorUsedError;
+// @JsonKey(name: 'blocked_by') required bool blockedBy,
   @JsonKey(name: 'blocking')
   dynamic get blocking => throw _privateConstructorUsedError;
   @JsonKey(name: 'can_dm')
@@ -4534,7 +4276,8 @@ mixin _$UserLegacy {
   @JsonKey(name: 'can_media_tag')
   bool get canMediaTag => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt =>
+      throw _privateConstructorUsedError; // Sun Sep 19 10:49:08 +0000 2021
   @JsonKey(name: 'default_profile')
   bool get defaultProfile => throw _privateConstructorUsedError;
   @JsonKey(name: 'default_profile_image')
@@ -4546,15 +4289,14 @@ mixin _$UserLegacy {
   @JsonKey(name: 'fast_followers_count')
   int get fastFollowersCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'favourites_count')
-  int get favouritesCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'follow_request_sent')
-  bool get followRequestSent => throw _privateConstructorUsedError;
-  @JsonKey(name: 'followed_by')
-  bool get followedBy => throw _privateConstructorUsedError;
+  int get favouritesCount =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
+  @JsonKey(name: 'followed_by', defaultValue: false)
+  bool get followedBy => throw _privateConstructorUsedError; // ?
   @JsonKey(name: 'followers_count')
   int get followersCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'following')
-  bool get following => throw _privateConstructorUsedError;
+  @JsonKey(name: 'following', defaultValue: false)
+  bool get following => throw _privateConstructorUsedError; // ?
   @JsonKey(name: 'friends_count')
   int get friendsCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'has_custom_timelines')
@@ -4566,31 +4308,26 @@ mixin _$UserLegacy {
   @JsonKey(name: 'location')
   String get location => throw _privateConstructorUsedError;
   @JsonKey(name: 'media_count')
-  int get mediaCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'muting')
-  bool get muting => throw _privateConstructorUsedError;
+  int get mediaCount =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'muting') required bool muting,
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'normal_followers_count')
-  int get normalFollowersCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'notifications')
-  bool get notifications => throw _privateConstructorUsedError;
+  int get normalFollowersCount =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'notifications') required bool notifications,
   @JsonKey(name: 'pinned_tweet_ids_str')
   List<String> get pinnedTweetIdsStr => throw _privateConstructorUsedError;
   @JsonKey(name: 'possibly_sensitive')
-  bool get possiblySensitive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'profile_banner_extensions')
-  dynamic get profileBannerExtensions => throw _privateConstructorUsedError;
+  bool get possiblySensitive =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
   @JsonKey(name: 'profile_banner_url')
-  String? get profileBannerUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'profile_image_extensions')
-  dynamic get profileImageExtensions => throw _privateConstructorUsedError;
+  String? get profileBannerUrl =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
   @JsonKey(name: 'profile_image_url_https')
   String get profileImageUrlHttps => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_interstitial_type')
-  String get profileInterstitialType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'protected')
-  bool get protected => throw _privateConstructorUsedError;
+  String get profileInterstitialType =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'protected') required bool protected,
   @JsonKey(name: 'screen_name')
   String get screenName => throw _privateConstructorUsedError;
   @JsonKey(name: 'statuses_count')
@@ -4619,9 +4356,7 @@ abstract class $UserLegacyCopyWith<$Res> {
       _$UserLegacyCopyWithImpl<$Res, UserLegacy>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'blocked_by')
-          bool blockedBy,
-      @JsonKey(name: 'blocking')
+      {@JsonKey(name: 'blocking')
           dynamic blocking,
       @JsonKey(name: 'can_dm')
           bool canDm,
@@ -4641,13 +4376,11 @@ abstract class $UserLegacyCopyWith<$Res> {
           int fastFollowersCount,
       @JsonKey(name: 'favourites_count')
           int favouritesCount,
-      @JsonKey(name: 'follow_request_sent')
-          bool followRequestSent,
-      @JsonKey(name: 'followed_by')
+      @JsonKey(name: 'followed_by', defaultValue: false)
           bool followedBy,
       @JsonKey(name: 'followers_count')
           int followersCount,
-      @JsonKey(name: 'following')
+      @JsonKey(name: 'following', defaultValue: false)
           bool following,
       @JsonKey(name: 'friends_count')
           int friendsCount,
@@ -4661,30 +4394,20 @@ abstract class $UserLegacyCopyWith<$Res> {
           String location,
       @JsonKey(name: 'media_count')
           int mediaCount,
-      @JsonKey(name: 'muting')
-          bool muting,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'normal_followers_count')
           int normalFollowersCount,
-      @JsonKey(name: 'notifications')
-          bool notifications,
       @JsonKey(name: 'pinned_tweet_ids_str')
           List<String> pinnedTweetIdsStr,
       @JsonKey(name: 'possibly_sensitive')
           bool possiblySensitive,
-      @JsonKey(name: 'profile_banner_extensions')
-          dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
           String? profileBannerUrl,
-      @JsonKey(name: 'profile_image_extensions')
-          dynamic profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
           String profileImageUrlHttps,
       @JsonKey(name: 'profile_interstitial_type')
           String profileInterstitialType,
-      @JsonKey(name: 'protected')
-          bool protected,
       @JsonKey(name: 'screen_name')
           String screenName,
       @JsonKey(name: 'statuses_count')
@@ -4714,7 +4437,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockedBy = null,
     Object? blocking = freezed,
     Object? canDm = null,
     Object? canMediaTag = null,
@@ -4725,7 +4447,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
     Object? entities = freezed,
     Object? fastFollowersCount = null,
     Object? favouritesCount = null,
-    Object? followRequestSent = null,
     Object? followedBy = null,
     Object? followersCount = null,
     Object? following = null,
@@ -4735,18 +4456,13 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
     Object? listedCount = null,
     Object? location = null,
     Object? mediaCount = null,
-    Object? muting = null,
     Object? name = null,
     Object? normalFollowersCount = null,
-    Object? notifications = null,
     Object? pinnedTweetIdsStr = null,
     Object? possiblySensitive = null,
-    Object? profileBannerExtensions = freezed,
     Object? profileBannerUrl = freezed,
-    Object? profileImageExtensions = freezed,
     Object? profileImageUrlHttps = null,
     Object? profileInterstitialType = null,
-    Object? protected = null,
     Object? screenName = null,
     Object? statusesCount = null,
     Object? translatorType = null,
@@ -4756,10 +4472,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
     Object? withheldInCountries = null,
   }) {
     return _then(_value.copyWith(
-      blockedBy: null == blockedBy
-          ? _value.blockedBy
-          : blockedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
       blocking: freezed == blocking
           ? _value.blocking
           : blocking // ignore: cast_nullable_to_non_nullable
@@ -4800,10 +4512,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.favouritesCount
           : favouritesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      followRequestSent: null == followRequestSent
-          ? _value.followRequestSent
-          : followRequestSent // ignore: cast_nullable_to_non_nullable
-              as bool,
       followedBy: null == followedBy
           ? _value.followedBy
           : followedBy // ignore: cast_nullable_to_non_nullable
@@ -4840,10 +4548,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.mediaCount
           : mediaCount // ignore: cast_nullable_to_non_nullable
               as int,
-      muting: null == muting
-          ? _value.muting
-          : muting // ignore: cast_nullable_to_non_nullable
-              as bool,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -4852,10 +4556,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.normalFollowersCount
           : normalFollowersCount // ignore: cast_nullable_to_non_nullable
               as int,
-      notifications: null == notifications
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as bool,
       pinnedTweetIdsStr: null == pinnedTweetIdsStr
           ? _value.pinnedTweetIdsStr
           : pinnedTweetIdsStr // ignore: cast_nullable_to_non_nullable
@@ -4864,18 +4564,10 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.possiblySensitive
           : possiblySensitive // ignore: cast_nullable_to_non_nullable
               as bool,
-      profileBannerExtensions: freezed == profileBannerExtensions
-          ? _value.profileBannerExtensions
-          : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       profileBannerUrl: freezed == profileBannerUrl
           ? _value.profileBannerUrl
           : profileBannerUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      profileImageExtensions: freezed == profileImageExtensions
-          ? _value.profileImageExtensions
-          : profileImageExtensions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       profileImageUrlHttps: null == profileImageUrlHttps
           ? _value.profileImageUrlHttps
           : profileImageUrlHttps // ignore: cast_nullable_to_non_nullable
@@ -4884,10 +4576,6 @@ class _$UserLegacyCopyWithImpl<$Res, $Val extends UserLegacy>
           ? _value.profileInterstitialType
           : profileInterstitialType // ignore: cast_nullable_to_non_nullable
               as String,
-      protected: null == protected
-          ? _value.protected
-          : protected // ignore: cast_nullable_to_non_nullable
-              as bool,
       screenName: null == screenName
           ? _value.screenName
           : screenName // ignore: cast_nullable_to_non_nullable
@@ -4929,9 +4617,7 @@ abstract class _$$_UserLegacyCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'blocked_by')
-          bool blockedBy,
-      @JsonKey(name: 'blocking')
+      {@JsonKey(name: 'blocking')
           dynamic blocking,
       @JsonKey(name: 'can_dm')
           bool canDm,
@@ -4951,13 +4637,11 @@ abstract class _$$_UserLegacyCopyWith<$Res>
           int fastFollowersCount,
       @JsonKey(name: 'favourites_count')
           int favouritesCount,
-      @JsonKey(name: 'follow_request_sent')
-          bool followRequestSent,
-      @JsonKey(name: 'followed_by')
+      @JsonKey(name: 'followed_by', defaultValue: false)
           bool followedBy,
       @JsonKey(name: 'followers_count')
           int followersCount,
-      @JsonKey(name: 'following')
+      @JsonKey(name: 'following', defaultValue: false)
           bool following,
       @JsonKey(name: 'friends_count')
           int friendsCount,
@@ -4971,30 +4655,20 @@ abstract class _$$_UserLegacyCopyWith<$Res>
           String location,
       @JsonKey(name: 'media_count')
           int mediaCount,
-      @JsonKey(name: 'muting')
-          bool muting,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'normal_followers_count')
           int normalFollowersCount,
-      @JsonKey(name: 'notifications')
-          bool notifications,
       @JsonKey(name: 'pinned_tweet_ids_str')
           List<String> pinnedTweetIdsStr,
       @JsonKey(name: 'possibly_sensitive')
           bool possiblySensitive,
-      @JsonKey(name: 'profile_banner_extensions')
-          dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
           String? profileBannerUrl,
-      @JsonKey(name: 'profile_image_extensions')
-          dynamic profileImageExtensions,
       @JsonKey(name: 'profile_image_url_https')
           String profileImageUrlHttps,
       @JsonKey(name: 'profile_interstitial_type')
           String profileInterstitialType,
-      @JsonKey(name: 'protected')
-          bool protected,
       @JsonKey(name: 'screen_name')
           String screenName,
       @JsonKey(name: 'statuses_count')
@@ -5022,7 +4696,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockedBy = null,
     Object? blocking = freezed,
     Object? canDm = null,
     Object? canMediaTag = null,
@@ -5033,7 +4706,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
     Object? entities = freezed,
     Object? fastFollowersCount = null,
     Object? favouritesCount = null,
-    Object? followRequestSent = null,
     Object? followedBy = null,
     Object? followersCount = null,
     Object? following = null,
@@ -5043,18 +4715,13 @@ class __$$_UserLegacyCopyWithImpl<$Res>
     Object? listedCount = null,
     Object? location = null,
     Object? mediaCount = null,
-    Object? muting = null,
     Object? name = null,
     Object? normalFollowersCount = null,
-    Object? notifications = null,
     Object? pinnedTweetIdsStr = null,
     Object? possiblySensitive = null,
-    Object? profileBannerExtensions = freezed,
     Object? profileBannerUrl = freezed,
-    Object? profileImageExtensions = freezed,
     Object? profileImageUrlHttps = null,
     Object? profileInterstitialType = null,
-    Object? protected = null,
     Object? screenName = null,
     Object? statusesCount = null,
     Object? translatorType = null,
@@ -5064,10 +4731,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
     Object? withheldInCountries = null,
   }) {
     return _then(_$_UserLegacy(
-      blockedBy: null == blockedBy
-          ? _value.blockedBy
-          : blockedBy // ignore: cast_nullable_to_non_nullable
-              as bool,
       blocking: freezed == blocking
           ? _value.blocking
           : blocking // ignore: cast_nullable_to_non_nullable
@@ -5108,10 +4771,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.favouritesCount
           : favouritesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      followRequestSent: null == followRequestSent
-          ? _value.followRequestSent
-          : followRequestSent // ignore: cast_nullable_to_non_nullable
-              as bool,
       followedBy: null == followedBy
           ? _value.followedBy
           : followedBy // ignore: cast_nullable_to_non_nullable
@@ -5148,10 +4807,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.mediaCount
           : mediaCount // ignore: cast_nullable_to_non_nullable
               as int,
-      muting: null == muting
-          ? _value.muting
-          : muting // ignore: cast_nullable_to_non_nullable
-              as bool,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -5160,10 +4815,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.normalFollowersCount
           : normalFollowersCount // ignore: cast_nullable_to_non_nullable
               as int,
-      notifications: null == notifications
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as bool,
       pinnedTweetIdsStr: null == pinnedTweetIdsStr
           ? _value._pinnedTweetIdsStr
           : pinnedTweetIdsStr // ignore: cast_nullable_to_non_nullable
@@ -5172,18 +4823,10 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.possiblySensitive
           : possiblySensitive // ignore: cast_nullable_to_non_nullable
               as bool,
-      profileBannerExtensions: freezed == profileBannerExtensions
-          ? _value.profileBannerExtensions
-          : profileBannerExtensions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       profileBannerUrl: freezed == profileBannerUrl
           ? _value.profileBannerUrl
           : profileBannerUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      profileImageExtensions: freezed == profileImageExtensions
-          ? _value.profileImageExtensions
-          : profileImageExtensions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       profileImageUrlHttps: null == profileImageUrlHttps
           ? _value.profileImageUrlHttps
           : profileImageUrlHttps // ignore: cast_nullable_to_non_nullable
@@ -5192,10 +4835,6 @@ class __$$_UserLegacyCopyWithImpl<$Res>
           ? _value.profileInterstitialType
           : profileInterstitialType // ignore: cast_nullable_to_non_nullable
               as String,
-      protected: null == protected
-          ? _value.protected
-          : protected // ignore: cast_nullable_to_non_nullable
-              as bool,
       screenName: null == screenName
           ? _value.screenName
           : screenName // ignore: cast_nullable_to_non_nullable
@@ -5232,9 +4871,7 @@ class __$$_UserLegacyCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserLegacy extends _UserLegacy {
   const _$_UserLegacy(
-      {@JsonKey(name: 'blocked_by')
-          required this.blockedBy,
-      @JsonKey(name: 'blocking')
+      {@JsonKey(name: 'blocking')
           required this.blocking,
       @JsonKey(name: 'can_dm')
           required this.canDm,
@@ -5254,13 +4891,11 @@ class _$_UserLegacy extends _UserLegacy {
           required this.fastFollowersCount,
       @JsonKey(name: 'favourites_count')
           required this.favouritesCount,
-      @JsonKey(name: 'follow_request_sent')
-          required this.followRequestSent,
-      @JsonKey(name: 'followed_by')
+      @JsonKey(name: 'followed_by', defaultValue: false)
           required this.followedBy,
       @JsonKey(name: 'followers_count')
           required this.followersCount,
-      @JsonKey(name: 'following')
+      @JsonKey(name: 'following', defaultValue: false)
           required this.following,
       @JsonKey(name: 'friends_count')
           required this.friendsCount,
@@ -5274,30 +4909,20 @@ class _$_UserLegacy extends _UserLegacy {
           required this.location,
       @JsonKey(name: 'media_count')
           required this.mediaCount,
-      @JsonKey(name: 'muting')
-          required this.muting,
       @JsonKey(name: 'name')
           required this.name,
       @JsonKey(name: 'normal_followers_count')
           required this.normalFollowersCount,
-      @JsonKey(name: 'notifications')
-          required this.notifications,
       @JsonKey(name: 'pinned_tweet_ids_str')
           required final List<String> pinnedTweetIdsStr,
       @JsonKey(name: 'possibly_sensitive')
           required this.possiblySensitive,
-      @JsonKey(name: 'profile_banner_extensions')
-          required this.profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          this.profileBannerUrl,
-      @JsonKey(name: 'profile_image_extensions')
-          required this.profileImageExtensions,
+          required this.profileBannerUrl,
       @JsonKey(name: 'profile_image_url_https')
           required this.profileImageUrlHttps,
       @JsonKey(name: 'profile_interstitial_type')
           required this.profileInterstitialType,
-      @JsonKey(name: 'protected')
-          required this.protected,
       @JsonKey(name: 'screen_name')
           required this.screenName,
       @JsonKey(name: 'statuses_count')
@@ -5319,9 +4944,7 @@ class _$_UserLegacy extends _UserLegacy {
   factory _$_UserLegacy.fromJson(Map<String, dynamic> json) =>
       _$$_UserLegacyFromJson(json);
 
-  @override
-  @JsonKey(name: 'blocked_by')
-  final bool blockedBy;
+// @JsonKey(name: 'blocked_by') required bool blockedBy,
   @override
   @JsonKey(name: 'blocking')
   final dynamic blocking;
@@ -5334,6 +4957,7 @@ class _$_UserLegacy extends _UserLegacy {
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
+// Sun Sep 19 10:49:08 +0000 2021
   @override
   @JsonKey(name: 'default_profile')
   final bool defaultProfile;
@@ -5352,18 +4976,18 @@ class _$_UserLegacy extends _UserLegacy {
   @override
   @JsonKey(name: 'favourites_count')
   final int favouritesCount;
+// @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
   @override
-  @JsonKey(name: 'follow_request_sent')
-  final bool followRequestSent;
-  @override
-  @JsonKey(name: 'followed_by')
+  @JsonKey(name: 'followed_by', defaultValue: false)
   final bool followedBy;
+// ?
   @override
   @JsonKey(name: 'followers_count')
   final int followersCount;
   @override
-  @JsonKey(name: 'following')
+  @JsonKey(name: 'following', defaultValue: false)
   final bool following;
+// ?
   @override
   @JsonKey(name: 'friends_count')
   final int friendsCount;
@@ -5382,19 +5006,16 @@ class _$_UserLegacy extends _UserLegacy {
   @override
   @JsonKey(name: 'media_count')
   final int mediaCount;
-  @override
-  @JsonKey(name: 'muting')
-  final bool muting;
+// @JsonKey(name: 'muting') required bool muting,
   @override
   @JsonKey(name: 'name')
   final String name;
   @override
   @JsonKey(name: 'normal_followers_count')
   final int normalFollowersCount;
-  @override
-  @JsonKey(name: 'notifications')
-  final bool notifications;
+// @JsonKey(name: 'notifications') required bool notifications,
   final List<String> _pinnedTweetIdsStr;
+// @JsonKey(name: 'notifications') required bool notifications,
   @override
   @JsonKey(name: 'pinned_tweet_ids_str')
   List<String> get pinnedTweetIdsStr {
@@ -5407,24 +5028,18 @@ class _$_UserLegacy extends _UserLegacy {
   @override
   @JsonKey(name: 'possibly_sensitive')
   final bool possiblySensitive;
-  @override
-  @JsonKey(name: 'profile_banner_extensions')
-  final dynamic profileBannerExtensions;
+// @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
   @override
   @JsonKey(name: 'profile_banner_url')
   final String? profileBannerUrl;
-  @override
-  @JsonKey(name: 'profile_image_extensions')
-  final dynamic profileImageExtensions;
+// @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
   @override
   @JsonKey(name: 'profile_image_url_https')
   final String profileImageUrlHttps;
   @override
   @JsonKey(name: 'profile_interstitial_type')
   final String profileInterstitialType;
-  @override
-  @JsonKey(name: 'protected')
-  final bool protected;
+// @JsonKey(name: 'protected') required bool protected,
   @override
   @JsonKey(name: 'screen_name')
   final String screenName;
@@ -5455,7 +5070,7 @@ class _$_UserLegacy extends _UserLegacy {
 
   @override
   String toString() {
-    return 'UserLegacy(blockedBy: $blockedBy, blocking: $blocking, canDm: $canDm, canMediaTag: $canMediaTag, createdAt: $createdAt, defaultProfile: $defaultProfile, defaultProfileImage: $defaultProfileImage, description: $description, entities: $entities, fastFollowersCount: $fastFollowersCount, favouritesCount: $favouritesCount, followRequestSent: $followRequestSent, followedBy: $followedBy, followersCount: $followersCount, following: $following, friendsCount: $friendsCount, hasCustomTimelines: $hasCustomTimelines, isTranslator: $isTranslator, listedCount: $listedCount, location: $location, mediaCount: $mediaCount, muting: $muting, name: $name, normalFollowersCount: $normalFollowersCount, notifications: $notifications, pinnedTweetIdsStr: $pinnedTweetIdsStr, possiblySensitive: $possiblySensitive, profileBannerExtensions: $profileBannerExtensions, profileBannerUrl: $profileBannerUrl, profileImageExtensions: $profileImageExtensions, profileImageUrlHttps: $profileImageUrlHttps, profileInterstitialType: $profileInterstitialType, protected: $protected, screenName: $screenName, statusesCount: $statusesCount, translatorType: $translatorType, url: $url, verified: $verified, wantRetweets: $wantRetweets, withheldInCountries: $withheldInCountries)';
+    return 'UserLegacy(blocking: $blocking, canDm: $canDm, canMediaTag: $canMediaTag, createdAt: $createdAt, defaultProfile: $defaultProfile, defaultProfileImage: $defaultProfileImage, description: $description, entities: $entities, fastFollowersCount: $fastFollowersCount, favouritesCount: $favouritesCount, followedBy: $followedBy, followersCount: $followersCount, following: $following, friendsCount: $friendsCount, hasCustomTimelines: $hasCustomTimelines, isTranslator: $isTranslator, listedCount: $listedCount, location: $location, mediaCount: $mediaCount, name: $name, normalFollowersCount: $normalFollowersCount, pinnedTweetIdsStr: $pinnedTweetIdsStr, possiblySensitive: $possiblySensitive, profileBannerUrl: $profileBannerUrl, profileImageUrlHttps: $profileImageUrlHttps, profileInterstitialType: $profileInterstitialType, screenName: $screenName, statusesCount: $statusesCount, translatorType: $translatorType, url: $url, verified: $verified, wantRetweets: $wantRetweets, withheldInCountries: $withheldInCountries)';
   }
 
   @override
@@ -5463,8 +5078,6 @@ class _$_UserLegacy extends _UserLegacy {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserLegacy &&
-            (identical(other.blockedBy, blockedBy) ||
-                other.blockedBy == blockedBy) &&
             const DeepCollectionEquality().equals(other.blocking, blocking) &&
             (identical(other.canDm, canDm) || other.canDm == canDm) &&
             (identical(other.canMediaTag, canMediaTag) ||
@@ -5482,8 +5095,6 @@ class _$_UserLegacy extends _UserLegacy {
                 other.fastFollowersCount == fastFollowersCount) &&
             (identical(other.favouritesCount, favouritesCount) ||
                 other.favouritesCount == favouritesCount) &&
-            (identical(other.followRequestSent, followRequestSent) ||
-                other.followRequestSent == followRequestSent) &&
             (identical(other.followedBy, followedBy) ||
                 other.followedBy == followedBy) &&
             (identical(other.followersCount, followersCount) ||
@@ -5502,29 +5113,20 @@ class _$_UserLegacy extends _UserLegacy {
                 other.location == location) &&
             (identical(other.mediaCount, mediaCount) ||
                 other.mediaCount == mediaCount) &&
-            (identical(other.muting, muting) || other.muting == muting) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.normalFollowersCount, normalFollowersCount) ||
                 other.normalFollowersCount == normalFollowersCount) &&
-            (identical(other.notifications, notifications) ||
-                other.notifications == notifications) &&
             const DeepCollectionEquality()
                 .equals(other._pinnedTweetIdsStr, _pinnedTweetIdsStr) &&
             (identical(other.possiblySensitive, possiblySensitive) ||
                 other.possiblySensitive == possiblySensitive) &&
-            const DeepCollectionEquality().equals(
-                other.profileBannerExtensions, profileBannerExtensions) &&
             (identical(other.profileBannerUrl, profileBannerUrl) ||
                 other.profileBannerUrl == profileBannerUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.profileImageExtensions, profileImageExtensions) &&
             (identical(other.profileImageUrlHttps, profileImageUrlHttps) ||
                 other.profileImageUrlHttps == profileImageUrlHttps) &&
             (identical(
                     other.profileInterstitialType, profileInterstitialType) ||
                 other.profileInterstitialType == profileInterstitialType) &&
-            (identical(other.protected, protected) ||
-                other.protected == protected) &&
             (identical(other.screenName, screenName) ||
                 other.screenName == screenName) &&
             (identical(other.statusesCount, statusesCount) ||
@@ -5544,7 +5146,6 @@ class _$_UserLegacy extends _UserLegacy {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        blockedBy,
         const DeepCollectionEquality().hash(blocking),
         canDm,
         canMediaTag,
@@ -5555,7 +5156,6 @@ class _$_UserLegacy extends _UserLegacy {
         const DeepCollectionEquality().hash(entities),
         fastFollowersCount,
         favouritesCount,
-        followRequestSent,
         followedBy,
         followersCount,
         following,
@@ -5565,18 +5165,13 @@ class _$_UserLegacy extends _UserLegacy {
         listedCount,
         location,
         mediaCount,
-        muting,
         name,
         normalFollowersCount,
-        notifications,
         const DeepCollectionEquality().hash(_pinnedTweetIdsStr),
         possiblySensitive,
-        const DeepCollectionEquality().hash(profileBannerExtensions),
         profileBannerUrl,
-        const DeepCollectionEquality().hash(profileImageExtensions),
         profileImageUrlHttps,
         profileInterstitialType,
-        protected,
         screenName,
         statusesCount,
         translatorType,
@@ -5602,9 +5197,7 @@ class _$_UserLegacy extends _UserLegacy {
 
 abstract class _UserLegacy extends UserLegacy {
   const factory _UserLegacy(
-      {@JsonKey(name: 'blocked_by')
-          required final bool blockedBy,
-      @JsonKey(name: 'blocking')
+      {@JsonKey(name: 'blocking')
           required final dynamic blocking,
       @JsonKey(name: 'can_dm')
           required final bool canDm,
@@ -5624,13 +5217,11 @@ abstract class _UserLegacy extends UserLegacy {
           required final int fastFollowersCount,
       @JsonKey(name: 'favourites_count')
           required final int favouritesCount,
-      @JsonKey(name: 'follow_request_sent')
-          required final bool followRequestSent,
-      @JsonKey(name: 'followed_by')
+      @JsonKey(name: 'followed_by', defaultValue: false)
           required final bool followedBy,
       @JsonKey(name: 'followers_count')
           required final int followersCount,
-      @JsonKey(name: 'following')
+      @JsonKey(name: 'following', defaultValue: false)
           required final bool following,
       @JsonKey(name: 'friends_count')
           required final int friendsCount,
@@ -5644,30 +5235,20 @@ abstract class _UserLegacy extends UserLegacy {
           required final String location,
       @JsonKey(name: 'media_count')
           required final int mediaCount,
-      @JsonKey(name: 'muting')
-          required final bool muting,
       @JsonKey(name: 'name')
           required final String name,
       @JsonKey(name: 'normal_followers_count')
           required final int normalFollowersCount,
-      @JsonKey(name: 'notifications')
-          required final bool notifications,
       @JsonKey(name: 'pinned_tweet_ids_str')
           required final List<String> pinnedTweetIdsStr,
       @JsonKey(name: 'possibly_sensitive')
           required final bool possiblySensitive,
-      @JsonKey(name: 'profile_banner_extensions')
-          required final dynamic profileBannerExtensions,
       @JsonKey(name: 'profile_banner_url')
-          final String? profileBannerUrl,
-      @JsonKey(name: 'profile_image_extensions')
-          required final dynamic profileImageExtensions,
+          required final String? profileBannerUrl,
       @JsonKey(name: 'profile_image_url_https')
           required final String profileImageUrlHttps,
       @JsonKey(name: 'profile_interstitial_type')
           required final String profileInterstitialType,
-      @JsonKey(name: 'protected')
-          required final bool protected,
       @JsonKey(name: 'screen_name')
           required final String screenName,
       @JsonKey(name: 'statuses_count')
@@ -5687,10 +5268,7 @@ abstract class _UserLegacy extends UserLegacy {
   factory _UserLegacy.fromJson(Map<String, dynamic> json) =
       _$_UserLegacy.fromJson;
 
-  @override
-  @JsonKey(name: 'blocked_by')
-  bool get blockedBy;
-  @override
+  @override // @JsonKey(name: 'blocked_by') required bool blockedBy,
   @JsonKey(name: 'blocking')
   dynamic get blocking;
   @override
@@ -5702,7 +5280,7 @@ abstract class _UserLegacy extends UserLegacy {
   @override
   @JsonKey(name: 'created_at')
   String get createdAt;
-  @override
+  @override // Sun Sep 19 10:49:08 +0000 2021
   @JsonKey(name: 'default_profile')
   bool get defaultProfile;
   @override
@@ -5720,19 +5298,16 @@ abstract class _UserLegacy extends UserLegacy {
   @override
   @JsonKey(name: 'favourites_count')
   int get favouritesCount;
-  @override
-  @JsonKey(name: 'follow_request_sent')
-  bool get followRequestSent;
-  @override
-  @JsonKey(name: 'followed_by')
+  @override // @JsonKey(name: 'follow_request_sent') required bool followRequestSent,
+  @JsonKey(name: 'followed_by', defaultValue: false)
   bool get followedBy;
-  @override
+  @override // ?
   @JsonKey(name: 'followers_count')
   int get followersCount;
   @override
-  @JsonKey(name: 'following')
+  @JsonKey(name: 'following', defaultValue: false)
   bool get following;
-  @override
+  @override // ?
   @JsonKey(name: 'friends_count')
   int get friendsCount;
   @override
@@ -5750,43 +5325,28 @@ abstract class _UserLegacy extends UserLegacy {
   @override
   @JsonKey(name: 'media_count')
   int get mediaCount;
-  @override
-  @JsonKey(name: 'muting')
-  bool get muting;
-  @override
+  @override // @JsonKey(name: 'muting') required bool muting,
   @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(name: 'normal_followers_count')
   int get normalFollowersCount;
-  @override
-  @JsonKey(name: 'notifications')
-  bool get notifications;
-  @override
+  @override // @JsonKey(name: 'notifications') required bool notifications,
   @JsonKey(name: 'pinned_tweet_ids_str')
   List<String> get pinnedTweetIdsStr;
   @override
   @JsonKey(name: 'possibly_sensitive')
   bool get possiblySensitive;
-  @override
-  @JsonKey(name: 'profile_banner_extensions')
-  dynamic get profileBannerExtensions;
-  @override
+  @override // @JsonKey(name: 'profile_banner_extensions') required dynamic profileBannerExtensions,
   @JsonKey(name: 'profile_banner_url')
   String? get profileBannerUrl;
-  @override
-  @JsonKey(name: 'profile_image_extensions')
-  dynamic get profileImageExtensions;
-  @override
+  @override // @JsonKey(name: 'profile_image_extensions') required dynamic profileImageExtensions,
   @JsonKey(name: 'profile_image_url_https')
   String get profileImageUrlHttps;
   @override
   @JsonKey(name: 'profile_interstitial_type')
   String get profileInterstitialType;
-  @override
-  @JsonKey(name: 'protected')
-  bool get protected;
-  @override
+  @override // @JsonKey(name: 'protected') required bool protected,
   @JsonKey(name: 'screen_name')
   String get screenName;
   @override
