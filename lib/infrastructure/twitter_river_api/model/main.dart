@@ -403,45 +403,6 @@ class UserLegacy with _$UserLegacy {
     @JsonKey(name: 'withheld_in_countries') required List withheldInCountries,
   }) = _UserLegacy;
 
-/*
-{
-    "followed_by": true,
-    "following": true,
-    "can_dm": true,
-    "can_media_tag": true,
-    "created_at": "Sun Sep 19 10:49:08 +0000 2021",
-    "default_profile": true,
-    "default_profile_image": false,
-    "description": "インターネット大好きマン\n\nCommit to @Ablaze_MIRAI\n💬English OK(But a little)\nバグ・諸問題はメンションで\n\nMisskey: @Comamoca@misskey.io\n\nhobys 💻 ⵗ 🏕 ⵗ 🚵\n\n♥ Vim&CLI\n\nおにまいときららは良いぞ👍",
-    "entities": {
-    },
-    "fast_followers_count": 0,
-    "favourites_count": 65582,
-    "followers_count": 703,
-    "friends_count": 1062,
-    "has_custom_timelines": true,
-    "is_translator": false,
-    "listed_count": 13,
-    "location": "Live in 山梨🗻",
-    "media_count": 1566,
-    "name": "こまもか🦊",
-    "normal_followers_count": 703,
-    "pinned_tweet_ids_str": [
-        "1643114515935145984"
-    ],
-    "possibly_sensitive": false,
-    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1439542017055342593/1651754177",
-    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1505613048236498947/rI0hpagN_normal.png",
-    "profile_interstitial_type": "",
-    "screen_name": "Comamoca_",
-    "statuses_count": 17493,
-    "translator_type": "none",
-    "url": "https://t.co/ydEXEnUPix",
-    "verified": false,
-    "want_retweets": true,
-    "withheld_in_countries": []
-}
- */
   String get profileImageUrlHttpsSource => profileImageUrlHttps.replaceAll(RegExp(r'_[a-zA-Z0-9]+?.jpg$'), '.jpg');
 
   factory UserLegacy.fromJson(Map<String, dynamic> json) => _$UserLegacyFromJson(fromJsonProxy(json));
