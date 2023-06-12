@@ -15,6 +15,7 @@
     "misinfo",
     "MMMMEEE",
     "notetweets",
+    "openapi",
     "pubspec",
     "riverpod",
     "roadmap",
@@ -31,7 +32,6 @@
     "ios/**",
     "windows/**",
     "pubspec.yaml",
-    "*.freezed.dart",
     "*.g.dart",
     "lib/l10n/**"
   ]

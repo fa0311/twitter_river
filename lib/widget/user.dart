@@ -6,12 +6,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
+import 'package:twitter_openapi_dart_generated/twitter_openapi_dart_generated.dart';
 
 class UserProfileWidget extends ConsumerWidget {
-  final Result user;
+  final User user;
   const UserProfileWidget({
     super.key,
     required this.user,
@@ -41,7 +39,7 @@ class UserProfileWidget extends ConsumerWidget {
                 height: 100,
                 width: 100,
                 child: CachedNetworkImage(
-                  imageUrl: user.legacy.profileImageUrlHttpsSource,
+                  imageUrl: user.legacy.profileImageUrlHttps, // todo
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.fill,
                   imageBuilder: (context, imageProvider) {

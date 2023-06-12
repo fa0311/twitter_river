@@ -8,10 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import 'package:twitter_river/component/future/tile.dart';
-import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/settings/settings.dart';
 import 'package:twitter_river/view/splash.dart';
-import 'package:twitter_river/view/web/login.dart';
 
 class NormalDrawer extends ConsumerWidget {
   const NormalDrawer({super.key});
@@ -61,6 +59,8 @@ class NormalDrawer extends ConsumerWidget {
                     ),
                     FutureTile(
                       onTap: () async {
+                        // todo
+                        /*
                         final session = await ref.read(loginSessionProvider.future);
                         await session.cookieJar.deleteAll();
                         Navigator.pushAndRemoveUntil(
@@ -70,6 +70,7 @@ class NormalDrawer extends ConsumerWidget {
                           ),
                           (_) => false,
                         );
+                        */
                       },
                       leading: const Icon(Icons.home),
                       title: Text(AppLocalizations.of(context)!.logout),

@@ -41,9 +41,6 @@ dependencies:
   dio: ^5.1.1
   dio_cookie_manager: ^3.1.0
   flutter_inappwebview: ^5.7.2+3
-  flutter_riverpod: ^2.3.2
-  freezed: ^2.3.2
-  freezed_annotation: ^2.2.0
   import_sorter: ^4.6.0
   json_annotation: ^4.8.0
   logger: ^1.3.0
@@ -51,6 +48,10 @@ dependencies:
   path_provider: ^2.0.14
   scrollable_positioned_list: ^0.3.5
   intl: ^0.18.0
+  twitter_openapi_dart: ^0.0.4
+  twitter_openapi_dart_generated: any
+  flutter_riverpod: ^2.3.2
+  riverpod_annotation: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +64,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
   build_runner: ^2.3.3
-  json_serializable: ^6.6.1
+  riverpod_generator: ^2.1.3
+  riverpod_lint: ^1.1.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

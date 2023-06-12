@@ -3,7 +3,6 @@
 // Dart imports:
 
 // Flutter imports:
-import 'dart:developer';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -11,70 +10,16 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
+import 'package:twitter_openapi_dart/twitter_openapi_dart.dart';
+import 'package:twitter_openapi_dart_generated/twitter_openapi_dart_generated.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/converter/type.dart';
-import 'package:twitter_river/infrastructure/twitter_river_api/model/main.dart';
-import 'package:twitter_river/ui_core/date.dart';
 import 'package:twitter_river/view/sub/tweet.dart';
 import 'package:twitter_river/view/sub/user.dart';
 
-class ContentWidget extends ConsumerWidget {
-  final Content content;
-  final bool details;
-  const ContentWidget({super.key, required this.content, this.details = false});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (content.entryType == EntryType.timelineTimelineItem) {
-      final tweet = content.timelineTimelineItem!.itemContent;
-      if (tweet.timelineTweet?.tweet.legacy.retweetedStatusResult != null) {
-        final timelineTweet = tweet.timelineTweet!.copyWith(tweetResults: tweet.timelineTweet!.tweet.legacy.retweetedStatusResult!);
-        return TweetCard(
-          child: details
-              ? TweetDetailsWidget(tweet: timelineTweet)
-              : TweetWidget(
-                  tweet: timelineTweet,
-                  label: AppLocalizations.of(context)!.rtBy(tweet.timelineTweet!.user.legacy.name),
-                ),
-        );
-      } else if (tweet.entryType == ItemType.timelineTweet) {
-        final timelineTweet = tweet.timelineTweet!;
-        return TweetCard(child: details ? TweetDetailsWidget(tweet: timelineTweet) : TweetWidget(tweet: timelineTweet));
-      }
-    } else if (content.entryType == EntryType.timelineTimelineModule) {
-      final tweets = content.timelineTimelineModule!.itemContent
-          .where((e) => e.item.itemContent.entryType == ItemType.timelineTweet)
-          .map((e) => e.item.itemContent.timelineTweet!)
-          .toList();
-
-      return TweetCard(
-        child: Column(
-          children: [
-            details ? TweetDetailsWidget(tweet: tweets.first) : TweetWidget(tweet: tweets.first),
-            for (final tweet in tweets..remove(tweets.first)) TweetWidget(tweet: tweet),
-          ],
-        ),
-      );
-    }
-    return const Text("Error");
-  }
-}
-
-class TweetCard extends ConsumerWidget {
-  final Widget child;
-  const TweetCard({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Card(child: child);
-  }
-}
-
 class TweetInkWell extends ConsumerWidget {
   final Widget child;
-  final TimelineTweet tweet;
+  final TweetApiUtils tweet;
   const TweetInkWell({super.key, required this.child, required this.tweet});
 
   @override
@@ -100,7 +45,7 @@ class TweetInkWell extends ConsumerWidget {
 
 class UserInkWell extends ConsumerWidget {
   final Widget child;
-  final Result user;
+  final User user;
   const UserInkWell({super.key, required this.child, required this.user});
 
   @override
@@ -125,13 +70,13 @@ class UserInkWell extends ConsumerWidget {
 }
 
 class TweetWidget extends ConsumerWidget {
-  final TimelineTweet tweet;
+  final TweetApiUtils tweet;
   final String? label;
   const TweetWidget({super.key, required this.tweet, this.label});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final headText = label ?? tweet.socialContext?.text ?? tweet.socialContext?.name;
+    final headText = label; //  ?? tweet.promotedMetadata.asString;
     return TweetInkWell(
       tweet: tweet,
       child: Padding(
@@ -187,10 +132,12 @@ class TweetWidget extends ConsumerWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 2),
                             child: Text("@${tweet.user.legacy.screenName}", style: Theme.of(context).textTheme.bodySmall),
                           ),
+                          /*
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 2),
                             child: Text(UiCore.of(context).generalDateDifference(tweet.tweet.legacy.createdAt), style: Theme.of(context).textTheme.bodySmall),
                           ),
+                          */
                         ],
                       ),
                       Text(tweet.tweet.legacy.fullText),
@@ -240,7 +187,7 @@ class TweetWidget extends ConsumerWidget {
 }
 
 class TweetDetailsWidget extends ConsumerWidget {
-  final TimelineTweet tweet;
+  final TweetApiUtils tweet;
   const TweetDetailsWidget({super.key, required this.tweet});
 
   @override
@@ -290,10 +237,12 @@ class TweetDetailsWidget extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(tweet.tweet.legacy.fullText),
+                  /*
                   Text(
                     DateFormat.yMMMMEEEEd(AppLocalizations.of(context)!.localeName).format(tweet.tweet.legacy.createdAt),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
+                  */
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Row(
@@ -334,6 +283,16 @@ class TweetDetailsWidget extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+class TweetCard extends ConsumerWidget {
+  final Widget child;
+  const TweetCard({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Card(child: child);
   }
 }
 

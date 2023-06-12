@@ -4,12 +4,4 @@ targets:
       source_gen|combining_builder:
         options:
           build_extensions:
-            "{{dir}}/{{file}}.dart": "{{dir}}/generated/{{file}}.g.dart"
-          include:
-            - lib/**/model/*.dart
-      freezed:
-        options:
-          build_extensions:
-            "{{dir}}/{{file}}.dart": "{{dir}}/generated/{{file}}.freezed.dart"
-          include:
-            - lib/**/model/*.dart
+            "{{dir}}/{{file}}.dart": "{{dir}}/{{file}}.g.dart"

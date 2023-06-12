@@ -26,9 +26,9 @@ class TwitterRiverSettings extends ConsumerWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Column(
+                  leading: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [Icon(Icons.help)],
+                    children: [Icon(Icons.help)],
                   ),
                   title: Text(AppLocalizations.of(context)!.help),
                   onTap: () => Navigator.push(

@@ -1,44 +1,25 @@
 // Flutter imports:
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
 import 'package:twitter_river/core/logger.dart';
-import 'package:twitter_river/provider/session.dart';
 import 'package:twitter_river/view/top/home.dart';
-import 'package:twitter_river/view/web/login.dart';
 
-enum SplashData {
-  top,
-  login,
-  userPolicy;
-}
+part 'splash.g.dart';
 
-final splashProvider = FutureProvider<SplashData>((ref) async {
-  final session = await ref.watch(loginSessionProvider.future);
-  /*
-  if (kDebugMode) {
-    return SplashData.top;
-  }
-  */
-  try {
-    await session.getTimeLine(cursor: null);
-  } catch (e, trace) {
-    logger.w(e, e, trace);
-    return SplashData.login;
-  }
-  return SplashData.top;
-});
+@riverpod
+Future<void> init(InitRef ref) async {}
 
 class TwitterRiverSplash extends ConsumerWidget {
   const TwitterRiverSplash({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(splashProvider);
+    final data = ref.watch(initProvider);
 
     return data.when(
       loading: () => const Scaffold(
@@ -54,15 +35,8 @@ class TwitterRiverSplash extends ConsumerWidget {
         logger.w(e, e, trace);
         return Container();
       },
-      data: (SplashData data) {
-        switch (data) {
-          case SplashData.top:
-            return const TwitterRiverHome();
-          case SplashData.login:
-            return const TwitterRiverWebLogin();
-          case SplashData.userPolicy:
-            return Container();
-        }
+      data: (data) {
+        return const TwitterRiverHome();
       },
     );
   }

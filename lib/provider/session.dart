@@ -1,13 +1,15 @@
 // Package imports:
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:twitter_openapi_dart/twitter_openapi_dart.dart';
 
 // Project imports:
-import 'package:twitter_river/infrastructure/twitter_river_api/core.dart';
+import 'package:twitter_river/auth/inappwebview.dart';
 
-final twitterRiverAPIProvider = StateProvider.family<TwitterRiverAPI, String>((ref, path) => TwitterRiverAPI(cookiePath: path));
+part 'session.g.dart';
 
-final loginSessionProvider = FutureProvider<TwitterRiverAPI>((ref) async {
-  final directory = await getApplicationDocumentsDirectory();
-  return ref.watch(twitterRiverAPIProvider("${directory.path}/.cookie/aaaaa"));
-});
+@Riverpod(keepAlive: true)
+Future<TwitterOpenapiDartClient> loginSession(LoginSessionRef ref) async {
+  final api = TwitterOpenapiDart()..addBeforeInterceptor(FlutterInappwebviewDio());
+  final client = await api.getClient(initCookie: false);
+  return client;
+}
